@@ -29,12 +29,28 @@
   // Final result should be 10.42
   // Add/update your code here
 
+  // see website for live editing: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Test_your_skills:_Math
+/* 
+1) Write a calculation that multiplies result and result2 together and assigns the result back to result. 
+This will require assignment shorthand.
+2) Write a line of code that takes result and formats it to 2 decimal places, storing the result of this in a variable called finalResult.
+3) Check the data type of finalResult using typeof; you'll probably see that it is actually of string type! 
+Write a line of code that converts it to a number type, storing the result in a variable called finalNumber.
+4) The value of finalNumber needs to be 10.42. Go back and update the original calculations you were provided with so that they give this final result. 
+Don't update the numbers or the operators. 
+*/
+
+
 let result = (7 + 13) / (9 + 7);
 let result2 = 100 / (2 * 6);
-let addResults = result + result2;
-let finalResult = Number(addResults.toFixed(2));
-// Part way through this exercise
-// see website for live editing: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Test_your_skills:_Math
+result = result * result2;
+let finalResult = result.toFixed(2);
+let finalNumber = Number(finalResult);
+
+console.log(result);
+console.log(result2);
+console.log(finalNumber);
+
 
     // Don't edit the code below here!
 
