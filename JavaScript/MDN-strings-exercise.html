@@ -37,6 +37,36 @@ let para2 = document.createElement('p');
 para2.textContent = revisedQuote;
 section.appendChild(para1);
 section.appendChild(para2);
+
+// String exercise #3
+let quote = 'I dO nOT lIke gREen eGgS anD HAM';
+// Add your code here
+let quoteWithoutI = quote.substring(1);
+let allLowerCase = quoteWithoutI.toLowerCase();
+let correctCasing = "I" + allLowerCase;
+let iDoNotLike = correctCasing.slice(0, 13);
+let finalQuote = iDoNotLike + " fish";
+// Don't edit the code below here!
+section.innerHTML = ' ';
+let para1 = document.createElement('p');
+para1.textContent = fixedQuote;
+let para2 = document.createElement('p');
+para2.textContent = finalQuote;
+section.appendChild(para1);
+section.appendChild(para2);
+
+// String exercise #4
+let theorem = 'Pythagorean theorem';
+let a = 5;
+let b = 8;
+let myString = `Using ${theorem}, we can work out that that if the two shortest sides of a right-angled triangle have lengths of 
+${a} and ${b}, the length of the hypotenuse is ${Math.sqrt(a**2 + b**2).toFixed(2)}.`;
+// Don't edit the code below here!
+section.innerHTML = ' ';
+let para1 = document.createElement('p');
+para1.textContent = myString;
+section.appendChild(para1);
+    
     </script>
 </body>
 </html>
