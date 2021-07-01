@@ -6,17 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Function scope example</title>
 </head>
+<!-- From this website: 
+    https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions -->
 <body>
 
   <script>
+
+    // Run the below code in the browser console
+    // a();
+    // b();
+    // output(x);
+
     let x = 1;
 
     function a() {
       let y = 2;
+    // adding the output below
+    // allows us to see it on the webpage
+      output(y);
     }
 
     function b() {
       let z = 3;
+    // adding the output below
+    // allows us to see it on the webpage
+      output(z);
     }
 
     function output(value) {
