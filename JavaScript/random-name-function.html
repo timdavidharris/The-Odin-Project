@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Functions: Task 1</title>
 <style>
-    p {
+p {
     color: purple;
     margin: 0.5em 0;
-    }
+}
 
-    * {
+* {
     box-sizing: border-box;
-    }
+}
 </style>
-<link rel="stylesheet" href="../styles.css" />
+<!-- <link rel="stylesheet" href="../styles.css" /> -->
 </head>
 <body>
 
@@ -29,7 +29,13 @@ let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert',
 let para = document.createElement('p');
 
 // Add your code here
-
+function chooseName(arrayNumber) {
+    arrayNumber = names.length - 1;
+    const result = Math.floor(Math.random() * arrayNumber);
+    let randomName = names[result];
+    return randomName;
+    console.log(randomName);
+    }
 // Don't edit the code below here!
 
 const section = document.querySelector('section');
