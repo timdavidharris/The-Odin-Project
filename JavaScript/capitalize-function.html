@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize Function</title>
+</head>
+<body>
+    <h1>Open up your console log to see your function run</h1>
+    <!-- Practice 3 from:
+     https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/fundamentals-part-3-->
+    
+     <script>
+        // Instructions for Practice 3
+        // Write a function called capitalize that takes a string 
+        // and returns that string with 
+        // only the first letter capitalized. 
+        // Make sure that it can take strings that are 
+        // lowercase, UPPERCASE or BoTh.
+
+        function capitalize(string){
+            // This trims any space before or after
+            let trimString = string.trim();
+            // This makes the whole string lower case
+            let allLowerCase = trimString.toLowerCase();
+            // this make the first letter upper case
+            let  upperCaseFirstLetter = allLowerCase.charAt(0).toUpperCase();
+            // this addes the capital first letter
+            // and the lowercase rest of the string
+            let sentenceCase = upperCaseFirstLetter + allLowerCase.slice(1);
+            // this gives us the new string in the console log
+            console.log(sentenceCase);
+        }
+        capitalize("Welcome TO AmerICA");
+        capitalize("today IS A Good DAY.");
+        capitalize("   thIS IS how to Test");
+     </script>
+</body>
+</html>
