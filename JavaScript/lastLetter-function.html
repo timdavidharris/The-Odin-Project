@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lastLetter-function</title>
+</head>
+<body>
+    <!-- Practice 4 from:
+     https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/fundamentals-part-3-->
+
+     <h1>Open up your browser console</h1>
+
+     <p>
+        Instructions:
+        Write a function called lastLetter that 
+        takes a string and returns the 
+        very last letter of that string:
+        e.g.: 
+        <pre>
+        <code>
+            lastLetter("abcd") should return "d"
+        </code>
+    </pre>
+     </p>
+
+     <script>
+        //  Instructions:
+        //  Write a function called lastLetter that 
+        //  takes a string and returns the 
+        //  very last letter of that string:
+        // e.g.: lastLetter("abcd") should return "d"
+
+        function lastLetter(string) {
+            let lastStringItem = string.slice(-1);
+            console.log(`The last item in the string is '${lastStringItem}'`);
+        }
+
+        lastLetter('hello world');
+        lastLetter('123454');
+     </script>
+</body>
+</html>
