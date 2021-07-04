@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+</head>
+<body>
+    
+    <h1>Open up the console log</h1>
+    <script>
 // From the Problem Solving section of Odin Project:
 // https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/problem-solving
 
@@ -11,10 +23,18 @@
 // both three and five print FizzBuzz.
 
 // Step 1: Write out the sudo code first
+// Step 2: begin to write out the code under the sudo code
 
 // 1) Ask the user for an input number
+let userNumber = parseInt(prompt("Please enter a number between 1 and 100 to 'FizzBuzz': "))
 // 2) loop from 1 to the input number
+for (let i = 1; i <= userNumber; i ++) {
+    console.log(i);
+}
 // 3) output the numbers but
 // 3a) if the number can be divided by only 3, print Fizz
 // 3b) if the number can be divided by only 5, print Buzz
 // 3c) if the number can be divided by both, print FizzBuzz
+    </script>
+</body>
+</html>
