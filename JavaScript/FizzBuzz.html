@@ -28,17 +28,17 @@
 // 1) Ask the user for an input number
 let userNumber = parseInt(prompt("Please enter a number to 'FizzBuzz': "));
 // 2) loop from 1 to the input number
-// 3) output the numbers but
-// 3a) if the number can be divided by only 3, print Fizz
-// 3b) if the number can be divided by only 5, print Buzz
-// 3c) if the number can be divided by both, print FizzBuzz
 for (let i = 1; i <= userNumber; i ++) {
+// 3a) if the number can be divided by 3 & 5, print FizzBuzz
     if (i % 3 === 0 && i % 5 === 0) {
         console.log('FizzBuzz');
+// 3b) if the number can be divided by only 3, print Fizz
     } else if (i % 3 === 0) {
         console.log('Fizz');
+// 3c) if the number can be divided by only 5, print Buzz
     } else if (i % 5 === 0) {
         console.log('Buzz');
+// 4) else, just output the number
     } else {
         console.log(i);
     }
