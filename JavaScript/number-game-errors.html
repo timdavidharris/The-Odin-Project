@@ -23,6 +23,9 @@
   </head>
 
   <body>
+
+    <!-- From this website:
+     https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong-->
       <h1>Number guessing game</h1>
 
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or less. We'll tell you if your guess was too high or too low.</p>
@@ -82,7 +85,7 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess);
 
   function setGameOver() {
 	  guessField.disabled = true;
