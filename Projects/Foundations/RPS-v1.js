@@ -22,36 +22,16 @@ function playRound(playerSelection, computerSelection) {
         // the computer played ${computerSelection}.`);
         return `It's a tie! You played ${playerSelection} and the computer played ${computerSelection}.`;
 // Computer win situations below
-    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || 
+                (playerSelection === 'scissors' && computerSelection === 'rock') ||
+                (playerSelection === 'paper' && computerSelection === 'scissors')) {
         computerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. The computer won.`);
-        return `You played ${playerSelection} and the computer played ${computerSelection}. The computer won.`;
-    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        computerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. The computer won.`);
-        return `You played ${playerSelection} and the computer played ${computerSelection}. The computer won.`;
-    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        computerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. The computer won.`);
         return `You played ${playerSelection} and the computer played ${computerSelection}. The computer won.`;
 // Player win situations below
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+    } else if ((playerSelection === 'paper' && computerSelection === 'rock') ||
+                (playerSelection === 'rock' && computerSelection === 'scissors') ||
+                (playerSelection === 'scissors' && computerSelection === 'paper')) {
         playerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. Yay, you won.`);
-        return `You played ${playerSelection} and the computer played ${computerSelection}. Yay, you won.`;
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        playerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. Yay, you won.`);
-        return `You played ${playerSelection} and the computer played ${computerSelection}. Yay, you won.`;
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        playerScore+=1;
-        // alert(`You played ${playerSelection} and \
-        // the computer played ${computerSelection}. Yay, you won.`);
         return `You played ${playerSelection} and the computer played ${computerSelection}. Yay, you won.`;
 // In the case of an input error
     } else {
