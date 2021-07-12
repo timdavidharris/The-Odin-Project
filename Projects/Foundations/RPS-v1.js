@@ -8,13 +8,21 @@ function playRound(playerSelection, computerSelection) {
     } else if ((playerSelection === 'rock' && computerSelection === 'paper') || 
                 (playerSelection === 'scissors' && computerSelection === 'rock') ||
                 (playerSelection === 'paper' && computerSelection === 'scissors')) {
-        computerScore+=1;
+        keepScore(null);
         return `The computer won.`;
     } else {
-        playerScore+=1;
+        keepScore();
         return `Yay, you won.`;
     }
   }
+
+function keepScore(score) {
+    if (score === null) {
+        computerScore+=1;
+    } else {
+        playerScore+=1;
+    }
+}
 
 function computerPlay() {
     const randomChoice = Math.floor(Math.random() * 3);
