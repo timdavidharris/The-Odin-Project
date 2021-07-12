@@ -25,7 +25,7 @@ function keepScore(score) {
 }
 
 function computerPlay() {
-    const randomChoice = Math.floor(Math.random() * 3);
+    const randomChoice = Math.floor(Math.random() * choice.length);
     return choice[randomChoice];
 }
 
@@ -59,11 +59,14 @@ for (let i = 0; i < 5; i++) {
 
 function finalScoreReadout() {
     if (playerScore > computerScore) {
-        console.table(`%c You win! You scored ${playerScore} and the computer scored ${computerScore}`, `background:black;color:green`);
+        console.table(`%c You win! You scored ${playerScore}` + 
+        ` and the computer scored ${computerScore}`, `background:black;color:green`);
     } else if (computerScore > playerScore) {
-        console.table(`%c You lose! You scored ${playerScore} and the computer scored ${computerScore}`, `background:black;color:red`);
+        console.table(`%c You lose! You scored ${playerScore}` +
+        ` and the computer scored ${computerScore}`, `background:black;color:red`);
     } else {
-        console.table(`%c You tie! You scored ${playerScore} and the computer scored ${computerScore}`, `background:black;color:yellow`);
+        console.table(`%c You tie! You scored ${playerScore}` + 
+        ` and the computer scored ${computerScore}`, `background:black;color:yellow`);
     }
 }
 
