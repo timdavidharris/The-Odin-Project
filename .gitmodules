@@ -1,0 +1,3 @@
+[submodule "JavaScript-Exercises"]
+	path = JavaScript-Exercises
+	url = https://github.com/timdavidharris/JavaScript-Exercises.git
