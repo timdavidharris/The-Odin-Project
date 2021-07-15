@@ -8,7 +8,7 @@ function playRound(playerSelection, computerSelection) {
     } else if ((playerSelection === 'rock' && computerSelection === 'paper') || 
                 (playerSelection === 'scissors' && computerSelection === 'rock') ||
                 (playerSelection === 'paper' && computerSelection === 'scissors')) {
-        keepScore(null);
+        keepScore('computer');
         return `The computer won.`;
     } else {
         keepScore();
@@ -17,7 +17,7 @@ function playRound(playerSelection, computerSelection) {
   }
 
 function keepScore(score) {
-    if (score === null) {
+    if (score === 'computer') {
         computerScore+=1;
     } else {
         playerScore+=1;
