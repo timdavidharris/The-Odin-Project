@@ -2,6 +2,9 @@
 // see full instructions here:
 // https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors
 
+// add a div to display round & game results
+const scoreDiv = document.createElement('div');
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return `It's a tie!`;
@@ -75,4 +78,4 @@ let computerSelection = computerPlay();
 let computerScore = 0;
 let playerScore = 0;
 
-game();
+// game();
