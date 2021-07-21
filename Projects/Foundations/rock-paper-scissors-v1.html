@@ -1,16 +1,35 @@
+<!-- From this website:
+https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="RPS-v1.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors v1</title>
 </head>
 <body>
-    <h1>Open up the browser console <br> to play rock paper scissors</h1>
-    <!-- From this website:
-    https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors -->
+    <header id="welcome-text">
+        <h1 class="text" class="h1">Welcome to Rock Paper Scissors!</h1>
+    </header>
 
-    <script type="text/javascript" src="RPS-v1.js"></script>
+    <p class="text" class="p">Click the button that corresponds 
+                                to the weapon you want to use 
+        <br> The computer will pick one at random. 
+        <br> The first one who wins 5 rounds wins!</p>
+
+    <section class="btn-selection" id="btn-selection">
+        <button class="btn" id="rock">ROCK</button>
+        <button class="btn" id="paper">PAPER</button>
+        <button class="btn" id="scissors">SCISSORS</button>
+    </section>
+
+    <section class="text" id="score">
+        <p id="see-below">Score will display below:</p>
+        <p id="running-score"></p>
+    </section>
+
 </body>
 </html>
