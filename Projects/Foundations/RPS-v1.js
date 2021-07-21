@@ -2,16 +2,41 @@
 // see full instructions here:
 // https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
+let choice = ['rock', 'paper', 'scissors'];
+let computerSelection = computerPlay();
+let computerScore = 0;
+let playerScore = 0;
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const buttons = document.querySelectorAll('button');
+
+rock.addEventListener('click', () => {
+    playRound('rock', computerPlay());
+});
+
+paper.addEventListener('click', () => {
+    playRound('paper', computerPlay());
+});
+
+scissors.addEventListener('click', () => {
+    playRound('scissors', computerPlay());
+});
+
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+        console.log(`It's a tie!`);
         return `It's a tie!`;
-    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || 
-                (playerSelection === 'scissors' && computerSelection === 'rock') ||
-                (playerSelection === 'paper' && computerSelection === 'scissors')) {
+    } else if ((playerChoice == 'rock' && computerChoice == 'paper') || 
+                (playerChoice == 'scissors' && computerChoice == 'rock') ||
+                (playerChoice == 'paper' && computerChoice == 'scissors')) {
         keepScore('computer');
+        console.log(`The computer won.`);
         return `The computer won.`;
     } else {
         keepScore();
+        console.log(`Yay, you won.`);
         return `Yay, you won.`;
     }
   }
@@ -29,34 +54,6 @@ function computerPlay() {
     return choice[randomChoice];
 }
 
-function playerSelectionPrompt() {
-    let playerChoicePrompt = '';
-    playerChoicePrompt = prompt("Please select your weapon of choice; " + 
-    "rock, paper, or scissors:'")
-    if ((playerChoicePrompt === 'rock') ||
-        (playerChoicePrompt === 'paper') ||
-        (playerChoicePrompt === 'scissors')){
-    let playerSelection = playerChoicePrompt.toLowerCase();
-    return playerSelection;
-    } else {
-        alert("Sorry, I did not understand your input, " + 
-                "please try again")
-        playerSelectionPrompt();
-    }
-}
-
-function game() {
-for (let i = 0; i < 5; i++) {
-    let playerSelection = playerSelectionPrompt();
-    let computerSelection = computerPlay();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (i === 4) {
-        return finalScoreReadout();
-    }
-}
-}
-
 function finalScoreReadout() {
     if (playerScore > computerScore) {
         console.table(`%c You win! You scored ${playerScore}` + 
@@ -69,10 +66,3 @@ function finalScoreReadout() {
         ` and the computer scored ${computerScore}`, `background:black;color:yellow`);
     }
 }
-
-let choice = ['rock', 'paper', 'scissors'];
-let computerSelection = computerPlay();
-let computerScore = 0;
-let playerScore = 0;
-
-game();
