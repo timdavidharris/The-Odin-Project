@@ -65,15 +65,4 @@ function finalScoreReadout() {
         console.table(`%c You tie! You scored ${playerScore}` + 
         ` and the computer scored ${computerScore}`, `background:black;color:yellow`);
     }
-<<<<<<< HEAD
 }
-=======
-}
-
-let choice = ['rock', 'paper', 'scissors'];
-let computerSelection = computerPlay();
-let computerScore = 0;
-let playerScore = 0;
-
-// game();
->>>>>>> e66746a8cc78f65560ec0d79c9fd22536a0162a3
