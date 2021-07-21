@@ -2,7 +2,6 @@
 // see full instructions here:
 // https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors
 
-<<<<<<< HEAD
 let choice = ['rock', 'paper', 'scissors'];
 let computerSelection = computerPlay();
 let computerScore = 0;
@@ -28,13 +27,6 @@ scissors.addEventListener('click', () => {
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         console.log(`It's a tie!`);
-=======
-// add a div to display round & game results
-const scoreDiv = document.createElement('div');
-
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
->>>>>>> e66746a8cc78f65560ec0d79c9fd22536a0162a3
         return `It's a tie!`;
     } else if ((playerChoice == 'rock' && computerChoice == 'paper') || 
                 (playerChoice == 'scissors' && computerChoice == 'rock') ||
