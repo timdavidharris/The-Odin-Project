@@ -10,18 +10,26 @@ let playerScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const computerScoreDisplay = document.querySelector('#computer-score');
+const playerScoreDisplay = document.querySelector('#player-score');
 const buttons = document.querySelectorAll('button');
 
+computerScoreDisplay.textContent = `Computer Score: ${keepScore()}`;
+playerScoreDisplay.textContent = `Player Score: ${keepScore()}`;
+
 rock.addEventListener('click', () => {
-    playRound('rock', computerPlay());
+    let computerSelection = computerPlay();
+    playRound('rock', computerSelection);
 });
 
 paper.addEventListener('click', () => {
-    playRound('paper', computerPlay());
+    let computerSelection = computerPlay();
+    playRound('paper', computerSelection);
 });
 
 scissors.addEventListener('click', () => {
-    playRound('scissors', computerPlay());
+    let computerSelection = computerPlay();
+    playRound('scissors', computerSelection);
 });
 
 function playRound(playerChoice, computerChoice) {
@@ -35,7 +43,7 @@ function playRound(playerChoice, computerChoice) {
         console.log(`The computer won.`);
         return `The computer won.`;
     } else {
-        keepScore();
+        keepScore('player');
         console.log(`Yay, you won.`);
         return `Yay, you won.`;
     }
@@ -44,8 +52,12 @@ function playRound(playerChoice, computerChoice) {
 function keepScore(score) {
     if (score === 'computer') {
         computerScore+=1;
-    } else {
+        return computerScore;
+    } else if (score === 'player') {
         playerScore+=1;
+        return playerScore;
+    } else {
+        return 'the score is 0';
     }
 }
 
