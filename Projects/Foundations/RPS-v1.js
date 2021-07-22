@@ -6,46 +6,56 @@ let choice = ['rock', 'paper', 'scissors'];
 let computerSelection = computerPlay();
 let computerScore = 0;
 let playerScore = 0;
+let tieScore = 0;
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const computerScoreDisplay = document.querySelector('#computer-score');
 const playerScoreDisplay = document.querySelector('#player-score');
+const tieScoreDisplay = document.querySelector('#tie-score');
 const buttons = document.querySelectorAll('button');
 
-computerScoreDisplay.textContent = `Computer Score: ${keepScore()}`;
-playerScoreDisplay.textContent = `Player Score: ${keepScore()}`;
+computerScoreDisplay.textContent = `Computer Score: 0`;
+playerScoreDisplay.textContent = `Player Score: 0`;
+tieScoreDisplay.textContent = `Number of ties: 0`
 
 rock.addEventListener('click', () => {
     let computerSelection = computerPlay();
     playRound('rock', computerSelection);
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
 });
 
 paper.addEventListener('click', () => {
     let computerSelection = computerPlay();
     playRound('paper', computerSelection);
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
 });
 
 scissors.addEventListener('click', () => {
     let computerSelection = computerPlay();
     playRound('scissors', computerSelection);
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
 });
 
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-        console.log(`It's a tie!`);
+        keepScore();
         return `It's a tie!`;
     } else if ((playerChoice == 'rock' && computerChoice == 'paper') || 
                 (playerChoice == 'scissors' && computerChoice == 'rock') ||
                 (playerChoice == 'paper' && computerChoice == 'scissors')) {
         keepScore('computer');
-        console.log(`The computer won.`);
         return `The computer won.`;
     } else {
         keepScore('player');
-        console.log(`Yay, you won.`);
-        return `Yay, you won.`;
+        return `The player won.`;
     }
   }
 
@@ -57,7 +67,8 @@ function keepScore(score) {
         playerScore+=1;
         return playerScore;
     } else {
-        return 'the score is 0';
+        tieScore+=1;
+        return tieScore;
     }
 }
 
