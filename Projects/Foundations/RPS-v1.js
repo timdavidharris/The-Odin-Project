@@ -12,6 +12,7 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const computerScoreDisplay = document.querySelector('#computer-score');
+
 const playerScoreDisplay = document.querySelector('#player-score');
 const tieScoreDisplay = document.querySelector('#tie-score');
 const buttons = document.querySelectorAll('button');
@@ -20,28 +21,28 @@ computerScoreDisplay.textContent = `Computer Score: 0`;
 playerScoreDisplay.textContent = `Player Score: 0`;
 tieScoreDisplay.textContent = `Number of ties: 0`
 
-rock.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    playRound('rock', computerSelection);
+function displayScore() {
     computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
     playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
     tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
+}
+
+rock.addEventListener('click', () => {
+    let computerSelection = computerPlay();
+    playRound('rock', computerSelection);
+    displayScore();
 });
 
 paper.addEventListener('click', () => {
     let computerSelection = computerPlay();
     playRound('paper', computerSelection);
-    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
-    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-    tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
+    displayScore();
 });
 
 scissors.addEventListener('click', () => {
     let computerSelection = computerPlay();
     playRound('scissors', computerSelection);
-    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
-    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-    tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
+    displayScore();
 });
 
 function playRound(playerChoice, computerChoice) {
