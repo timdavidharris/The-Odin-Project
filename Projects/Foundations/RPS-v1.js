@@ -7,7 +7,6 @@ let tieScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
-const buttons = document.querySelectorAll('button');
 
 const computerScoreDisplay = document.querySelector('#computer-score');
 const playerScoreDisplay = document.querySelector('#player-score');
@@ -44,6 +43,14 @@ resetBtn.addEventListener('click', () => {
     displayScore();
 });
 
+function scoreReset() {
+    computerScore = 0;
+    playerScore = 0;
+    tieScore = 0;
+    resetTextColor();
+    displayScore();
+}
+
 function resetTextColor() {
     playerScoreDisplay.style.color = 'black';
     computerScoreDisplay.style.color = 'black';
@@ -53,15 +60,12 @@ function resetTextColor() {
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         keepScore();
-        return `It's a tie!`;
     } else if ((playerChoice == 'rock' && computerChoice == 'paper') || 
                 (playerChoice == 'scissors' && computerChoice == 'rock') ||
                 (playerChoice == 'paper' && computerChoice == 'scissors')) {
         keepScore('computer');
-        return `The computer won.`;
     } else {
         keepScore('player');
-        return `The player won.`;
     }
   }
 
@@ -91,13 +95,16 @@ function computerPlay() {
 }
 
 function checkForWinner() {
-    if (playerScore === 5) {
-        playerScoreDisplay.textContent = 'You win! Click "reset" to start over.';
-        playerScoreDisplay.style.color = 'green';
-    } else if (computerScore === 5) {
-        computerScoreDisplay.textContent = 'The computer won. Click "reset" to start over.'
-        computerScoreDisplay.style.color = 'red';
-    } else if (tieScore === 5) {
-        tieScoreDisplay.style.color = 'orange';
+    if (playerScore > 6 || computerScore > 6) {
+        scoreReset();
+    }
+        if (playerScore === 5 || playerScore > 5) {
+            playerScoreDisplay.textContent = 'You win! Click "reset" to start over.';
+            playerScoreDisplay.style.color = 'green';
+        } else if (computerScore === 5 || computerScore > 5) {
+            computerScoreDisplay.textContent = 'The computer won. Click "reset" to start over.'
+            computerScoreDisplay.style.color = 'red';
+        } else if (tieScore === 5 || tieScore > 5) {
+            tieScoreDisplay.style.color = 'orange';
     }
 }
