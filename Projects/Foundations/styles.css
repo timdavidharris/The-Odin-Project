@@ -6,7 +6,7 @@
     padding: 3em 1em 1em 1em;
 }
 
-.btn-selection{
+.btn-selection {
     display: flex;
     justify-content: center;
     padding: 1em 1em 1em 1em;
@@ -15,4 +15,10 @@
 .btn {
     margin: 1em 1em 1em 1em;
     padding: .5em .5em .5em .5em;
+}
+
+#reset {
+    display: flex;
+    justify-content: center;
+    padding: 1em 1em 1em 1em;
 }
