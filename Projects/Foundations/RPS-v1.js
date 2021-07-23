@@ -1,7 +1,3 @@
-// Goal: play rock paper scissors against the computer
-// see full instructions here:
-// https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors
-
 let choice = ['rock', 'paper', 'scissors'];
 let computerSelection = computerPlay();
 let computerScore = 0;
