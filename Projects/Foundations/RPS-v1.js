@@ -44,8 +44,15 @@ resetBtn.addEventListener('click', () => {
     computerScore = 0;
     playerScore = 0;
     tieScore = 0;
+    resetTextColor();
     displayScore();
 });
+
+function resetTextColor() {
+    playerScoreDisplay.style.color = 'black';
+    computerScoreDisplay.style.color = 'black';
+    tieScoreDisplay.style.color = 'black';
+}
 
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
@@ -79,6 +86,7 @@ function displayScore() {
     computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
     playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
     tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
+    checkForWinner();
 }
 
 function computerPlay() {
@@ -87,20 +95,13 @@ function computerPlay() {
 }
 
 function checkForWinner() {
-    if (playerScore === 5 || computerScore === 5) {
-
-    }
-}
-
-function finalScoreReadout() {
-    if (playerScore > computerScore) {
-        console.table(`%c You win! You scored ${playerScore}` + 
-        ` and the computer scored ${computerScore}`, `background:black;color:green`);
-    } else if (computerScore > playerScore) {
-        console.table(`%c You lose! You scored ${playerScore}` +
-        ` and the computer scored ${computerScore}`, `background:black;color:red`);
-    } else {
-        console.table(`%c You tie! You scored ${playerScore}` + 
-        ` and the computer scored ${computerScore}`, `background:black;color:yellow`);
+    if (playerScore === 5) {
+        playerScoreDisplay.textContent = 'You win! Click "reset" to start over.';
+        playerScoreDisplay.style.color = 'green';
+    } else if (computerScore === 5) {
+        computerScoreDisplay.textContent = 'The computer won. Click "reset" to start over.'
+        computerScoreDisplay.style.color = 'red';
+    } else if (tieScore === 5) {
+        tieScoreDisplay.style.color = 'orange';
     }
 }
