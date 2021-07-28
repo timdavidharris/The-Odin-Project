@@ -1,5 +1,4 @@
 let choice = ['rock', 'paper', 'scissors'];
-let computerSelection = computerPlay();
 let computerScore = 0;
 let playerScore = 0;
 let tieScore = 0;
@@ -18,37 +17,36 @@ playerScoreDisplay.textContent = `Player Score: 0`;
 tieScoreDisplay.textContent = `Number of ties: 0`
 
 rock.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    playRound('rock', computerSelection);
+    playRound('rock', computerPlay());
     displayScore();
 });
 
 paper.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    playRound('paper', computerSelection);
+    playRound('paper', computerPlay());
     displayScore();
 });
 
 scissors.addEventListener('click', () => {
-    let computerSelection = computerPlay();
-    playRound('scissors', computerSelection);
+    playRound('scissors', computerPlay());
     displayScore();
 });
 
 resetBtn.addEventListener('click', () => {
-    computerScore = 0;
-    playerScore = 0;
-    tieScore = 0;
+    zeroOutScores();
     resetTextColor();
     displayScore();
 });
 
 function scoreReset() {
+    zeroOutScores();
+    resetTextColor();
+    displayScore();
+}
+
+function zeroOutScores() {
     computerScore = 0;
     playerScore = 0;
     tieScore = 0;
-    resetTextColor();
-    displayScore();
 }
 
 function resetTextColor() {
