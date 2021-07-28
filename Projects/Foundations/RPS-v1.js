@@ -32,9 +32,7 @@ scissors.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
-    zeroOutScores();
-    resetTextColor();
-    displayScore();
+    scoreReset();
 });
 
 function scoreReset() {
