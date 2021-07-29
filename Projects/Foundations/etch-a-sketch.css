@@ -1,0 +1,11 @@
+/* Make it a 16x16 grid */
+.main {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    margin: .5em .5em .5em .5em;
+}
+
+div {
+    margin: .5em .5em .5em .5em;
+}
+
