@@ -11,7 +11,7 @@ const computerScoreDisplay = document.querySelector('#computer-score');
 const playerScoreDisplay = document.querySelector('#player-score');
 const tieScoreDisplay = document.querySelector('#tie-score');
 const resetBtn = document.querySelector('#reset');
-const btnSection = document.querySelector('#score');
+const roundDisplay = document.querySelector('.points-p');
 
 computerScoreDisplay.textContent = `Computer Score: 0`;
 playerScoreDisplay.textContent = `Player Score: 0`;
@@ -81,12 +81,17 @@ function displayScore() {
     checkForWinner();
 }
 
+let displayRoundElement = document.createElement('p');
+roundDisplay.appendChild(displayRoundElement);
+
 function displayRound(playerChoice, computerChoice) {
-    let displayRound = document.createElement('p');
-    displayRound.textContent = `You played ${playerChoice}`
+    displayRoundElement.textContent = `You played ${playerChoice}`
     + ` and the computer played ${computerChoice}`;
-    btnSection.appendChild(displayRound);
 }
+
+// function resetDisplayRound () {
+
+// }
 
 function computerPlay() {
     const randomChoice = Math.floor(Math.random() * choice.length);
