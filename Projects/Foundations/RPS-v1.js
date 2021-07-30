@@ -36,21 +36,13 @@ resetBtn.addEventListener('click', () => {
 });
 
 function scoreReset() {
-    zeroOutScores();
-    resetTextColor();
-    displayScore();
-}
-
-function zeroOutScores() {
     computerScore = 0;
     playerScore = 0;
     tieScore = 0;
-}
-
-function resetTextColor() {
     playerScoreDisplay.style.color = 'black';
     computerScoreDisplay.style.color = 'black';
     tieScoreDisplay.style.color = 'black';
+    displayScore();
 }
 
 function playRound(playerChoice, computerChoice) {
