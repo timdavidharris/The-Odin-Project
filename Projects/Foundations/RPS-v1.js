@@ -11,10 +11,11 @@ const computerScoreDisplay = document.querySelector('#computer-score');
 const playerScoreDisplay = document.querySelector('#player-score');
 const tieScoreDisplay = document.querySelector('#tie-score');
 const resetBtn = document.querySelector('#reset');
+const btnSection = document.querySelector('#score');
 
 computerScoreDisplay.textContent = `Computer Score: 0`;
 playerScoreDisplay.textContent = `Player Score: 0`;
-tieScoreDisplay.textContent = `Number of ties: 0`
+tieScoreDisplay.textContent = `Number of ties: 0`;
 
 rock.addEventListener('click', () => {
     playRound('rock', computerPlay());
@@ -48,12 +49,15 @@ function scoreReset() {
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         keepScore();
+        displayRound(playerChoice, computerChoice);
     } else if ((playerChoice == 'rock' && computerChoice == 'paper') || 
                 (playerChoice == 'scissors' && computerChoice == 'rock') ||
                 (playerChoice == 'paper' && computerChoice == 'scissors')) {
         keepScore('computer');
+        displayRound(playerChoice, computerChoice);
     } else {
         keepScore('player');
+        displayRound(playerChoice, computerChoice);
     }
   }
 
@@ -75,6 +79,13 @@ function displayScore() {
     playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
     tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
     checkForWinner();
+}
+
+function displayRound(playerChoice, computerChoice) {
+    let displayRound = document.createElement('p');
+    displayRound.textContent = `You played ${playerChoice}`
+    + ` and the computer played ${computerChoice}`;
+    btnSection.appendChild(displayRound);
 }
 
 function computerPlay() {
