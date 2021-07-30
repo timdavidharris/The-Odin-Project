@@ -13,6 +13,9 @@ const tieScoreDisplay = document.querySelector('#tie-score');
 const resetBtn = document.querySelector('#reset');
 const roundDisplay = document.querySelector('.points-p');
 
+let displayRoundElement = document.createElement('p');
+roundDisplay.appendChild(displayRoundElement);
+
 computerScoreDisplay.textContent = `Computer Score: 0`;
 playerScoreDisplay.textContent = `Player Score: 0`;
 tieScoreDisplay.textContent = `Number of ties: 0`;
@@ -43,6 +46,7 @@ function scoreReset() {
     playerScoreDisplay.style.color = 'black';
     computerScoreDisplay.style.color = 'black';
     tieScoreDisplay.style.color = 'black';
+    displayRoundElement.textContent = 'New game!'
     displayScore();
 }
 
@@ -60,6 +64,11 @@ function playRound(playerChoice, computerChoice) {
         displayRound(playerChoice, computerChoice);
     }
   }
+
+function displayRound(playerChoice, computerChoice) {
+    displayRoundElement.textContent = `You played ${playerChoice}`
+    + ` and the computer played ${computerChoice}`;
+}
 
 function keepScore(score) {
     if (score === 'computer') {
@@ -80,18 +89,6 @@ function displayScore() {
     tieScoreDisplay.textContent = `Number of ties: ${tieScore}`;
     checkForWinner();
 }
-
-let displayRoundElement = document.createElement('p');
-roundDisplay.appendChild(displayRoundElement);
-
-function displayRound(playerChoice, computerChoice) {
-    displayRoundElement.textContent = `You played ${playerChoice}`
-    + ` and the computer played ${computerChoice}`;
-}
-
-// function resetDisplayRound () {
-
-// }
 
 function computerPlay() {
     const randomChoice = Math.floor(Math.random() * choice.length);
