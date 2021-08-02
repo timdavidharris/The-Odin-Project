@@ -4,7 +4,7 @@ const mainContainer = document.querySelector('main');
 function addTheDivContainer(input) {
     for (let i = 0; i < input; i++) {
         let div = document.createElement('div');
-        div.textContent = `|||X||`;
+        div.textContent = `|||${i}||`;
         div.setAttribute('id','div');
         mainContainer.appendChild(div);
     }
@@ -12,10 +12,3 @@ function addTheDivContainer(input) {
 
 addTheDivContainer(256);
 
-let divList = document.querySelectorAll('div');
-div.onmouseover = changeColor();
-div.onmouseout = changeColor();
-
-function changeColor() {
-    theDiv.style.cssText = 'background-color: yellow;';
-}
