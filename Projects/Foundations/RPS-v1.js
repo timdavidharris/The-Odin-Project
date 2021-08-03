@@ -11,10 +11,10 @@ const computerScoreDisplay = document.querySelector('#computer-score');
 const playerScoreDisplay = document.querySelector('#player-score');
 const tieScoreDisplay = document.querySelector('#tie-score');
 const resetBtn = document.querySelector('#reset');
-const roundDisplay = document.querySelector('.points-p');
+const scoreText = document.querySelector('#score');
 
 let displayRoundElement = document.createElement('p');
-roundDisplay.appendChild(displayRoundElement);
+scoreText.appendChild(displayRoundElement);
 
 computerScoreDisplay.textContent = `Computer Score: 0`;
 playerScoreDisplay.textContent = `Player Score: 0`;
