@@ -4,7 +4,7 @@ const mainContainer = document.querySelector('main');
 function addTheDivContainer(input) {
     for (let i = 0; i < input; i++) {
         let div = document.createElement('div');
-        div.textContent = `|||${i}||`;
+        div.textContent = `||||||||||||`;
         div.setAttribute('id','div');
         mainContainer.appendChild(div);
     }
@@ -12,3 +12,14 @@ function addTheDivContainer(input) {
 
 addTheDivContainer(256);
 
+function changeColor() {
+    const divElements = document.querySelectorAll('#div');
+    divElements.forEach((item) => {
+        // item.count = 0;
+        item.addEventListener('mouseenter', (e) => {
+            e.target.style.backgroundColor = 'black';
+        });
+    });
+}
+
+changeColor();
