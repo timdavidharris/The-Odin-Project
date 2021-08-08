@@ -1,16 +1,20 @@
 /* Make it a 16x16 grid */
-.main {
-    display: grid;
-    margin: .5em .5em .5em .5em;
-    justify-items: center;
-    grid-template-columns: repeat(16, 1fr);
-
-}
 
 div {
-    margin: .5em .5em .5em .5em;
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
 }
 
 h1 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
+button {
+    width: 7em;
     text-align: center;
 }
