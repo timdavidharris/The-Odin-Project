@@ -62,7 +62,7 @@ function newDimensions() {
     let userNumber = prompt('Choose a new layout size that is 64 by 64 or less:')
         if (userNumber > 64) {
             alert('Sorry, I didn\'t understand you input. Try again.')
-            newDimensions();
+            return newDimensions();
         } 
     let newLayout = userNumber * userNumber;
     addTheDivContainer(newLayout);
