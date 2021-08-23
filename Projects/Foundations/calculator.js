@@ -1,14 +1,3 @@
-const zero = document.querySelector('#zero');
-const one = document.querySelector('#one');
-const two = document.querySelector('#two');
-const three = document.querySelector('#three');
-const four = document.querySelector('#four');
-const five = document.querySelector('#five');
-const six = document.querySelector('#six');
-const seven = document.querySelector('#seven');
-const eight = document.querySelector('#eight');
-const nine = document.querySelector('#nine');
-
 const clearButton = document.querySelector('#clear-btn');
 const divide = document.querySelector('#divide');
 const multiply = document.querySelector('#multiply');
@@ -16,8 +5,31 @@ const minus = document.querySelector('#minus');
 const add = document.querySelector('#add');
 const equals = document.querySelector('#equals');
 const percent = document.querySelector('#percent');
+const display = document.querySelector('#display');
 
+display.textContent = 0;
 
-function operate() {
+const allBtns = document.querySelectorAll('button');
+allBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        if ((button.id === '+') || 
+            (button.id === '-') ||
+            (button.id === '/') ||
+            (button.id === '=') ||
+            (button.id === '.') ||
+            (button.id === '*') ||
+            (button.id === 'percent')) {
+            console.log('You pressed the an operation button');
+        } else if (button.id === 'clear') {
+            clear();
+        } else {
+            console.log(+ button.id);
+            display.textContent = button.id;
+        }
 
+    });
+});
+
+function clear() {
+    display.textContent = 0;
 }
