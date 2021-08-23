@@ -11,77 +11,82 @@
 </head>
 <body>
 
-    <main id="main">
-        <section id="calc-body">
+    <main id="main" class="mt-5 d-flex justify-content-center align-items-center">
+        <section id="calc-body" class="pt-2 ps-2 pe-2 pb-2 border border-4 border-primary rounded-3">
             <header id="name" class="text-center">
-                <h1 class="mt-5">
+                <h1 class="">
                     Calculator
                 </h1>
             </header>
             <section id="calc-display" class="text-center">
-                <h2 class="text-muted">
+                <h2 class="text-muted d-flex justify-content-end border border-2 border-dark pe-3 pt-1 pb-1 rounded">
                     0
                 </h2>
             </section>
             <section id="calc-buttons" class="text-center">
-                <div id="first-row">
+                <div id="clear-btn" class="d-grid gap-2 mt-1">
                     <button type="button" class="btn btn-lg btn-primary">
+                        CLEAR
+                    </button>
+                </div>
+                <div id="first-row" class="mt-1">
+                    <button id="seven" type="button" class="btn btn-lg btn-primary">
                         7
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="eight" type="button" class="btn btn-lg btn-primary">
                         8
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="nine" type="button" class="btn btn-lg btn-primary">
                         9
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
-                        %
+                    <button id="divide" type="button" class="btn btn-lg btn-primary">
+                        ÷
                     </button>
                 </div>
-                <div id="second-row">
-                    <button type="button" class="btn btn-lg btn-primary">
+                <div id="second-row" class="mt-1">
+                    <button id="four" type="button" class="btn btn-lg btn-primary">
                         4
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="five" type="button" class="btn btn-lg btn-primary">
                         5
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="six" type="button" class="btn btn-lg btn-primary">
                         6
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
-                        X
+                    <button id="multiply" type="button" class="btn btn-lg btn-primary">
+                        x
                     </button>
                 </div>
-                <div id="third-row">
-                    <button type="button" class="btn btn-lg btn-primary">
+                <div id="third-row" class="mt-1">
+                    <button id="one" type="button" class="btn btn-lg btn-primary">
                         1
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="two" type="button" class="btn btn-lg btn-primary">
                         2
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="three" type="button" class="btn btn-lg btn-primary">
                         3
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
-                        —
+                    <button id="minus" type="button" class="btn btn-lg btn-primary me-1">
+                        –
                     </button>
                 </div>
-                <div id="fourth-row">
-                    <button type="button" class="btn btn-lg btn-primary">
+                <div id="fourth-row" class="mt-1">
+                    <button id="zero" type="button" class="btn btn-lg btn-primary">
                         0
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="decimal" type="button" class="btn btn-lg btn-primary">
                         .
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="percent" type="button" class="btn btn-lg btn-primary">
                         %
                     </button>
-                    <button type="button" class="btn btn-lg btn-primary">
+                    <button id="add" type="button" class="btn btn-lg btn-primary">
                         +
                     </button>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-lg btn-primary">
+                <div id="equals-sign" class="d-grid gap-2 mt-1">
+                    <button id="equals" type="button" class="btn btn-lg btn-primary">
                         =
                     </button>
                 </div>
