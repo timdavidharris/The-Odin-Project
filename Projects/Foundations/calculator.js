@@ -12,16 +12,10 @@ display.textContent = 0;
 const allBtns = document.querySelectorAll('button');
 allBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        if ((button.id === '+') || 
-            (button.id === '-') ||
-            (button.id === '/') ||
-            (button.id === '=') ||
-            (button.id === '.') ||
-            (button.id === '*') ||
-            (button.id === 'percent')) {
-            console.log('You pressed the an operation button');
-        } else if (button.id === 'clear') {
+        if (button.id === 'clear') {
             clear();
+        } else if (isNaN(+button.id)) {
+            console.log('You pressed the an operation button');
         } else {
             console.log(+ button.id);
             display.textContent = button.id;
