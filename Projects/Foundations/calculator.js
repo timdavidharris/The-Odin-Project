@@ -7,8 +7,8 @@ const equals = document.querySelector('#equals');
 const percent = document.querySelector('#percent');
 const display = document.querySelector('#display');
 
-let userInput = '';
-let mathOperator = '';
+let userInput = [];
+let i = -1;
 
 display.textContent = 0;
 
@@ -18,12 +18,14 @@ allBtns.forEach((button) => {
         if (button.id === 'clear') {
             clearAll();
         } else if (isNaN(+button.id)) {
-            checkMathOperation(button.id);
             display.textContent = button.id;
         } else {
-            userInput = +button.id;
-            operate(userInput);
+            ++i;
+            userInput[i] = +button.id;
             display.textContent = button.id;
+            if (!isNaN(userInput[1])) {
+                checkMathOperation(button.id, userInput[0], userInput[1]);
+            }
         }
 
     });
@@ -35,24 +37,32 @@ function clearAll() {
     mathOperator = '';
 }
 
-// function operate(input) {
+function readOutNum(input) {
+    console.log(input);
+}
 
-// }
-
-function checkMathOperation(string) {
+function checkMathOperation(button, num1, num2) {
     if (button.id === '+') {
-
+        let sum = num1 + num2;
+        display.textContent = sum;
+        console.log(sum);
     } else if (button.id === '-') {
-
+        sum = num1 - num2;
+        console.log(sum);
     } else if (button.id === '/') {
-
-    } else if (button.id === '=') {
-
+        sum = num1 / num2;
+        console.log(sum);
     } else if (button.id === '.') {
-
+        sum = num1.num2;
+        console.log(sum);
     } else if (button.id === '*') {
-
+        sum = num1 * num2;
+        console.log(sum);
     } else if (button.id === 'percent') {
-
+        sum = num1 / num2;
+        console.log(sum);
+    } else if (button.id === '=') {
+        sum = num1 * num2;
+        console.log(sum);
     }
 }
