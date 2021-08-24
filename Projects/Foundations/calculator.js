@@ -7,23 +7,52 @@ const equals = document.querySelector('#equals');
 const percent = document.querySelector('#percent');
 const display = document.querySelector('#display');
 
+let userInput = '';
+let mathOperator = '';
+
 display.textContent = 0;
 
 const allBtns = document.querySelectorAll('button');
 allBtns.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.id === 'clear') {
-            clear();
+            clearAll();
         } else if (isNaN(+button.id)) {
-            console.log('You pressed the an operation button');
+            checkMathOperation(button.id);
+            display.textContent = button.id;
         } else {
-            console.log(+ button.id);
+            userInput = +button.id;
+            operate(userInput);
             display.textContent = button.id;
         }
 
     });
 });
 
-function clear() {
+function clearAll() {
     display.textContent = 0;
+    userInput = '';
+    mathOperator = '';
+}
+
+// function operate(input) {
+
+// }
+
+function checkMathOperation(string) {
+    if (button.id === '+') {
+
+    } else if (button.id === '-') {
+
+    } else if (button.id === '/') {
+
+    } else if (button.id === '=') {
+
+    } else if (button.id === '.') {
+
+    } else if (button.id === '*') {
+
+    } else if (button.id === 'percent') {
+
+    }
 }
