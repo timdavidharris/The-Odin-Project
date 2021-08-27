@@ -7,40 +7,43 @@
 // const percent = document.querySelector('#percent');
 // const display = document.querySelector('#display');
 
-let userInput = [];
-
 display.textContent = 0;
 let i = 0;
-let inputObjects = {};
-
-let num1 = null;
-let num2 = null;
+let inputArray = [];
 
 const allBtns = document.querySelectorAll('button');
 allBtns.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.id === 'clear') {
             clearAll();
+        } else if (button.id === '=') {
+            console.log('The equals sign button was pressed');
+            operate(inputArray);
         } else if (isNaN(+button.id)) {
-            display.textContent = button.id;
-            inputObjects.operator = button.id;
+            inputArray[i] = button.id;
+            display.textContent = inputArray.join('');
             i++;
-            // operate(button.id);
+            checkArrayLength(inputArray.length);
         } else {
-            display.textContent = button.id;
-            inputObjects.num = button.id;
+            inputArray[i] = +button.id;
+            display.textContent = inputArray.join('');
             i++;
-            // operate(button.id);
+            checkArrayLength(inputArray.length);
         }
     });
 });
 
+function checkArrayLength(array) {
+    arrayLength = array;    
+    if (arrayLength >=3 ) {
+        console.log('Array length is >= 3');
+    }
+}
+
 function clearAll() {
     display.textContent = 0;
-    userInput = '';
-    mathOperator = '';
     i = 0;
-    inputObjects = {};
+    inputArray = [];
 }
 
 function add(num1, num2) {
@@ -67,25 +70,43 @@ function divide(num1, num2) {
     console.log(sum);
 }
 
-// function operate(array) {
-//     array.forEach((item) => {
-//         if (item === '+') {
-//             add(num1, num2);
-//         } else if (item === '-') {
-//             subtract(num1, num2);
-//         } else if (item === '/') {
-//             divide(num1, num2);
-//         } else if (item === '*') {
-//             multiply(num1, num2);
-//         } else if (item === 'percent') {
-//             sum = num1 / num2;
-//             console.log(sum);
-//         } else if (item === '.') {
-//             sum = num1.num2;
-//             console.log(sum);
-//         } else if (item === '=') {
-//             sum = num1 * num2;
-//             console.log(sum);
-//         }
-//     });
-// }
+// 1) consolidate double digit numbers
+// 2) check the operator
+// 3) set up the items as num1 & num2
+function operate(inputArray) {
+    inputArray.forEach((item) => {
+        inputArray.join('');
+        switch(item) {
+            case '+':
+                operateArray.split('+');
+            case '-':
+                operateArray.split('-');
+            case '/':
+                operateArray.split('/');
+            case '*':
+                operateArray.split('*');
+        }
+    });
+    console.log(operateArray);
+}
+
+// array.forEach((item) => {
+//     if (item === '+') {
+//         add(num1, num2);
+//     } else if (item === '-') {
+//         subtract(num1, num2);
+//     } else if (item === '/') {
+//         divide(num1, num2);
+//     } else if (item === '*') {
+//         multiply(num1, num2);
+//     } else if (item === 'percent') {
+//         sum = num1 / num2;
+//         console.log(sum);
+//     } else if (item === '.') {
+//         sum = num1.num2;
+//         console.log(sum);
+//     } else if (item === '=') {
+//         sum = num1 * num2;
+//         console.log(sum);
+//     }
+// });
