@@ -1,12 +1,3 @@
-// const clearButton = document.querySelector('#clear-btn');
-// const divide = document.querySelector('#divide');
-// const multiply = document.querySelector('#multiply');
-// const minus = document.querySelector('#minus');
-// const add = document.querySelector('#add');
-// const equals = document.querySelector('#equals');
-// const percent = document.querySelector('#percent');
-// const display = document.querySelector('#display');
-
 display.textContent = 0;
 let i = 0;
 let inputArray = [];
@@ -92,40 +83,3 @@ function runningTotal(sum) {
     inputArray[0] = sum;
     i = 1;
 }
-
-// array.forEach((item) => {
-//     if (item === '+') {
-//         add(num1, num2);
-//     } else if (item === '-') {
-//         subtract(num1, num2);
-//     } else if (item === '/') {
-//         divide(num1, num2);
-//     } else if (item === '*') {
-//         multiply(num1, num2);
-//     } else if (item === 'percent') {
-//         sum = num1 / num2;
-//         console.log(sum);
-//     } else if (item === '.') {
-//         sum = num1.num2;
-//         console.log(sum);
-//     } else if (item === '=') {
-//         sum = num1 * num2;
-//         console.log(sum);
-//     }
-// });
-
-
-    // inputArray.forEach((item) => {
-    //     inputArray.join('');
-    //     switch(item) {
-    //         case '+':
-    //             operateArray.split('+');
-    //         case '-':
-    //             operateArray.split('-');
-    //         case '/':
-    //             operateArray.split('/');
-    //         case '*':
-    //             operateArray.split('*');
-    //     }
-    // });
-    // console.log(operateArray);
