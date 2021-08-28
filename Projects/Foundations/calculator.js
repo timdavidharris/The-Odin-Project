@@ -51,17 +51,19 @@ function divide(num1, num2) {
     runningTotal(sum);
 }
 
-// 1) consolidate double digit numbers
-// 2) check the operator
-// 3) set up the items as num1 & num2
+// - consolidate double digit numbers
+// - check the operator
+// - set up the items as num1 & num2
 function operate(inputArray) {
-    if (isNaN(inputArray[1]) && inputArray.length < 4) {
+    if (inputArray.length < 3) {
+        display.textContent = 'ERROR';
+    // checks for num1 operator num2 situation
+    } else if (isNaN(inputArray[1]) && inputArray.length < 4) {
         num1 = inputArray[0];
         operator = inputArray[1];
         num2 = inputArray[2];
         checkOperatorType(operator);
-    } else if (inputArray.length < 3) {
-        display.textContent = 'ERROR';
+    // checks for 2 digit num1 situation
     } else if ((inputArray[1] === 'number') ||
         (isNaN(inputArray[0])) ||
         (isNaN(inputArray[2]))) {
