@@ -113,10 +113,8 @@ function checkOperatorType(operator) {
 function runningTotal(sum) {
     inputArray = [];
     inputArray[0] = Math.round(sum * 100) / 100;
-    console.log(secondOperator);
     if (secondOperator !== null) {
         inputArray[1] = secondOperator;
-        console.log(secondOperator);
         display.textContent = inputArray.join('');
         i = 2;
     } else {
