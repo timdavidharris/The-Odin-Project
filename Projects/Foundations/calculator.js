@@ -28,25 +28,28 @@ function clearAll() {
 }
 
 function add(num1, num2) {
-    let sum = +num1 + num2;
+    let sum = num1 + num2;
     display.textContent = Math.round(sum * 100) / 100;
     runningTotal(sum);
 }
 
 function subtract(num1, num2) {
-    let sum = +num1 - num2;
+    let sum = num1 - num2;
     display.textContent = Math.round(sum * 100) / 100;
     runningTotal(sum);
 }
 
 function multiply(num1, num2) {
-    let sum = +num1 * num2;
+    let sum = num1 * num2;
     display.textContent = Math.round(sum * 100) / 100;
     runningTotal(sum);
 }
 
 function divide(num1, num2) {
-    let sum = +num1 / num2;
+    if (num2 === 0) {
+        return display.textContent = 'You ask the impossible';
+    }
+    let sum = num1 / num2;
     display.textContent = Math.round(sum * 100) / 100;
     runningTotal(sum);
 }
@@ -64,15 +67,23 @@ function operate(inputArray) {
         num2 = inputArray[2];
         checkOperatorType(operator);
     // checks for 2 digit num1 situation
-    } else if ((inputArray[1] === 'number') ||
-        (isNaN(inputArray[0])) ||
-        (isNaN(inputArray[2]))) {
+    } else if ((inputArray.length > 3) && 
+               (isNaN(inputArray[inputArray.length - 2]))) {
         newFirstArrayNum = inputArray[0].toString() + inputArray[1].toString();
         inputArray.shift();
         inputArray.shift();
-        inputArray.unshift(newFirstArrayNum);
+        inputArray.unshift(+newFirstArrayNum);
         operate(inputArray);
-    } else {
+    // checks for 2 digit num2 situation
+    } else if ((inputArray.length > 3) && 
+               (!isNaN(inputArray[inputArray.length - 2]))) {
+        newLastArrayNum = inputArray[inputArray.length - 2].toString() + inputArray[inputArray.length - 1].toString()
+        inputArray.pop();
+        inputArray.pop();
+        inputArray.push(+newLastArrayNum);
+        operate(inputArray);
+    }
+    else {
         display.textContent = 'ERROR';
     }
 }
