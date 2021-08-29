@@ -1,6 +1,8 @@
 display.textContent = 0;
 let i = 0;
 let inputArray = [];
+NaNButtons = 0;
+secondOperator = null;
 
 const allBtns = document.querySelectorAll('button');
 allBtns.forEach((button) => {
@@ -10,9 +12,15 @@ allBtns.forEach((button) => {
         } else if (button.id === '=') {
             operate(inputArray);
         } else if (isNaN(+button.id)) {
+            NaNButtons++;
+            if (NaNButtons > 1) {
+                secondOperator = button.id;
+                operate(inputArray);
+            } else {
             inputArray[i] = button.id;
             display.textContent = inputArray.join('');
             i++;
+            }
         } else {
             inputArray[i] = +button.id;
             display.textContent = inputArray.join('');
@@ -25,6 +33,8 @@ function clearAll() {
     display.textContent = 0;
     i = 0;
     inputArray = [];
+    NaNButtons = 0;
+    secondOperator = null;
 }
 
 function add(num1, num2) {
@@ -103,5 +113,15 @@ function checkOperatorType(operator) {
 function runningTotal(sum) {
     inputArray = [];
     inputArray[0] = Math.round(sum * 100) / 100;
-    i = 1;
+    console.log(secondOperator);
+    if (secondOperator !== null) {
+        inputArray[1] = secondOperator;
+        console.log(secondOperator);
+        display.textContent = inputArray.join('');
+        i = 2;
+    } else {
+        i = 1;
+        NaNButtons = 0;
+    }
+    secondOperator = null;
 }
