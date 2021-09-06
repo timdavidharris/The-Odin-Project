@@ -11,21 +11,21 @@ function Book(title, author, pages, read) {
     this.author = author 
     this.pages = pages 
     this.read = read 
-    addBookToLibrary(this);
-    this.bookInfo = `${this.title} by ${this.author} has ${this.pages} pages, and is currently ${read}`
+    addBookToLibrary(this)
 }
 
 function addBookToLibrary(book) {
     myLibrary[myLibrary.length] = book;
-    populateCards(myLibrary, book);
+    populateCards(book);
 }
 
-function populateCards(myLibrary, newBook) {
+function populateCards() {
     myLibrary.forEach(newBook => {
         let bookCard = document.createElement('div');
         bookCard.setAttribute('class', 'book-tile');
-        bookCard.textContent = newBook.bookInfo;
+        bookCard.textContent = `${newBook.title} by ${newBook.author} \n has ${newBook.pages} pages, \n and is currently "${newBook.read}".`
         mainSection.appendChild(bookCard);
     });
 }
 
+populateCards(myLibrary[0]);
