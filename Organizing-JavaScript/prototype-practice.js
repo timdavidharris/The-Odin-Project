@@ -1,4 +1,4 @@
-function Animal(type, size, diet, isAnimal) {
+function Animal(type, size, diet) {
     this.type = type 
     this.size = size 
     this.diet = diet 
@@ -14,3 +14,5 @@ const tiger = new Animal();
 tiger.type = 'mammal'
 tiger.size = 'medium'
 tiger.diet = 'carnivore'
+
+const bear = new Animal('mammal', 'medium', 'omnivore');
