@@ -22,45 +22,8 @@ Dune.pages = "688"
 Dune.read = "read"
 
 addABookBtn.addEventListener('click', () => {
-    addABookForm();
     console.log('you clicked a button!')
 });
-
-function addABookForm() {
-    // Title
-    let titleLabel = document.createElement('label');
-    titleLabel.textContent = "Book Title:";
-    let titleInput = document.createElement('input');
-    addBookFormDiv.appendChild(titleLabel);
-    addBookFormDiv.appendChild(titleInput);
-    // Author
-    let authorLabel = document.createElement('label');
-    authorLabel.textContent = "Book Author:";
-    let authorInput = document.createElement('input');
-    addBookFormDiv.appendChild(authorLabel);
-    addBookFormDiv.appendChild(authorInput);
-    // Pages
-    let pagesLabel = document.createElement('label');
-    pagesLabel.textContent = "Number of Pages:";
-    let pagesInput = document.createElement('input');
-    addBookFormDiv.appendChild(pagesLabel);
-    addBookFormDiv.appendChild(pagesInput);
-    // Read
-    let readLabel = document.createElement('label');
-    readLabel.textContent = "Read/Unread";
-    let readSelect = document.createElement('select');
-    let readStatus = document.createElement('option')
-    readStatus.setAttribute('value', 'read');
-    let unreadStatus = document.createElement('option')
-    unreadStatus.setAttribute('value', 'unread');
-    addBookFormDiv.appendChild(readLabel);
-    addBookFormDiv.appendChild(readSelect);
-    // "Add" Button
-    let addBookBtn = document.createElement('button');
-    addBookBtn.setAttribute('id', 'add-book-btn');
-    addBookBtn.textContent = "ADD";
-    addBookFormDiv.appendChild(addBookBtn);
-}
 
 function Book(title, author, pages, read) {
     this.title = title 
