@@ -88,9 +88,9 @@ function populateCards() {
 }
 
 function clearBooks() {
-    let cards = document.querySelectorAll('div');
-    cards.forEach((div) => {
-        div.remove();
+    let cards = document.querySelectorAll('.book-tile');
+    cards.forEach((item) => { 
+        item.remove();
     });
 }
 
