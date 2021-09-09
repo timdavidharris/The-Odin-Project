@@ -1,6 +1,6 @@
 const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
-const addBookFormDiv = document.querySelector('#add-book-form')
+const addABookForm = document.querySelector('#book-form');
 let myLibrary = [];
 // book 1
 const parableOfTheSower = new Book();
@@ -22,7 +22,7 @@ Dune.pages = "688"
 Dune.read = "read"
 
 addABookBtn.addEventListener('click', () => {
-    console.log('you clicked a button!')
+    addABookForm.style.display = '';
 });
 
 function Book(title, author, pages, read) {
@@ -40,6 +40,7 @@ function addBookToLibrary(book) {
 
 function populateCards() {
     clearBooks();
+    hideAddBookForm();
     myLibrary.forEach(newBook => {
         let bookCard = document.createElement('div');
         bookCard.setAttribute('class', 'book-tile');
@@ -55,6 +56,10 @@ function clearBooks() {
     cards.forEach((item) => { 
         item.remove();
     });
+}
+
+function hideAddBookForm() {
+    addABookForm.style.display = 'none';
 }
 
 populateCards(myLibrary);
