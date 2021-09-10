@@ -1,5 +1,6 @@
 const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
+const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
 let myLibrary = [];
 // book 1
@@ -23,6 +24,15 @@ Dune.read = "read"
 
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
+});
+
+submitNewBookBtn.addEventListener('click', () => {
+    let newTitle = new Book();
+    newTitle.title = document.getElementById('book-title').value;
+    newTitle.author = document.getElementById('book-author').value;
+    newTitle.pages = document.getElementById('book-pages').value;
+    newTitle.read = document.getElementById('dropdown').value;
+    populateCards(myLibrary);
 });
 
 function Book(title, author, pages, read) {
