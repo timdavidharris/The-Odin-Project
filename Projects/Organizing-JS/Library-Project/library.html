@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="library.css">
@@ -21,25 +21,25 @@
                 <label for="title">
                     Book Title:
                 </label>
-                <input type="text" placeholder="title" required>
+                <input type="text" placeholder="title" id="book-title" required>
             </p>
             <p>
                 <label for="author">
                     Book Author:
                 </label>
-                <input type="text" placeholder="author" required>
+                <input type="text" placeholder="author" id="book-author" required>
             </p>
             <p>
                 <label for="pages">
                     Number of Pages:
                 </label>
-                <input type="number" placeholder="number of pages" required>
+                <input type="number" placeholder="number of pages" id="book-pages" required>
             </p>
             <p>
                 <label for="read-unread">
                     Read or Unread?
                 </label>
-                <select name="read-unread" id="dropdown" required>
+                <select name="read-unread" title="read-unread-select" id="dropdown" required>
                     <option value=""> 
                         -pick one-
                     </option>
@@ -52,7 +52,7 @@
                 </select>
             </p>
             <div>
-                <button id="submit-btn">
+                <button type="submit" id="submit-btn">
                     ADD BOOK
                 </button>
             </div>
