@@ -32,11 +32,11 @@ addABookBtn.addEventListener('click', () => {
 
 submitNewBookBtn.addEventListener('click', () => {
     let newTitle = new Book();
-    addBookToLibrary(newTitle);
     newTitle.title = document.getElementById('book-title').value;
     newTitle.author = document.getElementById('book-author').value;
     newTitle.pages = document.getElementById('book-pages').value;
     newTitle.read = document.getElementById('dropdown').value;
+    addBookToLibrary(newTitle);
     populateCards(myLibrary);
 });
 
@@ -55,7 +55,6 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book) {
     myLibrary[myLibrary.length] = book;
-    populateCards();
 }
 
 function populateCards() {
