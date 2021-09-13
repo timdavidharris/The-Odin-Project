@@ -2,7 +2,6 @@ const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
 const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
-const removeBtns = document.querySelectorAll('.remove-btn')
 let myLibrary = [];
 // book 1
 const parableOfTheSower = new Book();
@@ -40,11 +39,17 @@ submitNewBookBtn.addEventListener('click', () => {
     populateCards(myLibrary);
 });
 
-removeBtns.forEach((button) => {
-    button.addEventListener('click', () => {
-        console.log('you clicked a "remove" button');
+function removeButtons() {
+const removeBtns = document.querySelectorAll('.remove-btn');
+    removeBtns.forEach((button) => {
+        button.addEventListener('click', () => {
+            let arrayNum = button.textContent.slice(-1) - 1;
+            return myLibrary.splice(arrayNum, 1)
+            + console.log(arrayNum)
+            + populateCards(myLibrary);
+        });
     });
-});
+}
 
 function Book(title, author, pages, read) {
     this.title = title 
@@ -65,13 +70,24 @@ function populateCards() {
         bookCard.setAttribute('class', 'book-tile');
         bookCard.textContent = `${newBook.title} by ${newBook.author}`
                              + ` has ${newBook.pages} pages,`
-                             + ` and is currently "${newBook.read}".`;
+                             + ` and is currently "${newBook.read}"`;
         let removeBookBtn = document.createElement('button');
         removeBookBtn.setAttribute('class', 'remove-btn');
         removeBookBtn.textContent = 'Remove';
         mainSection.appendChild(bookCard);
         bookCard.appendChild(removeBookBtn);
+        dataBookNum(newBook, removeBookBtn);
     });
+}
+
+function dataBookNum(newBook, removeBookBtn) {
+    newBook = 0;
+    let dataSetUp = document.querySelectorAll('.remove-btn')
+    dataSetUp.forEach(() => {
+        removeBookBtn.textContent = `Remove Book ${newBook + 1}`;
+        newBook++;
+    });
+    removeButtons();
 }
 
 function clearBooks() {
@@ -86,3 +102,4 @@ function hideAddBookForm() {
 }
 
 populateCards(myLibrary);
+removeButtons();
