@@ -39,25 +39,14 @@ submitNewBookBtn.addEventListener('click', () => {
     populateCards(myLibrary);
 });
 
-// function removeButtons() {
-// const removeBtns = document.querySelectorAll('.remove-btn');
-//     removeBtns.forEach((button) => {
-//         button.addEventListener('click', () => {
-//             let arrayNum = button.textContent.slice(-1) - 1;
-//             myLibrary.splice(arrayNum, 1);
-//             console.log(arrayNum);
-//             populateCards(myLibrary);
-//         });
-//     });
-// }
-
 function removeBook() {
-let removeBtns = document.querySelectorAll('.remove-btn');
+const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((button) => {
         button.addEventListener('click', () => {
             let arrayNum = button.textContent.slice(-1) - 1;
             myLibrary.splice(arrayNum, 1);
             console.log(arrayNum);
+            console.log(button)
             populateCards(myLibrary);
         });
     });
