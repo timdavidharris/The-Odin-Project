@@ -39,14 +39,26 @@ submitNewBookBtn.addEventListener('click', () => {
     populateCards(myLibrary);
 });
 
-function removeButtons() {
-const removeBtns = document.querySelectorAll('.remove-btn');
+// function removeButtons() {
+// const removeBtns = document.querySelectorAll('.remove-btn');
+//     removeBtns.forEach((button) => {
+//         button.addEventListener('click', () => {
+//             let arrayNum = button.textContent.slice(-1) - 1;
+//             myLibrary.splice(arrayNum, 1);
+//             console.log(arrayNum);
+//             populateCards(myLibrary);
+//         });
+//     });
+// }
+
+function removeBook() {
+let removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((button) => {
         button.addEventListener('click', () => {
             let arrayNum = button.textContent.slice(-1) - 1;
-            return myLibrary.splice(arrayNum, 1)
-            + console.log(arrayNum)
-            + populateCards(myLibrary);
+            myLibrary.splice(arrayNum, 1);
+            console.log(arrayNum);
+            populateCards(myLibrary);
         });
     });
 }
@@ -73,7 +85,7 @@ function populateCards() {
                              + ` and is currently "${newBook.read}"`;
         let removeBookBtn = document.createElement('button');
         removeBookBtn.setAttribute('class', 'remove-btn');
-        removeBookBtn.textContent = 'Remove';
+        removeBookBtn.setAttribute('onclick', 'removeBook()');
         mainSection.appendChild(bookCard);
         bookCard.appendChild(removeBookBtn);
         dataBookNum(newBook, removeBookBtn);
@@ -84,10 +96,9 @@ function dataBookNum(newBook, removeBookBtn) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
-        removeBookBtn.textContent = `Remove Book ${newBook + 1}`;
+        removeBookBtn.textContent = `Click Twice to Remove Book ${newBook + 1}`;
         newBook++;
     });
-    removeButtons();
 }
 
 function clearBooks() {
@@ -102,4 +113,4 @@ function hideAddBookForm() {
 }
 
 populateCards(myLibrary);
-removeButtons();
+// removeBook();
