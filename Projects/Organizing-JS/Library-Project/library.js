@@ -3,6 +3,7 @@ const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
 const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
+const hideFormBtn = document.querySelector('#hide-form-btn');
 let myLibrary = [];
 // Books to start the library
 // book 1
@@ -31,6 +32,10 @@ addBookToLibrary(Dune);
 
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
+});
+
+hideFormBtn.addEventListener('click', () => {
+    hideAddBookForm();
 });
 
 submitNewBookBtn.addEventListener('click', () => {
