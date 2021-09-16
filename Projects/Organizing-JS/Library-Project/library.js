@@ -33,19 +33,24 @@ addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
 });
 
-function hideAddBookForm() {
-    addABookForm.style.display = 'none';
-}
-
 submitNewBookBtn.addEventListener('click', () => {
     let newTitle = new Book();
-    newTitle.title = document.getElementById('book-title').value;
-    newTitle.author = document.getElementById('book-author').value;
-    newTitle.pages = document.getElementById('book-pages').value;
-    newTitle.read = document.getElementById('dropdown').value;
-    addBookToLibrary(newTitle);
-    buildCards(myLibrary);
+    formValidation(newTitle);
 });
+
+function formValidation(newTitle) {
+    if ((document.getElementById('book-title').value !== '') && 
+        (document.getElementById('book-author').value !== '') &&
+        (document.getElementById('book-pages').value !== '') && 
+        (document.getElementById('dropdown').value !== '')) {
+        newTitle.title = document.getElementById('book-title').value;
+        newTitle.author = document.getElementById('book-author').value;
+        newTitle.pages = document.getElementById('book-pages').value;
+        newTitle.read = document.getElementById('dropdown').value;
+        addBookToLibrary(newTitle);
+        buildCards(myLibrary);
+    } 
+}
 
 function readStatusFunction() {
     const readStatusBtns = document.querySelectorAll('.read-status-btn');
@@ -90,29 +95,29 @@ function addBookToLibrary(book) {
 
 function buildCards(myLibrary) {
     clearBooks();
+        myLibrary.forEach(newBook => {
+            let bookCard = document.createElement('div');
+            bookCard.setAttribute('class', 'book-tile');
+            bookCard.textContent = `${newBook.title} by ${newBook.author}`
+                                + ` has ${newBook.pages} pages,`
+                                + ` and is currently "${newBook.read}"`;
+            let removeBookBtn = document.createElement('button');
+            removeBookBtn.setAttribute('class', 'remove-btn');
+            removeBookBtn.textContent = 'Remove';
+            let changeReadStatusBtn = document.createElement('button');
+            changeReadStatusBtn.setAttribute('class', 'read-status-btn');
+            changeReadStatusBtn.textContent = 'Change Read Status';
+            mainSection.appendChild(bookCard);
+            bookCard.appendChild(changeReadStatusBtn);
+            bookCard.appendChild(removeBookBtn);
+            addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn);
+        });
     hideAddBookForm();
-    myLibrary.forEach(newBook => {
-        let bookCard = document.createElement('div');
-        bookCard.setAttribute('class', 'book-tile');
-        bookCard.textContent = `${newBook.title} by ${newBook.author}`
-                             + ` has ${newBook.pages} pages,`
-                             + ` and is currently "${newBook.read}"`;
-        let removeBookBtn = document.createElement('button');
-        removeBookBtn.setAttribute('class', 'remove-btn');
-        removeBookBtn.textContent = 'Remove';
-        let changeReadStatusBtn = document.createElement('button');
-        changeReadStatusBtn.setAttribute('class', 'read-status-btn');
-        changeReadStatusBtn.textContent = 'Change Read Status';
-        mainSection.appendChild(bookCard);
-        bookCard.appendChild(changeReadStatusBtn);
-        bookCard.appendChild(removeBookBtn);
-        dataBookNum(newBook, removeBookBtn, changeReadStatusBtn);
-    });
     readStatusFunction();
     removeBook();
 }
 
-function dataBookNum(newBook, removeBookBtn, changeReadStatusBtn) {
+function addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
@@ -127,6 +132,10 @@ function clearBooks() {
     cards.forEach((item) => { 
         item.remove();
     });
+}
+
+function hideAddBookForm() {
+    addABookForm.style.display = 'none';
 }
 
 buildCards(myLibrary);
