@@ -6,6 +6,14 @@ h1 {
     padding-top: 1.5em;
 }
 
+.read-status-btn, button {
+    margin-top: 1em;
+}
+
+.remove-btn {
+    width: 6.5em;
+}
+
 .book-tile {
     display: flex;
     flex-direction: column;
@@ -22,9 +30,4 @@ h1 {
 #book-form-div {
     padding-bottom: .25em;
     margin-bottom: .25em;
-}
-
-.remove-btn {
-    width: 6.5em;
-    margin-top: 1em;
 }
