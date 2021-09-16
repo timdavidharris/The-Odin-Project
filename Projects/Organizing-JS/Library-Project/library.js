@@ -4,6 +4,7 @@ const addABookBtn = document.querySelector('#add-book-btn');
 const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
 let myLibrary = [];
+// Books to start the library
 // book 1
 const parableOfTheSower = new Book();
 parableOfTheSower.title = "Parable of the Sower"
@@ -26,7 +27,7 @@ Dune.pages = "688"
 Dune.read = "read"
 addBookToLibrary(Dune);
 
-// Button Functions Below
+// Functions Connected to Buttons Below
 
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
@@ -52,11 +53,10 @@ function changeReadStatus() {
         button.addEventListener('click', () => {
             let arrayNum = button.textContent.slice(-1) - 1;
             let theBook = myLibrary[arrayNum];
-            console.log(theBook);
-            if (theBook.read === 'read') {
-                theBook.read = 'unread';
-            } else {
+            if (theBook.read === 'unread') {
                 theBook.read = 'read';
+            } else {
+                theBook.read = 'unread';
             }
             buildCards(myLibrary);
         });
@@ -69,14 +69,12 @@ function removeBook() {
         button.addEventListener('click', () => {
             let arrayNum = button.textContent.slice(-1) - 1;
             myLibrary.splice(arrayNum, 1);
-            console.log(arrayNum);
-            console.log(button)
             buildCards(myLibrary);
         });
     });
 }
 
-// Functions that process the books and book tiles
+// Functions that create the books and book tiles
 
 function Book(title, author, pages, read) {
     this.title = title 
@@ -129,6 +127,5 @@ function clearBooks() {
         item.remove();
     });
 }
-
 
 buildCards(myLibrary);
