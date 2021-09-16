@@ -79,13 +79,14 @@ function populateCards() {
         bookCard.appendChild(removeBookBtn);
         dataBookNum(newBook, removeBookBtn);
     });
+    removeBook();
 }
 
 function dataBookNum(newBook, removeBookBtn) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
-        removeBookBtn.textContent = `Click Twice to Remove Book ${newBook + 1}`;
+        removeBookBtn.textContent = `Click to Remove Book ${newBook + 1}`;
         newBook++;
     });
 }
@@ -102,4 +103,3 @@ function hideAddBookForm() {
 }
 
 populateCards(myLibrary);
-// removeBook();
