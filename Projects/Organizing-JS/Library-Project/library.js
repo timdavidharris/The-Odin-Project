@@ -47,29 +47,30 @@ submitNewBookBtn.addEventListener('click', () => {
     buildCards(myLibrary);
 });
 
-function changeReadStatus() {
+function readStatusFunction() {
     const readStatusBtns = document.querySelectorAll('.read-status-btn');
     readStatusBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = button.textContent.slice(-1) - 1;
-            let theBook = myLibrary[arrayNum];
+            let arrayNum = +button.dataset.arrayNum
+            let theBook = myLibrary[arrayNum]
             if (theBook.read === 'unread') {
                 theBook.read = 'read';
+                return buildCards(myLibrary);
             } else {
                 theBook.read = 'unread';
+                return buildCards(myLibrary);
             }
-            buildCards(myLibrary);
         });
     });
 }
 
 function removeBook() {
-    const removeBtns = document.querySelectorAll('.remove-btn');
-    removeBtns.forEach((button) => {
+    const removeBookBtns = document.querySelectorAll('.remove-btn');
+    removeBookBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = button.textContent.slice(-1) - 1;
+            let arrayNum = +button.dataset.arrayNum;
             myLibrary.splice(arrayNum, 1);
-            buildCards(myLibrary);
+            return buildCards(myLibrary);
         });
     });
 }
@@ -98,25 +99,25 @@ function buildCards(myLibrary) {
                              + ` and is currently "${newBook.read}"`;
         let removeBookBtn = document.createElement('button');
         removeBookBtn.setAttribute('class', 'remove-btn');
-        removeBookBtn.setAttribute('onclick', 'removeBook()');
+        removeBookBtn.textContent = 'Remove';
         let changeReadStatusBtn = document.createElement('button');
         changeReadStatusBtn.setAttribute('class', 'read-status-btn');
-        removeBookBtn.setAttribute('onclick', 'changeReadStatus()');
+        changeReadStatusBtn.textContent = 'Change Read Status';
         mainSection.appendChild(bookCard);
         bookCard.appendChild(changeReadStatusBtn);
         bookCard.appendChild(removeBookBtn);
         dataBookNum(newBook, removeBookBtn, changeReadStatusBtn);
     });
+    readStatusFunction();
     removeBook();
-    changeReadStatus();
 }
 
 function dataBookNum(newBook, removeBookBtn, changeReadStatusBtn) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
-        removeBookBtn.textContent = `Click to Remove #${newBook + 1}`;
-        changeReadStatusBtn.textContent = `Change read status of #${newBook +1}`
+        removeBookBtn.setAttribute('data-array-num', `${newBook}`);
+        changeReadStatusBtn.setAttribute('data-array-num', `${newBook}`);
         newBook++;
     });
 }
