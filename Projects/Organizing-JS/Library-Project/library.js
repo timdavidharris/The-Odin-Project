@@ -1,3 +1,4 @@
+// Initial variables
 const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
 const submitNewBookBtn = document.querySelector('#submit-btn');
@@ -25,9 +26,15 @@ Dune.pages = "688"
 Dune.read = "read"
 addBookToLibrary(Dune);
 
+// Button Functions Below
+
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
 });
+
+function hideAddBookForm() {
+    addABookForm.style.display = 'none';
+}
 
 submitNewBookBtn.addEventListener('click', () => {
     let newTitle = new Book();
@@ -39,8 +46,25 @@ submitNewBookBtn.addEventListener('click', () => {
     buildCards(myLibrary);
 });
 
+function changeReadStatus() {
+    const readStatusBtns = document.querySelectorAll('.read-status-btn');
+    readStatusBtns.forEach((button) => {
+        button.addEventListener('click', () => {
+            let arrayNum = button.textContent.slice(-1) - 1;
+            let theBook = myLibrary[arrayNum];
+            console.log(theBook);
+            if (theBook.read === 'read') {
+                theBook.read = 'unread';
+            } else {
+                theBook.read = 'read';
+            }
+            buildCards(myLibrary);
+        });
+    });
+}
+
 function removeBook() {
-const removeBtns = document.querySelectorAll('.remove-btn');
+    const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach((button) => {
         button.addEventListener('click', () => {
             let arrayNum = button.textContent.slice(-1) - 1;
@@ -51,6 +75,8 @@ const removeBtns = document.querySelectorAll('.remove-btn');
         });
     });
 }
+
+// Functions that process the books and book tiles
 
 function Book(title, author, pages, read) {
     this.title = title 
@@ -75,18 +101,24 @@ function buildCards(myLibrary) {
         let removeBookBtn = document.createElement('button');
         removeBookBtn.setAttribute('class', 'remove-btn');
         removeBookBtn.setAttribute('onclick', 'removeBook()');
+        let changeReadStatusBtn = document.createElement('button');
+        changeReadStatusBtn.setAttribute('class', 'read-status-btn');
+        removeBookBtn.setAttribute('onclick', 'changeReadStatus()');
         mainSection.appendChild(bookCard);
+        bookCard.appendChild(changeReadStatusBtn);
         bookCard.appendChild(removeBookBtn);
-        dataBookNum(newBook, removeBookBtn);
+        dataBookNum(newBook, removeBookBtn, changeReadStatusBtn);
     });
     removeBook();
+    changeReadStatus();
 }
 
-function dataBookNum(newBook, removeBookBtn) {
+function dataBookNum(newBook, removeBookBtn, changeReadStatusBtn) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
-        removeBookBtn.textContent = `Click to Remove Book ${newBook + 1}`;
+        removeBookBtn.textContent = `Click to Remove #${newBook + 1}`;
+        changeReadStatusBtn.textContent = `Change read status of #${newBook +1}`
         newBook++;
     });
 }
@@ -98,8 +130,5 @@ function clearBooks() {
     });
 }
 
-function hideAddBookForm() {
-    addABookForm.style.display = 'none';
-}
 
 buildCards(myLibrary);
