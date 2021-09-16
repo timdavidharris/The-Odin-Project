@@ -36,7 +36,7 @@ submitNewBookBtn.addEventListener('click', () => {
     newTitle.pages = document.getElementById('book-pages').value;
     newTitle.read = document.getElementById('dropdown').value;
     addBookToLibrary(newTitle);
-    populateCards(myLibrary);
+    buildCards(myLibrary);
 });
 
 function removeBook() {
@@ -47,7 +47,7 @@ const removeBtns = document.querySelectorAll('.remove-btn');
             myLibrary.splice(arrayNum, 1);
             console.log(arrayNum);
             console.log(button)
-            populateCards(myLibrary);
+            buildCards(myLibrary);
         });
     });
 }
@@ -56,14 +56,14 @@ function Book(title, author, pages, read) {
     this.title = title 
     this.author = author 
     this.pages = pages 
-    this.read = read 
+    this.read = read
 }
 
 function addBookToLibrary(book) {
     myLibrary[myLibrary.length] = book;
 }
 
-function populateCards() {
+function buildCards(myLibrary) {
     clearBooks();
     hideAddBookForm();
     myLibrary.forEach(newBook => {
@@ -102,4 +102,4 @@ function hideAddBookForm() {
     addABookForm.style.display = 'none';
 }
 
-populateCards(myLibrary);
+buildCards(myLibrary);
