@@ -7,19 +7,19 @@ const hideFormBtn = document.querySelector('#hide-form-btn');
 let myLibrary = [];
 // Books to start the library
 // book 1
-const parableOfTheSower = new Book();
-parableOfTheSower.title = "Parable of the Sower"
-parableOfTheSower.author = "Octavia E. Butler"
-parableOfTheSower.pages = "345" 
-parableOfTheSower.read = "read"
-addBookToLibrary(parableOfTheSower);
+const artemisFowl = new Book();
+artemisFowl.title = "Artemis Fowl"
+artemisFowl.author = "Eoin Colfer"
+artemisFowl.pages = "396" 
+artemisFowl.read = "read"
+addBookToLibrary(artemisFowl);
 // book 2
-const parableOfTheTalents = new Book();
-parableOfTheTalents.title = "Parable of the Talents"
-parableOfTheTalents.author = "Octavia E. Butler"
-parableOfTheTalents.pages = "424" 
-parableOfTheTalents.read = "read"
-addBookToLibrary(parableOfTheTalents);
+const nineteen84 = new Book();
+nineteen84.title = "1984"
+nineteen84.author = "George Orwell"
+nineteen84.pages = "298" 
+nineteen84.read = "read"
+addBookToLibrary(nineteen84);
 // book 3
 const Dune = new Book();
 Dune.title = "Dune"
@@ -32,6 +32,7 @@ addBookToLibrary(Dune);
 
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
+    window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
 });
 
 hideFormBtn.addEventListener('click', () => {
@@ -61,8 +62,8 @@ function readStatusFunction() {
     const readStatusBtns = document.querySelectorAll('.read-status-btn');
     readStatusBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = +button.dataset.arrayNum
-            let theBook = myLibrary[arrayNum]
+            let arrayNum = Number(button.dataset.arrayNum);
+            let theBook = myLibrary[arrayNum];
             if (theBook.read === 'unread') {
                 theBook.read = 'read';
                 return buildCards(myLibrary);
@@ -78,14 +79,14 @@ function removeBook() {
     const removeBookBtns = document.querySelectorAll('.remove-btn');
     removeBookBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = +button.dataset.arrayNum;
+            let arrayNum = Number(button.dataset.arrayNum);
             myLibrary.splice(arrayNum, 1);
             return buildCards(myLibrary);
         });
     });
 }
 
-// Functions that create the books and book tiles
+// Functions that create the books and book tiles/cards
 
 function Book(title, author, pages, read) {
     this.title = title 
@@ -115,19 +116,20 @@ function buildCards(myLibrary) {
             mainSection.appendChild(bookCard);
             bookCard.appendChild(changeReadStatusBtn);
             bookCard.appendChild(removeBookBtn);
-            addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn);
+            addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn, bookCard);
         });
     hideAddBookForm();
     readStatusFunction();
     removeBook();
 }
 
-function addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn) {
+function addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn, bookCard) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
         removeBookBtn.setAttribute('data-array-num', `${newBook}`);
         changeReadStatusBtn.setAttribute('data-array-num', `${newBook}`);
+        bookCard.setAttribute('data-array-num', `${newBook}`);
         newBook++;
     });
 }
