@@ -15,8 +15,9 @@ h1 {
 }
 
 .game-square {
-    padding-top: 3em;
+    padding-top: 2em;
     padding-bottom: 2em;
+    font-size: 25px;
 }
 
 div[data="data-square-1"], 
