@@ -10,5 +10,28 @@ h1 {
     display: grid;
     grid-gap: 1px;
     grid-template-columns: repeat(3, 1fr);
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.game-square {
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+div[data="data-square-1"], 
+div[data="data-square-2"], 
+div[data="data-square-3"], 
+div[data="data-square-4"], 
+div[data="data-square-5"], 
+div[data="data-square-6"]{
+    border-bottom-style: solid;
+}
+
+div[data="data-square-2"], 
+div[data="data-square-5"], 
+div[data="data-square-8"] {
+border-right-style: solid;
+border-left-style: solid;
 }
 
