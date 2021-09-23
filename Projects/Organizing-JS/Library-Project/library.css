@@ -1,9 +1,31 @@
+/* Color Palate Source:
+https://coolors.co/555b6e-89b0ae-bee3db-faf9f9-ffd6ba */
 body {
     text-align: center;
+    background-color: #faf9f9;
 }
 
 h1 {
     padding-top: 1.5em;
+    color: #555B6E;
+}
+
+h2 {
+    color: #555B6E;
+}
+
+button {
+    margin-top: 1em;
+    background-color: #89B0AE;
+    border-radius: 5px;
+}
+
+.read-status-btn {
+    margin-top: 1em;
+}
+
+.remove-btn {
+    width: 6.5em;
 }
 
 .book-tile {
@@ -13,18 +35,25 @@ h1 {
     padding: 1em 1em 1em 1em;
     margin: .5em .5em .5em .5em;
     border-style: inset;
+    background-color: #555B6E;
+    color: #faf9f9;
+    height: 8em;
+    width: 16em;
+    border-radius: 10px;
+}
+
+#submit-btn {
+    margin-bottom: 5em;
 }
 
 #book-cards {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 #book-form-div {
     padding-bottom: .25em;
     margin-bottom: .25em;
-}
-
-.remove-btn {
-    width: 6.5em;
-    margin-top: 1em;
 }

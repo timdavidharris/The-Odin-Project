@@ -3,22 +3,23 @@ const mainSection = document.querySelector('#book-cards');
 const addABookBtn = document.querySelector('#add-book-btn');
 const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
+const hideFormBtn = document.querySelector('#hide-form-btn');
 let myLibrary = [];
 // Books to start the library
 // book 1
-const parableOfTheSower = new Book();
-parableOfTheSower.title = "Parable of the Sower"
-parableOfTheSower.author = "Octavia E. Butler"
-parableOfTheSower.pages = "345" 
-parableOfTheSower.read = "read"
-addBookToLibrary(parableOfTheSower);
+const artemisFowl = new Book();
+artemisFowl.title = "Artemis Fowl"
+artemisFowl.author = "Eoin Colfer"
+artemisFowl.pages = "396" 
+artemisFowl.read = "read"
+addBookToLibrary(artemisFowl);
 // book 2
-const parableOfTheTalents = new Book();
-parableOfTheTalents.title = "Parable of the Talents"
-parableOfTheTalents.author = "Octavia E. Butler"
-parableOfTheTalents.pages = "424" 
-parableOfTheTalents.read = "read"
-addBookToLibrary(parableOfTheTalents);
+const nineteen84 = new Book();
+nineteen84.title = "1984"
+nineteen84.author = "George Orwell"
+nineteen84.pages = "298" 
+nineteen84.read = "read"
+addBookToLibrary(nineteen84);
 // book 3
 const Dune = new Book();
 Dune.title = "Dune"
@@ -31,50 +32,61 @@ addBookToLibrary(Dune);
 
 addABookBtn.addEventListener('click', () => {
     addABookForm.style.display = '';
+    window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
 });
 
-function hideAddBookForm() {
-    addABookForm.style.display = 'none';
-}
+hideFormBtn.addEventListener('click', () => {
+    hideAddBookForm();
+});
 
 submitNewBookBtn.addEventListener('click', () => {
     let newTitle = new Book();
-    newTitle.title = document.getElementById('book-title').value;
-    newTitle.author = document.getElementById('book-author').value;
-    newTitle.pages = document.getElementById('book-pages').value;
-    newTitle.read = document.getElementById('dropdown').value;
-    addBookToLibrary(newTitle);
-    buildCards(myLibrary);
+    formValidation(newTitle);
 });
 
-function changeReadStatus() {
+function formValidation(newTitle) {
+    if ((document.getElementById('book-title').value !== '') && 
+        (document.getElementById('book-author').value !== '') &&
+        (document.getElementById('book-pages').value !== '') && 
+        (document.getElementById('dropdown').value !== '')) {
+        newTitle.title = document.getElementById('book-title').value;
+        newTitle.author = document.getElementById('book-author').value;
+        newTitle.pages = document.getElementById('book-pages').value;
+        newTitle.read = document.getElementById('dropdown').value;
+        addBookToLibrary(newTitle);
+        buildCards(myLibrary);
+    } 
+}
+
+function readStatusFunction() {
     const readStatusBtns = document.querySelectorAll('.read-status-btn');
     readStatusBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = button.textContent.slice(-1) - 1;
+            let arrayNum = Number(button.dataset.arrayNum);
             let theBook = myLibrary[arrayNum];
             if (theBook.read === 'unread') {
                 theBook.read = 'read';
+                return buildCards(myLibrary);
             } else {
                 theBook.read = 'unread';
+                return buildCards(myLibrary);
             }
-            buildCards(myLibrary);
         });
     });
 }
 
 function removeBook() {
-    const removeBtns = document.querySelectorAll('.remove-btn');
-    removeBtns.forEach((button) => {
+    const removeBookBtns = document.querySelectorAll('.remove-btn');
+    removeBookBtns.forEach((button) => {
         button.addEventListener('click', () => {
-            let arrayNum = button.textContent.slice(-1) - 1;
+            let arrayNum = Number(button.dataset.arrayNum);
             myLibrary.splice(arrayNum, 1);
-            buildCards(myLibrary);
+            return buildCards(myLibrary);
         });
     });
 }
 
-// Functions that create the books and book tiles
+// Functions that create the books and book tiles/cards
 
 function Book(title, author, pages, read) {
     this.title = title 
@@ -89,34 +101,35 @@ function addBookToLibrary(book) {
 
 function buildCards(myLibrary) {
     clearBooks();
+        myLibrary.forEach(newBook => {
+            let bookCard = document.createElement('div');
+            bookCard.setAttribute('class', 'book-tile');
+            bookCard.textContent = `${newBook.title} by ${newBook.author}`
+                                + ` has ${newBook.pages} pages,`
+                                + ` and is currently "${newBook.read}"`;
+            let removeBookBtn = document.createElement('button');
+            removeBookBtn.setAttribute('class', 'remove-btn');
+            removeBookBtn.textContent = 'Remove';
+            let changeReadStatusBtn = document.createElement('button');
+            changeReadStatusBtn.setAttribute('class', 'read-status-btn');
+            changeReadStatusBtn.textContent = 'Change Read Status';
+            mainSection.appendChild(bookCard);
+            bookCard.appendChild(changeReadStatusBtn);
+            bookCard.appendChild(removeBookBtn);
+            addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn, bookCard);
+        });
     hideAddBookForm();
-    myLibrary.forEach(newBook => {
-        let bookCard = document.createElement('div');
-        bookCard.setAttribute('class', 'book-tile');
-        bookCard.textContent = `${newBook.title} by ${newBook.author}`
-                             + ` has ${newBook.pages} pages,`
-                             + ` and is currently "${newBook.read}"`;
-        let removeBookBtn = document.createElement('button');
-        removeBookBtn.setAttribute('class', 'remove-btn');
-        removeBookBtn.setAttribute('onclick', 'removeBook()');
-        let changeReadStatusBtn = document.createElement('button');
-        changeReadStatusBtn.setAttribute('class', 'read-status-btn');
-        removeBookBtn.setAttribute('onclick', 'changeReadStatus()');
-        mainSection.appendChild(bookCard);
-        bookCard.appendChild(changeReadStatusBtn);
-        bookCard.appendChild(removeBookBtn);
-        dataBookNum(newBook, removeBookBtn, changeReadStatusBtn);
-    });
+    readStatusFunction();
     removeBook();
-    changeReadStatus();
 }
 
-function dataBookNum(newBook, removeBookBtn, changeReadStatusBtn) {
+function addHTMLDataTags(newBook, removeBookBtn, changeReadStatusBtn, bookCard) {
     newBook = 0;
     let dataSetUp = document.querySelectorAll('.remove-btn')
     dataSetUp.forEach(() => {
-        removeBookBtn.textContent = `Click to Remove #${newBook + 1}`;
-        changeReadStatusBtn.textContent = `Change read status of #${newBook +1}`
+        removeBookBtn.setAttribute('data-array-num', `${newBook}`);
+        changeReadStatusBtn.setAttribute('data-array-num', `${newBook}`);
+        bookCard.setAttribute('data-array-num', `${newBook}`);
         newBook++;
     });
 }
@@ -126,6 +139,10 @@ function clearBooks() {
     cards.forEach((item) => { 
         item.remove();
     });
+}
+
+function hideAddBookForm() {
+    addABookForm.style.display = 'none';
 }
 
 buildCards(myLibrary);

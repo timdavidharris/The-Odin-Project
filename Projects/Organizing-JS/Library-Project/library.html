@@ -15,31 +15,36 @@
         <!-- book cards will populate here -->
     </section>
     <button id="add-book-btn">Click to Enter A New Book</button>
-    <section id="book-form">
+    <form onsubmit="return false" id="book-form">
+        <div>
+            <button id="hide-form-btn">
+                Click to Hide This Form
+            </button>
+        </div>
         <div id="book-form-div">
             <p>
                 <label for="title">
                     Book Title:
                 </label>
-                <input type="text" placeholder="title" id="book-title" required>
+                <input type="text" placeholder="title" id="book-title" required="required">
             </p>
             <p>
                 <label for="author">
                     Book Author:
                 </label>
-                <input type="text" placeholder="author" id="book-author" required>
+                <input type="text" placeholder="author" id="book-author" required="required">
             </p>
             <p>
                 <label for="pages">
                     Number of Pages:
                 </label>
-                <input type="number" placeholder="number of pages" id="book-pages" required>
+                <input type="number" placeholder="number of pages" id="book-pages" required="required">
             </p>
             <p>
                 <label for="read-unread">
                     Read or Unread?
                 </label>
-                <select name="read-unread" title="read-unread-select" id="dropdown" required>
+                <select name="read-unread" title="read-unread-select" id="dropdown" required="required">
                     <option value=""> 
                         -pick one-
                     </option>
@@ -57,6 +62,6 @@
                 </button>
             </div>
         </div>
-    </section>
+    </form>
 </body>
 </html>
