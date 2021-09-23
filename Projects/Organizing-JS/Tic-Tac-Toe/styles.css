@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    padding-top: 2em;
+}
+
+#Game-Board-Section {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
