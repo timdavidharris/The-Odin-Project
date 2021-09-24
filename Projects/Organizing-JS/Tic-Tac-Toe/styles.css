@@ -18,6 +18,7 @@ h1 {
     padding-top: 2em;
     padding-bottom: 2em;
     font-size: 25px;
+    height: 1.5em;
 }
 
 div[data="data-square-1"], 
@@ -35,4 +36,3 @@ div[data="data-square-8"] {
 border-right-style: solid;
 border-left-style: solid;
 }
-
