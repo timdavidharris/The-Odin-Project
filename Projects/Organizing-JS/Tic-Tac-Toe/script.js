@@ -9,7 +9,7 @@ const makeGameBoard = (() => {
     while (i < 9) {
         let newDiv = document.createElement('div');
         newDiv.setAttribute('class', `game-square`);
-        newDiv.setAttribute('data', `data-square-${i + 1}`)
+        newDiv.setAttribute('data', `data-${i + 1}`);
         newDiv.textContent = "";
         gameBoardSection.appendChild(newDiv);
         i++;
@@ -26,10 +26,12 @@ const onClickGameSquares = (() => {
                     div.textContent = "x";
                     updateTurnText();
                     turnCounter++;
+                    checkWinCondition();
                 } else {
                     div.textContent = "o"
                     updateTurnText();
                     turnCounter++;
+                    checkWinCondition();
                 }
             }
         });
@@ -42,8 +44,16 @@ const onClickGameSquares = (() => {
             player1Turn.textContent = "Player 1 (X's): GO";
             player2Turn.textContent = "Player 2 (O's): WAIT";
         }
-    };    
+    };   
+    function checkWinCondition() {
+        let square = document.querySelectorAll('.game-square');
+        square.forEach(() => {
+            // console.log(square.dataset.square);
+        });
+    } 
 })();
+
+
 
 
 // ----------------------------------------------------------------------
