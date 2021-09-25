@@ -33,6 +33,6 @@ div[data="data-square-6"]{
 div[data="data-square-2"], 
 div[data="data-square-5"], 
 div[data="data-square-8"] {
-border-right-style: solid;
-border-left-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
 }
