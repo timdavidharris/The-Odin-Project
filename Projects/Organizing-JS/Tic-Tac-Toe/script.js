@@ -21,14 +21,17 @@ const onClickGameSquares = (() => {
     let turnCounter = 0;
     gameSquares.forEach((div) => {
         div.addEventListener('click', () => {
-            if (turnCounter % 2 === 0) {
-                div.textContent = "x";
-            } else {
-                div.textContent = "o"
+            if (div.textContent === '') {
+                if (turnCounter % 2 === 0) {
+                    div.textContent = "x";
+                    updateTurnText();
+                    turnCounter++;
+                } else {
+                    div.textContent = "o"
+                    updateTurnText();
+                    turnCounter++;
+                }
             }
-            turnCounter++;
-            updateTurnText();
-            console.log(turnCounter)
         });
     });
     function updateTurnText() {
