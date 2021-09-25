@@ -21,18 +21,18 @@ h1 {
     height: 1.5em;
 }
 
-div[data="data-square-1"], 
-div[data="data-square-2"], 
-div[data="data-square-3"], 
-div[data="data-square-4"], 
-div[data="data-square-5"], 
-div[data="data-square-6"]{
+div[data-square="1"], 
+div[data-square="2"], 
+div[data-square="3"], 
+div[data-square="4"], 
+div[data-square="5"], 
+div[data-square="6"]{
     border-bottom-style: solid;
 }
 
-div[data="data-square-2"], 
-div[data="data-square-5"], 
-div[data="data-square-8"] {
+div[data-square="2"], 
+div[data-square="5"], 
+div[data-square="8"] {
     border-right-style: solid;
     border-left-style: solid;
 }
