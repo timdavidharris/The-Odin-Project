@@ -1,22 +1,29 @@
+const resetBtn = document.getElementById('reset-btn');
+const runningWinsP1 = document.getElementById('running-wins-p1');
+const runningWinsP2 = document.getElementById('running-wins-p2');
+const numberOfTies = document.getElementById('number-of-ties');
 const gameBoardSection = document.getElementById('Game-Board-Section');
 const player1Turn = document.getElementById('player-1-turn');
 const player2Turn = document.getElementById('player-2-turn');
+let player1Name = "Player 1";
+let player2Name = "Player2";
 player1Turn.textContent = "Player 1 (X's): GO";
 player2Turn.textContent = "Player 2 (O's): WAIT";
 
-const makeGameBoard = (() => {
-    i = 0;
-    while (i < 9) {
-        let newDiv = document.createElement('div');
-        newDiv.setAttribute('class', `game-square`);
-        newDiv.setAttribute('data-square', `${i + 1}`);
-        newDiv.textContent = "";
-        gameBoardSection.appendChild(newDiv);
-        i++;
-    }   
-})();
-
-const onClickGameSquares = (() => {
+const onClickGamePlay = (() => {
+    function makeGameBoard() {
+        let i = 0;
+        while (i < 9) {
+            let newDiv = document.createElement('div');
+            newDiv.setAttribute('class', `game-square`);
+            newDiv.setAttribute('data-square', `${i + 1}`);
+            newDiv.textContent = "";
+            gameBoardSection.appendChild(newDiv);
+            i++;
+        }
+        resetBtn.style.display = 'none';
+    };
+    makeGameBoard();
     let gameSquares = document.querySelectorAll('.game-square');
     let turnCounter = 0;
     gameSquares.forEach((div) => {
@@ -130,13 +137,77 @@ const onClickGameSquares = (() => {
                 oWinMessage();
             }
         }
+        // Checks for tie condition
+        if ((gameBox1 !== '') && 
+            (gameBox2 !== '') &&
+            (gameBox3 !== '') &&
+            (gameBox4 !== '') &&
+            (gameBox5 !== '') &&
+            (gameBox6 !== '') &&
+            (gameBox7 !== '') &&
+            (gameBox8 !== '') &&
+            (gameBox9 !== '')) {
+                tieMessage();
+            }
     }
     function oWinMessage() {
         player1Turn.textContent = "Player 1 (X's) WINS";
         player2Turn.textContent = "Player 2 (O's) LOSES";
+        let winnerO = 'o';
+        endOfGame(winnerO);
     }
     function xWinMessage() {
         player1Turn.textContent = "Player 1 (X's) LOSES";
         player2Turn.textContent = "Player 2 (O's) WINS";
+        let winnerX = 'x';
+        endOfGame(winnerX);
+    }
+    function tieMessage() {
+        player1Turn.textContent = "IT'S A TIE";
+        player2Turn.textContent = "";
+        let winnerTie = 'tie';
+        endOfGame(winnerTie);
+    }
+    function endOfGame(winner) {
+        let winnerInput = winner;
+        let player1WinCount = 0;
+        let player2WinCount = 0;
+        let tieCounter = 0;
+        if ((player1WinCount === 0) &&
+            (player2WinCount === 0) &&
+            (tieCounter === 0)){
+                player1Name = prompt('Player 1, Please Type in Your Name');
+                player2Name = prompt('Player 2, Please Type in Your Name');
+        }
+        if (winnerInput === 'x') {
+            ++player1WinCount;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            winnerSymbolInAllSquares();
+        } else if (winnerInput === 'o') {
+            ++player2WinCount;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} Have Had ${tieCounter} Ties`;
+            winnerSymbolInAllSquares();
+        } else if (winnerInput === 'tie') {
+            ++tieCounter;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            winnerSymbolInAllSquares();
+        }
+        function winnerSymbolInAllSquares() {
+            
+        }
+        resetBtn.style.display = '';
+            resetBtn.addEventListener('click', () => {
+                let gameDivs = document.querySelectorAll('div');
+                gameDivs.forEach((div) => {
+                    div.remove();
+                    makeGameBoard();
+            });
+        });
     }
 })();
