@@ -5,25 +5,22 @@ const numberOfTies = document.getElementById('number-of-ties');
 const gameBoardSection = document.getElementById('Game-Board-Section');
 const player1Turn = document.getElementById('player-1-turn');
 const player2Turn = document.getElementById('player-2-turn');
-let player1Name = "Player 1";
-let player2Name = "Player2";
 player1Turn.textContent = "Player 1 (X's): GO";
 player2Turn.textContent = "Player 2 (O's): WAIT";
 
-const onClickGamePlay = (() => {
-    function makeGameBoard() {
-        let i = 0;
-        while (i < 9) {
-            let newDiv = document.createElement('div');
-            newDiv.setAttribute('class', `game-square`);
-            newDiv.setAttribute('data-square', `${i + 1}`);
-            newDiv.textContent = "";
-            gameBoardSection.appendChild(newDiv);
-            i++;
-        }
-        resetBtn.style.display = 'none';
-    };
-    makeGameBoard();
+
+(makeGameBoard = function() {
+    for (let i = 0; i < 9; i++) {
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', `game-square`);
+        newDiv.setAttribute('data-square', `${i + 1}`);
+        newDiv.textContent = "";
+        gameBoardSection.appendChild(newDiv);
+    }
+    resetBtn.style.display = 'none';
+}());
+
+let onClickGamePlay = (function() {
     let gameSquares = document.querySelectorAll('.game-square');
     let turnCounter = 0;
     gameSquares.forEach((div) => {
@@ -31,13 +28,13 @@ const onClickGamePlay = (() => {
             if (div.textContent === '') {
                 if (turnCounter % 2 === 0) {
                     div.textContent = "x";
-                    updateTurnText();
                     turnCounter++;
+                    updateTurnText();
                     checkWinCondition();
                 } else {
-                    div.textContent = "o"
-                    updateTurnText();
+                    div.textContent = "o";
                     turnCounter++;
+                    updateTurnText();
                     checkWinCondition();
                 }
             }
@@ -45,10 +42,10 @@ const onClickGamePlay = (() => {
     });
     function updateTurnText() {
         if (player1Turn.textContent === "Player 1 (X's): GO") {
-            player1Turn.textContent = "Player 1 (X's): WAIT";
+            return player1Turn.textContent = "Player 1 (X's): WAIT",
             player2Turn.textContent = "Player 2 (O's): GO";
         } else {
-            player1Turn.textContent = "Player 1 (X's): GO";
+            return player1Turn.textContent = "Player 1 (X's): GO",
             player2Turn.textContent = "Player 2 (O's): WAIT";
         }
     };   
@@ -67,28 +64,28 @@ const onClickGamePlay = (() => {
         if ((gameBox1 === gameBox2) && 
             (gameBox2 === gameBox3)) {
             if (gameBox3 === 'x') {
-                xWinMessage();
+                return xWinMessage();
             } else if (gameBox3 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // Middle row win condition
         if ((gameBox4 === gameBox5) && 
             (gameBox5 === gameBox6)) {
                 if (gameBox6 === 'x') {
-                    xWinMessage();
+                    return xWinMessage();
                 } else if (gameBox6 === 'o') {
-                    oWinMessage();
+                    return oWinMessage();
 
                 }
         }
         // bottom row win condition
         if ((gameBox7 === gameBox8) && 
-              (gameBox8 === gameBox9)) {
+            (gameBox8 === gameBox9)) {
                 if (gameBox9 === 'x') {
-                    xWinMessage();
+                    return xWinMessage();
                 } else if (gameBox9 === 'o') {
-                    oWinMessage();
+                    return oWinMessage();
  
                 }
         }
@@ -96,45 +93,45 @@ const onClickGamePlay = (() => {
         if ((gameBox1 === gameBox4) && 
             (gameBox4 === gameBox7)) {
             if (gameBox7 === 'x') {
-                xWinMessage();
+                return xWinMessage();
             } else if (gameBox7 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // middle column win condition
         if ((gameBox2 === gameBox5) && 
             (gameBox5 === gameBox8)) {
             if (gameBox8 === 'x') {
-                xWinMessage();
+                return xWinMessage();
             } else if (gameBox8 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // right column win condition
         if ((gameBox3 === gameBox6) && 
             (gameBox6 === gameBox9)) {
             if (gameBox9 === 'x') {
-                xWinMessage();
+                return xWinMessage();
             } else if (gameBox9 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // top left to bottom right diagonal win condition
         if ((gameBox1 === gameBox5) && 
             (gameBox5 === gameBox9)) {
             if (gameBox9 === 'x') {
-                xWinMessage();
+                return xWinMessage();
             } else if (gameBox9 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // top right to bottom left diagonal win condition
         if ((gameBox3 === gameBox5) && 
             (gameBox5 === gameBox7)) {
             if (gameBox7 === 'x') {
-                console.log('Player 1 (X\'s) Wins!')
+                return xWinMessage();
             } else if (gameBox7 === 'o') {
-                oWinMessage();
+                return oWinMessage();
             }
         }
         // Checks for tie condition
@@ -147,18 +144,19 @@ const onClickGamePlay = (() => {
             (gameBox7 !== '') &&
             (gameBox8 !== '') &&
             (gameBox9 !== '')) {
-                tieMessage();
+                return tieMessage();
             }
+        return gameBox1, gameBox2, gameBox3, gameBox4, gameBox5, gameBox6, gameBox7, gameBox8, gameBox8;
     }
     function oWinMessage() {
-        player1Turn.textContent = "Player 1 (X's) WINS";
-        player2Turn.textContent = "Player 2 (O's) LOSES";
+        player1Turn.textContent = "Player 1 (X's) LOSES";
+        player2Turn.textContent = "Player 2 (O's) WINS";
         let winnerO = 'o';
         endOfGame(winnerO);
     }
     function xWinMessage() {
-        player1Turn.textContent = "Player 1 (X's) LOSES";
-        player2Turn.textContent = "Player 2 (O's) WINS";
+        player1Turn.textContent = "Player 1 (X's) WINS";
+        player2Turn.textContent = "Player 2 (O's) LOSES";
         let winnerX = 'x';
         endOfGame(winnerX);
     }
@@ -184,30 +182,70 @@ const onClickGamePlay = (() => {
             runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
             runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
             numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
-            winnerSymbolInAllSquares();
+            winnerSymbolInAllSquares(winnerInput);
         } else if (winnerInput === 'o') {
             ++player2WinCount;
             runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
             runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
             numberOfTies.textContent = `${player1Name} and ${player2Name} Have Had ${tieCounter} Ties`;
-            winnerSymbolInAllSquares();
+            winnerSymbolInAllSquares(winnerInput);
         } else if (winnerInput === 'tie') {
             ++tieCounter;
             runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
             runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
             numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
-            winnerSymbolInAllSquares();
+            winnerSymbolInAllSquares(winnerInput);
         }
-        function winnerSymbolInAllSquares() {
-            
+        function winnerSymbolInAllSquares(winner) {
+            let whoWon = winner;
+            let gameBoxes = document.querySelectorAll('.game-square');
+            if (whoWon === 'x') {
+                gameBoxes.item(0).textContent = 'x';
+                gameBoxes.item(1).textContent = 'x';
+                gameBoxes.item(2).textContent = 'x';
+                gameBoxes.item(3).textContent = 'x';
+                gameBoxes.item(4).textContent = 'x';
+                gameBoxes.item(5).textContent = 'x';
+                gameBoxes.item(6).textContent = 'x';
+                gameBoxes.item(7).textContent = 'x';
+                gameBoxes.item(8).textContent = 'x';
+            } else if (whoWon === 'o') {
+                gameBoxes.item(0).textContent = 'o';
+                gameBoxes.item(1).textContent = 'o';
+                gameBoxes.item(2).textContent = 'o';
+                gameBoxes.item(3).textContent = 'o';
+                gameBoxes.item(4).textContent = 'o';
+                gameBoxes.item(5).textContent = 'o';
+                gameBoxes.item(6).textContent = 'o';
+                gameBoxes.item(7).textContent = 'o';
+                gameBoxes.item(8).textContent = 'o';
+            } else {
+                gameBoxes.item(0).textContent = 'o';
+                gameBoxes.item(1).textContent = 'x';
+                gameBoxes.item(2).textContent = 'o';
+                gameBoxes.item(3).textContent = 'x';
+                gameBoxes.item(4).textContent = 'o';
+                gameBoxes.item(5).textContent = 'x';
+                gameBoxes.item(6).textContent = 'o';
+                gameBoxes.item(7).textContent = 'x';
+                gameBoxes.item(8).textContent = 'o';
+            }
         }
         resetBtn.style.display = '';
             resetBtn.addEventListener('click', () => {
                 let gameDivs = document.querySelectorAll('div');
                 gameDivs.forEach((div) => {
                     div.remove();
-                    makeGameBoard();
             });
         });
+        return player1Name, player2Name, player1WinCount, player2WinCount, tieCounter;
     }
+    let player1Name = "Player 1";
+    let player1WinCount = 0;
+    let player2Name = "Player 2";
+    let player2WinCount = 0;
+    let tieCounter = 0;
+    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
 })();
