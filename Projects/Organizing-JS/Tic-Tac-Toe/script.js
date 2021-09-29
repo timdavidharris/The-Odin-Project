@@ -77,6 +77,35 @@ updateText = function() {
     }
 }();
 
+winnerMessages = function() {
+    let oWinMessage = function() {
+        player1Turn.textContent = "Player 1 (X's) LOSES";
+        player2Turn.textContent = "Player 2 (O's) WINS";
+        let winnerO = 'o';
+        // endOfGame(winnerO);
+        console.log('o wins');
+    }
+    let xWinMessage = function() {
+        player1Turn.textContent = "Player 1 (X's) WINS";
+        player2Turn.textContent = "Player 2 (O's) LOSES";
+        let winnerX = 'x';
+        // endOfGame(winnerX);
+        console.log('x wins')
+    }
+    let tieMessage = function() {
+        player1Turn.textContent = "IT'S A TIE";
+        player2Turn.textContent = "";
+        let winnerTie = 'tie';
+        // endOfGame(winnerTie);
+        console.log('tie')
+    }
+    return {
+        oWon: oWinMessage,
+        xWon: xWinMessage,
+        tie: tieMessage,
+    }
+}();
+
 checkWinCondition = function() {
     let whoWon = function() {
         let gameBoxes = document.querySelectorAll('.game-square');
@@ -93,58 +122,58 @@ checkWinCondition = function() {
         if ((gameBox1 === gameBox2) && 
             (gameBox2 === gameBox3)) {
                 if (gameBox3 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox3 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // Middle row win condition
         } if ((gameBox4 === gameBox5) && 
               (gameBox5 === gameBox6)) {
                 if (gameBox6 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox6 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 }// bottom row win condition
         } if ((gameBox7 === gameBox8) && 
               (gameBox8 === gameBox9)) {
                 if (gameBox9 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox9 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // left column win condition
         } if ((gameBox1 === gameBox4) && 
               (gameBox4 === gameBox7)) {
                 if (gameBox7 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox7 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // middle column win condition
         } if ((gameBox2 === gameBox5) && 
               (gameBox5 === gameBox8)) {
                 if (gameBox8 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox8 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // right column win condition
         } if ((gameBox3 === gameBox6) && 
               (gameBox6 === gameBox9)) {
                 if (gameBox9 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox9 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // top left to bottom right diagonal win condition
         } if ((gameBox1 === gameBox5) && 
               (gameBox5 === gameBox9)) {
                 if (gameBox9 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox9 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // top right to bottom left diagonal win condition
         } if ((gameBox3 === gameBox5) && 
               (gameBox5 === gameBox7)) {
                 if (gameBox7 === 'x') {
-                    xWinMessage();
+                    winnerMessages.xWon();
                 } else if (gameBox7 === 'o') {
-                    oWinMessage();
+                    winnerMessages.oWon();
                 } // Checks for tie condition
         } if ((gameBox1 !== '') && 
               (gameBox2 !== '') &&
@@ -155,7 +184,7 @@ checkWinCondition = function() {
               (gameBox7 !== '') &&
               (gameBox8 !== '') &&
               (gameBox9 !== '')) {
-                    tieMessage();
+                winnerMessages.tie();
                 }
         }
     return {
