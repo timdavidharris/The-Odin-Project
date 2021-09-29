@@ -5,17 +5,20 @@ const numberOfTies = document.getElementById('number-of-ties');
 const gameBoardSection = document.getElementById('Game-Board-Section');
 const player1Turn = document.getElementById('player-1-turn');
 const player2Turn = document.getElementById('player-2-turn');
-player1Turn.textContent = "Player 1 (X's): GO";
-player2Turn.textContent = "Player 2 (O's): WAIT";
 let player1Name = "Player 1";
 let player2Name = "Player 2";
 let tieCounter = 0;
 let player1WinCount = 0;
 let player2WinCount = 0;
 let gamesPlayed = 0;
-runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+
+(initialTextContent = function() {
+    player1Turn.textContent = "Player 1 (X's): GO";
+    player2Turn.textContent = "Player 2 (O's): WAIT";
+    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+})();
 
 gameBoardSetup = function() {
     let gameBoard = function() {
@@ -147,6 +150,8 @@ gameOver = function() {
             gameBoardSetup.board();
             turnOnClickListener.listener();
             ++gamesPlayed;
+            player1Turn.textContent = "Player 1 (X's): GO";
+            player2Turn.textContent = "Player 2 (O's): WAIT";
         });
     };
     return {
@@ -160,21 +165,18 @@ winnerMessages = function() {
         player2Turn.textContent = "Player 2 (O's) WINS";
         let winnerO = 'o';
         gameOver.end(winnerO);
-        console.log('o wins');
     }
     let xWinMessage = function() {
         player1Turn.textContent = "Player 1 (X's) WINS";
         player2Turn.textContent = "Player 2 (O's) LOSES";
         let winnerX = 'x';
         gameOver.end(winnerX);
-        console.log('x wins')
     }
     let tieMessage = function() {
         player1Turn.textContent = "IT'S A TIE";
         player2Turn.textContent = "";
         let winnerTie = 'tie';
         gameOver.end(winnerTie);
-        console.log('tie')
     }
     return {
         oWon: oWinMessage,
