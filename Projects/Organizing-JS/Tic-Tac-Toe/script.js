@@ -8,16 +8,6 @@ const player2Turn = document.getElementById('player-2-turn');
 player1Turn.textContent = "Player 1 (X's): GO";
 player2Turn.textContent = "Player 2 (O's): WAIT";
 
-let player1Name = "Player 1";
-let player1WinCount = 0;
-let player2Name = "Player 2";
-let player2WinCount = 0;
-let tieCounter = 0;
-runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
-
-
 gameBoardSetup = function() {
     let gameBoard = function() {
         for (let i = 0; i < 9; i++) {
@@ -27,8 +17,8 @@ gameBoardSetup = function() {
             newDiv.textContent = "";
             gameBoardSection.appendChild(newDiv);
         }
+        resetBtn.style.display = 'none';
     }
-    resetBtn.style.display = 'none';
     return {
         board: gameBoard,
     }
@@ -37,6 +27,15 @@ gameBoardSetup = function() {
 gameBoardSetup.board();
 
 onClickGamePlay = function() {
+    let player1Name = "Player 1";
+    let player2Name = "Player 2";
+    let tieCounter = 0;
+    let player1WinCount = 0;
+    let player2WinCount = 0;
+    let gamesPlayed = 0;
+    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
     let turnOnClickListener = function (){
         let gameSquares = document.querySelectorAll('.game-square');
         let turnCounter = 0;
@@ -57,16 +56,16 @@ onClickGamePlay = function() {
                 }
             });
         });
-    }();
+    };
     return {
         listener: turnOnClickListener,
     }
     function updateTurnText() {
         if (player1Turn.textContent === "Player 1 (X's): GO") {
-            return player1Turn.textContent = "Player 1 (X's): WAIT",
+            player1Turn.textContent = "Player 1 (X's): WAIT";
             player2Turn.textContent = "Player 2 (O's): GO";
         } else {
-            return player1Turn.textContent = "Player 1 (X's): GO",
+            player1Turn.textContent = "Player 1 (X's): GO";
             player2Turn.textContent = "Player 2 (O's): WAIT";
         }
     };   
@@ -85,18 +84,18 @@ onClickGamePlay = function() {
         if ((gameBox1 === gameBox2) && 
             (gameBox2 === gameBox3)) {
             if (gameBox3 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox3 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // Middle row win condition
         if ((gameBox4 === gameBox5) && 
             (gameBox5 === gameBox6)) {
                 if (gameBox6 === 'x') {
-                    return xWinMessage();
+                    xWinMessage();
                 } else if (gameBox6 === 'o') {
-                    return oWinMessage();
+                    oWinMessage();
 
                 }
         }
@@ -104,9 +103,9 @@ onClickGamePlay = function() {
         if ((gameBox7 === gameBox8) && 
             (gameBox8 === gameBox9)) {
                 if (gameBox9 === 'x') {
-                    return xWinMessage();
+                    xWinMessage();
                 } else if (gameBox9 === 'o') {
-                    return oWinMessage();
+                    oWinMessage();
  
                 }
         }
@@ -114,45 +113,45 @@ onClickGamePlay = function() {
         if ((gameBox1 === gameBox4) && 
             (gameBox4 === gameBox7)) {
             if (gameBox7 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox7 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // middle column win condition
         if ((gameBox2 === gameBox5) && 
             (gameBox5 === gameBox8)) {
             if (gameBox8 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox8 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // right column win condition
         if ((gameBox3 === gameBox6) && 
             (gameBox6 === gameBox9)) {
             if (gameBox9 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox9 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // top left to bottom right diagonal win condition
         if ((gameBox1 === gameBox5) && 
             (gameBox5 === gameBox9)) {
             if (gameBox9 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox9 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // top right to bottom left diagonal win condition
         if ((gameBox3 === gameBox5) && 
             (gameBox5 === gameBox7)) {
             if (gameBox7 === 'x') {
-                return xWinMessage();
+                xWinMessage();
             } else if (gameBox7 === 'o') {
-                return oWinMessage();
+                oWinMessage();
             }
         }
         // Checks for tie condition
@@ -165,9 +164,8 @@ onClickGamePlay = function() {
             (gameBox7 !== '') &&
             (gameBox8 !== '') &&
             (gameBox9 !== '')) {
-                return tieMessage();
+                tieMessage();
             }
-        return gameBox1, gameBox2, gameBox3, gameBox4, gameBox5, gameBox6, gameBox7, gameBox8, gameBox8;
     }
     function oWinMessage() {
         player1Turn.textContent = "Player 1 (X's) LOSES";
@@ -189,12 +187,7 @@ onClickGamePlay = function() {
     }
     function endOfGame(winner) {
         let winnerInput = winner;
-        let player1WinCount = 0;
-        let player2WinCount = 0;
-        let tieCounter = 0;
-        if ((player1WinCount === 0) &&
-            (player2WinCount === 0) &&
-            (tieCounter === 0)){
+        if (gamesPlayed === 0){
                 player1Name = prompt('Player 1, Please Type in Your Name');
                 player2Name = prompt('Player 2, Please Type in Your Name');
         }
@@ -214,10 +207,11 @@ onClickGamePlay = function() {
             ++tieCounter;
             runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
             runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} tie(s)`;
             winnerSymbolInAllSquares(winnerInput);
         }
         function winnerSymbolInAllSquares(winner) {
+            resetBtn.style.display = '';
             let whoWon = winner;
             let gameBoxes = document.querySelectorAll('.game-square');
             if (whoWon === 'x') {
@@ -252,7 +246,6 @@ onClickGamePlay = function() {
                 gameBoxes.item(8).textContent = 'o';
             }
         }
-        resetBtn.style.display = '';
             resetBtn.addEventListener('click', () => {
                 let gameDivs = document.querySelectorAll('div');
                 gameDivs.forEach((div) => {
@@ -260,8 +253,8 @@ onClickGamePlay = function() {
             });
             gameBoardSetup.board();
             onClickGamePlay.listener();
+            ++gamesPlayed;
         });
-        return player1Name, player2Name, player1WinCount, player2WinCount, tieCounter;
     }
 }();
 
