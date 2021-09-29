@@ -8,38 +8,59 @@ const player2Turn = document.getElementById('player-2-turn');
 player1Turn.textContent = "Player 1 (X's): GO";
 player2Turn.textContent = "Player 2 (O's): WAIT";
 
+let player1Name = "Player 1";
+let player1WinCount = 0;
+let player2Name = "Player 2";
+let player2WinCount = 0;
+let tieCounter = 0;
+runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
 
-(makeGameBoard = function() {
-    for (let i = 0; i < 9; i++) {
-        let newDiv = document.createElement('div');
-        newDiv.setAttribute('class', `game-square`);
-        newDiv.setAttribute('data-square', `${i + 1}`);
-        newDiv.textContent = "";
-        gameBoardSection.appendChild(newDiv);
+
+gameBoardSetup = function() {
+    let gameBoard = function() {
+        for (let i = 0; i < 9; i++) {
+            let newDiv = document.createElement('div');
+            newDiv.setAttribute('class', `game-square`);
+            newDiv.setAttribute('data-square', `${i + 1}`);
+            newDiv.textContent = "";
+            gameBoardSection.appendChild(newDiv);
+        }
     }
     resetBtn.style.display = 'none';
-}());
+    return {
+        board: gameBoard,
+    }
+}();
 
-let onClickGamePlay = (function() {
-    let gameSquares = document.querySelectorAll('.game-square');
-    let turnCounter = 0;
-    gameSquares.forEach((div) => {
-        div.addEventListener('click', () => {
-            if (div.textContent === '') {
-                if (turnCounter % 2 === 0) {
-                    div.textContent = "x";
-                    turnCounter++;
-                    updateTurnText();
-                    checkWinCondition();
-                } else {
-                    div.textContent = "o";
-                    turnCounter++;
-                    updateTurnText();
-                    checkWinCondition();
+gameBoardSetup.board();
+
+onClickGamePlay = function() {
+    let turnOnClickListener = function (){
+        let gameSquares = document.querySelectorAll('.game-square');
+        let turnCounter = 0;
+        gameSquares.forEach((div) => {
+            div.addEventListener('click', () => {
+                if (div.textContent === '') {
+                    if (turnCounter % 2 === 0) {
+                        div.textContent = "x";
+                        turnCounter++;
+                        updateTurnText();
+                        checkWinCondition();
+                    } else {
+                        div.textContent = "o";
+                        turnCounter++;
+                        updateTurnText();
+                        checkWinCondition();
+                    }
                 }
-            }
+            });
         });
-    });
+    }();
+    return {
+        listener: turnOnClickListener,
+    }
     function updateTurnText() {
         if (player1Turn.textContent === "Player 1 (X's): GO") {
             return player1Turn.textContent = "Player 1 (X's): WAIT",
@@ -237,15 +258,11 @@ let onClickGamePlay = (function() {
                 gameDivs.forEach((div) => {
                     div.remove();
             });
+            gameBoardSetup.board();
+            onClickGamePlay.listener();
         });
         return player1Name, player2Name, player1WinCount, player2WinCount, tieCounter;
     }
-    let player1Name = "Player 1";
-    let player1WinCount = 0;
-    let player2Name = "Player 2";
-    let player2WinCount = 0;
-    let tieCounter = 0;
-    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
-})();
+}();
+
+onClickGamePlay.listener();
