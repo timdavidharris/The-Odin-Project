@@ -32,5 +32,48 @@ gameBoardSetup = function() {
         board: gameBoard,
     }
 }();
-
 gameBoardSetup.board();
+
+turnOnClickListener = function() {
+    let clickListener = function() {
+        let gameSquares = document.querySelectorAll('.game-square');
+        let turnCounter = 0;
+        gameSquares.forEach((div) => {
+            div.addEventListener('click', () => {
+                if (div.textContent === '') {
+                    if (turnCounter % 2 === 0) {
+                        div.textContent = "x";
+                        turnCounter++;
+                        updateText.whoseTurn();
+                        checkWinCondition();
+                    } else {
+                        div.textContent = "o";
+                        turnCounter++;
+                        updateText.whoseTurn();
+                        checkWinCondition();
+                    }
+                }
+            });
+        });
+    }
+    return {
+        listener: clickListener,
+    }
+}();
+turnOnClickListener.listener();
+
+updateText = function() {
+    function updateTurnText() {
+        if (player1Turn.textContent === "Player 1 (X's): GO") {
+            player1Turn.textContent = "Player 1 (X's): WAIT";
+            player2Turn.textContent = "Player 2 (O's): GO";
+        } else {
+            player1Turn.textContent = "Player 1 (X's): GO";
+            player2Turn.textContent = "Player 2 (O's): WAIT";
+        }
+    }; 
+    return {
+        whoseTurn: updateTurnText,
+    }
+}();
+
