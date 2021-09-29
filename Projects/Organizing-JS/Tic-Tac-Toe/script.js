@@ -45,12 +45,12 @@ turnOnClickListener = function() {
                         div.textContent = "x";
                         turnCounter++;
                         updateText.whoseTurn();
-                        checkWinCondition();
+                        checkWinCondition.winner();
                     } else {
                         div.textContent = "o";
                         turnCounter++;
                         updateText.whoseTurn();
-                        checkWinCondition();
+                        checkWinCondition.winner();
                     }
                 }
             });
@@ -63,7 +63,7 @@ turnOnClickListener = function() {
 turnOnClickListener.listener();
 
 updateText = function() {
-    function updateTurnText() {
+    let updateTurnText = function() {
         if (player1Turn.textContent === "Player 1 (X's): GO") {
             player1Turn.textContent = "Player 1 (X's): WAIT";
             player2Turn.textContent = "Player 2 (O's): GO";
@@ -77,3 +77,92 @@ updateText = function() {
     }
 }();
 
+checkWinCondition = function() {
+    let whoWon = function() {
+        let gameBoxes = document.querySelectorAll('.game-square');
+        let gameBox1 = gameBoxes.item(0).textContent;
+        let gameBox2 = gameBoxes.item(1).textContent;
+        let gameBox3 = gameBoxes.item(2).textContent;
+        let gameBox4 = gameBoxes.item(3).textContent;
+        let gameBox5 = gameBoxes.item(4).textContent;
+        let gameBox6 = gameBoxes.item(5).textContent;
+        let gameBox7 = gameBoxes.item(6).textContent;
+        let gameBox8 = gameBoxes.item(7).textContent;
+        let gameBox9 = gameBoxes.item(8).textContent;
+             // top row win condition
+        if ((gameBox1 === gameBox2) && 
+            (gameBox2 === gameBox3)) {
+                if (gameBox3 === 'x') {
+                    xWinMessage();
+                } else if (gameBox3 === 'o') {
+                    oWinMessage();
+                } // Middle row win condition
+        } if ((gameBox4 === gameBox5) && 
+              (gameBox5 === gameBox6)) {
+                if (gameBox6 === 'x') {
+                    xWinMessage();
+                } else if (gameBox6 === 'o') {
+                    oWinMessage();
+                }// bottom row win condition
+        } if ((gameBox7 === gameBox8) && 
+              (gameBox8 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    xWinMessage();
+                } else if (gameBox9 === 'o') {
+                    oWinMessage();
+                } // left column win condition
+        } if ((gameBox1 === gameBox4) && 
+              (gameBox4 === gameBox7)) {
+                if (gameBox7 === 'x') {
+                    xWinMessage();
+                } else if (gameBox7 === 'o') {
+                    oWinMessage();
+                } // middle column win condition
+        } if ((gameBox2 === gameBox5) && 
+              (gameBox5 === gameBox8)) {
+                if (gameBox8 === 'x') {
+                    xWinMessage();
+                } else if (gameBox8 === 'o') {
+                    oWinMessage();
+                } // right column win condition
+        } if ((gameBox3 === gameBox6) && 
+              (gameBox6 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    xWinMessage();
+                } else if (gameBox9 === 'o') {
+                    oWinMessage();
+                } // top left to bottom right diagonal win condition
+        } if ((gameBox1 === gameBox5) && 
+              (gameBox5 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    xWinMessage();
+                } else if (gameBox9 === 'o') {
+                    oWinMessage();
+                } // top right to bottom left diagonal win condition
+        } if ((gameBox3 === gameBox5) && 
+              (gameBox5 === gameBox7)) {
+                if (gameBox7 === 'x') {
+                    xWinMessage();
+                } else if (gameBox7 === 'o') {
+                    oWinMessage();
+                } // Checks for tie condition
+        } if ((gameBox1 !== '') && 
+              (gameBox2 !== '') &&
+              (gameBox3 !== '') &&
+              (gameBox4 !== '') &&
+              (gameBox5 !== '') &&
+              (gameBox6 !== '') &&
+              (gameBox7 !== '') &&
+              (gameBox8 !== '') &&
+              (gameBox9 !== '')) {
+                    tieMessage();
+                }
+        }
+    return {
+        winner: whoWon,
+    }
+}();
+
+// winnerMessages = function() {
+
+// }();
