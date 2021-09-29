@@ -77,26 +77,103 @@ updateText = function() {
     }
 }();
 
+gameOver = function() {
+    let endOfGame = function(winner) {
+        let winnerInput = winner;
+        if (gamesPlayed === 0){
+                player1Name = prompt('Player 1, Please Type in Your Name');
+                player2Name = prompt('Player 2, Please Type in Your Name');
+        }
+        if (winnerInput === 'x') {
+            ++player1WinCount;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            winnerSymbolInAllSquares(winnerInput);
+        } else if (winnerInput === 'o') {
+            ++player2WinCount;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} Have Had ${tieCounter} Ties`;
+            winnerSymbolInAllSquares(winnerInput);
+        } else if (winnerInput === 'tie') {
+            ++tieCounter;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} tie(s)`;
+            winnerSymbolInAllSquares(winnerInput);
+        }
+        function winnerSymbolInAllSquares(winner) {
+            resetBtn.style.display = '';
+            let whoWon = winner;
+            let gameBoxes = document.querySelectorAll('.game-square');
+            if (whoWon === 'x') {
+                gameBoxes.item(0).textContent = 'x';
+                gameBoxes.item(1).textContent = 'x';
+                gameBoxes.item(2).textContent = 'x';
+                gameBoxes.item(3).textContent = 'x';
+                gameBoxes.item(4).textContent = 'x';
+                gameBoxes.item(5).textContent = 'x';
+                gameBoxes.item(6).textContent = 'x';
+                gameBoxes.item(7).textContent = 'x';
+                gameBoxes.item(8).textContent = 'x';
+            } else if (whoWon === 'o') {
+                gameBoxes.item(0).textContent = 'o';
+                gameBoxes.item(1).textContent = 'o';
+                gameBoxes.item(2).textContent = 'o';
+                gameBoxes.item(3).textContent = 'o';
+                gameBoxes.item(4).textContent = 'o';
+                gameBoxes.item(5).textContent = 'o';
+                gameBoxes.item(6).textContent = 'o';
+                gameBoxes.item(7).textContent = 'o';
+                gameBoxes.item(8).textContent = 'o';
+            } else {
+                gameBoxes.item(0).textContent = 'o';
+                gameBoxes.item(1).textContent = 'x';
+                gameBoxes.item(2).textContent = 'o';
+                gameBoxes.item(3).textContent = 'x';
+                gameBoxes.item(4).textContent = 'o';
+                gameBoxes.item(5).textContent = 'x';
+                gameBoxes.item(6).textContent = 'o';
+                gameBoxes.item(7).textContent = 'x';
+                gameBoxes.item(8).textContent = 'o';
+            }
+        }
+            resetBtn.addEventListener('click', () => {
+                let gameDivs = document.querySelectorAll('div');
+                gameDivs.forEach((div) => {
+                    div.remove();
+            });
+            gameBoardSetup.board();
+            turnOnClickListener.listener();
+            ++gamesPlayed;
+        });
+    };
+    return {
+        end: endOfGame,
+    }
+}();
+
 winnerMessages = function() {
     let oWinMessage = function() {
         player1Turn.textContent = "Player 1 (X's) LOSES";
         player2Turn.textContent = "Player 2 (O's) WINS";
         let winnerO = 'o';
-        // endOfGame(winnerO);
+        gameOver.end(winnerO);
         console.log('o wins');
     }
     let xWinMessage = function() {
         player1Turn.textContent = "Player 1 (X's) WINS";
         player2Turn.textContent = "Player 2 (O's) LOSES";
         let winnerX = 'x';
-        // endOfGame(winnerX);
+        gameOver.end(winnerX);
         console.log('x wins')
     }
     let tieMessage = function() {
         player1Turn.textContent = "IT'S A TIE";
         player2Turn.textContent = "";
         let winnerTie = 'tie';
-        // endOfGame(winnerTie);
+        gameOver.end(winnerTie);
         console.log('tie')
     }
     return {
@@ -191,7 +268,3 @@ checkWinCondition = function() {
         winner: whoWon,
     }
 }();
-
-// winnerMessages = function() {
-
-// }();
