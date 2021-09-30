@@ -89,22 +89,21 @@ gameOver = function() {
         }
         if (winnerInput === 'x') {
             ++player1WinCount;
-            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            updateWinCountText();
             winnerSymbolInAllSquares(winnerInput);
         } else if (winnerInput === 'o') {
             ++player2WinCount;
-            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-            numberOfTies.textContent = `${player1Name} and ${player2Name} Have Had ${tieCounter} Ties`;
+            updateWinCountText();
             winnerSymbolInAllSquares(winnerInput);
         } else if (winnerInput === 'tie') {
             ++tieCounter;
-            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} tie(s)`;
+            updateWinCountText();
             winnerSymbolInAllSquares(winnerInput);
+        }
+        function updateWinCountText() {
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
         }
         function winnerSymbolInAllSquares(winner) {
             resetBtn.style.display = '';
