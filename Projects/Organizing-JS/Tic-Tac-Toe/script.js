@@ -32,10 +32,10 @@ gameBoardSetup = function() {
         resetBtn.style.display = 'none';
     }
     return {
-        board: gameBoard,
+        gameBoard,
     }
 }();
-gameBoardSetup.board();
+gameBoardSetup.gameBoard();
 
 turnOnClickListener = function() {
     let clickListener = function() {
@@ -47,12 +47,12 @@ turnOnClickListener = function() {
                     if (turnCounter % 2 === 0) {
                         div.textContent = "x";
                         turnCounter++;
-                        updateText.whoseTurn();
+                        updateText.updateTurnText();
                         checkWinCondition.winner();
                     } else {
                         div.textContent = "o";
                         turnCounter++;
-                        updateText.whoseTurn();
+                        updateText.updateTurnText();
                         checkWinCondition.winner();
                     }
                 }
@@ -60,10 +60,10 @@ turnOnClickListener = function() {
         });
     }
     return {
-        listener: clickListener,
+        clickListener
     }
 }();
-turnOnClickListener.listener();
+turnOnClickListener.clickListener();
 
 updateText = function() {
     let updateTurnText = function() {
@@ -76,7 +76,7 @@ updateText = function() {
         }
     }; 
     return {
-        whoseTurn: updateTurnText,
+        updateTurnText,
     }
 }();
 
@@ -110,35 +110,23 @@ gameOver = function() {
             let whoWon = winner;
             let gameBoxes = document.querySelectorAll('.game-square');
             if (whoWon === 'x') {
-                gameBoxes.item(0).textContent = 'x';
-                gameBoxes.item(1).textContent = 'x';
-                gameBoxes.item(2).textContent = 'x';
-                gameBoxes.item(3).textContent = 'x';
-                gameBoxes.item(4).textContent = 'x';
-                gameBoxes.item(5).textContent = 'x';
-                gameBoxes.item(6).textContent = 'x';
-                gameBoxes.item(7).textContent = 'x';
-                gameBoxes.item(8).textContent = 'x';
+                gameBoxes.forEach((box) => {
+                    box.textContent = 'x';
+                });
             } else if (whoWon === 'o') {
-                gameBoxes.item(0).textContent = 'o';
-                gameBoxes.item(1).textContent = 'o';
-                gameBoxes.item(2).textContent = 'o';
-                gameBoxes.item(3).textContent = 'o';
-                gameBoxes.item(4).textContent = 'o';
-                gameBoxes.item(5).textContent = 'o';
-                gameBoxes.item(6).textContent = 'o';
-                gameBoxes.item(7).textContent = 'o';
-                gameBoxes.item(8).textContent = 'o';
+                gameBoxes.forEach((box) => {
+                    box.textContent = 'o'
+                })
             } else {
-                gameBoxes.item(0).textContent = 'o';
-                gameBoxes.item(1).textContent = 'x';
-                gameBoxes.item(2).textContent = 'o';
-                gameBoxes.item(3).textContent = 'x';
-                gameBoxes.item(4).textContent = 'o';
-                gameBoxes.item(5).textContent = 'x';
-                gameBoxes.item(6).textContent = 'o';
-                gameBoxes.item(7).textContent = 'x';
-                gameBoxes.item(8).textContent = 'o';
+                let i = 0;
+                gameBoxes.forEach((box) => {
+                    if (i % 2 === 0) {
+                        box.textContent = 'o';
+                    } else {
+                        box.textContent = 'x';
+                    }
+                    ++i;
+                })
             }
         }
             resetBtn.addEventListener('click', () => {
@@ -146,8 +134,8 @@ gameOver = function() {
                 gameDivs.forEach((div) => {
                     div.remove();
             });
-            gameBoardSetup.board();
-            turnOnClickListener.listener();
+            gameBoardSetup.gameBoard();
+            turnOnClickListener.clickListener();
             ++gamesPlayed;
             player1Turn.textContent = "Player 1 (X's): GO";
             player2Turn.textContent = "Player 2 (O's): WAIT";
@@ -187,83 +175,91 @@ winnerMessages = function() {
 checkWinCondition = function() {
     let whoWon = function() {
         let gameBoxes = document.querySelectorAll('.game-square');
-        let gameBox1 = gameBoxes.item(0).textContent;
-        let gameBox2 = gameBoxes.item(1).textContent;
-        let gameBox3 = gameBoxes.item(2).textContent;
-        let gameBox4 = gameBoxes.item(3).textContent;
-        let gameBox5 = gameBoxes.item(4).textContent;
-        let gameBox6 = gameBoxes.item(5).textContent;
-        let gameBox7 = gameBoxes.item(6).textContent;
-        let gameBox8 = gameBoxes.item(7).textContent;
-        let gameBox9 = gameBoxes.item(8).textContent;
-             // top row win condition
-        if ((gameBox1 === gameBox2) && 
-            (gameBox2 === gameBox3)) {
-                if (gameBox3 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox3 === 'o') {
-                    winnerMessages.oWon();
-                } // Middle row win condition
-        } if ((gameBox4 === gameBox5) && 
-              (gameBox5 === gameBox6)) {
-                if (gameBox6 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox6 === 'o') {
-                    winnerMessages.oWon();
-                }// bottom row win condition
-        } if ((gameBox7 === gameBox8) && 
-              (gameBox8 === gameBox9)) {
-                if (gameBox9 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox9 === 'o') {
-                    winnerMessages.oWon();
-                } // left column win condition
-        } if ((gameBox1 === gameBox4) && 
-              (gameBox4 === gameBox7)) {
-                if (gameBox7 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox7 === 'o') {
-                    winnerMessages.oWon();
-                } // middle column win condition
-        } if ((gameBox2 === gameBox5) && 
-              (gameBox5 === gameBox8)) {
-                if (gameBox8 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox8 === 'o') {
-                    winnerMessages.oWon();
-                } // right column win condition
-        } if ((gameBox3 === gameBox6) && 
-              (gameBox6 === gameBox9)) {
-                if (gameBox9 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox9 === 'o') {
-                    winnerMessages.oWon();
-                } // top left to bottom right diagonal win condition
-        } if ((gameBox1 === gameBox5) && 
-              (gameBox5 === gameBox9)) {
-                if (gameBox9 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox9 === 'o') {
-                    winnerMessages.oWon();
-                } // top right to bottom left diagonal win condition
-        } if ((gameBox3 === gameBox5) && 
-              (gameBox5 === gameBox7)) {
-                if (gameBox7 === 'x') {
-                    winnerMessages.xWon();
-                } else if (gameBox7 === 'o') {
-                    winnerMessages.oWon();
-                } // Checks for tie condition
-        } if ((gameBox1 !== '') && 
-              (gameBox2 !== '') &&
-              (gameBox3 !== '') &&
-              (gameBox4 !== '') &&
-              (gameBox5 !== '') &&
-              (gameBox6 !== '') &&
-              (gameBox7 !== '') &&
-              (gameBox8 !== '') &&
-              (gameBox9 !== '')) {
-                winnerMessages.tie();
+        gameBoxes.forEach((box) => {
+            console.log(box.textContent);
+            for (let i = 1; 1 < 10; i++) {
+                if (box.dataset.square ) {
+                    
                 }
+            }
+        });
+        // let gameBox1 = gameBoxes.item(0).textContent;
+        // let gameBox2 = gameBoxes.item(1).textContent;
+        // let gameBox3 = gameBoxes.item(2).textContent;
+        // let gameBox4 = gameBoxes.item(3).textContent;
+        // let gameBox5 = gameBoxes.item(4).textContent;
+        // let gameBox6 = gameBoxes.item(5).textContent;
+        // let gameBox7 = gameBoxes.item(6).textContent;
+        // let gameBox8 = gameBoxes.item(7).textContent;
+        // let gameBox9 = gameBoxes.item(8).textContent;
+        //      // top row win condition
+        // if ((gameBox1 === gameBox2) && 
+        //     (gameBox2 === gameBox3)) {
+        //         if (gameBox3 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox3 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // Middle row win condition
+        // } if ((gameBox4 === gameBox5) && 
+        //       (gameBox5 === gameBox6)) {
+        //         if (gameBox6 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox6 === 'o') {
+        //             winnerMessages.oWon();
+        //         }// bottom row win condition
+        // } if ((gameBox7 === gameBox8) && 
+        //       (gameBox8 === gameBox9)) {
+        //         if (gameBox9 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox9 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // left column win condition
+        // } if ((gameBox1 === gameBox4) && 
+        //       (gameBox4 === gameBox7)) {
+        //         if (gameBox7 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox7 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // middle column win condition
+        // } if ((gameBox2 === gameBox5) && 
+        //       (gameBox5 === gameBox8)) {
+        //         if (gameBox8 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox8 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // right column win condition
+        // } if ((gameBox3 === gameBox6) && 
+        //       (gameBox6 === gameBox9)) {
+        //         if (gameBox9 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox9 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // top left to bottom right diagonal win condition
+        // } if ((gameBox1 === gameBox5) && 
+        //       (gameBox5 === gameBox9)) {
+        //         if (gameBox9 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox9 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // top right to bottom left diagonal win condition
+        // } if ((gameBox3 === gameBox5) && 
+        //       (gameBox5 === gameBox7)) {
+        //         if (gameBox7 === 'x') {
+        //             winnerMessages.xWon();
+        //         } else if (gameBox7 === 'o') {
+        //             winnerMessages.oWon();
+        //         } // Checks for tie condition
+        // } if ((gameBox1 !== '') && 
+        //       (gameBox2 !== '') &&
+        //       (gameBox3 !== '') &&
+        //       (gameBox4 !== '') &&
+        //       (gameBox5 !== '') &&
+        //       (gameBox6 !== '') &&
+        //       (gameBox7 !== '') &&
+        //       (gameBox8 !== '') &&
+        //       (gameBox9 !== '')) {
+        //         winnerMessages.tie();
+        //         }
         }
     return {
         winner: whoWon,
