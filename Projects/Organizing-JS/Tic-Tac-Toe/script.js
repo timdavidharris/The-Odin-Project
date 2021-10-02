@@ -179,51 +179,84 @@ winnerMessages = function() {
 checkWinCondition = function() {
     let whoWon = function() {
         let gameBoxes = document.querySelectorAll('.game-square');
-        let gameBoxArray = Array.from(gameBoxes);
-            for (let i = 0; i < 10; i++) {
-                if ((gameBoxArray[i].textContent === gameBoxArray[i + 1].textContent) && 
-                    (gameBoxArray[i + 1].textContent === gameBoxArray[i + 2].textContent)) {
-                        if (gameBoxArray[i].textContent === 'x') {
-                            return winnerMessages.xWon();
-                        } if (gameBoxArray[i].textContent === 'o') {
-                            return winnerMessages.oWon();
-                        } else {
-                            return checkForTie();
-                        }
-                } if ((gameBoxArray[0].textContent === gameBoxArray[4].textContent) && 
-                      (gameBoxArray[4].textContent === gameBoxArray[8].textContent)) {
-                        if (gameBoxArray[i].textContent === 'x') {
-                            return winnerMessages.xWon();
-                        } if (gameBoxArray[i].textContent === 'o') {
-                            return winnerMessages.oWon();
-                        } else {
-                            return checkForTie();
-                        }
-                } if ((gameBoxArray[2].textContent === gameBoxArray[4].textContent) && 
-                      (gameBoxArray[4].textContent === gameBoxArray[6].textContent)) {
-                        if (gameBoxArray[i].textContent === 'x') {
-                            return winnerMessages.xWon();
-                        } if (gameBoxArray[i].textContent === 'o') {
-                            return winnerMessages.oWon();
-                        } else {
-                            return checkForTie();
-                        }
+        let gameBox1 = gameBoxes.item(0).textContent;
+        let gameBox2 = gameBoxes.item(1).textContent;
+        let gameBox3 = gameBoxes.item(2).textContent;
+        let gameBox4 = gameBoxes.item(3).textContent;
+        let gameBox5 = gameBoxes.item(4).textContent;
+        let gameBox6 = gameBoxes.item(5).textContent;
+        let gameBox7 = gameBoxes.item(6).textContent;
+        let gameBox8 = gameBoxes.item(7).textContent;
+        let gameBox9 = gameBoxes.item(8).textContent;
+             // top row win condition
+        if ((gameBox1 === gameBox2) && 
+            (gameBox2 === gameBox3)) {
+                if (gameBox3 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox3 === 'o') {
+                    winnerMessages.oWon();
+                } // Middle row win condition
+        } if ((gameBox4 === gameBox5) && 
+              (gameBox5 === gameBox6)) {
+                if (gameBox6 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox6 === 'o') {
+                    winnerMessages.oWon();
+                }// bottom row win condition
+        } if ((gameBox7 === gameBox8) && 
+              (gameBox8 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox9 === 'o') {
+                    winnerMessages.oWon();
+                } // left column win condition
+        } if ((gameBox1 === gameBox4) && 
+              (gameBox4 === gameBox7)) {
+                if (gameBox7 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox7 === 'o') {
+                    winnerMessages.oWon();
+                } // middle column win condition
+        } if ((gameBox2 === gameBox5) && 
+              (gameBox5 === gameBox8)) {
+                if (gameBox8 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox8 === 'o') {
+                    winnerMessages.oWon();
+                } // right column win condition
+        } if ((gameBox3 === gameBox6) && 
+              (gameBox6 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox9 === 'o') {
+                    winnerMessages.oWon();
+                } // top left to bottom right diagonal win condition
+        } if ((gameBox1 === gameBox5) && 
+              (gameBox5 === gameBox9)) {
+                if (gameBox9 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox9 === 'o') {
+                    winnerMessages.oWon();
+                } // top right to bottom left diagonal win condition
+        } if ((gameBox3 === gameBox5) && 
+              (gameBox5 === gameBox7)) {
+                if (gameBox7 === 'x') {
+                    winnerMessages.xWon();
+                } else if (gameBox7 === 'o') {
+                    winnerMessages.oWon();
+                } // Checks for tie condition
+        } if ((gameBox1 !== '') && 
+              (gameBox2 !== '') &&
+              (gameBox3 !== '') &&
+              (gameBox4 !== '') &&
+              (gameBox5 !== '') &&
+              (gameBox6 !== '') &&
+              (gameBox7 !== '') &&
+              (gameBox8 !== '') &&
+              (gameBox9 !== '')) {
+                winnerMessages.tie();
                 }
-            function checkForTie() {
-                 if ((gameBoxArray[0].textContent !== '') &&
-                           (gameBoxArray[1].textContent !== '') &&
-                           (gameBoxArray[2].textContent !== '') &&
-                           (gameBoxArray[3].textContent !== '') &&
-                           (gameBoxArray[4].textContent !== '') &&
-                           (gameBoxArray[5].textContent !== '') &&
-                           (gameBoxArray[6].textContent !== '') &&
-                           (gameBoxArray[7].textContent !== '') &&
-                           (gameBoxArray[8].textContent !== '') ) {
-                    return winnerMessages.tie();
-                           }
-             }
         }
-     } 
     return {
         winner: whoWon,
     }
