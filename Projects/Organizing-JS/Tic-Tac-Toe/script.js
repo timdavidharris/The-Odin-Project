@@ -15,9 +15,9 @@ let gamesPlayed = 0;
 (initialTextContent = function() {
     player1Turn.textContent = "Player 1 (X's): GO";
     player2Turn.textContent = "Player 2 (O's): WAIT";
-    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+    runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Game(s)`;
+    runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Game(s)`;
+    numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} tie(s)`;
 })();
 
 gameBoardSetup = function() {
@@ -48,13 +48,13 @@ turnOnClickListener = function() {
                         div.textContent = "x";
                         turnCounter++;
                         if (turnCounter > 3) {
-                            checkWinCondition.winner();
+                            checkWinCondition.whoWon();
                         }
                     } else {
                         div.textContent = "o";
                         turnCounter++;
                         if (turnCounter > 3) {
-                            checkWinCondition.winner();
+                            checkWinCondition.whoWon();
                         }
                     }
                 }
@@ -109,9 +109,9 @@ gameOver = function() {
             winnerSymbolInAllSquares(winnerInput);
         }
         function updateWinCountText() {
-            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Games`;
-            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Games`;
-            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} ties`;
+            runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Game(s)`;
+            runningWinsP2.textContent = `${player2Name} Has Won ${player2WinCount} Game(s)`;
+            numberOfTies.textContent = `${player1Name} and ${player2Name} have had ${tieCounter} tie(s)`;
         }
         function winnerSymbolInAllSquares(winner) {
             resetBtn.style.display = '';
@@ -262,6 +262,6 @@ checkWinCondition = function() {
                 }
         }
     return {
-        winner: whoWon,
+        whoWon,
     }
 }();
