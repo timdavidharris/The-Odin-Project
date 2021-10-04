@@ -89,6 +89,11 @@ gameOver = function() {
         if (gamesPlayed === 0){
                 player1Name = prompt('Player 1, Please Type in Your Name');
                 player2Name = prompt('Player 2, Please Type in Your Name');
+                if (player1Name === null) {
+                    player1Name = "Player 1";
+                } if (player2Name === null) {
+                    player2Name = "Player 2";
+                }
         }
         if (winnerInput === 'x') {
             ++player1WinCount;
@@ -145,33 +150,33 @@ gameOver = function() {
         });
     };
     return {
-        end: endOfGame,
+        endOfGame,
     }
 }();
 
 winnerMessages = function() {
-    let oWinMessage = function() {
+    let oWon = function() {
         player1Turn.textContent = "Player 1 (X's) LOSES";
         player2Turn.textContent = "Player 2 (O's) WINS";
         let winnerO = 'o';
-        gameOver.end(winnerO);
+        gameOver.endOfGame(winnerO);
     }
-    let xWinMessage = function() {
+    let xWon = function() {
         player1Turn.textContent = "Player 1 (X's) WINS";
         player2Turn.textContent = "Player 2 (O's) LOSES";
         let winnerX = 'x';
-        gameOver.end(winnerX);
+        gameOver.endOfGame(winnerX);
     }
-    let tieMessage = function() {
+    let tie = function() {
         player1Turn.textContent = "IT'S A TIE";
         player2Turn.textContent = "";
         let winnerTie = 'tie';
-        gameOver.end(winnerTie);
+        gameOver.endOfGame(winnerTie);
     }
     return {
-        oWon: oWinMessage,
-        xWon: xWinMessage,
-        tie: tieMessage,
+        oWon,
+        xWon,
+        tie,
     }
 }();
 
