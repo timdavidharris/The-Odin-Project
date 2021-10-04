@@ -50,16 +50,15 @@ turnOnClickListener = function() {
                         if (turnCounter > 3) {
                             checkWinCondition.winner();
                         }
-                        updateText.updateTurnText();
                     } else {
                         div.textContent = "o";
                         turnCounter++;
                         if (turnCounter > 3) {
                             checkWinCondition.winner();
                         }
-                        updateText.updateTurnText();
                     }
                 }
+                updateText.updateTurnText();
             });
         });
     }
@@ -74,7 +73,7 @@ updateText = function() {
         if (player1Turn.textContent === "Player 1 (X's): GO") {
             player1Turn.textContent = "Player 1 (X's): WAIT";
             player2Turn.textContent = "Player 2 (O's): GO";
-        } else {
+        } else if (player1Turn.textContent === "Player 1 (X's): WAIT") {
             player1Turn.textContent = "Player 1 (X's): GO";
             player2Turn.textContent = "Player 2 (O's): WAIT";
         }
@@ -137,12 +136,12 @@ gameOver = function() {
                 let gameDivs = document.querySelectorAll('div');
                 gameDivs.forEach((div) => {
                     div.remove();
+                    player1Turn.textContent = "Player 1 (X's): GO";
+                    player2Turn.textContent = "Player 2 (O's): WAIT";
             });
             gameBoardSetup.gameBoard();
             turnOnClickListener.clickListener();
             ++gamesPlayed;
-            player1Turn.textContent = "Player 1 (X's): GO";
-            player2Turn.textContent = "Player 2 (O's): WAIT";
         });
     };
     return {
