@@ -5,14 +5,13 @@ const numberOfTies = document.getElementById('number-of-ties');
 const gameBoardSection = document.getElementById('Game-Board-Section');
 const player1Turn = document.getElementById('player-1-turn');
 const player2Turn = document.getElementById('player-2-turn');
-let player1Name = "Player 1";
-let player2Name = "Player 2";
-let tieCounter = 0;
-let player1WinCount = 0;
-let player2WinCount = 0;
-let gamesPlayed = 0;
 
 (initialTextContent = function() {
+    let player1Name = "Player 1";
+    let player2Name = "Player 2";
+    let tieCounter = 0;
+    let player1WinCount = 0;
+    let player2WinCount = 0;
     player1Turn.textContent = "Player 1 (X's): GO";
     player2Turn.textContent = "Player 2 (O's): WAIT";
     runningWinsP1.textContent = `${player1Name} Has Won ${player1WinCount} Game(s)`;
@@ -84,6 +83,12 @@ updateText = function() {
 }();
 
 gameOver = function() {
+    let player1Name = "Player 1";
+    let player2Name = "Player 2";
+    let tieCounter = 0;
+    let player1WinCount = 0;
+    let player2WinCount = 0;
+    let gamesPlayed = 0;
     let endOfGame = function(winner) {
         let winnerInput = winner;
         if (gamesPlayed === 0){
