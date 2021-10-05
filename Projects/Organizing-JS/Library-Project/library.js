@@ -5,28 +5,6 @@ const submitNewBookBtn = document.querySelector('#submit-btn');
 const addABookForm = document.querySelector('#book-form');
 const hideFormBtn = document.querySelector('#hide-form-btn');
 let myLibrary = [];
-// Books to start the library
-// book 1
-const artemisFowl = new Book();
-artemisFowl.title = "Artemis Fowl"
-artemisFowl.author = "Eoin Colfer"
-artemisFowl.pages = "396" 
-artemisFowl.read = "read"
-addBookToLibrary(artemisFowl);
-// book 2
-const nineteen84 = new Book();
-nineteen84.title = "1984"
-nineteen84.author = "George Orwell"
-nineteen84.pages = "298" 
-nineteen84.read = "read"
-addBookToLibrary(nineteen84);
-// book 3
-const Dune = new Book();
-Dune.title = "Dune"
-Dune.author = "Frank Herbert"
-Dune.pages = "688"
-Dune.read = "read"
-addBookToLibrary(Dune);
 
 // Functions Connected to Buttons Below
 
@@ -40,7 +18,7 @@ hideFormBtn.addEventListener('click', () => {
 });
 
 submitNewBookBtn.addEventListener('click', () => {
-    let newTitle = new Book();
+    let newTitle = new Book({information: 't:a:p:r'});
     formValidation(newTitle);
 });
 
@@ -86,14 +64,57 @@ function removeBook() {
     });
 }
 
-// Functions that create the books and book tiles/cards
+// Book Object (Class) Constructor and Books
 
-function Book(title, author, pages, read) {
-    this.title = title 
-    this.author = author 
-    this.pages = pages 
-    this.read = read
+class Book {
+    constructor({information}) {
+        this.information = information;
+    }
+    bookInfo() {
+        let title = this.title
+        let author = this.author
+        let pages = this.pages
+        let read = this.read
+
+        let output = this.information
+            .replace('t', title)
+            .replace('a', author)
+            .replace('p', pages)
+            .replace('r', read)
+    }
 }
+
+// Books to start the library
+// book 1
+const artemisFowl = new Book({information: 't:a:p:r'});
+artemisFowl.title = "Artemis Fowl"
+artemisFowl.author = "Eoin Colfer"
+artemisFowl.pages = "396" 
+artemisFowl.read = "read"
+addBookToLibrary(artemisFowl);
+// book 2
+const nineteen84 = new Book({information: 't:a:p:r'});
+nineteen84.title = "1984"
+nineteen84.author = "George Orwell"
+nineteen84.pages = "298" 
+nineteen84.read = "read"
+addBookToLibrary(nineteen84);
+// book 3
+const Dune = new Book({information: 't:a:p:r'});
+Dune.title = "Dune"
+Dune.author = "Frank Herbert"
+Dune.pages = "688"
+Dune.read = "read"
+addBookToLibrary(Dune);
+
+// function Book(title, author, pages, read) {
+//     this.title = title 
+//     this.author = author 
+//     this.pages = pages 
+//     this.read = read
+// }
+
+// Functions that manipulate the books and book tiles/cards
 
 function addBookToLibrary(book) {
     myLibrary[myLibrary.length] = book;
