@@ -81,6 +81,7 @@ class Book {
             .replace('a', author)
             .replace('p', pages)
             .replace('r', read)
+        return output;
     }
 }
 
