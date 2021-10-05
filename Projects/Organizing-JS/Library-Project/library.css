@@ -16,7 +16,7 @@ h2 {
 
 button {
     margin-top: 1em;
-    background-color: #89B0AE;
+    background-color: #faf9f9;
     border-radius: 5px;
 }
 
@@ -44,6 +44,13 @@ button {
 
 #submit-btn {
     margin-bottom: 5em;
+    background-color: #555B6E;
+    color: #faf9f9;
+}
+
+#add-book-btn {
+    background-color: #555B6E;
+    color: #faf9f9;
 }
 
 #book-cards {
