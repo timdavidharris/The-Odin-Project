@@ -53,6 +53,11 @@ button {
     color: #faf9f9;
 }
 
+#hide-form-btn {
+    background-color: #555B6E;
+    color: #faf9f9;
+}
+
 #book-cards {
     display: flex;
     flex-direction: row;
