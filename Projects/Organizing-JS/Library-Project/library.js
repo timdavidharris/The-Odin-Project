@@ -108,13 +108,6 @@ Dune.pages = "688"
 Dune.read = "read"
 addBookToLibrary(Dune);
 
-// function Book(title, author, pages, read) {
-//     this.title = title 
-//     this.author = author 
-//     this.pages = pages 
-//     this.read = read
-// }
-
 // Functions that manipulate the books and book tiles/cards
 
 function addBookToLibrary(book) {
