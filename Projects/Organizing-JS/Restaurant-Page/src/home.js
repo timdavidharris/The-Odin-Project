@@ -1,3 +1,3 @@
 export default function makeHomePage() {
-    console.log('are we home yet?');
+    console.log('home.js makeHomePage function is working'); 
 }

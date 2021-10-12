@@ -16,7 +16,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ makeHomePage)\n/* harmony export */ });\nfunction makeHomePage() {\n    console.log('are we home yet?');\n}\n\n//# sourceURL=webpack://restaurant-page/./src/home.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ makeHomePage)\n/* harmony export */ });\nfunction makeHomePage() {\n    console.log('home.js makeHomePage function is working'); \n}\n\n\n//# sourceURL=webpack://restaurant-page/./src/home.js?");
 
 /***/ })
 
