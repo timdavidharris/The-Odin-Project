@@ -4,7 +4,11 @@ export default function makeHomePage() {
     window.innerHTML = '<div id="content"></div>';
     const contentDiv = document.querySelector('#content');
     const homeImage = document.createElement('img');
-    homeImage.src = '../assets/images/burger-overhead-shot.jpg'
+    const homeLink = document.createElement('link');
+    homeLink.innerHTML = '<link rel="stylesheet" href="">HOME</link>';
+    homeLink.textContent = 'HOME';
+    homeImage.src = '../assets/images/burger-overhead-shot.jpg';
+    contentDiv.append(homeLink);
     contentDiv.append(homeImage);
     // btn code below
     // const btn = document.createElement('button');
