@@ -1,9 +1,8 @@
 import makeHomePage from './home.js';
 
 function component() {
-    console.log('Is this thing on?');
-    let home = makeHomePage;
-    return home;
+    console.log('this is totally easy');
+    return makeHomePage;
 }
 
 component();
