@@ -4,8 +4,8 @@ export default function makeHomePage() {
     window.innerHTML = '<div id="content"></div>';
     const contentDiv = document.querySelector('#content');
     const homeImage = document.createElement('img');
-    const homeLink = document.createElement('link');
-    homeLink.innerHTML = '<link rel="stylesheet" href="">HOME</link>';
+    const homeLink = document.createElement('a');
+    homeLink.setAttribute('href', '#');
     homeLink.textContent = 'HOME';
     homeImage.src = '../assets/images/burger-overhead-shot.jpg';
     contentDiv.append(homeLink);
