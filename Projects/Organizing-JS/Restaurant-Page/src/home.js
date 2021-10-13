@@ -5,13 +5,9 @@ export default function makeHomePage() {
     // creating elements
     const contentDiv = document.querySelector('#content');
     const homeImage = document.createElement('img');
-    const homeLink = document.createElement('a');
     const infoDiv = document.createElement('div');
-    homeLink.setAttribute('href', '#');
-    homeLink.textContent = 'HOME';
     homeImage.src = '../assets/images/burger-overhead-shot.jpg';
     // appending elements
-    contentDiv.append(homeLink);
     contentDiv.append(homeImage);
     contentDiv.append(infoDiv);
     // calling functions
