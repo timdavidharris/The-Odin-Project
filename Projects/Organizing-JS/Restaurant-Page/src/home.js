@@ -1,9 +1,7 @@
-export default function makeHomePage() {
-    console.log('makeHomePage() is working'); 
-    const window = document.body;
-    window.innerHTML = '<div id="content"></div>';
+export default function makeHomePage(contentDivInput) {
+    let contentDiv = contentDivInput;
+    console.log('makeHomePage() is working');
     // creating elements
-    const contentDiv = document.querySelector('#content');
     const homeImage = document.createElement('img');
     const infoDiv = document.createElement('div');
     homeImage.src = '../assets/images/burger-overhead-shot.jpg';
