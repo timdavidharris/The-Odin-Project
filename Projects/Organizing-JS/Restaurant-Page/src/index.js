@@ -10,12 +10,28 @@ function setSiteNav(input, div) {
     thisName = document.createElement('a');
     thisName.setAttribute('href', '#');
     thisName.setAttribute('data', input);
+    thisName.setAttribute('class', 'nav-link')
     thisName.textContent = theInput;
     contentDiv.append(thisName);
 }
 
+function checkPage() {
+    const link = document.querySelectorAll('.nav-link');
+    link.forEach((item) => {
+        item.addEventListener('click', () => {
+            console.log('you clicked a button')
+            if (item.dataset === 'HOME') {
+                makeHomePage(contentDiv);
+                console.log('you clicked the home button');
+            }
+        });
+    });
+}
 
-(function indexJS() {
+checkPage();
+
+
+function indexJS() {
     console.log('indexJS() is working');
     const window = document.body;
     window.innerHTML = '<div id="content"></div>';
@@ -27,7 +43,11 @@ function setSiteNav(input, div) {
     contentDiv.append(navBarDiv);
     makeHomePage(contentDiv);
     makeMenuPage(contentDiv);
-})();
+    return {
+        contentDiv,
+    }
+}
+indexJS();
 
 // const homeLink = document.createElement('a');
 // const menuLink = document.createElement('a');
