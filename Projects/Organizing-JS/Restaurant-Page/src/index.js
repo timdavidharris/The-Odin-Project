@@ -31,5 +31,3 @@ import './style.css';
         contactLink,
     }
 })();
-
-console.log(homeLink);
