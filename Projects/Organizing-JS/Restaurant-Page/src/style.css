@@ -9,3 +9,7 @@ div {
 img {
     max-width: 100%;
 }
+
+a {
+    padding: 1em 1em 1em 1em;
+}
