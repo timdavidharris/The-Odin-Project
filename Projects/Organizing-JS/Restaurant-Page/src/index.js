@@ -25,4 +25,11 @@ import './style.css';
     navBarDiv.append(contactLink);
     makeHomePage(contentDiv);
     makeMenuPage(contentDiv);
+    return {
+        homeLink,
+        menuLink,
+        contactLink,
+    }
 })();
+
+console.log(homeLink);
