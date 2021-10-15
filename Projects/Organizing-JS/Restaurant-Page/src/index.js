@@ -1,6 +1,6 @@
 import './style.css';
-import makeHomePage from './home.js';
-import makeMenuPage from './menu.js';
+import homePage from './home.js';
+import menuPage from './menu.js';
 import _ from 'lodash';
 
 const page = document.body;
@@ -23,11 +23,11 @@ function pageSwitcher() {
     pageLinks.forEach((link) => {
         link.addEventListener('click', () => {
             if (link.textContent === "HOME") {
-                makeMenuPage("OFF");
-                makeHomePage(contentDiv);
+                menuPage("OFF");
+                homePage(contentDiv);
             } else if (link.textContent === "MENU") {
-                makeHomePage("OFF");
-                makeMenuPage(contentDiv);
+                homePage("OFF");
+                menuPage(contentDiv);
             } else if (link.textContent === "CONTACT") {
                 console.log("CONTACT");
             }
@@ -35,8 +35,7 @@ function pageSwitcher() {
     });
 }
 
-function indexJS() {
-    console.log('indexJS() is working');
+function buildMenu() {
     const navBarDiv = document.createElement('div');
     setSiteNav('HOME');
     setSiteNav('MENU');
@@ -44,6 +43,6 @@ function indexJS() {
     contentDiv.append(navBarDiv);
     pageSwitcher();
 }
-indexJS();
-makeHomePage(contentDiv);
+buildMenu();
+homePage(contentDiv);
 
