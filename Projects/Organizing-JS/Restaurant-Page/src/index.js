@@ -47,15 +47,3 @@ function indexJS() {
 indexJS();
 makeHomePage(contentDiv);
 
-// const homeLink = document.createElement('a');
-// const menuLink = document.createElement('a');
-// const contactLink = document.createElement('a');
-// homeLink.setAttribute('href', '#');
-// menuLink.setAttribute('href', '#');
-// contactLink.setAttribute('href', '#');
-// homeLink.textContent = 'HOME';
-// menuLink.textContent = 'MENU';
-// contactLink.textContent = 'CONTACT';
-// navBarDiv.append(homeLink);
-// navBarDiv.append(menuLink);
-// navBarDiv.append(contactLink);
