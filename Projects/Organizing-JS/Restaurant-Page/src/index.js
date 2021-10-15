@@ -1,7 +1,7 @@
+import './style.css';
 import makeHomePage from './home.js';
 import makeMenuPage from './menu.js';
 import _ from 'lodash';
-import './style.css';
 
 const page = document.body;
 page.innerHTML = '<div id="content"></div>';
@@ -25,7 +25,7 @@ function pageSwitcher() {
             if (link.textContent === "HOME") {
                 makeHomePage(contentDiv);
             } else if (link.textContent === "MENU") {
-                console.log("MENU");
+                makeMenuPage(contentDiv);
             } else if (link.textContent === "CONTACT") {
                 console.log("CONTACT");
             }
@@ -44,7 +44,6 @@ function indexJS() {
 }
 indexJS();
 makeHomePage(contentDiv);
-makeMenuPage(contentDiv);
 
 // const homeLink = document.createElement('a');
 // const menuLink = document.createElement('a');

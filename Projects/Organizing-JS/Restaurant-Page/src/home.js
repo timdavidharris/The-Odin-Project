@@ -1,25 +1,31 @@
 import { first } from "lodash";
 
+let i = 0;
 export default function makeHomePage(contentDivInput) {
     console.log('makeHomePage() is working');
-    let contentDiv = contentDivInput;
-    // creating elements
-    const homeImage = document.createElement('img');
-    const infoDiv = document.createElement('div');
-    const reviewsDiv = document.createElement('div');
-    homeImage.src = '../assets/images/burger-overhead-shot.jpg';
-    // adding classes
-    homeImage.setAttribute('class', 'home');
-    infoDiv.setAttribute('class', 'home');
-    reviewsDiv.setAttribute('class', 'home');
-    // appending elements
-    contentDiv.append(homeImage);
-    contentDiv.append(infoDiv);
-    contentDiv.append(reviewsDiv);
-    // turn on display
-    // calling functions
-    infoDivText(infoDiv);
-    reviewsDivText(reviewsDiv);
+    if (i === 0) {
+        console.log(i);
+        let contentDiv = contentDivInput;
+        let homeDiv = document.createElement('div');
+        contentDiv.append(homeDiv);
+        // creating elements
+        const homeImage = document.createElement('img');
+        const infoDiv = document.createElement('div');
+        const reviewsDiv = document.createElement('div');
+        homeImage.src = '../assets/images/burger-overhead-shot.jpg';
+        // adding classes
+        homeDiv.setAttribute('class', 'page-div');
+        homeDiv.style.display = 'contents';
+        // appending elements
+        homeDiv.append(homeImage);
+        homeDiv.append(infoDiv);
+        homeDiv.append(reviewsDiv);
+        // turn on display
+        // calling functions
+        infoDivText(infoDiv);
+        reviewsDivText(reviewsDiv);
+    }
+    i++;
 }
 
 function infoDivText(input) {
@@ -45,4 +51,3 @@ function reviewsDivText(input) {
     reviewsDiv.append(secondQuote);
     reviewsDiv.append(secondQuotePerson);
 }
-
