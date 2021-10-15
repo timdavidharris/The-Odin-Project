@@ -2,8 +2,16 @@ import { first } from "lodash";
 
 let homeDiv = document.createElement('div');
 let i = 0;
-export default function makeHomePage(contentDivInput) {
-    console.log('makeHomePage() is working');
+export default function homePage(contentDiv) {
+    let contentDivInput = contentDiv;
+    createPage(contentDivInput);
+    homeDiv.style.display = 'contents';
+    if (contentDivInput === "OFF") {
+        homeDiv.style.display = 'none';
+    }
+}
+
+function createPage(contentDivInput) {
     if (i === 0) {
         let contentDiv = contentDivInput;
         contentDiv.append(homeDiv);
@@ -22,11 +30,7 @@ export default function makeHomePage(contentDivInput) {
         // calling functions
         infoDivText(infoDiv);
         reviewsDivText(reviewsDiv);
-    }
-    i++;
-    homeDiv.style.display = 'contents';
-    if (contentDivInput === "OFF") {
-        homeDiv.style.display = 'none';
+        i++;
     }
 }
 
