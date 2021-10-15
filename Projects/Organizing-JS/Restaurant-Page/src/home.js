@@ -1,12 +1,11 @@
 import { first } from "lodash";
 
+let homeDiv = document.createElement('div');
 let i = 0;
 export default function makeHomePage(contentDivInput) {
     console.log('makeHomePage() is working');
     if (i === 0) {
-        console.log(i);
         let contentDiv = contentDivInput;
-        let homeDiv = document.createElement('div');
         contentDiv.append(homeDiv);
         // creating elements
         const homeImage = document.createElement('img');
@@ -15,7 +14,6 @@ export default function makeHomePage(contentDivInput) {
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
         // adding classes
         homeDiv.setAttribute('class', 'page-div');
-        homeDiv.style.display = 'contents';
         // appending elements
         homeDiv.append(homeImage);
         homeDiv.append(infoDiv);
@@ -26,6 +24,10 @@ export default function makeHomePage(contentDivInput) {
         reviewsDivText(reviewsDiv);
     }
     i++;
+    homeDiv.style.display = 'contents';
+    if (contentDivInput === "OFF") {
+        homeDiv.style.display = 'none';
+    }
 }
 
 function infoDivText(input) {

@@ -23,8 +23,10 @@ function pageSwitcher() {
     pageLinks.forEach((link) => {
         link.addEventListener('click', () => {
             if (link.textContent === "HOME") {
+                makeMenuPage("OFF");
                 makeHomePage(contentDiv);
             } else if (link.textContent === "MENU") {
+                makeHomePage("OFF");
                 makeMenuPage(contentDiv);
             } else if (link.textContent === "CONTACT") {
                 console.log("CONTACT");
