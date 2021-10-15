@@ -3,10 +3,13 @@ import makeMenuPage from './menu.js';
 import _ from 'lodash';
 import './style.css';
 
-function setSiteNav(input, div) {
+const page = document.body;
+page.innerHTML = '<div id="content"></div>';
+const contentDiv = document.querySelector('#content');
+
+function setSiteNav(input) {
     let thisName = '';
     let theInput = input;
-    let contentDiv = div;
     thisName = document.createElement('a');
     thisName.setAttribute('href', '#');
     thisName.setAttribute('data', input);
@@ -15,39 +18,33 @@ function setSiteNav(input, div) {
     contentDiv.append(thisName);
 }
 
-function checkPage() {
-    const link = document.querySelectorAll('.nav-link');
-    link.forEach((item) => {
-        item.addEventListener('click', () => {
-            console.log('you clicked a button')
-            if (item.dataset === 'HOME') {
+function pageSwitcher() {
+    const pageLinks = document.querySelectorAll('.nav-link');
+    pageLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (link.textContent === "HOME") {
                 makeHomePage(contentDiv);
-                console.log('you clicked the home button');
+            } else if (link.textContent === "MENU") {
+                console.log("MENU");
+            } else if (link.textContent === "CONTACT") {
+                console.log("CONTACT");
             }
         });
     });
 }
 
-checkPage();
-
-
 function indexJS() {
     console.log('indexJS() is working');
-    const window = document.body;
-    window.innerHTML = '<div id="content"></div>';
-    const contentDiv = document.querySelector('#content');
     const navBarDiv = document.createElement('div');
-    setSiteNav('HOME', contentDiv);
-    setSiteNav('MENU', contentDiv);
-    setSiteNav('CONTACT', contentDiv);
+    setSiteNav('HOME');
+    setSiteNav('MENU');
+    setSiteNav('CONTACT');
     contentDiv.append(navBarDiv);
-    makeHomePage(contentDiv);
-    makeMenuPage(contentDiv);
-    return {
-        contentDiv,
-    }
+    pageSwitcher();
 }
 indexJS();
+makeHomePage(contentDiv);
+makeMenuPage(contentDiv);
 
 // const homeLink = document.createElement('a');
 // const menuLink = document.createElement('a');

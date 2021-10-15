@@ -1,17 +1,22 @@
 import { first } from "lodash";
 
 export default function makeHomePage(contentDivInput) {
-    let contentDiv = contentDivInput;
     console.log('makeHomePage() is working');
+    let contentDiv = contentDivInput;
     // creating elements
     const homeImage = document.createElement('img');
     const infoDiv = document.createElement('div');
     const reviewsDiv = document.createElement('div');
     homeImage.src = '../assets/images/burger-overhead-shot.jpg';
+    // adding classes
+    homeImage.setAttribute('class', 'home');
+    infoDiv.setAttribute('class', 'home');
+    reviewsDiv.setAttribute('class', 'home');
     // appending elements
     contentDiv.append(homeImage);
     contentDiv.append(infoDiv);
     contentDiv.append(reviewsDiv);
+    // turn on display
     // calling functions
     infoDivText(infoDiv);
     reviewsDivText(reviewsDiv);
@@ -40,3 +45,4 @@ function reviewsDivText(input) {
     reviewsDiv.append(secondQuote);
     reviewsDiv.append(secondQuotePerson);
 }
+
