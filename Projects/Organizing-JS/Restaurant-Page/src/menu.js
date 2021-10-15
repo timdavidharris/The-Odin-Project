@@ -2,8 +2,7 @@ import { first } from "lodash";
 
 let menuDiv = document.createElement('div');
 let i = 0;
-export default function makeMenuPage(contentDivInput) {
-    console.log('makeMenuPage() is working');
+export default function menuPage(contentDivInput) {
     if (i === 0) {
         let contentDiv = contentDivInput;
         contentDiv.append(menuDiv);
