@@ -1,37 +1,28 @@
-import { first } from "lodash";
+import _ from "lodash";
 
-let homeDiv = document.createElement('div');
 let i = 0;
-export default function homePage(contentDiv) {
-    let contentDivInput = contentDiv;
-    createPage(contentDivInput);
-    homeDiv.style.display = 'contents';
-    if (contentDivInput === "OFF") {
-        homeDiv.style.display = 'none';
-    }
-}
+let homeDiv = document.createElement('div');
 
-function createPage(contentDivInput) {
+export default function homePage(contentDivInput) {
+    let contentDiv = contentDivInput;
+    if (contentDiv === null) {
+        return homeDiv.style.display = 'none';
+    }
     if (i === 0) {
-        let contentDiv = contentDivInput;
         contentDiv.append(homeDiv);
-        // creating elements
         const homeImage = document.createElement('img');
         const infoDiv = document.createElement('div');
         const reviewsDiv = document.createElement('div');
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
-        // adding classes
         homeDiv.setAttribute('class', 'page-div');
-        // appending elements
         homeDiv.append(homeImage);
         homeDiv.append(infoDiv);
         homeDiv.append(reviewsDiv);
-        // turn on display
-        // calling functions
         infoDivText(infoDiv);
         reviewsDivText(reviewsDiv);
         i++;
     }
+    homeDiv.style.display = 'contents'; 
 }
 
 function infoDivText(input) {

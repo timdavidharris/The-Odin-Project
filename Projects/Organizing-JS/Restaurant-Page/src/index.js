@@ -1,6 +1,7 @@
 import './style.css';
 import homePage from './home.js';
 import menuPage from './menu.js';
+import contactPage from './contact';
 import _ from 'lodash';
 
 const page = document.body;
@@ -23,13 +24,17 @@ function pageSwitcher() {
     pageLinks.forEach((link) => {
         link.addEventListener('click', () => {
             if (link.textContent === "HOME") {
-                menuPage("OFF");
                 homePage(contentDiv);
+                menuPage(null);
+                contactPage(null);
             } else if (link.textContent === "MENU") {
-                homePage("OFF");
                 menuPage(contentDiv);
+                homePage(null);
+                contactPage(null);
             } else if (link.textContent === "CONTACT") {
-                console.log("CONTACT");
+                contactPage(contentDiv);
+                menuPage(null);
+                homePage(null);
             }
         });
     });
