@@ -2,9 +2,18 @@ body {
     text-align: center;
 }
 
-.nav-bar-div {
-    padding: 0.5em 1em 0.5em 1em;
+.nav-bar-div, a {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     font-size: larger;
+    background-color: black;
+    color: white;
+}
+
+.nav-bar-div {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin: 10px;
+    border-radius: 5%;
 }
 
 p {
@@ -17,11 +26,11 @@ p {
 }
 
 img {
+    width: 100%;
     max-width: 800px;
-    padding-top: 1em;
+    height: auto;
+    padding: auto;
+    border-radius: 15%;
 }
 
-a {
-    padding: 1em 1em 1em 1em;
-}
 
