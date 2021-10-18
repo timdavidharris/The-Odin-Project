@@ -47,7 +47,7 @@ function menuDivText(theBurgers, theSides, theDrinks) {
     drinks.textContent = "DRINKS & SHAKES\r\n";
     drinks.textContent += "Fountain Drinks: $3\r\n";
     drinks.textContent += "Bottled Drinks: $3\r\n";
-    drinks.textContent += "Shakes: $8r\n";
+    drinks.textContent += "Shakes: $8\r\n";
     drinks.textContent += "Shake addons: $1 each\r\n";
     drinks.textContent += "Chocolate, Reese's, Strawberry\r\n";
 }

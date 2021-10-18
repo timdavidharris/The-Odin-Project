@@ -2,20 +2,23 @@ body {
     text-align: center;
 }
 
-#nav-link {
-    padding: 1em 1em 1em 1em;
+.nav-bar-div {
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: larger;
+}
+
+p {
+    font-size: large;
 }
 
 .page-div {
     padding: 1em 1em 1em 1em;
-}
-
-.page-div {
     display: none;
 }
 
 img {
     max-width: 800px;
+    padding-top: 1em;
 }
 
 a {
