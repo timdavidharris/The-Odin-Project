@@ -9,14 +9,15 @@ export default function homePage(contentDivInput) {
     if (i === 0) {
         contentDiv.append(homeDiv);
         const homeImage = document.createElement('img');
-        const infoDiv = document.createElement('div');
+        const infoP = document.createElement('p');
         const reviewsDiv = document.createElement('div');
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
         homeDiv.setAttribute('class', 'page-div');
+        homeDiv.setAttribute('style', 'white-space: pre;');
         homeDiv.append(homeImage);
-        homeDiv.append(infoDiv);
+        homeDiv.append(infoP);
         homeDiv.append(reviewsDiv);
-        infoDivText(infoDiv);
+        infoDivText(infoP);
         reviewsDivText(reviewsDiv);
         i++;
     }
@@ -24,11 +25,14 @@ export default function homePage(contentDivInput) {
 }
 
 function infoDivText(input) {
-    let infoDiv = input;
-    infoDiv.textContent = 'Welcome to Tim\'s Burgers! ' +
-        'We are a local, family-owned business that focuses on one thing: ' +
-        'making the best damn burger you\'ve ever had. ' +
-        'Please place an order online or come in person to see for yourself!'
+    let infoP = input;
+    infoP.textContent = "HOURS:\r\n";
+    infoP.textContent += "M-F - 10:10 AM to 10:10 PM\r\n";
+    infoP.textContent += "Sat & Sun - 9:45 AM to 11:00 PM\r\n\r\n";
+    infoP.textContent += 'Welcome to Tim\'s Burgers!\r\n';
+    infoP.textContent += 'We are a local, family-owned business that focuses on one thing:\r\n';
+    infoP.textContent += 'making the best damn burger you\'ve ever had.\r\n';
+    infoP.textContent += 'Please place an order online or come in person to see for yourself!\r\n';
 }
 
 function reviewsDivText(input) {
