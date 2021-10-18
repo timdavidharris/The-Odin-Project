@@ -8,15 +8,16 @@ const page = document.body;
 page.innerHTML = '<div id="content"></div>';
 const contentDiv = document.querySelector('#content');
 
-function setSiteNav(input) {
+function setSiteNav(input, div) {
     let thisName = '';
     let theInput = input;
+    let navBarDiv = div;
     thisName = document.createElement('a');
     thisName.setAttribute('href', '#');
-    thisName.setAttribute('data', input);
+    thisName.setAttribute('data', theInput);
     thisName.setAttribute('class', 'nav-link')
     thisName.textContent = theInput;
-    contentDiv.append(thisName);
+    navBarDiv.append(thisName);
 }
 
 function pageSwitcher() {
@@ -42,12 +43,13 @@ function pageSwitcher() {
 
 function buildMenu() {
     const navBarDiv = document.createElement('div');
-    setSiteNav('HOME');
-    setSiteNav('MENU');
-    setSiteNav('CONTACT');
+    navBarDiv.setAttribute('class', 'nav-bar-div');
+    setSiteNav('HOME', navBarDiv);
+    setSiteNav('MENU', navBarDiv);
+    setSiteNav('CONTACT', navBarDiv);
     contentDiv.append(navBarDiv);
+    console.log(navBarDiv);
     pageSwitcher();
 }
 buildMenu();
 homePage(contentDiv);
-
