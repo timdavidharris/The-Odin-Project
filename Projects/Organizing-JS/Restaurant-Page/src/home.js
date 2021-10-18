@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { first } from "lodash";
 
 let i = 0;
 let homeDiv = document.createElement('div');
