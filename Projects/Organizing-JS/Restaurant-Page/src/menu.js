@@ -12,20 +12,23 @@ export default function menuPage(contentDivInput) {
         const menuImage = document.createElement('img');
         const burgers = document.createElement('p');
         const sides = document.createElement('p');
+        const drinks = document.createElement('p');
+        drinks.setAttribute('style', 'white-space: pre;');
         burgers.setAttribute('style', 'white-space: pre;');
         sides.setAttribute('style', 'white-space: pre;');
         menuImage.setAttribute('class', 'menu');
         menuImage.src = '../assets/images/burger-on-a-tray.jpg';
         menuDiv.append(menuImage);
-        menuDivText(burgers, sides);
+        menuDivText(burgers, sides, drinks);
         menuDiv.append(burgers);
         menuDiv.append(sides);
+        menuDiv.append(drinks);
         i++;
     }
     menuDiv.style.display = 'contents';
 }
 
-function menuDivText(theBurgers, theSides) {
+function menuDivText(theBurgers, theSides, theDrinks) {
     let burgers = theBurgers;
     burgers.textContent = "BURGERS\r\n";
     burgers.textContent += "PVT Classic: $10\r\n";
@@ -40,4 +43,11 @@ function menuDivText(theBurgers, theSides) {
     sides.textContent += "Large Fries: $7\r\n";
     sides.textContent += "Loaded Fries (Medium): $8\r\n";
     sides.textContent += "Sweet Potato Fries: + $1.50\r\n";
+    let drinks = theDrinks;
+    drinks.textContent = "DRINKS & SHAKES\r\n";
+    drinks.textContent += "Fountain Drinks: $3\r\n";
+    drinks.textContent += "Bottled Drinks: $3\r\n";
+    drinks.textContent += "Shakes: $8r\n";
+    drinks.textContent += "Shake addons: $1 each\r\n";
+    drinks.textContent += "Chocolate, Reese's, Strawberry\r\n";
 }
