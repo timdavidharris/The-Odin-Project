@@ -1,27 +1,25 @@
-import { first } from "lodash";
-
 let i = 0;
 let menuDiv = document.createElement('div');
 
 export default function menuPage(contentDivInput) {
     let contentDiv = contentDivInput;
-        if (i === 0) {
-            contentDiv.append(menuDiv);
-            menuDiv.setAttribute('class', 'page-div');
-            const menuImage = document.createElement('img');
-            const theMenu = document.createElement('div');
-            theMenu.setAttribute('style', 'white-space: pre;');
-            menuImage.setAttribute('class', 'menu');
-            menuImage.src = '../assets/images/burger-on-a-tray.jpg';
-            menuDiv.append(menuImage);
-            menuDivText(theMenu);
-            menuDiv.append(theMenu);
-            i++;
-        }
-        menuDiv.style.display = 'contents';
-        if (contentDivInput === null) {
-            return menuDiv.style.display = 'none';
-        }
+    if (contentDivInput === null) {
+        return menuDiv.style.display = 'none';
+    }
+    if (i === 0) {
+        contentDiv.append(menuDiv);
+        menuDiv.setAttribute('class', 'page-div');
+        const menuImage = document.createElement('img');
+        const theMenu = document.createElement('div');
+        theMenu.setAttribute('style', 'white-space: pre;');
+        menuImage.setAttribute('class', 'menu');
+        menuImage.src = '../assets/images/burger-on-a-tray.jpg';
+        menuDiv.append(menuImage);
+        menuDivText(theMenu);
+        menuDiv.append(theMenu);
+        i++;
+    }
+    menuDiv.style.display = 'contents';
 }
 
 function menuDivText(input) {
