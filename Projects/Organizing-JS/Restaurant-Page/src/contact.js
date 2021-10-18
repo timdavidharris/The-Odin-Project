@@ -25,8 +25,8 @@ export default function contactPage(contentDivInput) {
 
 function contactText(contactP) {
     let p = contactP;
-    p.textContent = "Phone: (800) 000-1111\r\n";
-    p.textContent += "Email: eat@timsburgers.com\r\n";
-    p.textContent += "Address: 1772 E. Dino St\r\n"
+    p.textContent = "PHONE: (800) 000-1111\r\n";
+    p.textContent += "EMAIL: eat@timsburgers.com\r\n";
+    p.textContent += "ADDRESS: 1772 E. Dino St\r\n"
     p.textContent += "This City, NV 010101"
 }
