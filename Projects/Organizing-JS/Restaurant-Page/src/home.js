@@ -8,12 +8,17 @@ export default function homePage(contentDivInput) {
     }
     if (i === 0) {
         contentDiv.append(homeDiv);
+        const homeHeaderDiv = document.createElement('div');
+        const homeHeaderH1 = document.createElement('h1');
         const homeImage = document.createElement('img');
         const infoP = document.createElement('p');
         const reviewsDiv = document.createElement('div');
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
         homeDiv.setAttribute('class', 'page-div');
         homeDiv.setAttribute('style', 'white-space: pre;');
+        homeHeaderH1.textContent = "TIM'S BURGERS";
+        homeHeaderDiv.append(homeHeaderH1);
+        homeDiv.append(homeHeaderDiv);
         homeDiv.append(homeImage);
         homeDiv.append(infoP);
         homeDiv.append(reviewsDiv);

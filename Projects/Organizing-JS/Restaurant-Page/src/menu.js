@@ -9,6 +9,8 @@ export default function menuPage(contentDivInput) {
     if (i === 0) {
         contentDiv.append(menuDiv);
         menuDiv.setAttribute('class', 'page-div');
+        const menuHeaderDiv = document.createElement('div');
+        const menuHeaderH1 = document.createElement('h1');
         const menuImage = document.createElement('img');
         const burgers = document.createElement('p');
         const sides = document.createElement('p');
@@ -18,6 +20,9 @@ export default function menuPage(contentDivInput) {
         sides.setAttribute('style', 'white-space: pre;');
         menuImage.setAttribute('class', 'menu');
         menuImage.src = '../assets/images/burger-on-a-tray.jpg';
+        menuHeaderH1.textContent = "MENU";
+        menuHeaderDiv.append(menuHeaderH1);
+        menuDiv.append(menuHeaderDiv);
         menuDiv.append(menuImage);
         menuDivText(burgers, sides, drinks);
         menuDiv.append(burgers);

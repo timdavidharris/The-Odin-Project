@@ -8,6 +8,8 @@ export default function contactPage(contentDivInput) {
     }
     if (i === 0) {
         contentDiv.append(contactDiv);
+        const contactHeaderDiv = document.createElement('div');
+        const contactHeaderH1 = document.createElement('h1');
         const contactImage = document.createElement('img');
         const contactInfoDiv = document.createElement('div');
         const contactP = document.createElement('p');
@@ -15,6 +17,9 @@ export default function contactPage(contentDivInput) {
         contactInfoDiv.setAttribute('style', 'white-space: pre;');
         contactImage.src = '../assets/images/burger-prep.jpg';
         contactDiv.setAttribute('class', 'page-div');
+        contactHeaderH1.textContent = "CONTACT";
+        contactHeaderDiv.append(contactHeaderH1);
+        contactDiv.append(contactHeaderDiv);
         contactDiv.append(contactImage);
         contactDiv.append(contactInfoDiv);
         contactInfoDiv.append(contactP);
