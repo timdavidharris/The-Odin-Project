@@ -37,13 +37,13 @@ function infoDivText(input) {
 
 function reviewsDivText(input) {
     let reviewsDiv = input;
-    const firstQuote = document.createElement('q');
-    const secondQuote = document.createElement('q');
+    const firstQuote = document.createElement('p');
+    const secondQuote = document.createElement('p');
     const firstQuotePerson = document.createElement('p');
     const secondQuotePerson = document.createElement('p');
-    firstQuote.textContent = 'These burgers literally blew my mind. Don\'t miss an opportunity to get your mind blown';
+    firstQuote.textContent = '"These burgers literally blew my mind. \r\nDon\'t miss an opportunity to get your mind blown"';
     firstQuotePerson.textContent = '~ Simon from Uptown'
-    secondQuote.textContent = 'I thought that I\'d had a good burger before I tried Tim\'s. I was wrong.'
+    secondQuote.textContent = '"I thought that I\'d had a good burger before I tried Tim\'s. \r\nI was wrong."'
     secondQuotePerson.textContent = '~ Guy Fieri'
     reviewsDiv.append(firstQuote);
     reviewsDiv.append(firstQuotePerson);
