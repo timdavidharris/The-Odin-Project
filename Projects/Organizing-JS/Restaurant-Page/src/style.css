@@ -39,8 +39,12 @@ img {
     display: none;
 }
 
+.image-credit {
+    padding-top: 3em;
+}
+
 #content {
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 @media (max-width: 855px) {

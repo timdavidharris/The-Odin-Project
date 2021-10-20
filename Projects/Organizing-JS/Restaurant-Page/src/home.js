@@ -13,6 +13,9 @@ export default function homePage(contentDivInput) {
         const homeImage = document.createElement('img');
         const infoP = document.createElement('p');
         const reviewsDiv = document.createElement('div');
+        const imageCredit = document.createElement('p');
+        imageCredit.setAttribute('class', 'image-credit');
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@danielcgold?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Gold</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
         homeDiv.setAttribute('class', 'page-div');
         homeDiv.setAttribute('style', 'white-space: pre;');
@@ -22,6 +25,7 @@ export default function homePage(contentDivInput) {
         homeDiv.append(homeImage);
         homeDiv.append(infoP);
         homeDiv.append(reviewsDiv);
+        homeDiv.append(imageCredit);
         infoDivText(infoP);
         reviewsDivText(reviewsDiv);
         i++;
@@ -55,3 +59,4 @@ function reviewsDivText(input) {
     reviewsDiv.append(secondQuote);
     reviewsDiv.append(secondQuotePerson);
 }
+
