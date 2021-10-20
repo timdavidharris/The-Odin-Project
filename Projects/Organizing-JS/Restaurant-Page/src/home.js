@@ -40,7 +40,7 @@ function infoDivText(input) {
     infoP.textContent += "Sat & Sun - 9:45 AM to 11:00 PM\r\n\r\n";
     infoP.textContent += 'Welcome to Tim\'s Burgers!\r\n';
     infoP.textContent += 'We are a local, family-owned business that focuses on one thing:\r\n';
-    infoP.textContent += 'making the best damn burger you\'ve ever had.\r\n';
+    infoP.textContent += 'making the best burger you\'ve ever had.\r\n';
     infoP.textContent += 'Please place an order online or come in person to see for yourself!\r\n';
 }
 
