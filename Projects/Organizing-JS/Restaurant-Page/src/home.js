@@ -39,9 +39,11 @@ function infoDivText(input) {
     infoP.textContent += "M-F - 10:10 AM to 10:10 PM\r\n";
     infoP.textContent += "Sat & Sun - 9:45 AM to 11:00 PM\r\n\r\n";
     infoP.textContent += 'Welcome to Tim\'s Burgers!\r\n';
-    infoP.textContent += 'We are a local, family-owned business that focuses on one thing:\r\n';
+    infoP.textContent += 'We are a local, family-owned business\r\n'
+    infoP.textContent += 'that focuses on one thing:\r\n';
     infoP.textContent += 'making the best burger you\'ve ever had.\r\n';
-    infoP.textContent += 'Please place an order online or come in person to see for yourself!\r\n';
+    infoP.textContent += 'Please place an order online or come in person\r\n'
+    infoP.textContent += 'to see for yourself!\r\n';
 }
 
 function reviewsDivText(input) {
@@ -52,7 +54,7 @@ function reviewsDivText(input) {
     const secondQuotePerson = document.createElement('p');
     firstQuote.textContent = '"These burgers literally blew my mind. \r\nDon\'t miss an opportunity to get your mind blown"';
     firstQuotePerson.textContent = '~ Simon from Uptown'
-    secondQuote.textContent = '"I thought that I\'d had a good burger before I tried Tim\'s. \r\nI was wrong."'
+    secondQuote.textContent = '"I thought I\'d had a good burger before I tried Tim\'s. \r\nI was wrong."'
     secondQuotePerson.textContent = '~ Guy Fieri'
     reviewsDiv.append(firstQuote);
     reviewsDiv.append(firstQuotePerson);

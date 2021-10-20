@@ -24,6 +24,7 @@ img {
     font-size: larger;
     background-color: black;
     color: white;
+    overflow-wrap: break-word;
 }
 
 .nav-bar-div {
@@ -45,13 +46,14 @@ img {
 
 #content {
     padding-bottom: 1em;
+    width: inherit;
 }
 
 @media (max-width: 855px) {
     .nav-bar-div {
         display: flex;
         justify-content: center;
-        max-width: 100vh;
+        width: inherit;
     }
 }
 
@@ -59,11 +61,21 @@ img {
     p {
         font-size: medium;
     }
+    .nav-bar-div {
+        display: flex;
+        justify-content: center;
+        width: inherit;
+    }
 }
 
 @media (max-width: 600px) {
     p {
         font-size: 15px;
+    }
+    .nav-bar-div {
+        display: flex;
+        justify-content: center;
+        width: inherit;
     }
     .nav-bar-div, a {
         font-size: large;
