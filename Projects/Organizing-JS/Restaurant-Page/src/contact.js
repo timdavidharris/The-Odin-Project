@@ -13,6 +13,9 @@ export default function contactPage(contentDivInput) {
         const contactImage = document.createElement('img');
         const contactInfoDiv = document.createElement('div');
         const contactP = document.createElement('p');
+        const imageCredit = document.createElement('p');
+        imageCredit.setAttribute('class', 'image-credit');
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@jessonmata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jesson Mata</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
         contactText(contactP);
         contactInfoDiv.setAttribute('style', 'white-space: pre;');
         contactImage.src = '../assets/images/burger-prep.jpg';
@@ -23,6 +26,7 @@ export default function contactPage(contentDivInput) {
         contactDiv.append(contactImage);
         contactDiv.append(contactInfoDiv);
         contactInfoDiv.append(contactP);
+        contactDiv.append(imageCredit);
         i++;
     }
     contactDiv.style.display = 'contents';

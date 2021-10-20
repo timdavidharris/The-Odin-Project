@@ -15,6 +15,9 @@ export default function menuPage(contentDivInput) {
         const burgers = document.createElement('p');
         const sides = document.createElement('p');
         const drinks = document.createElement('p');
+        const imageCredit = document.createElement('p');
+        imageCredit.setAttribute('class', 'image-credit');
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@bimoluki02?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bimo Luki</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
         drinks.setAttribute('style', 'white-space: pre;');
         burgers.setAttribute('style', 'white-space: pre;');
         sides.setAttribute('style', 'white-space: pre;');
@@ -28,6 +31,7 @@ export default function menuPage(contentDivInput) {
         menuDiv.append(burgers);
         menuDiv.append(sides);
         menuDiv.append(drinks);
+        menuDiv.append(imageCredit);
         i++;
     }
     menuDiv.style.display = 'contents';
