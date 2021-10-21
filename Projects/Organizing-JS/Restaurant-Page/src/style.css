@@ -8,14 +8,7 @@ img {
     border-radius: 15%;
 }
 
-#content {
-    width: 100%;
-    max-width: 800px;
-    font-size: large;
-    display: inline-block;
-}
-
-.nav-bar-div, a {
+a {
     padding-left: 0.5em;
     padding-right: 0.5em;
     font-size: larger;
@@ -24,11 +17,21 @@ img {
 }
 
 .nav-bar-div {
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    margin: 10px;
-    display: inline-block;
-    max-width: 800px;
+    font-size: larger;
     width: 100%;
+    max-width: 800px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display: inline-block;
+    background-color: black;
+    color: white;
+}
+
+#content {
+    width: 100%;
+    max-width: 800px;
+    font-size: large;
+    display: inline-block;
 }
 
 #home-div {
