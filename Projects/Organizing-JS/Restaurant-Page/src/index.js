@@ -2,6 +2,7 @@ import './style.css';
 import homePage from './home.js';
 import menuPage from './menu.js';
 import contactPage from './contact';
+import pageSwitcher from './page-switcher';
 import _ from 'lodash';
 
 const page = document.body;
@@ -24,7 +25,6 @@ function buildMenu() {
     setSiteNav('MENU', navBarDiv);
     setSiteNav('CONTACT', navBarDiv);
     contentDiv.append(navBarDiv);
-    pageSwitcher();
 }
 buildMenu();
 
@@ -44,27 +44,8 @@ function setSiteNav(input, div) {
     navBarDiv.append(thisName);
 }
 
-function pageSwitcher() {
-    const pageLinks = document.querySelectorAll('.nav-link');
-    pageLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-            if (link.textContent === "HOME") {
-                homeDiv.style.display = 'contents';
-                menuDiv.style.display = 'none';
-                contactDiv.style.display = 'none';
-            } else if (link.textContent === "MENU") {
-                homeDiv.style.display = 'none';
-                menuDiv.style.display = 'contents';
-                contactDiv.style.display = 'none';
-            } else if (link.textContent === "CONTACT") {
-                homeDiv.style.display = 'none';
-                menuDiv.style.display = 'none';
-                contactDiv.style.display = 'contents';
-            }
-        });
-    });
-}
-
 homePage(homeDiv);
 menuPage(menuDiv);
 contactPage(contactDiv);
+pageSwitcher(homeDiv, menuDiv, contactDiv);
+homeDiv.style.display = 'contents';
