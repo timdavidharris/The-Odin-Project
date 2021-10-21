@@ -8,6 +8,30 @@ const page = document.body;
 page.innerHTML = '<div id="content"></div>';
 const contentDiv = document.querySelector('#content');
 
+const homeDiv = document.createElement('div');
+homeDiv.setAttribute('id', 'home-div');
+
+const menuDiv = document.createElement('div');
+menuDiv.setAttribute('id', 'menu-div');
+
+const contactDiv = document.createElement('div');
+contactDiv.setAttribute('id', 'contact-div');
+
+function buildMenu() {
+    const navBarDiv = document.createElement('div');
+    navBarDiv.setAttribute('class', 'nav-bar-div');
+    setSiteNav('HOME', navBarDiv);
+    setSiteNav('MENU', navBarDiv);
+    setSiteNav('CONTACT', navBarDiv);
+    contentDiv.append(navBarDiv);
+    pageSwitcher();
+}
+buildMenu();
+
+contentDiv.append(homeDiv);
+contentDiv.append(menuDiv);
+contentDiv.append(contactDiv);
+
 function setSiteNav(input, div) {
     let thisName = '';
     let theInput = input;
@@ -25,31 +49,22 @@ function pageSwitcher() {
     pageLinks.forEach((link) => {
         link.addEventListener('click', () => {
             if (link.textContent === "HOME") {
-                homePage(contentDiv);
-                menuPage(null);
-                contactPage(null);
+                homeDiv.style.display = 'contents';
+                menuDiv.style.display = 'none';
+                contactDiv.style.display = 'none';
             } else if (link.textContent === "MENU") {
-                menuPage(contentDiv);
-                homePage(null);
-                contactPage(null);
+                homeDiv.style.display = 'none';
+                menuDiv.style.display = 'contents';
+                contactDiv.style.display = 'none';
             } else if (link.textContent === "CONTACT") {
-                contactPage(contentDiv);
-                menuPage(null);
-                homePage(null);
+                homeDiv.style.display = 'none';
+                menuDiv.style.display = 'none';
+                contactDiv.style.display = 'contents';
             }
         });
     });
 }
 
-function buildMenu() {
-    const navBarDiv = document.createElement('div');
-    navBarDiv.setAttribute('class', 'nav-bar-div');
-    setSiteNav('HOME', navBarDiv);
-    setSiteNav('MENU', navBarDiv);
-    setSiteNav('CONTACT', navBarDiv);
-    contentDiv.append(navBarDiv);
-    console.log(navBarDiv);
-    pageSwitcher();
-}
-buildMenu();
-homePage(contentDiv);
+homePage(homeDiv);
+menuPage(menuDiv);
+contactPage(contactDiv);

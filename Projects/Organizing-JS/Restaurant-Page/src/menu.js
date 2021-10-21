@@ -1,13 +1,8 @@
-let i = 0;
-let menuDiv = document.createElement('div');
+let pageBuilt = false;
 
-export default function menuPage(contentDivInput) {
-    let contentDiv = contentDivInput;
-    if (contentDivInput === null) {
-        return menuDiv.style.display = 'none';
-    }
-    if (i === 0) {
-        contentDiv.append(menuDiv);
+export default function menuPage(menuDivInput) {
+    let menuDiv = menuDivInput;
+    if (pageBuilt === false) {
         menuDiv.setAttribute('class', 'page-div');
         const menuHeaderDiv = document.createElement('div');
         const menuHeaderH1 = document.createElement('h1');
@@ -32,9 +27,8 @@ export default function menuPage(contentDivInput) {
         menuDiv.append(sides);
         menuDiv.append(drinks);
         menuDiv.append(imageCredit);
-        i++;
+        pageBuilt = true;
     }
-    menuDiv.style.display = 'contents';
 }
 
 function menuDivText(theBurgers, theSides, theDrinks) {

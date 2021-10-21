@@ -1,13 +1,8 @@
-let i = 0;
-let contactDiv = document.createElement('div');
+let pageBuilt = false;
 
-export default function contactPage(contentDivInput) {
-    let contentDiv = contentDivInput;
-    if (contentDiv === null) {
-        return contactDiv.style.display = 'none';
-    }
-    if (i === 0) {
-        contentDiv.append(contactDiv);
+export default function contactPage(contactDivInput) {
+    let contactDiv = contactDivInput;
+    if (pageBuilt === false) {
         const contactHeaderDiv = document.createElement('div');
         const contactHeaderH1 = document.createElement('h1');
         const contactImage = document.createElement('img');
@@ -27,9 +22,8 @@ export default function contactPage(contentDivInput) {
         contactDiv.append(contactInfoDiv);
         contactInfoDiv.append(contactP);
         contactDiv.append(imageCredit);
-        i++;
+        pageBuilt = true;
     }
-    contactDiv.style.display = 'contents';
 }
 
 function contactText(contactP) {

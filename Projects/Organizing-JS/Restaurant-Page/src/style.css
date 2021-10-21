@@ -30,3 +30,15 @@ img {
     max-width: 800px;
     width: 100%;
 }
+
+#home-div {
+    display: none;
+}
+
+#menu-div {
+    display: none;
+}
+
+#contact-div {
+    display: none;
+}
