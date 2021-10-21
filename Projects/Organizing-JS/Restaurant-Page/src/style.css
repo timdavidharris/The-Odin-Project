@@ -1,21 +1,18 @@
-body {
+html {
     text-align: center;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-}
-
-p {
-    font-size: large;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    white-space: pre;
 }
 
 img {
     width: 100%;
     max-width: 800px;
-    height: auto;
     border-radius: 15%;
+}
+
+#content {
+    width: 100%;
+    max-width: 800px;
+    font-size: large;
+    display: inline-block;
 }
 
 .nav-bar-div, a {
@@ -24,7 +21,6 @@ img {
     font-size: larger;
     background-color: black;
     color: white;
-    overflow-wrap: break-word;
 }
 
 .nav-bar-div {
@@ -33,51 +29,4 @@ img {
     display: inline-block;
     max-width: 800px;
     width: 100%;
-}
-
-.page-div {
-    padding: 1em 1em 1em 1em;
-    display: none;
-}
-
-.image-credit {
-    padding-top: 3em;
-}
-
-#content {
-    padding-bottom: 1em;
-    width: inherit;
-}
-
-@media (max-width: 855px) {
-    .nav-bar-div {
-        display: flex;
-        justify-content: center;
-        width: inherit;
-    }
-}
-
-@media (max-width: 700px) {
-    p {
-        font-size: medium;
-    }
-    .nav-bar-div {
-        display: flex;
-        justify-content: center;
-        width: inherit;
-    }
-}
-
-@media (max-width: 600px) {
-    p {
-        font-size: 15px;
-    }
-    .nav-bar-div {
-        display: flex;
-        justify-content: center;
-        width: inherit;
-    }
-    .nav-bar-div, a {
-        font-size: large;
-    }
 }
