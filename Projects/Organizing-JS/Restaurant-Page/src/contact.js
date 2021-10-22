@@ -10,7 +10,7 @@ export default function contactPage(contactDivInput) {
         const contactP = document.createElement('p');
         const imageCredit = document.createElement('p');
         imageCredit.setAttribute('class', 'image-credit');
-        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@jessonmata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jesson Mata</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@jessonmata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Jesson Mata</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>'
         contactText(contactP);
         contactInfoDiv.setAttribute('style', 'white-space: pre;');
         contactImage.src = '../assets/images/burger-prep.jpg';

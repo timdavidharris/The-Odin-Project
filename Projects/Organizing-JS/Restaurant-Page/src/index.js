@@ -39,7 +39,8 @@ function setSiteNav(input, div) {
     thisName = document.createElement('a');
     thisName.setAttribute('href', '#');
     thisName.setAttribute('data', theInput);
-    thisName.setAttribute('class', 'nav-link')
+    thisName.setAttribute('class', 'nav-link');
+    thisName.setAttribute('id', `nav-${theInput}`)
     thisName.textContent = theInput;
     navBarDiv.append(thisName);
 }
@@ -48,4 +49,3 @@ homePage(homeDiv);
 menuPage(menuDiv);
 contactPage(contactDiv);
 pageSwitcher(homeDiv, menuDiv, contactDiv);
-homeDiv.style.display = 'contents';

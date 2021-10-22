@@ -12,7 +12,7 @@ export default function menuPage(menuDivInput) {
         const drinks = document.createElement('p');
         const imageCredit = document.createElement('p');
         imageCredit.setAttribute('class', 'image-credit');
-        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@bimoluki02?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bimo Luki</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@bimoluki02?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Bimo Luki</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>'
         drinks.setAttribute('style', 'white-space: pre;');
         burgers.setAttribute('style', 'white-space: pre;');
         sides.setAttribute('style', 'white-space: pre;');

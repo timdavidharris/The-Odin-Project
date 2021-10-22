@@ -14,7 +14,7 @@ export default function homePage(homeDivInput) {
         infoDiv.setAttribute('class', 'home-info');
         imageCredit.setAttribute('class', 'image-credit');
         homeDiv.setAttribute('class', 'page-div');
-        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@danielcgold?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Gold</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@danielcgold?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Dan Gold</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>'
         homeImage.src = '../assets/images/burger-overhead-shot.jpg';
         homeHeaderH1.textContent = "TIM'S BURGERS";
         homeHeaderDiv.append(homeHeaderH1);
