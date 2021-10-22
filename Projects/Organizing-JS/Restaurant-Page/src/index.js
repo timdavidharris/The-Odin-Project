@@ -38,7 +38,6 @@ function setSiteNav(input, div) {
     let navBarDiv = div;
     thisName = document.createElement('a');
     thisName.setAttribute('href', '#');
-    thisName.setAttribute('data', theInput);
     thisName.setAttribute('class', 'nav-link');
     thisName.setAttribute('id', `nav-${theInput}`)
     thisName.textContent = theInput;
