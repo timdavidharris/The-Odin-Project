@@ -1,8 +1,8 @@
-let pageBuilt = false;
+let homePageBuilt = false;
 
 export default function homePage(homeDivInput) {
     let homeDiv = homeDivInput;
-    if (pageBuilt === false) {
+    if (homePageBuilt === false) {
         const homeHeaderDiv = document.createElement('div');
         const homeHeaderH1 = document.createElement('h1');
         const homeImage = document.createElement('img');
@@ -27,7 +27,7 @@ export default function homePage(homeDivInput) {
         reviewsDivText(reviewsDiv);
         infoDiv.append(hours);
         infoDiv.append(about);
-        pageBuilt = true;
+        homePageBuilt = true;
     }
 }
 

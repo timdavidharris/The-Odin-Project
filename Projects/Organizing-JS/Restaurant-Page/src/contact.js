@@ -1,8 +1,8 @@
-let pageBuilt = false;
+let contactPageBuilt = false;
 
 export default function contactPage(contactDivInput) {
     let contactDiv = contactDivInput;
-    if (pageBuilt === false) {
+    if (contactPageBuilt === false) {
         const contactHeaderDiv = document.createElement('div');
         const contactHeaderH1 = document.createElement('h1');
         const contactImage = document.createElement('img');
@@ -22,7 +22,7 @@ export default function contactPage(contactDivInput) {
         contactDiv.append(contactInfoDiv);
         contactInfoDiv.append(contactP);
         contactDiv.append(imageCredit);
-        pageBuilt = true;
+        contactPageBuilt = true;
     }
 }
 

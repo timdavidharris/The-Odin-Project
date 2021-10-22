@@ -1,8 +1,8 @@
-let pageBuilt = false;
+let menuPageBuilt = false;
 
 export default function menuPage(menuDivInput) {
     let menuDiv = menuDivInput;
-    if (pageBuilt === false) {
+    if (menuPageBuilt === false) {
         menuDiv.setAttribute('class', 'page-div');
         const menuHeaderDiv = document.createElement('div');
         const menuHeaderH1 = document.createElement('h1');
@@ -27,7 +27,7 @@ export default function menuPage(menuDivInput) {
         menuDiv.append(sides);
         menuDiv.append(drinks);
         menuDiv.append(imageCredit);
-        pageBuilt = true;
+        menuPageBuilt = true;
     }
 }
 
