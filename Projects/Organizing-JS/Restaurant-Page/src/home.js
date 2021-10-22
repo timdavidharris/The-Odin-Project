@@ -39,7 +39,7 @@ function infoDivText(Hours, About) {
         + 'We are a local, family-owned business '
         + 'that focuses on one thing: '
         + 'making the best burger you\'ve ever had. '
-        + 'Please place an order online or come in person '
+        + 'Please come on in '
         + 'to see for yourself!';
 }
 
