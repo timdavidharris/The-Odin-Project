@@ -4,12 +4,12 @@ export default function homePage(homeDivInput) {
     let homeDiv = homeDivInput;
     if (homePageBuilt === false) {
         const homeHeaderDiv = document.createElement('div');
-        const homeHeaderH1 = document.createElement('h1');
-        const homeImage = document.createElement('img');
         const infoDiv = document.createElement('div');
+        const reviewsDiv = document.createElement('div');
+        const homeImage = document.createElement('img');
+        const homeHeaderH1 = document.createElement('h1');
         const hours = document.createElement('p');
         const about = document.createElement('p');
-        const reviewsDiv = document.createElement('div');
         const imageCredit = document.createElement('p');
         infoDiv.setAttribute('class', 'home-info');
         imageCredit.setAttribute('class', 'image-credit');
@@ -23,10 +23,10 @@ export default function homePage(homeDivInput) {
         homeDiv.append(infoDiv);
         homeDiv.append(reviewsDiv);
         homeDiv.append(imageCredit);
-        infoDivText(hours, about);
-        reviewsDivText(reviewsDiv);
         infoDiv.append(hours);
         infoDiv.append(about);
+        infoDivText(hours, about);
+        reviewsDivText(reviewsDiv);
         homePageBuilt = true;
     }
 }

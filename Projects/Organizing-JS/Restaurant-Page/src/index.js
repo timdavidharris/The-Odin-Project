@@ -8,13 +8,10 @@ import _ from 'lodash';
 const page = document.body;
 page.innerHTML = '<div id="content"></div>';
 const contentDiv = document.querySelector('#content');
-
 const homeDiv = document.createElement('div');
 homeDiv.setAttribute('id', 'home-div');
-
 const menuDiv = document.createElement('div');
 menuDiv.setAttribute('id', 'menu-div');
-
 const contactDiv = document.createElement('div');
 contactDiv.setAttribute('id', 'contact-div');
 
@@ -26,11 +23,6 @@ function buildMenu() {
     setSiteNav('CONTACT', navBarDiv);
     contentDiv.append(navBarDiv);
 }
-buildMenu();
-
-contentDiv.append(homeDiv);
-contentDiv.append(menuDiv);
-contentDiv.append(contactDiv);
 
 function setSiteNav(input, div) {
     let thisName = '';
@@ -44,7 +36,11 @@ function setSiteNav(input, div) {
     navBarDiv.append(thisName);
 }
 
+buildMenu();
 homePage(homeDiv);
 menuPage(menuDiv);
 contactPage(contactDiv);
 pageSwitcher(homeDiv, menuDiv, contactDiv);
+contentDiv.append(homeDiv);
+contentDiv.append(menuDiv);
+contentDiv.append(contactDiv);

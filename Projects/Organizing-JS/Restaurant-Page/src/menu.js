@@ -3,30 +3,29 @@ let menuPageBuilt = false;
 export default function menuPage(menuDivInput) {
     let menuDiv = menuDivInput;
     if (menuPageBuilt === false) {
-        menuDiv.setAttribute('class', 'page-div');
         const menuHeaderDiv = document.createElement('div');
-        const menuHeaderH1 = document.createElement('h1');
         const menuImage = document.createElement('img');
+        const menuHeaderH1 = document.createElement('h1');
         const burgers = document.createElement('p');
         const sides = document.createElement('p');
         const drinks = document.createElement('p');
         const imageCredit = document.createElement('p');
         imageCredit.setAttribute('class', 'image-credit');
-        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@bimoluki02?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Bimo Luki</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>'
         drinks.setAttribute('style', 'white-space: pre;');
         burgers.setAttribute('style', 'white-space: pre;');
         sides.setAttribute('style', 'white-space: pre;');
         menuImage.setAttribute('class', 'menu');
+        imageCredit.innerHTML = 'Photo by <a href="https://unsplash.com/@bimoluki02?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Bimo Luki</a> on <a href="https://unsplash.com/s/photos/burger-restaurant?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>'
         menuImage.src = '../assets/images/burger-on-a-tray.jpg';
         menuHeaderH1.textContent = "MENU";
         menuHeaderDiv.append(menuHeaderH1);
         menuDiv.append(menuHeaderDiv);
         menuDiv.append(menuImage);
-        menuDivText(burgers, sides, drinks);
         menuDiv.append(burgers);
         menuDiv.append(sides);
         menuDiv.append(drinks);
         menuDiv.append(imageCredit);
+        menuDivText(burgers, sides, drinks);
         menuPageBuilt = true;
     }
 }
