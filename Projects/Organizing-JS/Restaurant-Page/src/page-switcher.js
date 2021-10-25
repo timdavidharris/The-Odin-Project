@@ -12,24 +12,25 @@ export default function pageSwitcher(home, menu, contact) {
     })();
     pageLinks.forEach((link) => {
         link.addEventListener('click', () => {
-            (function resetStyles() {
-                homeDiv.style.display = 'none';
-                menuDiv.style.display = 'none';
-                contactDiv.style.display = 'none';
-                homeLink.style.color = 'white';
-                menuLink.style.color = 'white';
-                contactLink.style.color = 'white';
-            })();
-            if (link.textContent === "HOME") {
+            resetStyles();
+            if (link === homeLink) {
                 homeDiv.style.display = 'contents';
-                homeLink.style.color = '#5F9EA0';
-            } else if (link.textContent === "MENU") {
+                link.style.color = '#5F9EA0';
+            } else if (link === menuLink) {
                 menuDiv.style.display = 'contents';
                 link.style.color = '#5F9EA0';
-            } else if (link.textContent === "CONTACT") {
+            } else if (link === contactLink) {
                 contactDiv.style.display = 'contents';
                 link.style.color = '#5F9EA0';
             }
         });
     });
+    function resetStyles() {
+        homeDiv.style.display = 'none';
+        menuDiv.style.display = 'none';
+        contactDiv.style.display = 'none';
+        homeLink.style.color = 'white';
+        menuLink.style.color = 'white';
+        contactLink.style.color = 'white';
+    }
 }
