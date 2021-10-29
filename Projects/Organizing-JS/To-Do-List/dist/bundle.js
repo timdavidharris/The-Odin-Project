@@ -169,7 +169,29 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap.min.css */ \"./src/bootstrap.min.css\");\n\n\n\n\nfunction test() {\n    return console.log(\"is this thing on?\")\n}\ntest(); \n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap.min.css */ \"./src/bootstrap.min.css\");\n/* harmony import */ var _main_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main-page */ \"./src/main-page.js\");\n/* harmony import */ var _to_do_obj__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./to-do-obj */ \"./src/to-do-obj.js\");\n\n\n\n\n\n\nfunction test() {\n    return console.log(\"is this thing on?\")\n}\ntest(); \n(0,_main_page__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\nlet task = new _to_do_obj__WEBPACK_IMPORTED_MODULE_4__.toDo(\"eat cheese\", \"today\", \"low\");\nconsole.log(task);\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/main-page.js":
+/*!**************************!*\
+  !*** ./src/main-page.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ mainPage)\n/* harmony export */ });\nconst toDoDiv = document.querySelector('#to-do-1');\n\nfunction mainPage() {\n    console.log(\"Main Page Function reporting for duty\");\n    let mainPageUL = document.createElement('ul');\n    mainPageUL.setAttribute('class', 'list-group');\n    let mainPageLI = document.createElement('li');\n    mainPageLI.setAttribute('class', 'list-group-item');\n    let mainPageInput = document.createElement('input');\n    mainPageInput.setAttribute('class', 'form-check-input me-1');\n    mainPageInput.setAttribute('type', 'checkbox');\n    mainPageLI.textContent = \"test item\";\n    toDoDiv.append(mainPageUL);\n    mainPageLI.append(mainPageInput);\n    mainPageUL.append(mainPageLI);\n}\n\n//# sourceURL=webpack://to-do-list/./src/main-page.js?");
+
+/***/ }),
+
+/***/ "./src/to-do-obj.js":
+/*!**************************!*\
+  !*** ./src/to-do-obj.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toDo\": () => (/* binding */ toDo)\n/* harmony export */ });\n\nclass toDo {\n    constructor(action, due, priority) {\n        this.action = action;\n        this.due = due;\n        this.priority = priority;\n    }\n}\n\n\n//# sourceURL=webpack://to-do-list/./src/to-do-obj.js?");
 
 /***/ }),
 

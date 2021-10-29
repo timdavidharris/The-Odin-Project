@@ -7,14 +7,24 @@
     <title>To Do List</title>
 </head>
 <body>
-    <nav id="nav-div" class="nav nav-pills flex-column flex-sm-row">
-        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">To Do</a>
-        <a class="flex-sm-fill text-sm-center nav-link" href="#">Projects</a>
-    </nav>
-    <main id="main-content">
-        <h1 class="text-muted">Hello</h1>
-    </main>
+    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">To Do</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Projects</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Vacation</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="to-do-1" role="tabpanel" aria-labelledby="pills-home-tab"></div>
+        <div class="tab-pane fade" id="todo-2" role="tabpanel" aria-labelledby="pills-profile-tab"></div>
+        <div class="tab-pane fade" id="todo-3" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
+      </div>
 
     <script src="../dist/bundle.js"></script>
+    <script src="../dist/bootstrap.min.js"></script>
 </body>
 </html>
