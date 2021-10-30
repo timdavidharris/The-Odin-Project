@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import './style.css';
 import './bootstrap.min.css';
-import mainPage from './main-page';
+import { mainPage } from './main-page';
 import { toDo } from './to-do-obj';
 
 function test() {
