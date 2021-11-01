@@ -1,32 +1,42 @@
-export { mainPage }
+export { toDoItem }
 
+let itemNum = 0;
 const toDoDiv = document.querySelector('#to-do-1');
+let UL = document.createElement('ul');
 
-function mainPage() {
-    console.log("Main Page Function reporting for duty");
-    let mainPageUL = document.createElement('ul');
-    mainPageUL.setAttribute('class', 'list-group');
-    let mainPageLI = document.createElement('li');
-    mainPageLI.setAttribute('class', 'list-group-item');
-    let mainPageInput = document.createElement('input');
-    mainPageInput.setAttribute('class', 'form-check-input me-1');
-    let mainPageButton = document.createElement('button');
-    mainPageButton.setAttribute('class', 'btn btn-sm btn-outline-danger justify-content-end');
-    mainPageButton.setAttribute('type', 'button');
-    mainPageInput.setAttribute('type', 'checkbox');
-    mainPageButton.textContent = "delete";
-    toDoDiv.append(mainPageUL);
-    mainPageUL.append(mainPageLI); 
-    mainPageLI.append(mainPageInput);
-    mainPageLI.append("*example*");
-    mainPageLI.append(mainPageButton);
-    // 
-    let mainPageLI2 = document.createElement('li');
-    mainPageLI2.setAttribute('class', 'list-group-item');
-    let mainPageButton2 = document.createElement('button');
-    mainPageButton2.textContent = "Add New";
-    mainPageButton2.setAttribute('class', 'btn btn-sm btn-outline-success');
-    mainPageButton2.setAttribute('type', 'button');
-    mainPageUL.append(mainPageLI2); 
-    mainPageLI2.append(mainPageButton2);
+function toDoUL() {
+    UL.setAttribute('class', 'list-group');
+}
+
+function toDoItem(item) {
+    toDoUL();
+    let toDoName = item;
+    let LI = document.createElement('li');
+    LI.setAttribute('class', 'list-group-item');
+    LI.setAttribute('data', `item-${itemNum}`)
+    let Input = document.createElement('input');
+    Input.setAttribute('class', 'form-check-input me-3');
+    let deleteButton = document.createElement('button');
+    deleteButton.setAttribute('class', 'btn btn-sm btn-outline-danger ms-3');
+    deleteButton.setAttribute('type', 'button');
+    Input.setAttribute('type', 'checkbox');
+    deleteButton.textContent = "delete";
+    toDoDiv.append(UL);
+    UL.append(LI); 
+    LI.append(Input);
+    LI.append(toDoName);
+    LI.append(deleteButton);
+    addNewButton();
+    itemNum++;
+}
+
+function addNewButton() {
+    let addNewToDoLI = document.createElement('li');
+    addNewToDoLI.setAttribute('class', 'list-group-item');
+    let addNewToDoButton = document.createElement('button');
+    addNewToDoButton.textContent = "Add New";
+    addNewToDoButton.setAttribute('class', 'btn btn-sm btn-outline-success');
+    addNewToDoButton.setAttribute('type', 'button');
+    UL.append(addNewToDoLI); 
+    addNewToDoLI.append(addNewToDoButton);
 }

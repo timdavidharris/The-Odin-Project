@@ -1,13 +1,11 @@
 import _ from 'lodash';
 import './style.css';
 import './bootstrap.min.css';
-import { mainPage } from './main-page';
+import { toDoItem } from './main-page';
 import { toDo } from './to-do-obj';
+export {lists}
 
-function test() {
-    return console.log("is this thing on?")
-}
-test(); 
-mainPage();
+let lists = [];
+toDoItem("*example*");
 let task = new toDo("eat cheese", "today", "low");
 console.log(task);
