@@ -34,7 +34,7 @@ function addNewItemButton() {
     let addNewToDoLI = document.createElement('li');
     addNewToDoLI.setAttribute('class', 'list-group-item');
     let addNewToDoButton = document.createElement('button');
-    addNewToDoButton.textContent = "Add New";
+    addNewToDoButton.textContent = "Add To Do";
     addNewToDoButton.setAttribute('class', 'btn btn-sm btn-outline-success');
     addNewToDoButton.setAttribute('type', 'button');
     UL.append(addNewToDoLI); 
