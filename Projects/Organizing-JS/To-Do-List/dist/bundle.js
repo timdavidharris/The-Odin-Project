@@ -162,6 +162,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/build-to-do.js":
+/*!****************************!*\
+  !*** ./src/build-to-do.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toDoItem\": () => (/* binding */ toDoItem),\n/* harmony export */   \"addNewItemButton\": () => (/* binding */ addNewItemButton),\n/* harmony export */   \"toDoUL\": () => (/* binding */ toDoUL)\n/* harmony export */ });\n/* harmony import */ var _to_do_obj__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./to-do-obj */ \"./src/to-do-obj.js\");\n\n;\n\nlet itemNum = 0;\nconst toDoDiv = document.querySelector(`#to-do-${1}`);\nlet UL = document.createElement('ul');\n\nfunction toDoUL() {\n    UL.setAttribute('class', 'list-group');\n}\n\nfunction toDoItem(name, due) {\n    let newToDo = new _to_do_obj__WEBPACK_IMPORTED_MODULE_0__.toDo(name, due);\n    let LI = document.createElement('li');\n    LI.setAttribute('class', 'list-group-item');\n    LI.setAttribute('data', `item-${itemNum}`);\n    let Input = document.createElement('input');\n    Input.setAttribute('class', 'form-check-input me-3');\n    let deleteButton = document.createElement('button');\n    deleteButton.setAttribute('class', 'btn btn-sm btn-outline-danger ms-3');\n    deleteButton.setAttribute('type', 'button');\n    Input.setAttribute('type', 'checkbox');\n    deleteButton.textContent = \"delete\";\n    toDoDiv.append(UL);\n    UL.append(LI); \n    LI.append(Input);\n    LI.append(newToDo.name);\n    LI.append(newToDo.due);\n    LI.append(deleteButton);\n    itemNum++;\n}\n\nfunction addNewItemButton() {\n    let addNewToDoLI = document.createElement('li');\n    addNewToDoLI.setAttribute('class', 'list-group-item');\n    let addNewToDoButton = document.createElement('button');\n    addNewToDoButton.textContent = \"Add New\";\n    addNewToDoButton.setAttribute('class', 'btn btn-sm btn-outline-success');\n    addNewToDoButton.setAttribute('type', 'button');\n    UL.append(addNewToDoLI); \n    addNewToDoLI.append(addNewToDoButton);\n}\n\n//# sourceURL=webpack://to-do-list/./src/build-to-do.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -169,18 +180,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"lists\": () => (/* binding */ lists)\n/* harmony export */ });\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap.min.css */ \"./src/bootstrap.min.css\");\n/* harmony import */ var _main_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main-page */ \"./src/main-page.js\");\n/* harmony import */ var _to_do_obj__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./to-do-obj */ \"./src/to-do-obj.js\");\n\n\n\n\n\n\n\nlet lists = [];\n(0,_main_page__WEBPACK_IMPORTED_MODULE_3__.toDoItem)(\"*example*\");\nlet task = new _to_do_obj__WEBPACK_IMPORTED_MODULE_4__.toDo(\"eat cheese\", \"today\", \"low\");\nconsole.log(task);\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/main-page.js":
-/*!**************************!*\
-  !*** ./src/main-page.js ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toDoItem\": () => (/* binding */ toDoItem)\n/* harmony export */ });\n\n\nlet itemNum = 0;\nconst toDoDiv = document.querySelector('#to-do-1');\nlet UL = document.createElement('ul');\n\nfunction toDoUL() {\n    UL.setAttribute('class', 'list-group');\n}\n\nfunction toDoItem(item) {\n    toDoUL();\n    let toDoName = item;\n    let LI = document.createElement('li');\n    LI.setAttribute('class', 'list-group-item');\n    LI.setAttribute('data', `item-${itemNum}`)\n    let Input = document.createElement('input');\n    Input.setAttribute('class', 'form-check-input me-3');\n    let deleteButton = document.createElement('button');\n    deleteButton.setAttribute('class', 'btn btn-sm btn-outline-danger ms-3');\n    deleteButton.setAttribute('type', 'button');\n    Input.setAttribute('type', 'checkbox');\n    deleteButton.textContent = \"delete\";\n    toDoDiv.append(UL);\n    UL.append(LI); \n    LI.append(Input);\n    LI.append(toDoName);\n    LI.append(deleteButton);\n    addNewButton();\n    itemNum++;\n}\n\nfunction addNewButton() {\n    let addNewToDoLI = document.createElement('li');\n    addNewToDoLI.setAttribute('class', 'list-group-item');\n    let addNewToDoButton = document.createElement('button');\n    addNewToDoButton.textContent = \"Add New\";\n    addNewToDoButton.setAttribute('class', 'btn btn-sm btn-outline-success');\n    addNewToDoButton.setAttribute('type', 'button');\n    UL.append(addNewToDoLI); \n    addNewToDoLI.append(addNewToDoButton);\n}\n\n//# sourceURL=webpack://to-do-list/./src/main-page.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"lists\": () => (/* binding */ lists)\n/* harmony export */ });\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap.min.css */ \"./src/bootstrap.min.css\");\n/* harmony import */ var _build_to_do__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./build-to-do */ \"./src/build-to-do.js\");\n\n\n\n\n\n\nlet lists = [];\n(0,_build_to_do__WEBPACK_IMPORTED_MODULE_3__.toDoUL)();\n(0,_build_to_do__WEBPACK_IMPORTED_MODULE_3__.toDoItem)(\"*example*\", \"-tomorrow\");\n(0,_build_to_do__WEBPACK_IMPORTED_MODULE_3__.toDoItem)(\"Drink hot coco\", \"-daily\");\n(0,_build_to_do__WEBPACK_IMPORTED_MODULE_3__.addNewItemButton)();\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ }),
 
@@ -191,7 +191,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toDo\": () => (/* binding */ toDo)\n/* harmony export */ });\n\nclass toDo {\n    constructor(action, due, priority) {\n        this.action = action;\n        this.due = due;\n        this.priority = priority;\n    }\n}\n\n\n//# sourceURL=webpack://to-do-list/./src/to-do-obj.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toDo\": () => (/* binding */ toDo)\n/* harmony export */ });\n\n\nfunction toDo(name, due) {\n    this.name = name \n    this.due = due \n}\n\n\n//# sourceURL=webpack://to-do-list/./src/to-do-obj.js?");
 
 /***/ }),
 

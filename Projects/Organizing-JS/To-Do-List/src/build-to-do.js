@@ -1,19 +1,19 @@
-export { toDoItem }
+export { toDoItem, addNewItemButton, toDoUL }
+import { toDo } from './to-do-obj';
 
 let itemNum = 0;
-const toDoDiv = document.querySelector('#to-do-1');
+const toDoDiv = document.querySelector(`#to-do-${1}`);
 let UL = document.createElement('ul');
 
 function toDoUL() {
     UL.setAttribute('class', 'list-group');
 }
 
-function toDoItem(item) {
-    toDoUL();
-    let toDoName = item;
+function toDoItem(name, due) {
+    let newToDo = new toDo(name, due);
     let LI = document.createElement('li');
     LI.setAttribute('class', 'list-group-item');
-    LI.setAttribute('data', `item-${itemNum}`)
+    LI.setAttribute('data', `item-${itemNum}`);
     let Input = document.createElement('input');
     Input.setAttribute('class', 'form-check-input me-3');
     let deleteButton = document.createElement('button');
@@ -24,13 +24,13 @@ function toDoItem(item) {
     toDoDiv.append(UL);
     UL.append(LI); 
     LI.append(Input);
-    LI.append(toDoName);
+    LI.append(newToDo.name);
+    LI.append(newToDo.due);
     LI.append(deleteButton);
-    addNewButton();
     itemNum++;
 }
 
-function addNewButton() {
+function addNewItemButton() {
     let addNewToDoLI = document.createElement('li');
     addNewToDoLI.setAttribute('class', 'list-group-item');
     let addNewToDoButton = document.createElement('button');
