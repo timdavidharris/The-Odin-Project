@@ -2,7 +2,6 @@ export { toDoItem, addNewItemButton, toDoUL }
 import { toDo } from './to-do-obj';
 
 let itemNum = 0;
-const toDoDiv = document.querySelector(`#to-do-${1}`);
 let UL = document.createElement('ul');
 
 function toDoUL() {
@@ -10,6 +9,7 @@ function toDoUL() {
 }
 
 function toDoItem(name, due) {
+    let toDoDiv = document.querySelector('#to-do-1');
     let newToDo = new toDo(name, due);
     let LI = document.createElement('li');
     LI.setAttribute('class', 'list-group-item');
