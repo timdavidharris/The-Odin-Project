@@ -3,7 +3,7 @@ import './bootstrap.min.css';
 import './style.css';
 import { createToDoTab } from './tab-obj';
 import { toDoItem, addNewItemButton, toDoUL } from './build-to-do';
-import { newListOnClick } from './add-new-list';
+import { newListOnClick, newListBtnListener } from './add-new-list';
 export { lists };
 
 let lists = [];
@@ -13,3 +13,4 @@ toDoItem("*example*", "-tomorrow");
 toDoItem("Drink hot coco", "-daily");
 addNewItemButton();
 newListOnClick();
+newListBtnListener();
