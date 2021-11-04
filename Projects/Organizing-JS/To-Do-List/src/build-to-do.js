@@ -1,8 +1,12 @@
 export { toDoItem, addNewItemButton, toDoUL }
-import { toDo } from './to-do-obj';
 
 let itemNum = 0;
 let UL = document.createElement('ul');
+
+function toDo(name, due) {
+    this.name = name 
+    this.due = due 
+}
 
 function toDoUL() {
     UL.setAttribute('class', 'list-group');
