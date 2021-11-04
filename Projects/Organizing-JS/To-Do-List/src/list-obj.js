@@ -3,6 +3,7 @@ export { createToDoTab, newListOnClick, newListBtnListener };
 const addNewListBtn = document.querySelector('#add-list-btn');
 let addNewListInput = document.querySelector('#new-to-do-input');
 let toDoParentDiv = document.querySelector('#to-do-items');
+let inputDiv = document.querySelector('#new-to-do-input-div');
 let listNum = 0;
 let objNum = 0;
 let listArray = [];
@@ -44,16 +45,15 @@ function newListOnClick() {
 };
 
 function displayOn() {
-    let inputDiv = document.querySelector('#new-to-do-input-div');
     inputDiv.style.display = 'contents';
-    newListBtnListener(inputDiv);
+    newListBtnListener();
 }
 
-function newListBtnListener(inputDiv) {
+function newListBtnListener() {
     let addNewListBtn = document.querySelector('#new-to-do-list-btn');
     addNewListBtn.addEventListener('click', () => {
-        let newListName = addNewListInput.value;
-        let newList = new listObj(newListName);
         inputDiv.style.display = 'none';
+        let newListName = addNewListInput.value;
+        new listObj(newListName);
     });
 }
