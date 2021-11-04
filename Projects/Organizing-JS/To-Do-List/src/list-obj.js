@@ -1,4 +1,4 @@
-export { createToDoTab, newListOnClick, newListBtnListener };
+export { createToDoTab, newListOnClick };
 
 const addNewListBtn = document.querySelector('#add-list-btn');
 let addNewListInput = document.querySelector('#new-to-do-input');
@@ -46,14 +46,18 @@ function newListOnClick() {
 
 function displayOn() {
     inputDiv.style.display = 'contents';
-    newListBtnListener();
+    btnListener();
 }
 
-function newListBtnListener() {
+function btnListener() {
     let addNewListBtn = document.querySelector('#new-to-do-list-btn');
     addNewListBtn.addEventListener('click', () => {
-        inputDiv.style.display = 'none';
-        let newListName = addNewListInput.value;
-        new listObj(newListName);
+        if (addNewListInput.value === '') {
+            alert('The name box was empty, please type in a name');
+        } else {
+            inputDiv.style.display = 'none';
+            let newListName = addNewListInput.value;
+            new listObj(newListName);
+        }
     });
 }
