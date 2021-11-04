@@ -1,9 +1,8 @@
 import _ from 'lodash';
 import './bootstrap.min.css';
 import './style.css';
-import { createToDoTab } from './tab-obj';
-import { toDoItem, addNewItemButton, toDoUL } from './build-to-do';
-import { newListOnClick, newListBtnListener } from './add-new-list';
+import {toDoItem, addNewItemButton, toDoUL} from './to-do-obj';
+import {createToDoTab, newListOnClick, newListBtnListener} from './list-obj';
 
 createToDoTab();
 toDoUL();

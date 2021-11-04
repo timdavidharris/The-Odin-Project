@@ -1,4 +1,3 @@
-import { createToDoTab } from './tab-obj';
 export { createToDoTab, newListOnClick, newListBtnListener };
 
 const addNewListBtn = document.querySelector('#add-list-btn');
