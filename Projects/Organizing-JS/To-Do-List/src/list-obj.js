@@ -1,4 +1,4 @@
-export { createToDoTab, newListOnClick };
+export { createToDoTab };
 
 const addNewListBtn = document.querySelector('#add-list-btn');
 let addNewListInput = document.querySelector('#new-to-do-input');
@@ -11,10 +11,13 @@ let listArray = [];
 function listObj(name) {
     this.name = name
     this.objNum = objNum
-    listArray.push(this);
-    console.log(listArray);
-    appendNewItem(this);
-    objNum++;
+    let that = this;
+    function addAndAppend() {
+        listArray.push(that);
+        appendNewItem(that);
+        objNum++;
+    }
+    return addAndAppend();
 }
 
 function createToDoTab() {
@@ -25,7 +28,7 @@ function createToDoTab() {
     listNum++;
 }
 
-function appendNewItem(listObj) {
+function appendNewItem(objInput) {
     let parentUL = document.querySelector('#ul-nav-items');
     let newLI = document.createElement('li');
     let newATag = document.createElement('a');
@@ -35,19 +38,15 @@ function appendNewItem(listObj) {
     newATag.setAttribute('href', '#');
     parentUL.append(newLI);
     newLI.append(newATag);
-    newATag.append(listObj.name);
+    newATag.append(objInput.name);
 }
 
-function newListOnClick() {
+(function newListOnClick() {
     addNewListBtn.addEventListener('click', () => {
-        displayOn();
+        inputDiv.style.display = 'contents';
+        btnListener();
     });
-};
-
-function displayOn() {
-    inputDiv.style.display = 'contents';
-    btnListener();
-}
+})();
 
 function btnListener() {
     let addNewListBtn = document.querySelector('#new-to-do-list-btn');
