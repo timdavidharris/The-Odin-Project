@@ -14,7 +14,6 @@ function listObj(name) {
     listArray.push(this);
     appendNewItem(this);
     objNum++;
-    console.log("listObj > appendNewItem");
 }
 
 function appendNewItem(objInput) {
@@ -28,7 +27,6 @@ function appendNewItem(objInput) {
     parentUL.append(newLI);
     newLI.append(newATag);
     newATag.append(objInput.name);
-    console.log("appendNewItem");
 }
 
 function createToDoTab() {
@@ -37,13 +35,11 @@ function createToDoTab() {
     toDoParentDiv.append(newTab);
     newTab = new listObj("To Do");
     listNum++;
-    console.log("CreateToDoTab > listObj");
 }
 
 function newListOnClick() {
     addNewListBtn.addEventListener("click", () => {
         inputDiv.style.display = "contents";
-        console.log("newListOnClick");
     });
 }
 
@@ -56,7 +52,6 @@ function btnListener() {
             inputDiv.style.display = "none";
             let newListName = addNewListInput.value;
             new listObj(newListName);
-            console.log("addNewListBtn > listObj");
         }
     });
 }
