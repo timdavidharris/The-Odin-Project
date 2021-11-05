@@ -1,5 +1,7 @@
-export { createToDoItem, addNewItemButton, toDoUL }
+export { createToDoItem, toDoUL, toggleNewToDoInputDiv };
 
+let addNewToDo = document.querySelector("#add-to-do-btn");
+let inputDiv = document.querySelector("#new-to-do-item-inputs")
 let itemNum = 0;
 let UL = document.createElement("ul");
 let itemArray = [];
@@ -12,6 +14,17 @@ function toDoObj(name, due) {
 
 function toDoUL() {
     UL.setAttribute("class", "list-group");
+}
+
+function toggleNewToDoInputDiv() {
+    inputDiv.style.display = "none";
+    addNewToDo.addEventListener("click", () => {
+        if (inputDiv.style.display === "contents") {
+            inputDiv.style.display = "none";
+        } else {
+            inputDiv.style.display = "contents";
+        }
+    }) ;
 }
 
 function createToDoItem(name, due) {
@@ -34,15 +47,4 @@ function createToDoItem(name, due) {
     LI.append(newToDo.due);
     LI.append(deleteButton);
     itemNum++;
-}
-
-function addNewItemButton() {
-    let addNewToDoLI = document.createElement("li");
-    addNewToDoLI.setAttribute("class", "list-group-item");
-    let addNewToDoButton = document.createElement("button");
-    addNewToDoButton.textContent = "Add To Do";
-    addNewToDoButton.setAttribute("class", "btn btn-sm btn-outline-success");
-    addNewToDoButton.setAttribute("type", "button");
-    UL.append(addNewToDoLI); 
-    addNewToDoLI.append(addNewToDoButton);
 }

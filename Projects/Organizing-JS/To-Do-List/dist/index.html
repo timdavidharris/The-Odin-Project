@@ -11,9 +11,9 @@
     <div id="nav-div" class="border border-primary rounded">
       <ul id="ul-nav-items" class="nav flex-column">
         <li>
-          <div id="new-to-do-input-div" class="container">
-            <input id="new-to-do-input" type="text" class="form-control ms-1 me-1 pe-1" placeholder="NAME">
-            <button id="new-to-do-list-btn" class="btn btn-outline-success" type="button" >ADD</button>
+          <div id="new-to-do-input-div" class="mt-1">
+            <input id="new-to-do-input" type="text" class="form-control ms-1 me-1 pe-1" placeholder="LIST NAME">
+            <button id="new-to-do-list-btn" class="btn btn-sm btn-outline-success ms-1" type="button">ADD LIST</button>
         </div>
         </li>
         <li class="nav-item">
@@ -23,6 +23,15 @@
     </div>
     <div id="list-div" class="container border border-primary rounded pt-2 pb-2">
       <div id="to-do-items">
+        <div id="new-to-do-item-inputs">
+          <input id="new-to-do-item" type="text" class="form-control ms-1 me-1 pe-1" placeholder="TO DO NAME">
+          <button id="new-to-do-item-btn" class="btn btn-sm btn-outline-success" type="button" >ADD TO DO</button>
+        </div>
+        <div id="new-to-do-item-text">
+          <a id="add-to-do-btn" href="#">
+            Add To Do
+          </a>
+        </div>
       </div>
     </div>
   </div>
