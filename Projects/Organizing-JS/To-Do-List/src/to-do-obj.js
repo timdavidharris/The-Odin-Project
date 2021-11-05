@@ -1,20 +1,22 @@
-export { toDoItem, addNewItemButton, toDoUL }
+export { createToDoItem, addNewItemButton, toDoUL }
 
 let itemNum = 0;
 let UL = document.createElement("ul");
+let itemArray = [];
 
-function toDo(name, due) {
+function toDoObj(name, due) {
     this.name = name;
     this.due = due;
+    itemArray.push(this);
 }
 
 function toDoUL() {
     UL.setAttribute("class", "list-group");
 }
 
-function toDoItem(name, due) {
+function createToDoItem(name, due) {
     let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
-    let newToDo = new toDo(name, due);
+    let newToDo = new toDoObj(name, due);
     let LI = document.createElement("li");
     let checkBox = document.createElement("input");
     let deleteButton = document.createElement("button");

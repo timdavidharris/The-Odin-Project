@@ -1,4 +1,4 @@
-export { createToDoTab, newListOnClick, btnListener };
+export { createToDoTab, toggleInputOnClick, btnListener };
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
@@ -12,11 +12,11 @@ function listObj(name) {
     this.name = name;
     this.objNum = objNum;
     listArray.push(this);
-    appendNewItem(this);
+    appendNewObj(this);
     objNum++;
 }
 
-function appendNewItem(objInput) {
+function appendNewObj(objInput) {
     let parentUL = document.querySelector("#ul-nav-items");
     let newLI = document.createElement("li");
     let newATag = document.createElement("a");
@@ -37,9 +37,13 @@ function createToDoTab() {
     listNum++;
 }
 
-function newListOnClick() {
+function toggleInputOnClick() {
     addNewListBtn.addEventListener("click", () => {
-        inputDiv.style.display = "contents";
+        if (inputDiv.style.display === "contents") {
+            inputDiv.style.display = "none";
+        } else {
+            inputDiv.style.display = "contents";
+        }
     });
 }
 
