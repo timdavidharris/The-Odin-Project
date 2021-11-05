@@ -1,7 +1,8 @@
-export { createToDoItem, toDoUL, toggleNewToDoInputDiv };
+export { createToDoItem, toDoUL, toggleNewToDoInputDiv, newToDoBtnListener };
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
-let inputDiv = document.querySelector("#new-to-do-item-inputs")
+let inputDiv = document.querySelector("#new-to-do-item-inputs");
+let addNewToDoInput = document.querySelector("#new-to-do-item");
 let itemNum = 0;
 let UL = document.createElement("ul");
 let itemArray = [];
@@ -10,6 +11,7 @@ function toDoObj(name, due) {
     this.name = name;
     this.due = due;
     itemArray.push(this);
+    console.log(itemArray);
 }
 
 function toDoUL() {
@@ -47,4 +49,17 @@ function createToDoItem(name, due) {
     LI.append(newToDo.due);
     LI.append(deleteButton);
     itemNum++;
+}
+
+function newToDoBtnListener(){
+    let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
+    addNewToDoBtn.addEventListener("click", () => {
+        if (addNewToDoInput.value === '') {
+            alert("The to do name was empty, please type in a name");
+        } else {
+            inputDiv.style.display = "none";
+            let newToDoName = addNewToDoInput.value;
+            new toDoObj(newToDoName);
+        }
+    });
 }
