@@ -1,9 +1,8 @@
-export { createToDoItem, toDoUL, toggleToDoInputOnClick, newToDoBtnListener };
+export { toDoObj, toDoUL, toggleToDoInputOnClick, newToDoBtnListener };
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let addNewToDoInput = document.querySelector("#new-to-do-item");
-let itemNum = 0;
 let UL = document.createElement("ul");
 let toDoObjNum = 0;
 let itemArray = [];
@@ -14,6 +13,7 @@ function toDoObj(name, due) {
     this.objNum = toDoObjNum;
     itemArray.push(this);
     console.log(itemArray);
+    appendNewToDo(this);
     toDoObjNum++;
 }
 
@@ -32,26 +32,28 @@ function toggleToDoInputOnClick() {
     }) ;
 }
 
-function createToDoItem(name, due) {
+function appendNewToDo(obj) {
     let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
-    let newToDo = new toDoObj(name, due);
     let LI = document.createElement("li");
     let checkBox = document.createElement("input");
     let deleteButton = document.createElement("button");
     LI.setAttribute("class", "list-group-item");
-    LI.setAttribute("data", `item-${itemNum}`);
+    LI.setAttribute("data", `item-${obj.objNum}`);
     deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3");
     deleteButton.setAttribute("type", "button");
     deleteButton.textContent = "delete";
     checkBox.setAttribute("type", "checkbox");
     checkBox.setAttribute("class", "form-check-input me-3");
+    if (obj.due === undefined) {
+        obj.due = " - due date not set";
+    }
     toDoDiv.append(UL);
     UL.append(LI); 
     LI.append(checkBox);
-    LI.append(newToDo.name);
-    LI.append(newToDo.due);
+    LI.append(obj.name);
+    LI.append(obj.due);
     LI.append(deleteButton);
-    itemNum++;
+    console.log(deleteButton);
 }
 
 function newToDoBtnListener(){

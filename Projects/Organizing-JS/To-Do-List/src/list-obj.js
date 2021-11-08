@@ -12,11 +12,11 @@ function listObj(name) {
     this.name = name;
     this.objNum = listObjNum;
     listArray.push(this);
-    appendNewObj(this);
+    appendNewList(this);
     listObjNum++;
 }
 
-function appendNewObj(objInput) {
+function appendNewList(objInput) {
     let parentUL = document.querySelector("#ul-nav-items");
     let newLI = document.createElement("li");
     let newATag = document.createElement("a");
