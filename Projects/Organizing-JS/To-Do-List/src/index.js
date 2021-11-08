@@ -9,4 +9,4 @@ newListBtnListener();
 toggleInputOnClick();
 toggleToDoInputOnClick();
 newToDoBtnListener();
-new toDoObj("*example to do*", getTomorrowsDate());
+new toDoObj("*example to do*", ` - due ${getTomorrowsDate()}`);
