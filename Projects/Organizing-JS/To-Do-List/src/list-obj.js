@@ -5,15 +5,15 @@ let addNewListInput = document.querySelector("#new-to-do-input");
 let toDoParentDiv = document.querySelector("#to-do-items");
 let inputDiv = document.querySelector("#new-to-do-input-div");
 let listNum = 0;
-let objNum = 0;
+let listObjNum = 0;
 let listArray = [];
 
 function listObj(name) {
     this.name = name;
-    this.objNum = objNum;
+    this.objNum = listObjNum;
     listArray.push(this);
     appendNewObj(this);
-    objNum++;
+    listObjNum++;
 }
 
 function appendNewObj(objInput) {

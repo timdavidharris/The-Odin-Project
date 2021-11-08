@@ -1,24 +1,27 @@
-export { createToDoItem, toDoUL, toggleNewToDoInputDiv, newToDoBtnListener };
+export { createToDoItem, toDoUL, toggleToDoInputOnClick, newToDoBtnListener };
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let addNewToDoInput = document.querySelector("#new-to-do-item");
 let itemNum = 0;
 let UL = document.createElement("ul");
+let toDoObjNum = 0;
 let itemArray = [];
 
 function toDoObj(name, due) {
     this.name = name;
     this.due = due;
+    this.objNum = toDoObjNum;
     itemArray.push(this);
     console.log(itemArray);
+    toDoObjNum++;
 }
 
 function toDoUL() {
     UL.setAttribute("class", "list-group");
 }
 
-function toggleNewToDoInputDiv() {
+function toggleToDoInputOnClick() {
     inputDiv.style.display = "none";
     addNewToDo.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
