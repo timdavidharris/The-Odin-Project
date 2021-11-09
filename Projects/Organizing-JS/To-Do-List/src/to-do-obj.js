@@ -26,8 +26,9 @@ function appendNewToDo(obj) {
     let deleteButton = document.createElement("button");
     LI.setAttribute("class", "list-group-item");
     LI.setAttribute("data", `item-${obj.objNum}`);
-    deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3");
+    deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
     deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("data-delete-num", `${obj.objNum}`);
     deleteButton.textContent = "delete";
     checkBox.setAttribute("type", "checkbox");
     checkBox.setAttribute("class", "form-check-input me-3");
@@ -41,6 +42,7 @@ function appendNewToDo(obj) {
     LI.append(dueSpacerText);
     LI.append(obj.due);
     LI.append(deleteButton);
+    return deleteBtnOnClick();
 }
 
 function toggleToDoInputOnClick() {
@@ -65,6 +67,19 @@ function newToDoBtnListener(){
             let newToDoDue = newToDoDueInput.value;
             new toDoObj(newToDoName, newToDoDue);
         }
+    });
+}
+
+function deleteBtnOnClick() {
+    let deleteBtns = document.querySelectorAll(".delete-btn");
+    console.log(deleteBtns);
+    deleteBtns.forEach((button) => {
+        button.addEventListener("click", () => {
+            console.log(itemArray);
+            let toDoItemNum = Number(button.dataset.deleteNum);
+            return itemArray.splice(toDoItemNum, 1),
+            console.log(itemArray);
+        });
     });
 }
 

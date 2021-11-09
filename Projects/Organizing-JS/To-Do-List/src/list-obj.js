@@ -1,4 +1,4 @@
-export { createToDoTab, toggleInputOnClick, newListBtnListener };
+export { createToDoTab, toggleItemInputOnClick, newListBtnListener };
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
@@ -37,7 +37,7 @@ function createToDoTab() {
     listNum++;
 }
 
-function toggleInputOnClick() {
+function toggleItemInputOnClick() {
     addNewListBtn.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
             inputDiv.style.display = "none";
