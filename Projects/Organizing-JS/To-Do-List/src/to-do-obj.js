@@ -5,21 +5,19 @@ let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
-let toDoObjNum = 0;
 let itemArray = [];
+let toDoObjNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
 function toDoObj(name, due) {
     this.name = name;
     this.due = due;
-    this.objNum = toDoObjNum;
     itemArray.push(this);
-    appendNewToDo(itemArray);
-    toDoObjNum++;
+    drawToDoList(itemArray);
 }
 
-function appendNewToDo(itemArray) {
+function drawToDoList(itemArray) {
     clearToDoItems();
     itemArray.forEach((item) => {
         let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
@@ -27,10 +25,8 @@ function appendNewToDo(itemArray) {
         let checkBox = document.createElement("input");
         let deleteButton = document.createElement("button");
         LI.setAttribute("class", "list-group-item to-do-li");
-        LI.setAttribute("data", `item-${item.objNum}`);
         deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
         deleteButton.setAttribute("type", "button");
-        deleteButton.setAttribute("data-delete-num", `${item.objNum}`);
         deleteButton.textContent = "delete";
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("class", "form-check-input me-3");
@@ -44,8 +40,20 @@ function appendNewToDo(itemArray) {
         LI.append(dueSpacerText);
         LI.append(item.due);
         LI.append(deleteButton);
+        setDOMItemNum(LI, deleteButton);
+        
     });
-    // return deleteBtnOnClick();
+    return deleteBtnOnClick();
+}
+
+function setDOMItemNum(LI, deleteButton) {
+    toDoObjNum = 0;
+    let deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach(() => {
+        LI.setAttribute("data", `item-${toDoObjNum}`);
+        deleteButton.setAttribute("data-delete-num", `${toDoObjNum}`);
+        toDoObjNum++;
+    });
 }
 
 function clearToDoItems() {
@@ -80,18 +88,17 @@ function newToDoBtnListener(){
     });
 }
 
-// function deleteBtnOnClick() {
-//     let deleteBtns = document.querySelectorAll(".delete-btn");
-//     console.log(deleteBtns);
-//     deleteBtns.forEach((button) => {
-//         button.addEventListener("click", () => {
-//             console.log(itemArray);
-//             let toDoItemNum = Number(button.dataset.deleteNum);
-//             return itemArray.splice(toDoItemNum, 1),
-//             console.log(itemArray);
-//         });
-//     });
-// }
+function deleteBtnOnClick() {
+    let deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach((button) => {
+        button.addEventListener("click", () => {
+            console.log(itemArray);
+            let toDoItemNum = Number(button.dataset.deleteNum);
+            itemArray.splice(toDoItemNum, 1);
+            return drawToDoList(itemArray);
+        });
+    });
+}
 
 function getTodaysDate() {
     let today = new Date();
