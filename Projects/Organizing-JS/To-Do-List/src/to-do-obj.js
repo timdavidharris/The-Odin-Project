@@ -48,8 +48,8 @@ function drawToDoList(itemArray) {
 
 function setDOMItemNum(LI, deleteButton) {
     toDoObjNum = 0;
-    let deleteBtns = document.querySelectorAll(".delete-btn");
-    deleteBtns.forEach(() => {
+    let liElements = document.querySelectorAll(".to-do-li");
+    liElements.forEach(() => {
         LI.setAttribute("data", `item-${toDoObjNum}`);
         deleteButton.setAttribute("data-delete-num", `${toDoObjNum}`);
         toDoObjNum++;
@@ -61,17 +61,6 @@ function clearToDoItems() {
     toDoLIItems.forEach((liItem) => {
         liItem.remove();
     });
-}
-
-function toggleToDoInputOnClick() {
-    inputDiv.style.display = "none";
-    addNewToDo.addEventListener("click", () => {
-        if (inputDiv.style.display === "contents") {
-            inputDiv.style.display = "none";
-        } else {
-            inputDiv.style.display = "contents";
-        }
-    }) ;
 }
 
 function newToDoBtnListener(){
@@ -86,6 +75,17 @@ function newToDoBtnListener(){
             new toDoObj(newToDoName, newToDoDue);
         }
     });
+}
+
+function toggleToDoInputOnClick() {
+    inputDiv.style.display = "none";
+    addNewToDo.addEventListener("click", () => {
+        if (inputDiv.style.display === "contents") {
+            inputDiv.style.display = "none";
+        } else {
+            inputDiv.style.display = "contents";
+        }
+    }) ;
 }
 
 function deleteBtnOnClick() {
