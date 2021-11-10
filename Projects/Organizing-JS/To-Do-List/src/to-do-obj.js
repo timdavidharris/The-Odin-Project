@@ -1,4 +1,4 @@
-export { toDoObj, toggleToDoInputOnClick, newToDoBtnListener, getTodaysDate };
+export { itemArray, toDoObj, toggleToDoInputOnClick, newToDoBtnListener, getTodaysDate };
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
