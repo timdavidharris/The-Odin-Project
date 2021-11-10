@@ -15,34 +15,44 @@ function toDoObj(name, due) {
     this.due = due;
     this.objNum = toDoObjNum;
     itemArray.push(this);
-    appendNewToDo(this);
+    appendNewToDo(itemArray);
     toDoObjNum++;
 }
 
-function appendNewToDo(obj) {
-    let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
-    let LI = document.createElement("li");
-    let checkBox = document.createElement("input");
-    let deleteButton = document.createElement("button");
-    LI.setAttribute("class", "list-group-item");
-    LI.setAttribute("data", `item-${obj.objNum}`);
-    deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.setAttribute("data-delete-num", `${obj.objNum}`);
-    deleteButton.textContent = "delete";
-    checkBox.setAttribute("type", "checkbox");
-    checkBox.setAttribute("class", "form-check-input me-3");
-    if (obj.due === "") {
-        obj.due = " - no due date";
-    }
-    toDoDiv.append(UL);
-    UL.append(LI); 
-    LI.append(checkBox);
-    LI.append(obj.name);
-    LI.append(dueSpacerText);
-    LI.append(obj.due);
-    LI.append(deleteButton);
-    return deleteBtnOnClick();
+function appendNewToDo(itemArray) {
+    clearToDoItems();
+    itemArray.forEach((item) => {
+        let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
+        let LI = document.createElement("li");
+        let checkBox = document.createElement("input");
+        let deleteButton = document.createElement("button");
+        LI.setAttribute("class", "list-group-item to-do-li");
+        LI.setAttribute("data", `item-${item.objNum}`);
+        deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.setAttribute("data-delete-num", `${item.objNum}`);
+        deleteButton.textContent = "delete";
+        checkBox.setAttribute("type", "checkbox");
+        checkBox.setAttribute("class", "form-check-input me-3");
+        if (item.due === "") {
+            item.due = " - no due date";
+        }
+        toDoDiv.append(UL);
+        UL.append(LI); 
+        LI.append(checkBox);
+        LI.append(item.name);
+        LI.append(dueSpacerText);
+        LI.append(item.due);
+        LI.append(deleteButton);
+    });
+    // return deleteBtnOnClick();
+}
+
+function clearToDoItems() {
+    let toDoLIItems = document.querySelectorAll(".to-do-li");
+    toDoLIItems.forEach((liItem) => {
+        liItem.remove();
+    });
 }
 
 function toggleToDoInputOnClick() {
@@ -70,18 +80,18 @@ function newToDoBtnListener(){
     });
 }
 
-function deleteBtnOnClick() {
-    let deleteBtns = document.querySelectorAll(".delete-btn");
-    console.log(deleteBtns);
-    deleteBtns.forEach((button) => {
-        button.addEventListener("click", () => {
-            console.log(itemArray);
-            let toDoItemNum = Number(button.dataset.deleteNum);
-            return itemArray.splice(toDoItemNum, 1),
-            console.log(itemArray);
-        });
-    });
-}
+// function deleteBtnOnClick() {
+//     let deleteBtns = document.querySelectorAll(".delete-btn");
+//     console.log(deleteBtns);
+//     deleteBtns.forEach((button) => {
+//         button.addEventListener("click", () => {
+//             console.log(itemArray);
+//             let toDoItemNum = Number(button.dataset.deleteNum);
+//             return itemArray.splice(toDoItemNum, 1),
+//             console.log(itemArray);
+//         });
+//     });
+// }
 
 function getTodaysDate() {
     let today = new Date();
