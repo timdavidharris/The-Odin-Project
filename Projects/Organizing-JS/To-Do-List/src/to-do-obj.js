@@ -4,13 +4,13 @@ let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
 let itemArray = [];
-let toDoObjNum = 0;
+let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-export function toDoObj(name, due) {
+export function toDoObj(name, dueDate) {
     this.name = name;
-    this.due = due;
+    this.dueDate = dueDate;
     itemArray.push(this);
     drawToDoList(itemArray);
 }
@@ -18,6 +18,7 @@ export function toDoObj(name, due) {
 function drawToDoList(itemArray) {
     clearToDoItems();
     itemArray.forEach((item) => {
+        noDueDate(item);
         let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
         let LI = document.createElement("li");
         let checkBox = document.createElement("input");
@@ -28,13 +29,12 @@ function drawToDoList(itemArray) {
         deleteButton.textContent = "delete";
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("class", "form-check-input me-3");
-        noDueDate(item);
         toDoDiv.append(UL);
         UL.append(LI); 
         LI.append(checkBox);
         LI.append(item.name);
         LI.append(dueSpacerText);
-        LI.append(item.due);
+        LI.append(item.dueDate);
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton);
     });
@@ -42,18 +42,18 @@ function drawToDoList(itemArray) {
 }
 
 function noDueDate(item) {
-    if (item.due === "") {
-        item.due = " - no due date";
+    if (item.dueDate === "") {
+        item.dueDate = " - no due date";
     }
 }
 
 function setDOMDataNum(LI, deleteButton) {
-    toDoObjNum = 0;
+    toDoDataNum = 0;
     let liElements = document.querySelectorAll(".to-do-li");
     liElements.forEach(() => {
-        LI.setAttribute("data", `item-${toDoObjNum}`);
-        deleteButton.setAttribute("data-delete-num", `${toDoObjNum}`);
-        toDoObjNum++;
+        LI.setAttribute("data", `item-${toDoDataNum}`);
+        deleteButton.setAttribute("data-delete-num", `${toDoDataNum}`);
+        toDoDataNum++;
     });
 }
 
@@ -78,7 +78,7 @@ export function addToDoObj(){
     });
 }
 
-export function toggleToDoInput() {
+export function toggleToDoInputDisplay() {
     inputDiv.style.display = "none";
     addNewToDo.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {

@@ -27,7 +27,7 @@ function appendNewList(objInput) {
     newATag.append(objInput.name);
 }
 
-export function addToDoObj() {
+export function addListDiv() {
     let newTab = document.createElement("div");
     newTab.setAttribute("id", `to-do-${listNum}`);
     toDoParentDiv.append(newTab);
@@ -35,7 +35,7 @@ export function addToDoObj() {
     listNum++;
 }
 
-export function toggleItemInputOnClick() {
+export function toggleListInputDisplay() {
     addNewListBtn.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
             inputDiv.style.display = "none";
@@ -45,7 +45,7 @@ export function toggleItemInputOnClick() {
     });
 }
 
-export function newListBtnListener() {
+export function addListObj() {
     let addNewListBtn = document.querySelector("#new-to-do-list-btn");
     addNewListBtn.addEventListener("click", () => {
         if (addNewListInput.value === "") {
