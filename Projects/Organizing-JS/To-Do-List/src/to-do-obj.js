@@ -28,9 +28,7 @@ function drawToDoList(itemArray) {
         deleteButton.textContent = "delete";
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("class", "form-check-input me-3");
-        if (item.due === "") {
-            item.due = " - no due date";
-        }
+        noDueDate(item);
         toDoDiv.append(UL);
         UL.append(LI); 
         LI.append(checkBox);
@@ -38,13 +36,18 @@ function drawToDoList(itemArray) {
         LI.append(dueSpacerText);
         LI.append(item.due);
         LI.append(deleteButton);
-        setDOMItemNum(LI, deleteButton);
-        
+        setDOMDataNum(LI, deleteButton);
     });
-    return deleteBtnOnClick();
+    return deleteToDoLI();
 }
 
-function setDOMItemNum(LI, deleteButton) {
+function noDueDate(item) {
+    if (item.due === "") {
+        item.due = " - no due date";
+    }
+}
+
+function setDOMDataNum(LI, deleteButton) {
     toDoObjNum = 0;
     let liElements = document.querySelectorAll(".to-do-li");
     liElements.forEach(() => {
@@ -61,7 +64,7 @@ function clearToDoItems() {
     });
 }
 
-export function newToDoBtnListener(){
+export function addToDoObj(){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
         if (newToDoNameInput.value === "") {
@@ -75,7 +78,7 @@ export function newToDoBtnListener(){
     });
 }
 
-export function toggleToDoInputOnClick() {
+export function toggleToDoInput() {
     inputDiv.style.display = "none";
     addNewToDo.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
@@ -86,7 +89,7 @@ export function toggleToDoInputOnClick() {
     }) ;
 }
 
-function deleteBtnOnClick() {
+function deleteToDoLI() {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
