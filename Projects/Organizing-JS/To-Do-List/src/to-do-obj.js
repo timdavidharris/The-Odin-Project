@@ -1,5 +1,3 @@
-export { itemArray, toDoObj, toggleToDoInputOnClick, newToDoBtnListener, getTodaysDate };
-
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
@@ -10,7 +8,7 @@ let toDoObjNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-function toDoObj(name, due) {
+export function toDoObj(name, due) {
     this.name = name;
     this.due = due;
     itemArray.push(this);
@@ -63,7 +61,7 @@ function clearToDoItems() {
     });
 }
 
-function newToDoBtnListener(){
+export function newToDoBtnListener(){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
         if (newToDoNameInput.value === "") {
@@ -77,7 +75,7 @@ function newToDoBtnListener(){
     });
 }
 
-function toggleToDoInputOnClick() {
+export function toggleToDoInputOnClick() {
     inputDiv.style.display = "none";
     addNewToDo.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
@@ -100,7 +98,7 @@ function deleteBtnOnClick() {
     });
 }
 
-function getTodaysDate() {
+export function getTodaysDate() {
     let today = new Date();
     let day = today.getDate();
     let month = today.getMonth() + 1;
