@@ -1,3 +1,5 @@
+import { getItemArray } from "./local-storage";
+
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
@@ -38,6 +40,7 @@ function drawToDoList(itemArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton);
     });
+    getItemArray(); // from local storage
     return deleteToDoLI();
 }
 
@@ -93,7 +96,6 @@ function deleteToDoLI() {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
-            console.log(itemArray);
             let toDoItemNum = Number(button.dataset.deleteNum);
             itemArray.splice(toDoItemNum, 1);
             return drawToDoList(itemArray);
