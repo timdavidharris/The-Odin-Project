@@ -10,7 +10,7 @@ let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-expname, due
+function toDoObj(name, dueDate) {
     this.name = name;
     this.dueDate = dueDate;
     itemArray.push(this);
