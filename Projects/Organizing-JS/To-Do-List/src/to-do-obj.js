@@ -1,20 +1,21 @@
-import { getItemArray } from "./local-storage";
+import { save } from "./local-storage";
+import { checkForLocalStorage } from "./local-storage";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
-let itemArray = [];
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
 export function toDoObj(name, dueDate) {
+    console.log(checkForLocalStorage.itemArrayValue());
     this.name = name;
     this.dueDate = dueDate;
-    itemArray.push(this);
-    drawToDoList(itemArray);
+    checkForLocalStorage.itemArrayValue().push(this);
+    drawToDoList(checkForLocalStorage.itemArrayValue());
 }
 
 function drawToDoList(itemArray) {
@@ -40,7 +41,7 @@ function drawToDoList(itemArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton);
     });
-    getItemArray(); // from local storage
+    save(itemArray); // from local storage
     return deleteToDoLI();
 }
 
@@ -97,8 +98,8 @@ function deleteToDoLI() {
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
-            itemArray.splice(toDoItemNum, 1);
-            return drawToDoList(itemArray);
+            checkForLocalStorage.itemArrayValue().splice(toDoItemNum, 1);
+            return drawToDoList(checkForLocalStorage.itemArrayValue());
         });
     });
 }
