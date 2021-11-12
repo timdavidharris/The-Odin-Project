@@ -1,11 +1,6 @@
 export function checkForLocalStorage() {
-    let itemArrayValue = function() {
-        let itemArray = localStorage.getItem("to-do-list") ? JSON.parse(localStorage.GetItem("to-do-items")) : [];
-        return itemArray;
-    };
-    return {
-        itemArrayValue,
-    };
+    let itemArray = localStorage.getItem("to-do-list") ? JSON.parse(localStorage.GetItem("to-do-items")) : [];
+    return itemArray;
 }
 
 export function save(itemArray) {

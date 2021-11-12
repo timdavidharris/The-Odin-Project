@@ -10,12 +10,11 @@ let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-export function toDoObj(name, dueDate) {
-    console.log(checkForLocalStorage.itemArrayValue());
+expname, due
     this.name = name;
     this.dueDate = dueDate;
-    checkForLocalStorage.itemArrayValue().push(this);
-    drawToDoList(checkForLocalStorage.itemArrayValue());
+    itemArray.push(this);
+    drawToDoList(itemArray);
 }
 
 function drawToDoList(itemArray) {
@@ -98,8 +97,8 @@ function deleteToDoLI() {
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
-            checkForLocalStorage.itemArrayValue().splice(toDoItemNum, 1);
-            return drawToDoList(checkForLocalStorage.itemArrayValue());
+            itemArray.splice(toDoItemNum, 1);
+            return drawToDoList(itemArray);
         });
     });
 }
