@@ -1,16 +1,18 @@
-import { save } from "./local-storage";
-import { checkForLocalStorage } from "./local-storage";
+// import { save } from "./local-storage";
+// import { checkForLocalStorage } from "./local-storage";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
+let itemArray = [];
+// checkForLocalStorage(itemArray);
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-function toDoObj(name, dueDate) {
+export function toDoObj(name, dueDate) {
     this.name = name;
     this.dueDate = dueDate;
     itemArray.push(this);
@@ -40,7 +42,7 @@ function drawToDoList(itemArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton);
     });
-    save(itemArray); // from local storage
+    // save(itemArray); // from local storage
     return deleteToDoLI();
 }
 
