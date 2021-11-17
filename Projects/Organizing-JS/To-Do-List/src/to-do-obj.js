@@ -1,5 +1,4 @@
-import { save } from "./local-storage";
-import { checkForLocalStorage } from "./local-storage";
+import { save, setItemArrayWithLocalStorage } from "./local-storage";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
@@ -7,10 +6,20 @@ let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
 let itemArray = [];
-itemArray = checkForLocalStorage(itemArray);
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
+
+export function setItemArrayVarBasedOnStorage() {
+    if (itemArray.length === 0) {
+        new toDoObj("*example to do*", getTodaysDate());
+    } else if ((itemArray[0].name === "*example to do*") &&
+    (itemArray.length === 1)) {
+        itemArray = [];
+    } else {
+        itemArray = setItemArrayWithLocalStorage(itemArray);
+    }
+}
 
 export function toDoObj(name, dueDate) {
     this.name = name;

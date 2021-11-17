@@ -9,10 +9,4 @@ listMod.addListObj();
 listMod.toggleListInputDisplay();
 toDoMod.toggleToDoInputDisplay();
 toDoMod.addToDoObj();
-
-let firstLoad = true;
-if (firstLoad === true) {
-    new toDoMod.toDoObj("*example to do*", toDoMod.getTodaysDate());
-    firstLoad = false;
-}
-
+toDoMod.setItemArrayVarBasedOnStorage();
