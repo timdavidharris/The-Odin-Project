@@ -11,12 +11,17 @@ let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
 export function setItemArrayVarBasedOnStorage() {
-    if (itemArray.length === 0) {
-        new toDoObj("*example to do*", getTodaysDate());
-    } else if ((itemArray[0].name === "*example to do*") &&
-    (itemArray.length === 1)) {
-        itemArray = [];
+    if ((localStorage.getItem("to-do-items") === null) ||
+    (localStorage.getItem("to-do-items") === undefined)) {
+        console.log("Local Storage considered null or undefined");
+        if (itemArray.length === 0) {
+            new toDoObj("*example to do*", getTodaysDate());
+        } if ((itemArray[0].name === "*example to do*") &&
+        (itemArray.length === 1)) {
+            itemArray = [];
+        } 
     } else {
+        console.log("local storage not considered null nor undefined");
         itemArray = setItemArrayWithLocalStorage(itemArray);
     }
 }
@@ -52,6 +57,7 @@ function drawToDoList(itemArray) {
         setDOMDataNum(LI, deleteButton);
     });
     save(itemArray);
+    console.log(localStorage.getItem("to-do-items"));
     return deleteToDoLI();
 }
 
