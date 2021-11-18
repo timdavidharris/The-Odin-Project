@@ -7,6 +7,7 @@ let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
 let itemArray = [];
+let completedArray = [];
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
@@ -51,10 +52,11 @@ export function drawToDoList(itemArray) {
         LI.append(dueSpacerText);
         LI.append(item.dueDate);
         LI.append(deleteButton);
-        setDOMDataNum(LI, deleteButton);
+        setDOMDataNum(LI, deleteButton, checkBox);
     });
     storage.save(itemArray);
-    return deleteToDoLI();
+    deleteToDoLI();
+    checkOffToDo();
 }
 
 function noDueDate(item) {
@@ -63,12 +65,13 @@ function noDueDate(item) {
     }
 }
 
-function setDOMDataNum(LI, deleteButton) {
+function setDOMDataNum(LI, deleteButton, checkBox) {
     toDoDataNum = 0;
     let liElements = document.querySelectorAll(".to-do-li");
     liElements.forEach(() => {
         LI.setAttribute("data", `item-${toDoDataNum}`);
         deleteButton.setAttribute("data-delete-num", `${toDoDataNum}`);
+        checkBox.setAttribute("data-check-box", `${toDoDataNum}`);
         toDoDataNum++;
     });
 }
@@ -111,6 +114,19 @@ function deleteToDoLI() {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
             itemArray.splice(toDoItemNum, 1);
+            return drawToDoList(itemArray);
+        });
+    });
+}
+
+export function checkOffToDo() {
+    let checkBoxes = document.querySelectorAll(".form-check-input");
+    checkBoxes.forEach((box) => {
+        box.addEventListener("click", () => {
+            let checkBoxNum = Number(box.dataset.checkBox);
+            itemArray.splice(checkBoxNum, 1);
+            console.log(checkBoxNum);
+            completedArray.push(itemArray[checkBoxNum - 1]);
             return drawToDoList(itemArray);
         });
     });
