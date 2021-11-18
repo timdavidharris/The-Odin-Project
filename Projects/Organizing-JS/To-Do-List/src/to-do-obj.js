@@ -119,6 +119,10 @@ function deleteToDoLI() {
 export function clearToDoLocalStorage() {
     let clearToDos = document.querySelector("#clear-to-do-local-storage");
     clearToDos.addEventListener("click", () => {
-        storage.clear(itemArray);
+        if (confirm("Click 'OK' if you do want to delete ALL your To Do items.")) {
+            storage.clear(itemArray);
+        } else {
+            alert("You did not delete you To Do items.");
+        }
     });
 }

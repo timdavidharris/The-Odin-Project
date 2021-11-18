@@ -1,15 +1,16 @@
-let toDoStorage = localStorage.getItem("to-do-items");
 import * as toDo from "./to-do-obj";
 
+let getToDoStorage = localStorage.getItem("to-do-items");
+let data = [];
+
 export function fetchLocalStorage(itemArray) {
-    itemArray = JSON.parse(toDoStorage);
+    itemArray = JSON.parse(getToDoStorage);
     return itemArray;
 }
 
-let data = [];
 export function save(itemArray) {
     localStorage.setItem("to-do-items", JSON.stringify(itemArray));
-    data = JSON.parse(toDoStorage);
+    data = JSON.parse(getToDoStorage);
     return data;
 }
 
