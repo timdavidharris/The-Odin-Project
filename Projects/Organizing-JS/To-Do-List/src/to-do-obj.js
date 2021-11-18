@@ -1,4 +1,5 @@
 import { save, fetchLocalStorage } from "./local-storage";
+import * as index from "./index";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
@@ -14,7 +15,7 @@ export function setItemArrayVarBasedOnStorage() {
     if ((localStorage.getItem("to-do-items") === null) ||
     (localStorage.getItem("to-do-items") === undefined)) {
         if (itemArray.length === 0) {
-            new toDoObj("*example to do*", getTodaysDate());
+            new toDoObj("*example to do*", index.getTodaysDate());
         }
     } else {
         itemArray = fetchLocalStorage(itemArray);
@@ -118,18 +119,9 @@ function deleteToDoLI() {
 export function clearToDoLocalStorage() {
     let clearToDos = document.querySelector("#clear-to-do-local-storage");
     clearToDos.addEventListener("click", () => {
-        localStorage.clear("to-do-items");
+        localStorage.clear("to-do-items"); // move to local-storage file
         itemArray = [];
         save(itemArray);
         drawToDoList(itemArray);
     });
-}
-
-// Move this function to index.js
-export function getTodaysDate() {
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
-    return `${year}-${month}-${day}`;
 }
