@@ -125,6 +125,7 @@ export function clearToDoLocalStorage() {
     });
 }
 
+// Move this function to index.js
 export function getTodaysDate() {
     let today = new Date();
     let day = today.getDate();
