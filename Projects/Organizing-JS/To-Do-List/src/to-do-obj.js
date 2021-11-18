@@ -66,12 +66,12 @@ function noDueDate(item) {
     }
 }
 
-function drawCompletedToDos(completeArray) {
+function drawCompletedToDos(completedArray) {
     let completedDiv = document.querySelector("#completed-to-dos-ul");
-    completeArray.forEach((item) => {
+    completedArray.forEach((item) => {
         let li = document.createElement("li");
         li.append(item.name);
-        completedDiv.append(li);
+        return completedDiv.append(li);
     });
 }
 
