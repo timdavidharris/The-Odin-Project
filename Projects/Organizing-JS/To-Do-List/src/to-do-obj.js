@@ -11,9 +11,9 @@ let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
 export function setItemArrayVarBasedOnStorage() {
+    console.log(itemArray);
     if ((localStorage.getItem("to-do-items") === null) ||
     (localStorage.getItem("to-do-items") === undefined)) {
-        console.log("Local Storage considered null or undefined");
         if (itemArray.length === 0) {
             new toDoObj("*example to do*", getTodaysDate());
         } if ((itemArray[0].name === "*example to do*") &&
@@ -21,8 +21,8 @@ export function setItemArrayVarBasedOnStorage() {
             itemArray = [];
         } 
     } else {
-        console.log("local storage not considered null nor undefined");
         itemArray = setItemArrayWithLocalStorage(itemArray);
+        drawToDoList(itemArray);
     }
 }
 
