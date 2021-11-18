@@ -57,12 +57,22 @@ export function drawToDoList(itemArray) {
     storage.save(itemArray);
     deleteToDoLI();
     checkOffToDo();
+    drawCompletedToDos(completedArray);
 }
 
 function noDueDate(item) {
     if (item.dueDate === "") {
         item.dueDate = " - no due date";
     }
+}
+
+function drawCompletedToDos(completeArray) {
+    let completedDiv = document.querySelector("#completed-to-dos-ul");
+    completeArray.forEach((item) => {
+        let li = document.createElement("li");
+        li.append(item.name);
+        completedDiv.append(li);
+    });
 }
 
 function setDOMDataNum(LI, deleteButton, checkBox) {
