@@ -9,4 +9,5 @@ listMod.addListObj();
 listMod.toggleListInputDisplay();
 toDoMod.toggleToDoInputDisplay();
 toDoMod.addToDoObj();
+toDoMod.clearToDoLocalStorage();
 toDoMod.setItemArrayVarBasedOnStorage();

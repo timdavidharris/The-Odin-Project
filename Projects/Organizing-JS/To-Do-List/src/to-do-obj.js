@@ -1,4 +1,4 @@
-import { save, setItemArrayWithLocalStorage } from "./local-storage";
+import { save, fetchLocalStorage } from "./local-storage";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
@@ -11,17 +11,13 @@ let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
 export function setItemArrayVarBasedOnStorage() {
-    console.log(itemArray);
     if ((localStorage.getItem("to-do-items") === null) ||
     (localStorage.getItem("to-do-items") === undefined)) {
         if (itemArray.length === 0) {
             new toDoObj("*example to do*", getTodaysDate());
-        } if ((itemArray[0].name === "*example to do*") &&
-        (itemArray.length === 1)) {
-            itemArray = [];
-        } 
+        }
     } else {
-        itemArray = setItemArrayWithLocalStorage(itemArray);
+        itemArray = fetchLocalStorage(itemArray);
         drawToDoList(itemArray);
     }
 }
@@ -57,7 +53,6 @@ function drawToDoList(itemArray) {
         setDOMDataNum(LI, deleteButton);
     });
     save(itemArray);
-    console.log(localStorage.getItem("to-do-items"));
     return deleteToDoLI();
 }
 
@@ -117,6 +112,16 @@ function deleteToDoLI() {
             itemArray.splice(toDoItemNum, 1);
             return drawToDoList(itemArray);
         });
+    });
+}
+
+export function clearToDoLocalStorage() {
+    let clearToDos = document.querySelector("#clear-to-do-local-storage");
+    clearToDos.addEventListener("click", () => {
+        localStorage.clear("to-do-items");
+        itemArray = [];
+        save(itemArray);
+        drawToDoList(itemArray);
     });
 }
 
