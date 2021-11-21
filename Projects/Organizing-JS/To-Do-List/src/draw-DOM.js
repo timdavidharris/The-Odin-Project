@@ -7,9 +7,9 @@ let completedArray = [];
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
 
-export function drawToDoList(inputArray) {
+export function drawToDoList(toDosArray) {
     clearToDoItems();
-    inputArray.forEach((item) => {
+    toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
         let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
         let LI = document.createElement("li");
@@ -30,16 +30,17 @@ export function drawToDoList(inputArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton, checkBox);
     });
-    storage.save(inputArray, "to-do-items");
-    deleteToDoLI(inputArray);
-    checkOffToDo(inputArray);
+    storage.save(toDosArray, "to-do-items");
+    deleteToDoLI(toDosArray);
+    checkOffToDo(toDosArray);
     drawCompletedToDos(completedArray);
 }
 
+
+// figure out why the names do not match when this runs
 function drawCompletedToDos(completedArray) {
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     completedArray.forEach((item) => {
-        console.log(item.name);
         let li = document.createElement("li");
         li.append(item.name);
         return completedDiv.append(li);
@@ -64,26 +65,26 @@ function clearToDoItems() {
     });
 }
 
-function deleteToDoLI(inputArray) {
+function deleteToDoLI(toDosArray) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
-            inputArray.splice(toDoItemNum, 1);
-            return drawToDoList(inputArray);
+            toDosArray.splice(toDoItemNum, 1);
+            return drawToDoList(toDosArray);
         });
     });
 }
 
-export function checkOffToDo(inputArray) {
+export function checkOffToDo(toDosArray) {
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
-            inputArray.splice(checkBoxNum, 1);
+            toDosArray.splice(checkBoxNum, 1);
             console.log(checkBoxNum);
-            completedArray.push(inputArray[checkBoxNum - 1]);
-            return drawToDoList(inputArray);
+            completedArray.push(toDosArray[checkBoxNum - 1]);
+            return drawToDoList(toDosArray);
         });
     });
 }

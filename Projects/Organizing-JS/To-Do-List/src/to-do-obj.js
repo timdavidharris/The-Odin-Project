@@ -6,13 +6,13 @@ let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 
-export function toDoObj(name, dueDate, inputArray) {
+export function toDoObj(name, dueDate, toDosArray) {
     this.name = name;
     this.dueDate = dueDate;
-    inputArray.push(this);
-    draw.drawToDoList(inputArray);
+    toDosArray.push(this);
+    draw.drawToDoList(toDosArray);
 }
-export function addToDoObj(inputArray){
+export function addToDoObj(toDosArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
         if (newToDoNameInput.value === "") {
@@ -21,7 +21,7 @@ export function addToDoObj(inputArray){
             inputDiv.style.display = "none";
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
-            new toDoObj(newToDoName, newToDoDue, inputArray);
+            new toDoObj(newToDoName, newToDoDue, toDosArray);
         }
     });
 }
@@ -37,11 +37,11 @@ export function toggleToDoInputDisplay() {
     }) ;
 }
 
-export function clearToDoLocalStorage(inputArray) {
+export function clearToDoLocalStorage(toDosArray) {
     let clearToDos = document.querySelector("#clear-to-do-local-storage");
     clearToDos.addEventListener("click", () => {
         if (confirm("Click 'OK' if you do want to delete ALL your To Do items.")) {
-            storage.clear(inputArray, "to-do-items");
+            storage.clear(toDosArray, "to-do-items");
         } else {
             alert("You did not delete you To Do items.");
         }

@@ -1,20 +1,22 @@
+import * as storage from "./local-storage";
+
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
 let toDoParentDiv = document.querySelector("#to-do-items");
 let inputDiv = document.querySelector("#new-to-do-input-div");
 let listNum = 0;
 let listObjNum = 0;
-let listArray = [];
 
-function listObj(name) {
+export function listObj(name, listArray) {
+    console.log(listArray);
     this.name = name;
     this.objNum = listObjNum;
     listArray.push(this);
-    appendNewList(this);
+    appendNewList(this, listArray);
     listObjNum++;
 }
 
-function appendNewList(objInput) {
+function appendNewList(objInput, listArray) {
     let parentUL = document.querySelector("#ul-nav-items");
     let newLI = document.createElement("li");
     let newATag = document.createElement("a");
@@ -27,13 +29,14 @@ function appendNewList(objInput) {
     newLI.append(newATag);
     newATag.append(newH3);
     newH3.append(objInput.name);
+    storage.save(listArray, "lists");
 }
 
-export function addListDiv() {
+export function addListDiv(listArray) {
     let newTab = document.createElement("div");
     newTab.setAttribute("id", `to-do-${listNum}`);
     toDoParentDiv.append(newTab);
-    newTab = new listObj("To Do");
+    new listObj("To Do", listArray);
     listNum++;
 }
 
@@ -47,7 +50,7 @@ export function toggleListInputDisplay() {
     });
 }
 
-export function addListObj() {
+export function addListObj(listArray) {
     let addNewListBtn = document.querySelector("#new-to-do-list-btn");
     addNewListBtn.addEventListener("click", () => {
         if (addNewListInput.value === "") {
@@ -55,7 +58,7 @@ export function addListObj() {
         } else {
             inputDiv.style.display = "none";
             let newListName = addNewListInput.value;
-            new listObj(newListName);
+            new listObj(newListName, listArray);
         }
     });
 }

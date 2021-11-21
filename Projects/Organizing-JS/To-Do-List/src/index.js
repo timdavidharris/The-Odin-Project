@@ -6,15 +6,17 @@ import * as list from "./list-obj";
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
 
-let inputArray = [];
-inputArray = storage.setArrayVar(inputArray, "to-do-items");
-list.addListDiv();
-list.addListObj();
+let toDosArray = [];
+let listArray = [];
+toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+listArray = storage.setArrayVar(listArray, "lists");
+list.addListDiv(listArray);
+list.addListObj(listArray);
 list.toggleListInputDisplay();
 toDo.toggleToDoInputDisplay();
-toDo.addToDoObj(inputArray);
-toDo.clearToDoLocalStorage(inputArray, "to-do-items");
-draw.drawToDoList(inputArray);
+toDo.addToDoObj(toDosArray);
+toDo.clearToDoLocalStorage(toDosArray, "to-do-items");
+draw.drawToDoList(toDosArray);
 
 export function getTodaysDate() {
     let today = new Date();
