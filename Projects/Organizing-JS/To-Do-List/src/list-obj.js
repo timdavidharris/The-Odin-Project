@@ -8,35 +8,43 @@ let listNum = 0;
 let listObjNum = 0;
 
 export function listObj(name, listArray) {
-    console.log(listArray);
     this.name = name;
     this.objNum = listObjNum;
     listArray.push(this);
-    appendNewList(this, listArray);
+    drawListLinks(listArray);
     listObjNum++;
 }
 
-function appendNewList(objInput, listArray) {
-    let parentUL = document.querySelector("#ul-nav-items");
-    let newLI = document.createElement("li");
-    let newATag = document.createElement("a");
-    let newH3 = document.createElement("h3");
-    newLI.setAttribute("class", "nav-item");
-    newATag.setAttribute("class", "nav-link active"),
-    newATag.setAttribute("aria-current", "page"),
-    newATag.setAttribute("href", "#");
-    parentUL.append(newLI);
-    newLI.append(newATag);
-    newATag.append(newH3);
-    newH3.append(objInput.name);
-    storage.save(listArray, "lists");
+export function drawListLinks(listArray) {
+    clearLists();
+    listArray.forEach((item) => {
+        let parentUL = document.querySelector("#ul-nav-items");
+        let li = document.createElement("li");
+        let aTag = document.createElement("a");
+        let h3 = document.createElement("h3");
+        li.setAttribute("class", "nav-item added-list");
+        aTag.setAttribute("class", "nav-link active"),
+        aTag.setAttribute("aria-current", "page"),
+        aTag.setAttribute("href", "#");
+        parentUL.append(li);
+        li.append(aTag);
+        aTag.append(h3);
+        h3.append(item.name);
+    });
+    return storage.save(listArray, "lists");
 }
 
-export function addListDiv(listArray) {
+function clearLists() {
+    let listItems = document.querySelectorAll(".added-list");
+    listItems.forEach((item) => {
+        item.remove();
+    });
+}
+
+export function addListDiv() {
     let newTab = document.createElement("div");
     newTab.setAttribute("id", `to-do-${listNum}`);
     toDoParentDiv.append(newTab);
-    new listObj("To Do", listArray);
     listNum++;
 }
 
@@ -59,6 +67,17 @@ export function addListObj(listArray) {
             inputDiv.style.display = "none";
             let newListName = addNewListInput.value;
             new listObj(newListName, listArray);
+        }
+    });
+}
+
+export function clearListLocalStorage(listArray) {
+    let clearLists = document.querySelector("#clear-lists-local-storage");
+    clearLists.addEventListener("click", () => {
+        if (confirm("Click 'OK' if you do want to delete ALL your To Do LISTS.")) {
+            storage.clear(listArray, "lists");
+        } else {
+            alert("You did not delete you To Do lists.");
         }
     });
 }

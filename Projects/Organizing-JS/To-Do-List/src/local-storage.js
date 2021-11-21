@@ -1,5 +1,3 @@
-import * as toDo from "./to-do-obj";
-
 let data = [];
 
 export function fetch(inputArray, inputKey) {
@@ -16,7 +14,8 @@ export function save(inputArray, inputKey) {
 export function clear(inputArray, inputKey) {
     localStorage.clear(inputKey);
     inputArray = [];
-    toDo.drawToDoList(inputArray);
+    save(inputArray, inputKey);
+    location.reload();
 } 
 
 export function setArrayVar(inputArray, inputKey) {

@@ -10,12 +10,14 @@ let toDosArray = [];
 let listArray = [];
 toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
 listArray = storage.setArrayVar(listArray, "lists");
-list.addListDiv(listArray);
+list.addListDiv();
 list.addListObj(listArray);
 list.toggleListInputDisplay();
 toDo.toggleToDoInputDisplay();
 toDo.addToDoObj(toDosArray);
-toDo.clearToDoLocalStorage(toDosArray, "to-do-items");
+toDo.clearToDoLocalStorage(toDosArray);
+list.clearListLocalStorage(listArray);
+list.drawListLinks(listArray);
 draw.drawToDoList(toDosArray);
 
 export function getTodaysDate() {

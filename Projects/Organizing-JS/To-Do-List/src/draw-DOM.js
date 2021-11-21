@@ -7,6 +7,7 @@ let completedArray = [];
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
 
+// to do items DOM set up below
 export function drawToDoList(toDosArray) {
     clearToDoItems();
     toDosArray.forEach((item) => {
