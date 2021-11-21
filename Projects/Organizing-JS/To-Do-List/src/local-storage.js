@@ -3,7 +3,6 @@ import * as toDo from "./to-do-obj";
 let data = [];
 
 export function fetch(inputArray, inputKey) {
-    console.log("fetch()");
     inputArray = JSON.parse(localStorage.getItem(inputKey));
     return inputArray;
 }
@@ -21,7 +20,6 @@ export function clear(inputArray, inputKey) {
 } 
 
 export function setArrayVar(inputArray, inputKey) {
-    console.log("setArrayVar()");
     if ((localStorage.getItem(inputKey) === null) ||
     (localStorage.getItem(inputKey) === undefined)) {
         return inputArray = [];

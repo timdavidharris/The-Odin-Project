@@ -4,7 +4,8 @@ import "./style.css";
 import * as toDo from "./to-do-obj";
 import * as list from "./list-obj";
 import * as storage from "./local-storage";
-// import * as storageMod from "./local-storage";
+import * as draw from "./draw-DOM";
+
 let inputArray = [];
 inputArray = storage.setArrayVar(inputArray, "to-do-items");
 list.addListDiv();
@@ -13,7 +14,7 @@ list.toggleListInputDisplay();
 toDo.toggleToDoInputDisplay();
 toDo.addToDoObj(inputArray);
 toDo.clearToDoLocalStorage(inputArray, "to-do-items");
-toDo.drawToDoList(inputArray);
+draw.drawToDoList(inputArray);
 
 export function getTodaysDate() {
     let today = new Date();
