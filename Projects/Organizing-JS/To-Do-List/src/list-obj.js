@@ -18,13 +18,15 @@ function appendNewList(objInput) {
     let parentUL = document.querySelector("#ul-nav-items");
     let newLI = document.createElement("li");
     let newATag = document.createElement("a");
+    let newH3 = document.createElement("h3");
     newLI.setAttribute("class", "nav-item");
     newATag.setAttribute("class", "nav-link active"),
     newATag.setAttribute("aria-current", "page"),
     newATag.setAttribute("href", "#");
     parentUL.append(newLI);
     newLI.append(newATag);
-    newATag.append(objInput.name);
+    newATag.append(newH3);
+    newH3.append(objInput.name);
 }
 
 export function addListDiv() {
