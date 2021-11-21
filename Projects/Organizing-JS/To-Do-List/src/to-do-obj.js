@@ -1,39 +1,25 @@
 import * as storage from "./local-storage";
-import * as index from "./index";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let UL = document.createElement("ul");
-let itemArray = [];
 let completedArray = [];
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
 UL.setAttribute("class", "list-group");
 
-export function setItemArrayVarBasedOnStorage() {
-    if ((localStorage.getItem("to-do-items") === null) ||
-    (localStorage.getItem("to-do-items") === undefined)) {
-        if (itemArray.length === 0) {
-            new toDoObj("*example to do*", index.getTodaysDate());
-        }
-    } else {
-        itemArray = storage.fetchLocalStorage(itemArray);
-        drawToDoList(itemArray);
-    }
-}
-
-export function toDoObj(name, dueDate) {
+export function toDoObj(name, dueDate, inputArray) {
     this.name = name;
     this.dueDate = dueDate;
-    itemArray.push(this);
-    drawToDoList(itemArray);
+    inputArray.push(this);
+    drawToDoList(inputArray);
 }
 
-export function drawToDoList(itemArray) {
+export function drawToDoList(inputArray) {
     clearToDoItems();
-    itemArray.forEach((item) => {
+    inputArray.forEach((item) => {
         noDueDate(item);
         let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
         let LI = document.createElement("li");
@@ -54,9 +40,9 @@ export function drawToDoList(itemArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton, checkBox);
     });
-    storage.save(itemArray);
-    deleteToDoLI();
-    checkOffToDo();
+    storage.save(inputArray, "to-do-items");
+    deleteToDoLI(inputArray);
+    checkOffToDo(inputArray);
     drawCompletedToDos(completedArray);
 }
 
@@ -69,6 +55,7 @@ function noDueDate(item) {
 function drawCompletedToDos(completedArray) {
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     completedArray.forEach((item) => {
+        console.log(item.name);
         let li = document.createElement("li");
         li.append(item.name);
         return completedDiv.append(li);
@@ -93,7 +80,7 @@ function clearToDoItems() {
     });
 }
 
-export function addToDoObj(){
+export function addToDoObj(inputArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
         if (newToDoNameInput.value === "") {
@@ -102,7 +89,7 @@ export function addToDoObj(){
             inputDiv.style.display = "none";
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
-            new toDoObj(newToDoName, newToDoDue);
+            new toDoObj(newToDoName, newToDoDue, inputArray);
         }
     });
 }
@@ -118,35 +105,35 @@ export function toggleToDoInputDisplay() {
     }) ;
 }
 
-function deleteToDoLI() {
+function deleteToDoLI(inputArray) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
-            itemArray.splice(toDoItemNum, 1);
-            return drawToDoList(itemArray);
+            inputArray.splice(toDoItemNum, 1);
+            return drawToDoList(inputArray);
         });
     });
 }
 
-export function checkOffToDo() {
+export function checkOffToDo(inputArray) {
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
-            itemArray.splice(checkBoxNum, 1);
+            inputArray.splice(checkBoxNum, 1);
             console.log(checkBoxNum);
-            completedArray.push(itemArray[checkBoxNum - 1]);
-            return drawToDoList(itemArray);
+            completedArray.push(inputArray[checkBoxNum - 1]);
+            return drawToDoList(inputArray);
         });
     });
 }
 
-export function clearToDoLocalStorage() {
+export function clearToDoLocalStorage(inputArray) {
     let clearToDos = document.querySelector("#clear-to-do-local-storage");
     clearToDos.addEventListener("click", () => {
         if (confirm("Click 'OK' if you do want to delete ALL your To Do items.")) {
-            storage.clear(itemArray);
+            storage.clear(inputArray, "to-do-items");
         } else {
             alert("You did not delete you To Do items.");
         }
