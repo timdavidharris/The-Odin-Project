@@ -8,6 +8,7 @@ let UL = document.createElement("ul");
 let completedArray = [];
 let toDoDataNum = 0;
 let dueSpacerText = "  |  due:  ";
+let noDueDateText = " - no due date";
 UL.setAttribute("class", "list-group");
 
 export function toDoObj(name, dueDate, inputArray) {
@@ -20,7 +21,7 @@ export function toDoObj(name, dueDate, inputArray) {
 export function drawToDoList(inputArray) {
     clearToDoItems();
     inputArray.forEach((item) => {
-        noDueDate(item);
+        item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
         let toDoDiv = document.querySelector("#to-do-0"); // need to pull from somewhere else
         let LI = document.createElement("li");
         let checkBox = document.createElement("input");
@@ -44,12 +45,6 @@ export function drawToDoList(inputArray) {
     deleteToDoLI(inputArray);
     checkOffToDo(inputArray);
     drawCompletedToDos(completedArray);
-}
-
-function noDueDate(item) {
-    if (item.dueDate === "") {
-        item.dueDate = " - no due date";
-    }
 }
 
 function drawCompletedToDos(completedArray) {
