@@ -4,6 +4,7 @@ let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let completedArray = [];
+completedArray = storage.setArrayVar(completedArray, "completed");
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
 
@@ -44,6 +45,7 @@ function drawCompletedToDos(completedArray) {
     completedArray.forEach((item) => {
         let li = document.createElement("li");
         li.append(item.name);
+        console.log(completedArray);
         return completedDiv.append(li);
     });
 }
@@ -82,9 +84,11 @@ export function checkOffToDo(toDosArray) {
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
-            toDosArray.splice(checkBoxNum, 1);
-            console.log(checkBoxNum);
+            console.log(toDosArray);
             completedArray.push(toDosArray[checkBoxNum - 1]);
+            toDosArray.splice(checkBoxNum, 1);
+            console.log(completedArray);
+            storage.save(completedArray, "completed");
             return drawToDoList(toDosArray);
         });
     });
