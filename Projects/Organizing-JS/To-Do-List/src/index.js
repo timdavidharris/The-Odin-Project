@@ -21,12 +21,10 @@ toDo.clearToDoLocalStorage(toDosArray);
 toDo.clearCompletedToDosLocalStorage(completedArray);
 list.clearListLocalStorage(listArray);
 list.drawListLinks(listArray);
-draw.drawToDoList(toDosArray, completedArray);
+draw.toDoList(toDosArray, completedArray);
 
-export function getTodaysDate() {
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
-    return `${year}-${month}-${day}`;
+export function drawTheDOM() {
+    toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+    completedArray = storage.setArrayVar(completedArray, "completed");
+    return draw.toDoList(toDosArray, completedArray);
 }

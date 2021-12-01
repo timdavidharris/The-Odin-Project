@@ -7,7 +7,7 @@ let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
 
 // to do items DOM set up below
-export function drawToDoList(toDosArray, completedArray) {
+export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
     toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -77,7 +77,7 @@ function deleteToDoLI(toDosArray, completedArray) {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
             toDosArray.splice(toDoItemNum, 1);
-            return drawToDoList(toDosArray, completedArray);
+            return toDoList(toDosArray, completedArray);
         });
     });
 }
@@ -89,7 +89,7 @@ export function checkOffToDo(toDosArray, completedArray) {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(toDosArray[checkBoxNum]);
             toDosArray.splice(checkBoxNum, 1);
-            return drawToDoList(toDosArray, completedArray);
+            return toDoList(toDosArray, completedArray);
         });
     });
 }

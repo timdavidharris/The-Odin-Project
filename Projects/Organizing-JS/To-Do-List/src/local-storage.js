@@ -1,4 +1,4 @@
-import * as draw from "./draw-DOM";
+import * as index from "./index";
 
 export function fetch(inputArray, inputKey) {
     inputArray = JSON.parse(localStorage.getItem(inputKey));
@@ -12,18 +12,11 @@ export function save(inputArray, inputKey) {
 
 export function clear(inputArray, inputKey) {
     console.log(inputKey);
+    console.log(inputArray);
     localStorage.clear(inputKey);
     inputArray = [];
     save(inputArray, inputKey);
-    drawTheDOM();
-}
-
-function drawTheDOM() {
-    let toDosArray = [];
-    let completedArray = [];
-    toDosArray = setArrayVar(toDosArray, "to-do-items");
-    completedArray = setArrayVar(completedArray, "completed");
-    return draw.drawToDoList(toDosArray, completedArray);
+    index.drawTheDOM();
 }
 
 export function setArrayVar(inputArray, inputKey) {

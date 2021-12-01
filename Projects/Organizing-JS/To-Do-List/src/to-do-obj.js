@@ -10,7 +10,7 @@ export function toDoObj(name, dueDate, toDosArray) {
     this.name = name;
     this.dueDate = dueDate;
     toDosArray.push(this);
-    draw.drawToDoList(toDosArray);
+    draw.toDoList(toDosArray);
 }
 export function addToDoObj(toDosArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
