@@ -18,6 +18,7 @@ list.toggleListInputDisplay();
 toDo.toggleToDoInputDisplay();
 toDo.addToDoObj(toDosArray);
 toDo.clearToDoLocalStorage(toDosArray);
+toDo.clearCompletedToDosLocalStorage(completedArray);
 list.clearListLocalStorage(listArray);
 list.drawListLinks(listArray);
 draw.drawToDoList(toDosArray, completedArray);

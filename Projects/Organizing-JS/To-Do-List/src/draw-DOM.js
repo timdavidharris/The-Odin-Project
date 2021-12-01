@@ -8,6 +8,7 @@ UL.setAttribute("class", "list-group");
 
 // to do items DOM set up below
 export function drawToDoList(toDosArray, completedArray) {
+    console.log(`drawToDoList ${completedArray}`);
     clearToDoItems();
     toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -30,17 +31,19 @@ export function drawToDoList(toDosArray, completedArray) {
         LI.append(deleteButton);
         setDOMDataNum(LI, deleteButton, checkBox);
     });
-    storage.save(toDosArray, "to-do-items");
-    deleteToDoLI(toDosArray, completedArray);
-    checkOffToDo(toDosArray, completedArray);
-    if (completedArray.length > 0) {
+    if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
+        storage.save(completedArray, "completed");
     }
+    storage.save(toDosArray, "to-do-items");
+    checkOffToDo(toDosArray, completedArray);
+    deleteToDoLI(toDosArray, completedArray);
 }
 
 
 // figure out why the names do not match when this runs
 function drawCompletedToDos(completedArray) {
+    console.log(`drawCompletedToDos ${completedArray}`);
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     clearCompletedToDos();
     completedArray.forEach((item) => {
@@ -76,12 +79,14 @@ function clearCompletedToDos() {
     });
 }
 
-function deleteToDoLI(toDosArray, completedArray) {
+function deleteToDoLI(toDosArray, array) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
             toDosArray.splice(toDoItemNum, 1);
+            let completedArray = array;
+            console.log(`deleteToDoLI ${completedArray}`);
             return drawToDoList(toDosArray, completedArray);
         });
     });
@@ -93,9 +98,8 @@ export function checkOffToDo(toDosArray, completedArray) {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(toDosArray[checkBoxNum]);
+            console.log(`checkOffToDo ${completedArray}`);
             toDosArray.splice(checkBoxNum, 1);
-            storage.save(completedArray, "completed");
-            storage.save(toDosArray, "to-do-items");
             return drawToDoList(toDosArray, completedArray);
         });
     });

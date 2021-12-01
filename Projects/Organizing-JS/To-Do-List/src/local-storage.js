@@ -1,5 +1,3 @@
-let data = [];
-
 export function fetch(inputArray, inputKey) {
     inputArray = JSON.parse(localStorage.getItem(inputKey));
     return inputArray;
@@ -7,8 +5,7 @@ export function fetch(inputArray, inputKey) {
 
 export function save(inputArray, inputKey) {
     localStorage.setItem(inputKey, JSON.stringify(inputArray));
-    data = JSON.parse(localStorage.getItem(inputKey));
-    return data;
+    return JSON.parse(localStorage.getItem(inputKey));
 }
 
 export function clear(inputArray, inputKey) {
@@ -16,7 +13,7 @@ export function clear(inputArray, inputKey) {
     inputArray = [];
     save(inputArray, inputKey);
     location.reload();
-} 
+}
 
 export function setArrayVar(inputArray, inputKey) {
     if ((localStorage.getItem(inputKey) === null) ||
@@ -25,4 +22,4 @@ export function setArrayVar(inputArray, inputKey) {
     } else {
         return fetch(inputArray, inputKey);
     }
-} 
+}

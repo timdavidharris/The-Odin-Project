@@ -47,3 +47,14 @@ export function clearToDoLocalStorage(toDosArray) {
         }
     });
 }
+
+export function clearCompletedToDosLocalStorage(completedArray) {
+    let clearCompleted = document.querySelector("#clear-completed-local-storage");
+    clearCompleted.addEventListener("click", () => {
+        if (confirm("Click 'OK' if you do want to delete ALL your to dos under the completed section.")) {
+            storage.clear(completedArray, "completed");
+        } else {
+            alert("You did not delete your list of completed to dos.");
+        }
+    });
+}
