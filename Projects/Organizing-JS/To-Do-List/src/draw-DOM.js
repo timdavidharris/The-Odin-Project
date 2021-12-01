@@ -35,6 +35,7 @@ export function drawToDoList(toDosArray, completedArray) {
         drawCompletedToDos(completedArray);
         storage.save(completedArray, "completed");
     }
+    completedArray = storage.setArrayVar(completedArray, "completed");
     storage.save(toDosArray, "to-do-items");
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
