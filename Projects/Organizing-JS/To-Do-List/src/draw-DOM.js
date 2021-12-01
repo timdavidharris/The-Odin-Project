@@ -9,7 +9,7 @@ UL.setAttribute("class", "list-group");
 // to do items DOM set up below
 export function drawToDoList(toDosArray, completedArray) {
     console.log(`drawToDoList ${completedArray}`);
-    clearToDoItems();
+    clearItems(".to-do-li");
     toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
         let toDoDiv = document.querySelector("#to-do-0");
@@ -45,7 +45,7 @@ export function drawToDoList(toDosArray, completedArray) {
 function drawCompletedToDos(completedArray) {
     console.log(`drawCompletedToDos ${completedArray}`);
     let completedDiv = document.querySelector("#completed-to-dos-ul");
-    clearCompletedToDos();
+    clearItems(".completed-li");
     completedArray.forEach((item) => {
         let li = document.createElement("li");
         li.setAttribute("class", "completed-li");
@@ -65,16 +65,9 @@ function setDOMDataNum(LI, deleteButton, checkBox) {
     });
 }
 
-function clearToDoItems() {
-    let toDoLIItems = document.querySelectorAll(".to-do-li");
+function clearItems(domSelector) {
+    let toDoLIItems = document.querySelectorAll(domSelector);
     toDoLIItems.forEach((liItem) => {
-        liItem.remove();
-    });
-}
-
-function clearCompletedToDos() {
-    let liItems = document.querySelectorAll(".completed-li");
-    liItems.forEach((liItem) => {
         liItem.remove();
     });
 }
