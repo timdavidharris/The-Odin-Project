@@ -6,7 +6,7 @@
     <title>Our superheroes</title>
 
     <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="JSON-practice.css">
   </head>
 
   <body>
@@ -23,7 +23,27 @@
     const header = document.querySelector('header');
     const section = document.querySelector('section');
 
+    let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    let request = new XMLHttpRequest();
+    request.open("GET", requestURL);
+    request.responseType = "json";
+    request.send();
 
+    request.onload = function() {
+        const superHeroes = request.response;
+        populateHeader(superHeroes);
+        showHeroes(superHeroes);
+    }
+
+    function populateHeader(obj) {
+        const h1 = document.createElement("h1");
+        h1.textContent = obj["squadName"];
+        header.appendChild(h1);
+
+        const para = document.createElement("p");
+        para.textContent = "Hometown: " + obj["homeTown"] + " // Formed: " + obj["formed"];
+        header.appendChild(para);
+    }
 
     </script>
   </body>
