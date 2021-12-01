@@ -8,8 +8,10 @@ import * as draw from "./draw-DOM";
 
 let toDosArray = [];
 let listArray = [];
+let completedArray = [];
 toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
 listArray = storage.setArrayVar(listArray, "lists");
+completedArray = storage.setArrayVar(completedArray, "completed");
 list.addListDiv();
 list.addListObj(listArray);
 list.toggleListInputDisplay();
@@ -18,7 +20,7 @@ toDo.addToDoObj(toDosArray);
 toDo.clearToDoLocalStorage(toDosArray);
 list.clearListLocalStorage(listArray);
 list.drawListLinks(listArray);
-draw.drawToDoList(toDosArray);
+draw.drawToDoList(toDosArray, completedArray);
 
 export function getTodaysDate() {
     let today = new Date();
