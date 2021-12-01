@@ -8,7 +8,6 @@ UL.setAttribute("class", "list-group");
 
 // to do items DOM set up below
 export function drawToDoList(toDosArray, completedArray) {
-    console.log(`drawToDoList ${completedArray}`);
     clearItems(".to-do-li");
     toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -44,7 +43,6 @@ export function drawToDoList(toDosArray, completedArray) {
 
 // figure out why the names do not match when this runs
 function drawCompletedToDos(completedArray) {
-    console.log(`drawCompletedToDos ${completedArray}`);
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     clearItems(".completed-li");
     completedArray.forEach((item) => {
@@ -73,14 +71,12 @@ function clearItems(domSelector) {
     });
 }
 
-function deleteToDoLI(toDosArray, array) {
+function deleteToDoLI(toDosArray, completedArray) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
             toDosArray.splice(toDoItemNum, 1);
-            let completedArray = array;
-            console.log(`deleteToDoLI ${completedArray}`);
             return drawToDoList(toDosArray, completedArray);
         });
     });
@@ -92,7 +88,6 @@ export function checkOffToDo(toDosArray, completedArray) {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(toDosArray[checkBoxNum]);
-            console.log(`checkOffToDo ${completedArray}`);
             toDosArray.splice(checkBoxNum, 1);
             return drawToDoList(toDosArray, completedArray);
         });
