@@ -20,7 +20,7 @@ toDo.addToDoObj(toDosArray);
 toDo.clearToDoLocalStorage(toDosArray);
 toDo.clearCompletedToDosLocalStorage(completedArray);
 list.clearListLocalStorage(listArray);
-list.drawListLinks(listArray);
+draw.listLinks(listArray);
 draw.toDoList(toDosArray, completedArray);
 
 export function drawTheDOM() {

@@ -1,4 +1,5 @@
 import * as storage from "./local-storage";
+import * as draw from "./draw-DOM";
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
@@ -11,34 +12,8 @@ export function listObj(name, listArray) {
     this.name = name;
     this.objNum = listObjNum;
     listArray.push(this);
-    drawListLinks(listArray);
+    draw.listLinks(listArray);
     listObjNum++;
-}
-
-export function drawListLinks(listArray) {
-    clearLists();
-    listArray.forEach((item) => {
-        let parentUL = document.querySelector("#ul-nav-items");
-        let li = document.createElement("li");
-        let aTag = document.createElement("a");
-        let h3 = document.createElement("h3");
-        li.setAttribute("class", "nav-item added-list");
-        aTag.setAttribute("class", "nav-link active"),
-        aTag.setAttribute("aria-current", "page"),
-        aTag.setAttribute("href", "#");
-        parentUL.append(li);
-        li.append(aTag);
-        aTag.append(h3);
-        h3.append(item.name);
-    });
-    return storage.save(listArray, "lists");
-}
-
-function clearLists() {
-    let listItems = document.querySelectorAll(".added-list");
-    listItems.forEach((item) => {
-        item.remove();
-    });
 }
 
 export function addListDiv() {

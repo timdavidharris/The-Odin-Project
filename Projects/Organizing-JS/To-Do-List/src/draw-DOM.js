@@ -40,6 +40,32 @@ export function toDoList(toDosArray, completedArray) {
     deleteToDoLI(toDosArray, completedArray);
 }
 
+export function listLinks(listArray) {
+    clearLists();
+    listArray.forEach((item) => {
+        let parentUL = document.querySelector("#ul-nav-items");
+        let li = document.createElement("li");
+        let aTag = document.createElement("a");
+        let h3 = document.createElement("h3");
+        li.setAttribute("class", "nav-item added-list");
+        aTag.setAttribute("class", "nav-link active"),
+        aTag.setAttribute("aria-current", "page"),
+        aTag.setAttribute("href", "#");
+        parentUL.append(li);
+        li.append(aTag);
+        aTag.append(h3);
+        h3.append(item.name);
+    });
+    return storage.save(listArray, "lists");
+}
+
+function clearLists() {
+    let listItems = document.querySelectorAll(".added-list");
+    listItems.forEach((item) => {
+        item.remove();
+    });
+}
+
 
 // figure out why the names do not match when this runs
 function drawCompletedToDos(completedArray) {
