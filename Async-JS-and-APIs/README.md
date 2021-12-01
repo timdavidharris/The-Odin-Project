@@ -1,3 +1,3 @@
-# CodePen Link for The JSON Practice Code Below
+# CodePen Link Below
 
 [Link Here](https://codepen.io/timothydharris/full/xxXbNKJ)
