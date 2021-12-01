@@ -20,10 +20,8 @@ export function removeItem(inputKey) {
 export function setArrayVar(inputArray, inputKey) {
     if ((localStorage.getItem(inputKey) === null) ||
     (localStorage.getItem(inputKey) === undefined)) {
-        console.log(inputArray);
         return inputArray = [];
     } else {
-        console.log(inputArray);
         return fetch(inputArray, inputKey);
     }
 }

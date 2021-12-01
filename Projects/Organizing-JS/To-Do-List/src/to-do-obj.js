@@ -54,7 +54,6 @@ export function clearCompletedToDosLocalStorage(completedArray) {
     clearCompleted.addEventListener("click", () => {
         if (confirm("Click 'OK' if you do want to delete ALL your to dos under the completed section.")) {
             completedArray = storage.setArrayVar(completedArray, "completed");
-            console.log(localStorage.getItem("completed"));
             storage.removeItem("completed");
         } else {
             alert("You did not delete your list of completed to dos.");
