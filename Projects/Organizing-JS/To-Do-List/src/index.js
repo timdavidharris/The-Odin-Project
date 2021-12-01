@@ -26,5 +26,7 @@ draw.toDoList(toDosArray, completedArray);
 export function drawTheDOM() {
     toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
     completedArray = storage.setArrayVar(completedArray, "completed");
-    return draw.toDoList(toDosArray, completedArray);
+    listArray = storage.setArrayVar(listArray, "lists");
+    draw.toDoList(toDosArray, completedArray);
+    draw.listLinks(listArray);
 }

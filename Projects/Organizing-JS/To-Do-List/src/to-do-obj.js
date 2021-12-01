@@ -41,7 +41,8 @@ export function clearToDoLocalStorage(toDosArray) {
     let clearToDos = document.querySelector("#clear-to-do-local-storage");
     clearToDos.addEventListener("click", () => {
         if (confirm("Click 'OK' if you do want to delete ALL your To Do items.")) {
-            storage.clear(toDosArray, "to-do-items");
+            toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+            storage.removeItem("to-do-items");
         } else {
             alert("You did not delete you To Do items.");
         }
@@ -52,7 +53,9 @@ export function clearCompletedToDosLocalStorage(completedArray) {
     let clearCompleted = document.querySelector("#clear-completed-local-storage");
     clearCompleted.addEventListener("click", () => {
         if (confirm("Click 'OK' if you do want to delete ALL your to dos under the completed section.")) {
-            storage.clear(completedArray, "completed");
+            completedArray = storage.setArrayVar(completedArray, "completed");
+            console.log(localStorage.getItem("completed"));
+            storage.removeItem("completed");
         } else {
             alert("You did not delete your list of completed to dos.");
         }
