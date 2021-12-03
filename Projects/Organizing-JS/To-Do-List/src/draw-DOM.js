@@ -75,6 +75,7 @@ function drawCompletedToDos(completedArray) {
     });
 }
 
+// sets the data numbers to match the array number for each LI item
 function setDOMDataNum(LI, deleteButton, checkBox, notesButton) {
     toDoDataNum = 0;
     let liElements = document.querySelectorAll(".to-do-li");
@@ -94,6 +95,7 @@ function clearItems(domSelector) {
     });
 }
 
+// Button-related Functions
 function deleteToDoLI(toDosArray, completedArray) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
