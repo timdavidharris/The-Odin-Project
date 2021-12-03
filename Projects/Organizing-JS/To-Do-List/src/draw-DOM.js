@@ -6,7 +6,6 @@ let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
 
-// to do items DOM set up below
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
     toDosArray.forEach((item) => {
