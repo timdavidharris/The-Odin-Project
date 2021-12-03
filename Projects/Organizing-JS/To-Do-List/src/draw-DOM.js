@@ -89,9 +89,9 @@ function setDOMDataNum(LI, deleteButton, checkBox, notesButton) {
 }
 
 function clearItems(domSelector) {
-    let toDoLIItems = document.querySelectorAll(domSelector);
-    toDoLIItems.forEach((liItem) => {
-        liItem.remove();
+    let theItems = document.querySelectorAll(domSelector);
+    theItems.forEach((item) => {
+        item.remove();
     });
 }
 
@@ -117,6 +117,7 @@ export function checkOffToDo(toDosArray, completedArray) {
         });
     });
 }
+
 
 export function showNotes(toDosArray) {
     let notesBtns = document.querySelectorAll(".note-btn");
