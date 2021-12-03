@@ -10,7 +10,7 @@ export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
     toDosArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
-        let toDoDiv = document.querySelector("#to-do-0");
+        let toDoDiv = document.querySelector("#to-do-list-items");
         let LI = document.createElement("li");
         let checkBox = document.createElement("input");
         let deleteButton = document.createElement("button");

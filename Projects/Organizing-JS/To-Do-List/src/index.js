@@ -12,7 +12,6 @@ let completedArray = [];
 toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
 listArray = storage.setArrayVar(listArray, "lists");
 completedArray = storage.setArrayVar(completedArray, "completed");
-list.addListDiv();
 list.addListObj(listArray);
 list.toggleListInputDisplay();
 toDo.toggleToDoInputDisplay();

@@ -3,9 +3,7 @@ import * as draw from "./draw-DOM";
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
-let toDoParentDiv = document.querySelector("#to-do-items");
 let inputDiv = document.querySelector("#new-to-do-input-div");
-let listNum = 0;
 let listObjNum = 0;
 
 export function listObj(name, listArray) {
@@ -14,13 +12,6 @@ export function listObj(name, listArray) {
     listArray.push(this);
     draw.listLinks(listArray);
     listObjNum++;
-}
-
-export function addListDiv() {
-    let newTab = document.createElement("div");
-    newTab.setAttribute("id", `to-do-${listNum}`);
-    toDoParentDiv.append(newTab);
-    listNum++;
 }
 
 export function toggleListInputDisplay() {
