@@ -15,10 +15,14 @@ export function toDoList(toDosArray, completedArray) {
         let LI = document.createElement("li");
         let checkBox = document.createElement("input");
         let deleteButton = document.createElement("button");
+        let notesButton = document.createElement("button");
         LI.setAttribute("class", "list-group-item to-do-li");
         deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
         deleteButton.setAttribute("type", "button");
         deleteButton.textContent = "delete";
+        notesButton.setAttribute("class", "btn btn-sm btn-outline-secondary ms-3 note-btn");
+        notesButton.setAttribute("type", "button");
+        notesButton.textContent = "click for notes";
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("class", "form-check-input me-3");
         toDoDiv.append(UL);
@@ -28,7 +32,8 @@ export function toDoList(toDosArray, completedArray) {
         LI.append(dueSpacerText);
         LI.append(item.dueDate);
         LI.append(deleteButton);
-        setDOMDataNum(LI, deleteButton, checkBox);
+        LI.append(notesButton);
+        setDOMDataNum(LI, deleteButton, checkBox, notesButton);
     });
     if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
@@ -38,10 +43,11 @@ export function toDoList(toDosArray, completedArray) {
     storage.save(toDosArray, "to-do-items");
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
+    showNotes(toDosArray);
 }
 
 export function listLinks(listArray) {
-    clearLists();
+    clearItems(".added-list");
     listArray.forEach((item) => {
         let parentUL = document.querySelector("#ul-nav-items");
         let li = document.createElement("li");
@@ -59,15 +65,6 @@ export function listLinks(listArray) {
     return storage.save(listArray, "lists");
 }
 
-function clearLists() {
-    let listItems = document.querySelectorAll(".added-list");
-    listItems.forEach((item) => {
-        item.remove();
-    });
-}
-
-
-// figure out why the names do not match when this runs
 function drawCompletedToDos(completedArray) {
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     clearItems(".completed-li");
@@ -79,13 +76,14 @@ function drawCompletedToDos(completedArray) {
     });
 }
 
-function setDOMDataNum(LI, deleteButton, checkBox) {
+function setDOMDataNum(LI, deleteButton, checkBox, notesButton) {
     toDoDataNum = 0;
     let liElements = document.querySelectorAll(".to-do-li");
     liElements.forEach(() => {
-        LI.setAttribute("data", `item-${toDoDataNum}`);
+        LI.setAttribute("data-li", `${toDoDataNum}`);
         deleteButton.setAttribute("data-delete-num", `${toDoDataNum}`);
         checkBox.setAttribute("data-check-box", `${toDoDataNum}`);
+        notesButton.setAttribute("data-notes-btn", `${toDoDataNum}`);
         toDoDataNum++;
     });
 }
@@ -116,6 +114,29 @@ export function checkOffToDo(toDosArray, completedArray) {
             completedArray.push(toDosArray[checkBoxNum]);
             toDosArray.splice(checkBoxNum, 1);
             return toDoList(toDosArray, completedArray);
+        });
+    });
+}
+
+export function showNotes(toDosArray) {
+    let notesBtns = document.querySelectorAll(".note-btn");
+    notesBtns.forEach((button) => {
+        button.addEventListener("click", () => {
+            let li = document.querySelectorAll(".to-do-li");
+            li.forEach((item) => {
+                item.addEventListener("click", () => {
+                    clearItems(".notes-para");
+                    let liNum = Number(item.dataset.li);
+                    let notesLI = document.createElement("li");
+                    notesLI.setAttribute("class", "notes-para ms-5");
+                    if (toDosArray[liNum].notes === "") {
+                        notesLI.textContent = "No notes";
+                    } else {
+                        notesLI.textContent = toDosArray[liNum].notes;
+                    }
+                    item.append(notesLI);
+                });
+            });
         });
     });
 }

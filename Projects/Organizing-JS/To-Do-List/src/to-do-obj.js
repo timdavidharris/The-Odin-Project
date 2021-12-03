@@ -5,10 +5,13 @@ let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
+let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
 
-export function toDoObj(name, dueDate, toDosArray) {
+export function toDoObj(name, dueDate, notes, toDosArray) {
     this.name = name;
     this.dueDate = dueDate;
+    this.notes = notes;
+    console.log(this.notes);
     toDosArray.push(this);
     draw.toDoList(toDosArray);
 }
@@ -21,7 +24,8 @@ export function addToDoObj(toDosArray){
             inputDiv.style.display = "none";
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
-            new toDoObj(newToDoName, newToDoDue, toDosArray);
+            let newToDoNote = newToDoNotesInput.value;
+            new toDoObj(newToDoName, newToDoDue, newToDoNote, toDosArray);
         }
     });
 }
