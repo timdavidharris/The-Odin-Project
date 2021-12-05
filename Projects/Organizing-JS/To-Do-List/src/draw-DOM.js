@@ -5,15 +5,13 @@ let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
+let currentList = "To Do";
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
-    //
     let filteredArray = toDosArray.filter(function(thing) {
-        return thing.listName === "To Do";
+        return thing.listName === currentList;
     });
-    console.log("test array below");
-    console.log(filteredArray);
     filteredArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
         let toDoDiv = document.querySelector("#to-do-list-items");
@@ -40,7 +38,6 @@ export function toDoList(toDosArray, completedArray) {
         LI.append(notesButton);
         setDOMDataNum(LI, deleteButton, checkBox, notesButton);
     });
-    //
     if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
         storage.save(completedArray, "completed");
