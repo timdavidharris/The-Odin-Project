@@ -1,6 +1,6 @@
+import * as index from "./index";
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
-import * as index from "./index";
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
@@ -23,13 +23,9 @@ export function active() {
             resetColors(linkText);
             link.setAttribute("class", "nav-item added-list list-link text-info");
             activeLink = link.textContent;
-            console.log(activeLink);
-            // index.drawTheDOM();
             return activeLink;
         });
-    }); 
-    console.log(activeLink);
-    // index.drawTheDOM();
+    });
     return activeLink;
 }
 

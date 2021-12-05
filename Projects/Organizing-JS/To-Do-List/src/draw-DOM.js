@@ -49,6 +49,7 @@ export function toDoList(toDosArray, completedArray) {
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
     showNotes(toDosArray);
+    console.log(currentList);
 }
 
 export function listLinks(listArray) {
@@ -68,7 +69,6 @@ export function listLinks(listArray) {
         aTag.append(h3);
         h3.append(item.name);
     });
-    list.active(listArray);
     return storage.save(listArray, "lists");
 }
 
