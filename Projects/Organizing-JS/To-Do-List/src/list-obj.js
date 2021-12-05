@@ -30,6 +30,7 @@ export function addListObj(listArray) {
         if (addNewListInput.value === "") {
             alert("The name box was empty, please type in a name");
         } else {
+            listArray = storage.setArrayVar(listArray, "lists");
             inputDiv.style.display = "none";
             let newListName = addNewListInput.value;
             new listObj(newListName, listArray);
