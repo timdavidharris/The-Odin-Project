@@ -40,6 +40,7 @@ export function toDoList(toDosArray, completedArray) {
     }
     completedArray = storage.setArrayVar(completedArray, "completed");
     storage.save(toDosArray, "to-do-items");
+    console.log(toDosArray);
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
     showNotes(toDosArray);

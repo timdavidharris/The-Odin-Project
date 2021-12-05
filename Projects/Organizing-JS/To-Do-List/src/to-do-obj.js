@@ -13,7 +13,7 @@ export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.dueDate = dueDate;
     this.notes = notes;
     this.listName = listName;
-    console.log(this.listName);
+    console.log(toDosArray);
     toDosArray.push(this);
     storage.save(toDosArray, "to-do-items");
     index.drawTheDOM();
@@ -25,6 +25,7 @@ export function addToDoObj(toDosArray){
         if (newToDoNameInput.value === "") {
             alert("The to do name was empty, please type in a name");
         } else {
+            toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
             inputDiv.style.display = "none";
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
