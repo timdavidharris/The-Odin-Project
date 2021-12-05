@@ -1,5 +1,4 @@
 import * as index from "./index";
-let data = [];
 
 export function fetch(inputArray, inputKey) {
     inputArray = JSON.parse(localStorage.getItem(inputKey));
@@ -8,8 +7,7 @@ export function fetch(inputArray, inputKey) {
 
 export function save(inputArray, inputKey) {
     localStorage.setItem(inputKey, JSON.stringify(inputArray));
-    data = JSON.parse(localStorage.getItem(inputKey));
-    return data;
+    return JSON.parse(localStorage.getItem(inputKey));
 }
 
 export function removeItem(inputKey) {

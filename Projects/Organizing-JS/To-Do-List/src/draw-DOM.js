@@ -1,30 +1,23 @@
 import * as storage from "./local-storage";
+import * as index from "./index";
 
 let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
-let listName = "todo"; // set this up to be a function that dynamically changes
+let listName = "To Do"; // set this up to be a function that dynamically changes
 
-export function sortArray(toDosArray, completedArray) {
-    toDosArray.sort(function(drawnArray) {
-        drawnArray = [];
-        for (let i = 1; i < toDosArray.length; i++) {
-            if (toDosArray[i].listName === listName) {
-                drawnArray.push(toDosArray[i]);
-            }
-        }
-        for (let j = 1; j < completedArray.length; j++) {
-            if (completedArray[j].listName === listName) {
-                drawnArray.push(completedArray[j]);
-            }
-        }
-        return sortedArray(toDosArray, drawnArray, completedArray);
+export function filterArray(toDosArray, completedArray) {
+    let drawnArray = toDosArray.filter(function(todo) {
+        console.log(todo, todo.listName);
+        return todo.listName === listName;
     });
+    console.log(drawnArray);
+    return filteredArray(toDosArray, drawnArray, completedArray);
 }
 
-function sortedArray(toDosArray, drawnArray, completedArray) {
+function filteredArray(toDosArray, drawnArray, completedArray) {
     clearItems(".to-do-li");
         drawnArray.forEach((item) => {
             item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -133,7 +126,7 @@ export function checkOffToDo(toDosArray, completedArray) {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(toDosArray[checkBoxNum]);
             toDosArray.splice(checkBoxNum, 1);
-            return toDoList(toDosArray, completedArray);
+            return index.drawTheDOM(toDosArray, completedArray);
         });
     });
 }

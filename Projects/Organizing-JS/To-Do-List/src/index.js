@@ -14,18 +14,19 @@ listArray = storage.setArrayVar(listArray, "lists");
 completedArray = storage.setArrayVar(completedArray, "completed");
 list.addListObj(listArray);
 list.toggleListInputDisplay();
+list.clearListLocalStorage(listArray);
 toDo.toggleToDoInputDisplay();
 toDo.addToDoObj(toDosArray);
 toDo.clearToDoLocalStorage(toDosArray);
 toDo.clearCompletedToDosLocalStorage(completedArray);
-list.clearListLocalStorage(listArray);
-draw.listLinks(listArray);
-draw.sortArray(toDosArray, completedArray);
+drawTheDOM();
 
 export function drawTheDOM() {
     toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
     completedArray = storage.setArrayVar(completedArray, "completed");
     listArray = storage.setArrayVar(listArray, "lists");
-    draw.toDoList(toDosArray, completedArray);
+    draw.filterArray(toDosArray, completedArray);
     draw.listLinks(listArray);
 }
+
+new toDo.toDoObj("hello", "", "eat more cheese", "To Do", toDosArray);

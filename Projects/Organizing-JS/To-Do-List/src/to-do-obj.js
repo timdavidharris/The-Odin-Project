@@ -1,12 +1,12 @@
 import * as storage from "./local-storage";
-import * as draw from "./draw-DOM";
+import * as index from "./index";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
-let listName = "todo"; // set this up to be a function that dynamically changes
+let listName = "To Do"; // set this up to be a function that dynamically changes
 
 export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.name = name;
@@ -15,7 +15,7 @@ export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.listName = listName;
     console.log(this.listName);
     toDosArray.push(this);
-    draw.toDoList(toDosArray);
+    index.drawTheDOM();
 }
 
 export function addToDoObj(toDosArray){
