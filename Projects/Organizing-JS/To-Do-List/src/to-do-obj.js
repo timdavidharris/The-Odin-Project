@@ -15,8 +15,9 @@ export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.listName = listName;
     console.log(this.listName);
     toDosArray.push(this);
+    storage.save(toDosArray, "to-do-items");
     index.drawTheDOM();
-}
+} 
 
 export function addToDoObj(toDosArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");

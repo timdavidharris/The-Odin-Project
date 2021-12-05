@@ -1,49 +1,38 @@
 import * as storage from "./local-storage";
-import * as index from "./index";
 
 let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
-let listName = "To Do"; // set this up to be a function that dynamically changes
 
-export function filterArray(toDosArray, completedArray) {
-    let drawnArray = toDosArray.filter(function(todo) {
-        console.log(todo, todo.listName);
-        return todo.listName === listName;
-    });
-    console.log(drawnArray);
-    return filteredArray(toDosArray, drawnArray, completedArray);
-}
-
-function filteredArray(toDosArray, drawnArray, completedArray) {
+export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
-        drawnArray.forEach((item) => {
-            item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
-            let toDoDiv = document.querySelector("#to-do-list-items");
-            let LI = document.createElement("li");
-            let checkBox = document.createElement("input");
-            let deleteButton = document.createElement("button");
-            let notesButton = document.createElement("button");
-            LI.setAttribute("class", "list-group-item to-do-li");
-            deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
-            deleteButton.setAttribute("type", "button");
-            deleteButton.textContent = "delete";
-            notesButton.setAttribute("class", "btn btn-sm btn-outline-secondary ms-3 note-btn");
-            notesButton.setAttribute("type", "button");
-            notesButton.textContent = "click for notes";
-            checkBox.setAttribute("type", "checkbox");
-            checkBox.setAttribute("class", "form-check-input me-3");
-            toDoDiv.append(UL);
-            UL.append(LI); 
-            LI.append(checkBox);
-            LI.append(item.name);
-            LI.append(dueSpacerText);
-            LI.append(item.dueDate);
-            LI.append(deleteButton);
-            LI.append(notesButton);
-            setDOMDataNum(LI, deleteButton, checkBox, notesButton);
+    toDosArray.forEach((item) => {
+        item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
+        let toDoDiv = document.querySelector("#to-do-list-items");
+        let LI = document.createElement("li");
+        let checkBox = document.createElement("input");
+        let deleteButton = document.createElement("button");
+        let notesButton = document.createElement("button");
+        LI.setAttribute("class", "list-group-item to-do-li");
+        deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.textContent = "delete";
+        notesButton.setAttribute("class", "btn btn-sm btn-outline-secondary ms-3 note-btn");
+        notesButton.setAttribute("type", "button");
+        notesButton.textContent = "click for notes";
+        checkBox.setAttribute("type", "checkbox");
+        checkBox.setAttribute("class", "form-check-input me-3");
+        toDoDiv.append(UL);
+        UL.append(LI); 
+        LI.append(checkBox);
+        LI.append(item.name);
+        LI.append(dueSpacerText);
+        LI.append(item.dueDate);
+        LI.append(deleteButton);
+        LI.append(notesButton);
+        setDOMDataNum(LI, deleteButton, checkBox, notesButton);
     });
     if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
@@ -65,7 +54,6 @@ export function listLinks(listArray) {
         let h3 = document.createElement("h3");
         li.setAttribute("class", "nav-item added-list");
         aTag.setAttribute("class", "nav-link active"),
-        aTag.setAttribute("id", `${item.name}`),
         aTag.setAttribute("aria-current", "page"),
         aTag.setAttribute("href", "#");
         parentUL.append(li);
@@ -119,20 +107,19 @@ function deleteToDoLI(toDosArray, completedArray) {
     });
 }
 
-export function checkOffToDo(toDosArray, completedArray) {
+function checkOffToDo(toDosArray, completedArray) {
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(toDosArray[checkBoxNum]);
             toDosArray.splice(checkBoxNum, 1);
-            return index.drawTheDOM(toDosArray, completedArray);
+            return toDoList(toDosArray, completedArray);
         });
     });
 }
 
-
-export function showNotes(toDosArray) {
+function showNotes(toDosArray) {
     let notesBtns = document.querySelectorAll(".note-btn");
     notesBtns.forEach((button) => {
         button.addEventListener("click", () => {

@@ -6,8 +6,6 @@ import * as list from "./list-obj";
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
 
-// code is totally broken somewhere.
-// it looks like new to do items do not get added to the array
 let toDosArray = [];
 let listArray = [];
 let completedArray = [];
@@ -16,19 +14,17 @@ listArray = storage.setArrayVar(listArray, "lists");
 completedArray = storage.setArrayVar(completedArray, "completed");
 list.addListObj(listArray);
 list.toggleListInputDisplay();
-list.clearListLocalStorage(listArray);
 toDo.toggleToDoInputDisplay();
 toDo.addToDoObj(toDosArray);
 toDo.clearToDoLocalStorage(toDosArray);
 toDo.clearCompletedToDosLocalStorage(completedArray);
+list.clearListLocalStorage(listArray);
 drawTheDOM();
 
 export function drawTheDOM() {
     toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
     completedArray = storage.setArrayVar(completedArray, "completed");
     listArray = storage.setArrayVar(listArray, "lists");
-    draw.filterArray(toDosArray, completedArray);
+    draw.toDoList(toDosArray, completedArray);
     draw.listLinks(listArray);
 }
-
-new toDo.toDoObj("hello", "", "eat more cheese", "To Do", toDosArray);
