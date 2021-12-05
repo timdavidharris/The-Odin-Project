@@ -5,34 +5,52 @@ let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
+let listName = "todo"; // set this up to be a function that dynamically changes
 
-export function toDoList(toDosArray, completedArray) {
+export function sortArray(toDosArray, completedArray) {
+    toDosArray.sort(function(drawnArray) {
+        drawnArray = [];
+        for (let i = 1; i < toDosArray.length; i++) {
+            if (toDosArray[i].listName === listName) {
+                drawnArray.push(toDosArray[i]);
+            }
+        }
+        for (let j = 1; j < completedArray.length; j++) {
+            if (completedArray[j].listName === listName) {
+                drawnArray.push(completedArray[j]);
+            }
+        }
+        return sortedArray(toDosArray, drawnArray, completedArray);
+    });
+}
+
+function sortedArray(toDosArray, drawnArray, completedArray) {
     clearItems(".to-do-li");
-    toDosArray.forEach((item) => {
-        item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
-        let toDoDiv = document.querySelector("#to-do-list-items");
-        let LI = document.createElement("li");
-        let checkBox = document.createElement("input");
-        let deleteButton = document.createElement("button");
-        let notesButton = document.createElement("button");
-        LI.setAttribute("class", "list-group-item to-do-li");
-        deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
-        deleteButton.setAttribute("type", "button");
-        deleteButton.textContent = "delete";
-        notesButton.setAttribute("class", "btn btn-sm btn-outline-secondary ms-3 note-btn");
-        notesButton.setAttribute("type", "button");
-        notesButton.textContent = "click for notes";
-        checkBox.setAttribute("type", "checkbox");
-        checkBox.setAttribute("class", "form-check-input me-3");
-        toDoDiv.append(UL);
-        UL.append(LI); 
-        LI.append(checkBox);
-        LI.append(item.name);
-        LI.append(dueSpacerText);
-        LI.append(item.dueDate);
-        LI.append(deleteButton);
-        LI.append(notesButton);
-        setDOMDataNum(LI, deleteButton, checkBox, notesButton);
+        drawnArray.forEach((item) => {
+            item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
+            let toDoDiv = document.querySelector("#to-do-list-items");
+            let LI = document.createElement("li");
+            let checkBox = document.createElement("input");
+            let deleteButton = document.createElement("button");
+            let notesButton = document.createElement("button");
+            LI.setAttribute("class", "list-group-item to-do-li");
+            deleteButton.setAttribute("class", "btn btn-sm btn-outline-danger ms-3 delete-btn");
+            deleteButton.setAttribute("type", "button");
+            deleteButton.textContent = "delete";
+            notesButton.setAttribute("class", "btn btn-sm btn-outline-secondary ms-3 note-btn");
+            notesButton.setAttribute("type", "button");
+            notesButton.textContent = "click for notes";
+            checkBox.setAttribute("type", "checkbox");
+            checkBox.setAttribute("class", "form-check-input me-3");
+            toDoDiv.append(UL);
+            UL.append(LI); 
+            LI.append(checkBox);
+            LI.append(item.name);
+            LI.append(dueSpacerText);
+            LI.append(item.dueDate);
+            LI.append(deleteButton);
+            LI.append(notesButton);
+            setDOMDataNum(LI, deleteButton, checkBox, notesButton);
     });
     if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
@@ -54,6 +72,7 @@ export function listLinks(listArray) {
         let h3 = document.createElement("h3");
         li.setAttribute("class", "nav-item added-list");
         aTag.setAttribute("class", "nav-link active"),
+        aTag.setAttribute("id", `${item.name}`),
         aTag.setAttribute("aria-current", "page"),
         aTag.setAttribute("href", "#");
         parentUL.append(li);

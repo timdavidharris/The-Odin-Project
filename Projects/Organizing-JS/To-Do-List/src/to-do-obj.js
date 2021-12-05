@@ -6,15 +6,18 @@ let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
+let listName = "todo"; // set this up to be a function that dynamically changes
 
-export function toDoObj(name, dueDate, notes, toDosArray) {
+export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.name = name;
     this.dueDate = dueDate;
     this.notes = notes;
-    console.log(this.notes);
+    this.listName = listName;
+    console.log(this.listName);
     toDosArray.push(this);
     draw.toDoList(toDosArray);
 }
+
 export function addToDoObj(toDosArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
@@ -25,7 +28,7 @@ export function addToDoObj(toDosArray){
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
             let newToDoNote = newToDoNotesInput.value;
-            new toDoObj(newToDoName, newToDoDue, newToDoNote, toDosArray);
+            new toDoObj(newToDoName, newToDoDue, newToDoNote, listName, toDosArray);
         }
     });
 }
