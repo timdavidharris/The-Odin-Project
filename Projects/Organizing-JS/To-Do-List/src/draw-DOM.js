@@ -1,4 +1,5 @@
 import * as storage from "./local-storage";
+import * as list from "./list-obj";
 
 let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
@@ -48,6 +49,9 @@ export function toDoList(toDosArray, completedArray) {
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
     showNotes(toDosArray);
+    let listArray = [];
+    listArray = storage.setArrayVar(listArray, "lists");
+    list.active(listArray);
 }
 
 export function listLinks(listArray) {
@@ -57,15 +61,17 @@ export function listLinks(listArray) {
         let li = document.createElement("li");
         let aTag = document.createElement("a");
         let h3 = document.createElement("h3");
+        h3.setAttribute("class", "list-link");
         li.setAttribute("class", "nav-item added-list");
-        aTag.setAttribute("class", "nav-link active"),
-        aTag.setAttribute("aria-current", "page"),
+        aTag.setAttribute("class", "nav-link"),
+        aTag.setAttribute("id", `${item.name}`),
         aTag.setAttribute("href", "#");
         parentUL.append(li);
         li.append(aTag);
         aTag.append(h3);
         h3.append(item.name);
     });
+    list.active(listArray);
     return storage.save(listArray, "lists");
 }
 
@@ -93,7 +99,7 @@ function setDOMDataNum(LI, deleteButton, checkBox, notesButton) {
     });
 }
 
-function clearItems(domSelector) {
+export function clearItems(domSelector) {
     let theItems = document.querySelectorAll(domSelector);
     theItems.forEach((item) => {
         item.remove();

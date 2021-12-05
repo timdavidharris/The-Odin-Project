@@ -14,6 +14,24 @@ export function listObj(name, listArray) {
     listObjNum++;
 }
 
+export function active() {
+    let linkText = document.querySelectorAll(".list-link");
+    linkText.forEach((link) => {
+        link.addEventListener("click", () => {
+            resetColors(linkText);
+            console.log(link);
+            link.setAttribute("class", "nav-item added-list list-link text-info");
+            console.log(link.textContent);
+        });
+    });
+}
+
+function resetColors(linkText) {
+    linkText.forEach((link) => {
+        link.setAttribute("class", "nav-item added-list list-link text-primary");
+    });
+}
+
 export function toggleListInputDisplay() {
     addNewListBtn.addEventListener("click", () => {
         if (inputDiv.style.display === "contents") {
