@@ -6,6 +6,8 @@ import * as list from "./list-obj";
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
 
+// code is totally broken somewhere.
+// it looks like new to do items do not get added to the array
 let toDosArray = [];
 let listArray = [];
 let completedArray = [];
