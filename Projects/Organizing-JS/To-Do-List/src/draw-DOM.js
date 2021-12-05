@@ -8,7 +8,13 @@ UL.setAttribute("class", "list-group");
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
-    toDosArray.forEach((item) => {
+    //
+    let filteredArray = toDosArray.filter(function(thing) {
+        return thing.listName === "To Do";
+    });
+    console.log("test array below");
+    console.log(filteredArray);
+    filteredArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
         let toDoDiv = document.querySelector("#to-do-list-items");
         let LI = document.createElement("li");
@@ -34,6 +40,7 @@ export function toDoList(toDosArray, completedArray) {
         LI.append(notesButton);
         setDOMDataNum(LI, deleteButton, checkBox, notesButton);
     });
+    //
     if (completedArray !== undefined) {
         drawCompletedToDos(completedArray);
         storage.save(completedArray, "completed");
