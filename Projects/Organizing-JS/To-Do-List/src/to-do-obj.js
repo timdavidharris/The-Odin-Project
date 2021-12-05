@@ -1,5 +1,6 @@
 import * as storage from "./local-storage";
 import * as index from "./index";
+import * as list from "./list-obj";
 
 let addNewToDo = document.querySelector("#add-to-do-btn");
 let inputDiv = document.querySelector("#new-to-do-item-inputs");

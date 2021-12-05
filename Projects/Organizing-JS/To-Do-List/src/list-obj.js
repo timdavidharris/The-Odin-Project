@@ -1,5 +1,6 @@
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
+import * as index from "./index";
 
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
@@ -16,14 +17,20 @@ export function listObj(name, listArray) {
 
 export function active() {
     let linkText = document.querySelectorAll(".list-link");
+    let activeLink = "To Do";
     linkText.forEach((link) => {
         link.addEventListener("click", () => {
             resetColors(linkText);
-            console.log(link);
             link.setAttribute("class", "nav-item added-list list-link text-info");
-            console.log(link.textContent);
+            activeLink = link.textContent;
+            console.log(activeLink);
+            // index.drawTheDOM();
+            return activeLink;
         });
-    });
+    }); 
+    console.log(activeLink);
+    // index.drawTheDOM();
+    return activeLink;
 }
 
 function resetColors(linkText) {

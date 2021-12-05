@@ -6,7 +6,7 @@ let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
-let currentList = "To Do";
+let currentList = list.active();
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
@@ -49,9 +49,6 @@ export function toDoList(toDosArray, completedArray) {
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
     showNotes(toDosArray);
-    let listArray = [];
-    listArray = storage.setArrayVar(listArray, "lists");
-    list.active(listArray);
 }
 
 export function listLinks(listArray) {
