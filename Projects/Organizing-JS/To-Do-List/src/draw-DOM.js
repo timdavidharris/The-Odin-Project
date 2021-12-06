@@ -1,30 +1,26 @@
 import * as storage from "./local-storage";
+// import * as index from "./index";
 
 let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
-let currentList = activeLink();
+let currentList = "To Do";
 
-export function activeLink() {
+export function activeListColor() {
     let linkText = document.querySelectorAll(".list-link");
-    let activeLink = "To Do";
     linkText.forEach((link) => {
         link.addEventListener("click", () => {
             resetColors(linkText);
             link.setAttribute("class", "nav-item added-list list-link text-info");
-            activeLink = link.textContent;
-            return activeLink;
         });
     });
-    return activeLink;
-}
-
-function resetColors(linkText) {
-    linkText.forEach((link) => {
-        link.setAttribute("class", "nav-item added-list list-link text-primary");
-    });
+    function resetColors(linkText) {
+        linkText.forEach((link) => {
+            link.setAttribute("class", "nav-item added-list list-link text-primary");
+        });
+    }
 }
 
 export function toDoList(toDosArray, completedArray) {

@@ -27,5 +27,5 @@ export function drawTheDOM() {
     listArray = storage.setArrayVar(listArray, "lists");
     draw.toDoList(toDosArray, completedArray);
     draw.listLinks(listArray);
-    return draw.activeLink(listArray);
+    return draw.activeListColor();
 }
