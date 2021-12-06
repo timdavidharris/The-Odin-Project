@@ -6,7 +6,6 @@ let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
 UL.setAttribute("class", "list-group");
-let currentList = "To Do";
 
 export function activeListColor() {
     let linkText = document.querySelectorAll(".list-link");
@@ -23,9 +22,10 @@ export function activeListColor() {
     }
 }
 
-export function toDoList(toDosArray, completedArray) {
+export function toDoList(toDosArray, completedArray, currentList) {
     clearItems(".to-do-li");
     let filteredArray = toDosArray.filter(function(thing) {
+        console.log(currentList);
         return thing.listName === currentList;
     });
     filteredArray.forEach((item) => {
@@ -60,11 +60,9 @@ export function toDoList(toDosArray, completedArray) {
     }
     completedArray = storage.setArrayVar(completedArray, "completed");
     storage.save(toDosArray, "to-do-items");
-    console.log(toDosArray);
     checkOffToDo(toDosArray, completedArray);
     deleteToDoLI(toDosArray, completedArray);
     showNotes(toDosArray);
-    console.log(currentList);
 }
 
 export function listLinks(listArray) {
@@ -76,7 +74,7 @@ export function listLinks(listArray) {
         let h3 = document.createElement("h3");
         h3.setAttribute("class", "list-link");
         li.setAttribute("class", "nav-item added-list");
-        aTag.setAttribute("class", "nav-link"),
+        aTag.setAttribute("class", "nav-link list-a-tag"),
         aTag.setAttribute("id", `${item.name}`),
         aTag.setAttribute("href", "#");
         parentUL.append(li);
@@ -84,6 +82,7 @@ export function listLinks(listArray) {
         aTag.append(h3);
         h3.append(item.name);
     });
+    activeListColor();
     return storage.save(listArray, "lists");
 }
 

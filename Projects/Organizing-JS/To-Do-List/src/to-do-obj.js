@@ -13,7 +13,6 @@ export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.dueDate = dueDate;
     this.notes = notes;
     this.listName = listName;
-    console.log(toDosArray);
     toDosArray.push(this);
     storage.save(toDosArray, "to-do-items");
     index.drawTheDOM();
