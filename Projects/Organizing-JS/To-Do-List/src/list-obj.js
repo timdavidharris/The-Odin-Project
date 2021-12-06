@@ -1,4 +1,3 @@
-import * as index from "./index";
 import * as storage from "./local-storage";
 import * as draw from "./draw-DOM";
 
@@ -13,26 +12,6 @@ export function listObj(name, listArray) {
     listArray.push(this);
     draw.listLinks(listArray);
     listObjNum++;
-}
-
-export function active() {
-    let linkText = document.querySelectorAll(".list-link");
-    let activeLink = "To Do";
-    linkText.forEach((link) => {
-        link.addEventListener("click", () => {
-            resetColors(linkText);
-            link.setAttribute("class", "nav-item added-list list-link text-info");
-            activeLink = link.textContent;
-            return activeLink;
-        });
-    });
-    return activeLink;
-}
-
-function resetColors(linkText) {
-    linkText.forEach((link) => {
-        link.setAttribute("class", "nav-item added-list list-link text-primary");
-    });
 }
 
 export function toggleListInputDisplay() {
