@@ -1,3 +1,4 @@
+import { drawTheDOM } from ".";
 import * as storage from "./local-storage";
 // import * as index from "./index";
 
