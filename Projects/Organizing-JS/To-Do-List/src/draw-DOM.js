@@ -24,9 +24,8 @@ export function activeListColor() {
 
 export function toDoList(toDosArray, completedArray, currentList) {
     clearItems(".to-do-li");
-    let filteredArray = toDosArray.filter(function(thing) {
-        console.log(currentList);
-        return thing.listName === currentList;
+    let filteredArray = toDosArray.filter(function(variable) {
+        return variable.listName === currentList;
     });
     filteredArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -68,6 +67,7 @@ export function toDoList(toDosArray, completedArray, currentList) {
 export function listLinks(listArray) {
     clearItems(".added-list");
     listArray.forEach((item) => {
+        console.log(item.name);
         let parentUL = document.querySelector("#ul-nav-items");
         let li = document.createElement("li");
         let aTag = document.createElement("a");
@@ -81,6 +81,9 @@ export function listLinks(listArray) {
         li.append(aTag);
         aTag.append(h3);
         h3.append(item.name);
+        if (item.name === "To Do") {
+            h3.setAttribute("class", "nav-item added-list list-link text-info");
+        }
     });
     activeListColor();
     return storage.save(listArray, "lists");
