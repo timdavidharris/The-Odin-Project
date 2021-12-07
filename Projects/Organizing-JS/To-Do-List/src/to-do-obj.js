@@ -6,7 +6,9 @@ let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
-let listName = "To Do"; // set this up to be a function that dynamically changes
+let listArray = [];
+listArray = storage.setArrayVar(listArray, "lists");
+let listName = listArray[0].name; // set this up to be a function that dynamically changes
 
 export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     this.name = name;
