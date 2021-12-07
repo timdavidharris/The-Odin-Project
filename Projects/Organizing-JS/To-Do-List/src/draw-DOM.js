@@ -5,7 +5,13 @@ let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
-let currentList = "To Do";
+let listArray = [];
+let toDosArray = [];
+let completedArray = [];
+completedArray = storage.setArrayVar(completedArray, "completed");
+toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+listArray = storage.setArrayVar(listArray, "lists");
+let testVar = 0;
 UL.setAttribute("class", "list-group");
 
 export function activeListColor() {
@@ -14,11 +20,16 @@ export function activeListColor() {
         link.addEventListener("click", () => {
             resetColors(linkText);
             link.setAttribute("class", "nav-item added-list list-link text-info");
+            testVar = link.dataset.listNum;
+            toDoList(toDosArray, completedArray);
         });
     });
     function resetColors(linkText) {
+        let dataNum = 0;
         linkText.forEach((link) => {
             link.setAttribute("class", "nav-item added-list list-link text-primary");
+            link.setAttribute("data-list-num", `${dataNum}`);
+            dataNum++;
         });
     }
 }
@@ -26,7 +37,7 @@ export function activeListColor() {
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
     let filteredArray = toDosArray.filter(function(variable) {
-        return variable.listName === currentList;
+        return variable.listName === listArray[testVar].name;
     });
     filteredArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -68,7 +79,6 @@ export function toDoList(toDosArray, completedArray) {
 export function listLinks(listArray) {
     clearItems(".added-list");
     listArray.forEach((item) => {
-        console.log(item.name);
         let parentUL = document.querySelector("#ul-nav-items");
         let li = document.createElement("li");
         let aTag = document.createElement("a");

@@ -9,8 +9,6 @@ import * as draw from "./draw-DOM";
 let toDosArray = [];
 let listArray = [];
 let completedArray = [];
-let currentList = "";
-currentList = listVar();
 toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
 completedArray = storage.setArrayVar(completedArray, "completed");
 listArray = storage.setArrayVar(listArray, "lists");
@@ -23,24 +21,10 @@ toDo.clearCompletedToDosLocalStorage(completedArray);
 list.clearListLocalStorage(listArray);
 draw.activeListColor();
 drawTheDOM();
-console.log(listArray);
 
 export function setMainList() {
     new list.listObj("To Do", listArray);
     // location.reload();
-}
-
-export function listVar() {
-    let listLinks = document.querySelectorAll(".list-a-tag");
-    currentList = "To Do";
-    listLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            currentList = link.id;
-            console.log(link.id);
-            return currentList;
-        });
-    });
-    return currentList;
 }
 
 export function drawTheDOM() {
@@ -48,9 +32,8 @@ export function drawTheDOM() {
     if (listArray.length === 0) {
         setMainList();
     }
-    currentList = listVar();
     toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
     completedArray = storage.setArrayVar(completedArray, "completed");
-    draw.toDoList(toDosArray, completedArray, currentList);
+    draw.toDoList(toDosArray, completedArray);
     draw.listLinks(listArray);
 }
