@@ -1,4 +1,3 @@
-import { drawTheDOM } from ".";
 import * as storage from "./local-storage";
 // import * as index from "./index";
 
@@ -6,6 +5,7 @@ let dueSpacerText = "  |  due:  ";
 let noDueDateText = " - no due date";
 let toDoDataNum = 0;
 let UL = document.createElement("ul");
+let currentList = "To Do";
 UL.setAttribute("class", "list-group");
 
 export function activeListColor() {
@@ -23,7 +23,7 @@ export function activeListColor() {
     }
 }
 
-export function toDoList(toDosArray, completedArray, currentList) {
+export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
     let filteredArray = toDosArray.filter(function(variable) {
         return variable.listName === currentList;
