@@ -24,7 +24,6 @@ drawTheDOM();
 
 export function setMainList() {
     new list.listObj("To Do", listArray);
-    // location.reload();
 }
 
 export function drawTheDOM() {
