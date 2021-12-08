@@ -21,6 +21,8 @@ export function activeListColor() {
             resetColors(linkText);
             link.setAttribute("class", "nav-item added-list list-link text-info");
             currentListNum = link.dataset.listNum;
+            toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+            completedArray = storage.setArrayVar(completedArray, "completed");
             toDoList(toDosArray, completedArray);
         });
     });
@@ -36,8 +38,6 @@ export function activeListColor() {
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
-    toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
-    completedArray = storage.setArrayVar(completedArray, "completed");
     let filteredArray = toDosArray.filter(function(todo) {
         return todo.listName === listArray[currentListNum].name;
     });
@@ -73,9 +73,9 @@ export function toDoList(toDosArray, completedArray) {
     }
     completedArray = storage.setArrayVar(completedArray, "completed");
     storage.save(toDosArray, "to-do-items");
-    checkOffToDo(toDosArray, completedArray);
-    deleteToDoLI(toDosArray, completedArray);
-    showNotes(toDosArray);
+    checkOffToDo(filteredArray, completedArray);
+    deleteToDoLI(filteredArray, completedArray);
+    showNotes(filteredArray);
 }
 
 export function listLinks(listArray) {
@@ -146,15 +146,14 @@ function deleteToDoLI(toDosArray, completedArray) {
     });
 }
 
-function checkOffToDo(toDosArray, completedArray) {
-    toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
-    completedArray = storage.setArrayVar(completedArray, "completed");
+function checkOffToDo(filteredArray, completedArray) {
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
-            completedArray.push(toDosArray[checkBoxNum]);
-            toDosArray.splice(checkBoxNum, 1);
+            completedArray.push(filteredArray[checkBoxNum]);
+            let spliceMe = filteredArray[checkBoxNum].name;
+            toDosArray.splice(0, 1, spliceMe);
             return toDoList(toDosArray, completedArray);
         });
     });
