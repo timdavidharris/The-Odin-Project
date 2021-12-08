@@ -36,6 +36,8 @@ export function activeListColor() {
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
+    toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+    completedArray = storage.setArrayVar(completedArray, "completed");
     let filteredArray = toDosArray.filter(function(todo) {
         return todo.listName === listArray[currentListNum].name;
     });
@@ -93,7 +95,6 @@ export function listLinks(listArray) {
         li.append(aTag);
         aTag.append(h3);
         h3.append(item.name);
-        console.log(listArray[currentListNum].name);
         if (item.name === currentListName) {
             h3.setAttribute("class", "nav-item added-list list-link text-info");
         }
@@ -146,6 +147,8 @@ function deleteToDoLI(toDosArray, completedArray) {
 }
 
 function checkOffToDo(toDosArray, completedArray) {
+    toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
+    completedArray = storage.setArrayVar(completedArray, "completed");
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {

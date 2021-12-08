@@ -8,7 +8,6 @@ let newToDoNameInput = document.querySelector("#new-to-do-item");
 let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
 // let listArray = [];
 let currentList = "To Do";
-console.log(currentList);
 // listArray = storage.setArrayVar(listArray, "lists");
 let listName = currentList; // set this up to be a function that dynamically changes
 
@@ -20,9 +19,6 @@ export function toDoObj(name, dueDate, notes, listName, toDosArray) {
     toDosArray.push(this);
     storage.save(toDosArray, "to-do-items");
     index.drawTheDOM();
-    currentList = document.querySelector(".text-info").textContent;
-    console.log(currentList);
-    listName = currentList;
 } 
 
 export function addToDoObj(toDosArray){
@@ -33,6 +29,8 @@ export function addToDoObj(toDosArray){
         } else {
             toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
             inputDiv.style.display = "none";
+            currentList = document.querySelector(".text-info").textContent;
+            listName = currentList;
             let newToDoName = newToDoNameInput.value;
             let newToDoDue = newToDoDueInput.value;
             let newToDoNote = newToDoNotesInput.value;
