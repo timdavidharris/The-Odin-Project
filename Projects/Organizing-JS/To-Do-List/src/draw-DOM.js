@@ -36,8 +36,8 @@ export function activeListColor() {
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
-    let filteredArray = toDosArray.filter(function(variable) {
-        return variable.listName === listArray[currentListNum].name;
+    let filteredArray = toDosArray.filter(function(todo) {
+        return todo.listName === listArray[currentListNum].name;
     });
     filteredArray.forEach((item) => {
         item.dueDate === "" ? item.dueDate = noDueDateText : item.dueDate;
@@ -78,12 +78,13 @@ export function toDoList(toDosArray, completedArray) {
 
 export function listLinks(listArray) {
     clearItems(".added-list");
+    let currentListName = listArray[currentListNum].name;
     listArray.forEach((item) => {
         let parentUL = document.querySelector("#ul-nav-items");
         let li = document.createElement("li");
         let aTag = document.createElement("a");
         let h3 = document.createElement("h3");
-        h3.setAttribute("class", "list-link");
+        h3.setAttribute("class", "list-link")
         li.setAttribute("class", "nav-item added-list");
         aTag.setAttribute("class", "nav-link list-a-tag"),
         aTag.setAttribute("id", `${item.name}`),
@@ -92,7 +93,8 @@ export function listLinks(listArray) {
         li.append(aTag);
         aTag.append(h3);
         h3.append(item.name);
-        if (item.name === "To Do") {
+        console.log(listArray[currentListNum].name);
+        if (item.name === currentListName) {
             h3.setAttribute("class", "nav-item added-list list-link text-info");
         }
     });
