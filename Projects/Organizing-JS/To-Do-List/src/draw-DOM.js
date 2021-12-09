@@ -105,9 +105,15 @@ export function listLinks(listArray) {
 }
 
 function drawCompletedToDos(completedArray) {
+// 
+listArray = storage.setArrayVar(listArray, "lists");
+let filteredCompleted = completedArray.filter(function(completed) {
+    return completed.listName === listArray[currentListNum].name;
+});
+// 
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     clearItems(".completed-li");
-    completedArray.forEach((item) => {
+    filteredCompleted.forEach((item) => {
         let li = document.createElement("li");
         li.setAttribute("class", "completed-li");
         completedDiv.append(li);
