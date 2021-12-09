@@ -74,8 +74,8 @@ export function toDoList(toDosArray, completedArray) {
     }
     completedArray = storage.setArrayVar(completedArray, "completed");
     storage.save(toDosArray, "to-do-items");
-    checkOffToDo(filteredArray, completedArray);
-    deleteToDoLI(filteredArray, completedArray);
+    checkOffToDo(filteredArray, toDosArray, completedArray);
+    deleteToDoLI(filteredArray, toDosArray, completedArray);
     showNotes(filteredArray);
 }
 
@@ -105,12 +105,10 @@ export function listLinks(listArray) {
 }
 
 function drawCompletedToDos(completedArray) {
-// 
-listArray = storage.setArrayVar(listArray, "lists");
-let filteredCompleted = completedArray.filter(function(completed) {
-    return completed.listName === listArray[currentListNum].name;
-});
-// 
+    listArray = storage.setArrayVar(listArray, "lists");
+    let filteredCompleted = completedArray.filter(function(completed) {
+        return completed.listName === listArray[currentListNum].name;
+    });
     let completedDiv = document.querySelector("#completed-to-dos-ul");
     clearItems(".completed-li");
     filteredCompleted.forEach((item) => {
@@ -142,26 +140,30 @@ export function clearItems(domSelector) {
 }
 
 // Button-related Functions
-function deleteToDoLI(toDosArray, completedArray) {
+function deleteToDoLI(filteredArray, toDosArray, completedArray) {
     let deleteBtns = document.querySelectorAll(".delete-btn");
     deleteBtns.forEach((button) => {
         button.addEventListener("click", () => {
             let toDoItemNum = Number(button.dataset.deleteNum);
-            toDosArray.splice(toDoItemNum, 1);
+            toDosArray = toDosArray.filter(function(item) {
+                console.log("Delete to do filter");
+                return item.name !== filteredArray[toDoItemNum].name;
+            });
             return toDoList(toDosArray, completedArray);
         });
     });
 }
 
-function checkOffToDo(filteredArray, completedArray) {
+function checkOffToDo(filteredArray, toDosArray, completedArray) {
     let checkBoxes = document.querySelectorAll(".form-check-input");
     checkBoxes.forEach((box) => {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
-            completedArray.push(filteredArray[checkBoxNum]);
             toDosArray = toDosArray.filter(function(item) {
+                console.log("toDoArray Filter");
                 return item.name !== filteredArray[checkBoxNum].name;
             });
+            completedArray.push(filteredArray[checkBoxNum]);
             return toDoList(toDosArray, completedArray);
         });
     });
