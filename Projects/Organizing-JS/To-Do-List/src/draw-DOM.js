@@ -38,6 +38,7 @@ export function activeListColor() {
 
 export function toDoList(toDosArray, completedArray) {
     clearItems(".to-do-li");
+    listArray = storage.setArrayVar(listArray, "lists");
     let filteredArray = toDosArray.filter(function(todo) {
         return todo.listName === listArray[currentListNum].name;
     });
@@ -152,8 +153,9 @@ function checkOffToDo(filteredArray, completedArray) {
         box.addEventListener("click", () => {
             let checkBoxNum = Number(box.dataset.checkBox);
             completedArray.push(filteredArray[checkBoxNum]);
-            let spliceMe = filteredArray[checkBoxNum].name;
-            toDosArray.splice(0, 1, spliceMe);
+            toDosArray = toDosArray.filter(function(item) {
+                return item.name !== filteredArray[checkBoxNum].name;
+            });
             return toDoList(toDosArray, completedArray);
         });
     });
