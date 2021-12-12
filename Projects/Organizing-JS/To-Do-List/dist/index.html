@@ -13,7 +13,7 @@
         <li>
           <form onsubmit="return false" id="new-to-do-input-div" class="mt-1">
             <input for="new-to-do-list-btn" id="new-to-do-input" type="text" class="form-control ms-1 me-1 pe-1" placeholder="LIST NAME" required>
-            <span id="list-error-span"></span>
+            <span id="list-error-span" class="text-danger"></span>
             <button id="new-to-do-list-btn" class="btn btn-sm btn-outline-success ms-1" type="button">ADD LIST</button>
         </form>
         </li>
@@ -25,12 +25,13 @@
     </div>
     <div id="list-div" class="align-self-start border border-primary rounded ms-2 ps-2 pt-2 pb-2">
       <div id="to-do-items">
-        <div id="new-to-do-item-inputs">
-          <input id="new-to-do-item" type="text" class="form-control ms-1 me-1 pe-1" placeholder="TO DO NAME">
+        <form onsubmit="return false" id="new-to-do-item-inputs">
+          <input id="new-to-do-item" type="text" class="form-control ms-1 me-1 pe-1" placeholder="TO DO NAME" required>
+          <span id="to-do-error-span" class="text-danger"></span>
           <input id="new-to-do-item-notes" type="text" class="form-control ms-1 me-1 pe-1" placeholder="NOTES">
           <input id="new-to-do-due" type="date" min="getTodaysDate()" class="form-control ms-1 me-1 pe-1" placeholder="TO DO DUE DATE">
           <button id="new-to-do-item-btn" class="btn btn-sm btn-outline-success" type="button" >ADD TO DO</button>
-        </div>
+        </form>
         <div id="new-to-do-item-text">
           <a id="add-to-do-btn" href="#">
             <h3>Add To Do</h3>

@@ -6,6 +6,7 @@ let inputDiv = document.querySelector("#new-to-do-item-inputs");
 let newToDoDueInput = document.querySelector("#new-to-do-due");
 let newToDoNameInput = document.querySelector("#new-to-do-item");
 let newToDoNotesInput = document.querySelector("#new-to-do-item-notes");
+let toDoErrorSpan = document.querySelector("#to-do-error-span");
 let currentList = "To Do";
 let listName = currentList; 
 
@@ -23,8 +24,9 @@ export function addToDoObj(toDosArray){
     let addNewToDoBtn = document.querySelector("#new-to-do-item-btn");
     addNewToDoBtn.addEventListener("click", () => {
         if (newToDoNameInput.value === "") {
-            alert("The to do name was empty, please type in a name");
+            toDoErrorSpan.textContent = "Please do not leave the name blank";
         } else {
+            toDoErrorSpan.textContent = "";
             toDosArray = storage.setArrayVar(toDosArray, "to-do-items");
             inputDiv.style.display = "none";
             currentList = document.querySelector(".text-info").textContent;
@@ -36,6 +38,14 @@ export function addToDoObj(toDosArray){
         }
     });
 }
+
+newToDoNameInput.addEventListener("input", function() {
+    if (newToDoNameInput.validity.valid) {
+        toDoErrorSpan.textContent = "";
+    } else {
+        toDoErrorSpan.textContent = "Please do not leave the name blank";
+    }
+});
 
 export function toggleToDoInputDisplay() {
     inputDiv.style.display = "none";

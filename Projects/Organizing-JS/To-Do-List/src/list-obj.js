@@ -44,7 +44,6 @@ addNewListInput.addEventListener("input", function() {
         errorSpan.textContent = "";
     } else {
         errorSpan.textContent = "Please do not leave blank";
-        console.log("custom validity");
     }
 });
 
