@@ -4,6 +4,7 @@ import * as draw from "./draw-DOM";
 const addNewListBtn = document.querySelector("#add-list-btn");
 let addNewListInput = document.querySelector("#new-to-do-input");
 let inputDiv = document.querySelector("#new-to-do-input-div");
+let errorSpan = document.querySelector("#list-error-span");
 let listObjNum = 0;
 
 export function listObj(name, listArray) {
@@ -27,16 +28,26 @@ export function toggleListInputDisplay() {
 export function addListObj(listArray) {
     let addNewListBtn = document.querySelector("#new-to-do-list-btn");
     addNewListBtn.addEventListener("click", () => {
-        if (addNewListInput.value === "") {
-            alert("The name box was empty, please type in a name");
-        } else {
+        if (addNewListInput.value !== "") {
             listArray = storage.setArrayVar(listArray, "lists");
             inputDiv.style.display = "none";
             let newListName = addNewListInput.value;
             new listObj(newListName, listArray);
+        } else {
+            errorSpan.textContent = "Please do not leave blank";
         }
     });
 }
+
+addNewListInput.addEventListener("input", function() {
+    if (addNewListInput.validity.valid) {
+        errorSpan.textContent = "";
+    } else {
+        errorSpan.textContent = "Please do not leave blank";
+        console.log("custom validity");
+    }
+});
+
 
 export function clearListLocalStorage(listArray) {
     let clearLists = document.querySelector("#clear-lists-local-storage");

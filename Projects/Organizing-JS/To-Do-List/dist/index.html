@@ -11,10 +11,11 @@
     <div id="nav-div" class="border border-primary rounded">
       <ul id="ul-nav-items" class="nav flex-column">
         <li>
-          <div id="new-to-do-input-div" class="mt-1">
-            <input id="new-to-do-input" type="text" class="form-control ms-1 me-1 pe-1" placeholder="LIST NAME">
+          <form onsubmit="return false" id="new-to-do-input-div" class="mt-1">
+            <input for="new-to-do-list-btn" id="new-to-do-input" type="text" class="form-control ms-1 me-1 pe-1" placeholder="LIST NAME" required>
+            <span id="list-error-span"></span>
             <button id="new-to-do-list-btn" class="btn btn-sm btn-outline-success ms-1" type="button">ADD LIST</button>
-        </div>
+        </form>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="add-list-btn" href="#"><h3>Add List</h3></a>
