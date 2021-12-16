@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Practice: GIPHY</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Refresh For a Fresh Cat Meme</h1>
+        <img src="#" alt="">
+    </div>
+
+    <script>
+        const img = document.querySelector("img");
+        fetch("https://api.giphy.com/v1/gifs/translate?api_key=jrGcC2NtaNw49N2MXYDQWT9tIEy5ZMom&s=cats", {mode: "cors"})
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(response) {
+                img.src = response.data.images.original.url;
+            });
+    </script>
+</body>
+</html>
