@@ -1,0 +1,10 @@
+div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1em 5em 1em 5em;
+}
+
+h1, input, button {
+    margin: .5em .5em .5em .5em;
+}
