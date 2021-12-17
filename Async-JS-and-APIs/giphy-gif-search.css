@@ -2,7 +2,7 @@ div {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 1em 5em 1em 5em;
+    padding: .5em 25em .5em 25em;
 }
 
 h1, input, button {
