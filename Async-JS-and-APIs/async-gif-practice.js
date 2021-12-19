@@ -23,7 +23,7 @@ let searchInput = document.querySelector("#search-input");
 async function fetchCatGif() {
     let response = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=jrGcC2NtaNw49N2MXYDQWT9tIEy5ZMom&s=cats", {mode: "cors"});
     let catGif = await response.json();
-    img.src = catGif.data.images.original.url;
+    return img.src = catGif.data.images.original.url;
 }
 
 function refresh() {
@@ -32,15 +32,16 @@ function refresh() {
     });
 }
 
-async function search() {
-    searchBtn.addEventListener("click", () => {
+function search() {
+    searchBtn.addEventListener("click", async () => {
+        clearErrorMessage();
         let response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=jrGcC2NtaNw49N2MXYDQWT9tIEy5ZMom&s=${searchInput.value}`, {mode: "cors"});
         let GIF = await response.json();
-        img.src = GIF.data.images.original.url;
-        clearErrorMessage();
+        return img.src = GIF.data.images.original.url;
+    });
 }
 
-async function clearErrorMessage() {
+function clearErrorMessage() {
     errorMessage.textContent = "";
 }
 
