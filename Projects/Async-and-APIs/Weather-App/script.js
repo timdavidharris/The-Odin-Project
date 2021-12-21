@@ -9,6 +9,16 @@ const currentTemp = document.querySelector("#current-temp");
 const tempLow = document.querySelector("#temp-low");
 const tempHigh = document.querySelector("#temp-high");
 const description = document.querySelector("#description");
+const  fahrenheitP = document.querySelector("#fahrenheit");
+const  celsiusP = document.querySelector("#celsius");
+
+(function tempConversionSetUp() {
+    fahrenheitP.textContent = "fahrenheit";
+    celsiusP.textContent = "celsius";
+    fahrenheitP.setAttribute("class", "active");
+    celsiusP.setAttribute("class", "inactive");
+})();
+
 
 
 searchButton.addEventListener("click", () => {
