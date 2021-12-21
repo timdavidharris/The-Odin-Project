@@ -9,8 +9,8 @@ const currentTemp = document.querySelector("#current-temp");
 const tempLow = document.querySelector("#temp-low");
 const tempHigh = document.querySelector("#temp-high");
 const description = document.querySelector("#description");
-const  fahrenheitP = document.querySelector("#fahrenheit");
-const  celsiusP = document.querySelector("#celsius");
+const fahrenheitP = document.querySelector("#fahrenheit");
+const celsiusP = document.querySelector("#celsius");
 
 (function tempConversionSetUp() {
     fahrenheitP.textContent = "fahrenheit";
@@ -19,14 +19,38 @@ const  celsiusP = document.querySelector("#celsius");
     celsiusP.setAttribute("class", "inactive");
 })();
 
+fahrenheitP.addEventListener("click", () => {
+    if (fahrenheitP.className === "active") {
+        fahrenheitP.setAttribute("class", "inactive");
+        celsiusP.setAttribute("class", "active");
+        unitType = "metric";
+    } else {
+        fahrenheitP.setAttribute("class", "active");
+        celsiusP.setAttribute("class", "inactive");
+        unitType = "imperial";
+    }
+    getWeather(cityName, unitType);
+});
 
+celsiusP.addEventListener("click", () => {
+    if (celsiusP.className === "active") {
+        fahrenheitP.setAttribute("class", "active");
+        celsiusP.setAttribute("class", "inactive");
+        unitType = "imperial";
+    } else {
+        fahrenheitP.setAttribute("class", "inactive");
+        celsiusP.setAttribute("class", "active");
+        unitType = "metric";
+    }
+    getWeather(cityName, unitType);
+});
 
 searchButton.addEventListener("click", () => {
     cityName = cityInput.value;
     getWeather(cityName);
 });
 
-async function getWeather(cityName) {
+async function getWeather(cityName, unitType) {
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${unitType}&appid=${apiKey}`, {mode: "cors"});
     let weatherJSON = await response.json();
     return displayWeatherInfo(weatherJSON);
@@ -52,4 +76,4 @@ function emptyInfo() {
         description.textContent = "";
 }
 
-getWeather(cityName);
+getWeather(cityName, unitType);
