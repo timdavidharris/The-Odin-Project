@@ -23,11 +23,23 @@ async function getWeather(cityName) {
 }
 
 function displayWeatherInfo(weatherJSON) {
-    currentCity.textContent = `Current City: ${weatherJSON.name}`;
-    currentTemp.textContent = `Current Temperature ${weatherJSON.main.temp}`;
-    tempLow.textContent = `Today's Low ${weatherJSON.main.temp_min}`;
-    tempHigh.textContent = `Today's High ${weatherJSON.main.temp_max}`;
-    description.textContent = `The current weather looks like: ${weatherJSON.weather[0].description}`;
+    if (weatherJSON.name === undefined) {
+        currentCity.textContent = "Error: City Name Not Found";
+        emptyInfo();
+    } else {
+        currentCity.textContent = `Current City: ${weatherJSON.name}`;
+        currentTemp.textContent = `Current Temperature ${weatherJSON.main.temp}`;
+        tempLow.textContent = `Today's Low ${weatherJSON.main.temp_min}`;
+        tempHigh.textContent = `Today's High ${weatherJSON.main.temp_max}`;
+        description.textContent = `The current weather looks like: ${weatherJSON.weather[0].description}`;
+    }
+}
+
+function emptyInfo() {
+    currentTemp.textContent = "";
+        tempLow.textContent = "";
+        tempHigh.textContent = "";
+        description.textContent = "";
 }
 
 getWeather(cityName);
