@@ -4,8 +4,10 @@ main {
 
 .active {
     color: blue;
+    text-transform: uppercase;
 }
 
 .inactive {
     color: black;
+    
 }
