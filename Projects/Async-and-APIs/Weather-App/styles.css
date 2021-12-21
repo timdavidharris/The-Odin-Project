@@ -1,0 +1,11 @@
+main {
+    text-align: center;
+}
+
+.active {
+    color: blue;
+}
+
+.inactive {
+    color: black;
+}
