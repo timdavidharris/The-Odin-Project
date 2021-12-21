@@ -4,6 +4,12 @@ let cityName = "denver";
 let unitType = "imperial";
 const cityInput = document.querySelector("#city-input");
 const searchButton = document.querySelector("#city-search-btn");
+const currentCity = document.querySelector("#current-city");
+const currentTemp = document.querySelector("#current-temp");
+const tempLow = document.querySelector("#temp-low");
+const tempHigh = document.querySelector("#temp-high");
+const description = document.querySelector("#description");
+
 
 searchButton.addEventListener("click", () => {
     cityName = cityInput.value;
@@ -17,12 +23,11 @@ async function getWeather(cityName) {
 }
 
 function displayWeatherInfo(weatherJSON) {
-    console.log(weatherJSON.name);
-    console.log(weatherJSON.main.temp);
-    console.log(weatherJSON.main.temp_min);
-    console.log(weatherJSON.main.temp_max);
-    console.log(weatherJSON);
-    console.log(weatherJSON.weather[0].description);
+    currentCity.textContent = `Current City: ${weatherJSON.name}`;
+    currentTemp.textContent = `Current Temperature ${weatherJSON.main.temp}`;
+    tempLow.textContent = `Today's Low ${weatherJSON.main.temp_min}`;
+    tempHigh.textContent = `Today's High ${weatherJSON.main.temp_max}`;
+    description.textContent = `The current weather looks like: ${weatherJSON.weather[0].description}`;
 }
 
 getWeather(cityName);
