@@ -9,6 +9,8 @@ const currentTemp = document.querySelector("#current-temp");
 const tempLow = document.querySelector("#temp-low");
 const tempHigh = document.querySelector("#temp-high");
 const description = document.querySelector("#description");
+const humidity = document.querySelector("#humidity");
+const windSpeed = document.querySelector("#wind-speed");
 const fahrenheitP = document.querySelector("#fahrenheit");
 const celsiusP = document.querySelector("#celsius");
 
@@ -61,12 +63,19 @@ function displayWeatherInfo(weatherJSON) {
         currentCity.textContent = "Error: City Name Not Found";
         emptyInfo();
     } else {
-        currentCity.textContent = `Current City: ${weatherJSON.name}`;
-        currentTemp.textContent = `Current Temperature ${weatherJSON.main.temp}`;
-        tempLow.textContent = `Today's Low ${weatherJSON.main.temp_min}`;
-        tempHigh.textContent = `Today's High ${weatherJSON.main.temp_max}`;
-        description.textContent = `The current weather looks like: ${weatherJSON.weather[0].description}`;
+        currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
+        currentTemp.textContent = `Current Temperature: ${weatherJSON.main.temp}°`;
+        tempLow.textContent = `Today's Low: ${weatherJSON.main.temp_min}°`;
+        tempHigh.textContent = `Today's High: ${weatherJSON.main.temp_max}°`;
+        description.textContent = `The current weather: ${weatherJSON.weather[0].description}`;
+        humidity.textContent = `Humidity: ${weatherJSON.main.humidity}%`;
+        if (unitType === "imperial") {
+            windSpeed.textContent = `Wind Speed: ${weatherJSON.wind.speed} MPH`;
+        } else {
+            windSpeed.textContent = `Wind Speed: ${weatherJSON.wind.speed} KPH`;
+        }
     }
+    console.log(weatherJSON);
 }
 
 function emptyInfo() {
