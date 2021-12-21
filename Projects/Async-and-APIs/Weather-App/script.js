@@ -75,7 +75,6 @@ function displayWeatherInfo(weatherJSON) {
             windSpeed.textContent = `Wind Speed: ${weatherJSON.wind.speed} KPH`;
         }
     }
-    console.log(weatherJSON);
 }
 
 function emptyInfo() {
