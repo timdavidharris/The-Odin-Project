@@ -49,7 +49,7 @@ async function getWeather(cityName) {
 function displayWeatherInfo(weatherJSON) {
     if (weatherJSON.name === undefined) {
         currentCity.textContent = "Error: City Name Not Found";
-        emptyInfo();
+        clearTextOnError();
     } else {
         currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
         currentTemp.textContent = `Temperature: ${Math.round(weatherJSON.main.temp)}°`;
@@ -65,7 +65,7 @@ function displayWeatherInfo(weatherJSON) {
     }
 }
 
-function emptyInfo() {
+function clearTextOnError() {
     currentTemp.textContent = "";
         tempLow.textContent = "";
         tempHigh.textContent = "";
