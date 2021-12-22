@@ -12,6 +12,7 @@ const description = document.querySelector("#description");
 const humidity = document.querySelector("#humidity");
 const windSpeed = document.querySelector("#wind-speed");
 const fahrenheitP = document.querySelector("#fahrenheit");
+const unitTypeParas = document.querySelectorAll(".unit-type-p");
 const celsiusP = document.querySelector("#celsius");
 
 (function tempConversionSetUp() {
@@ -21,7 +22,8 @@ const celsiusP = document.querySelector("#celsius");
     celsiusP.setAttribute("class", "inactive");
 })();
 
-fahrenheitP.addEventListener("click", () => {
+unitTypeParas.forEach((para) => {
+    para.addEventListener("click", () => {
     if (fahrenheitP.className === "active") {
         fahrenheitP.setAttribute("class", "inactive");
         celsiusP.setAttribute("class", "active");
@@ -30,17 +32,7 @@ fahrenheitP.addEventListener("click", () => {
         celsiusP.setAttribute("class", "inactive");
     }
     getWeather(cityName);
-});
-
-celsiusP.addEventListener("click", () => {
-    if (celsiusP.className === "active") {
-        fahrenheitP.setAttribute("class", "active");
-        celsiusP.setAttribute("class", "inactive");
-    } else {
-        fahrenheitP.setAttribute("class", "inactive");
-        celsiusP.setAttribute("class", "active");
-    }
-    getWeather(cityName);
+    });
 });
 
 searchButton.addEventListener("click", () => {
