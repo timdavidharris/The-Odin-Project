@@ -67,11 +67,11 @@ function displayWeatherInfo(weatherJSON) {
 
 function clearTextOnError() {
     currentTemp.textContent = "";
-        tempLow.textContent = "";
-        tempHigh.textContent = "";
-        description.textContent = "";
-        humidity.textContent = "";
-        windSpeed.textContent = "";
+    tempLow.textContent = "";
+    tempHigh.textContent = "";
+    description.textContent = "";
+    humidity.textContent = "";
+    windSpeed.textContent = "";
 }
 
 getWeather(cityName);
