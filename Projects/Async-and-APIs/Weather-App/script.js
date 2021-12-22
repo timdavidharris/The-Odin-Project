@@ -1,4 +1,3 @@
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 let apiKey = "112eaceaf05e5ca75e1692cec5d4a11e";
 let cityName = "denver";
 let unitType = "imperial";
@@ -53,15 +52,15 @@ function displayWeatherInfo(weatherJSON) {
         emptyInfo();
     } else {
         currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
-        currentTemp.textContent = `Current Temperature: ${weatherJSON.main.temp}°`;
-        tempLow.textContent = `Today's Low: ${weatherJSON.main.temp_min}°`;
-        tempHigh.textContent = `Today's High: ${weatherJSON.main.temp_max}°`;
+        currentTemp.textContent = `Current Temperature: ${Math.round(weatherJSON.main.temp)}°`;
+        tempLow.textContent = `Today's Low: ${Math.round(weatherJSON.main.temp_min)}°`;
+        tempHigh.textContent = `Today's High: ${Math.round(weatherJSON.main.temp_max)}°`;
         description.textContent = `The current weather: ${weatherJSON.weather[0].description}`;
         humidity.textContent = `Humidity: ${weatherJSON.main.humidity}%`;
         if (unitType === "imperial") {
-            windSpeed.textContent = `Wind Speed: ${weatherJSON.wind.speed} MPH`;
+            windSpeed.textContent = `Wind Speed: ${Math.round(weatherJSON.wind.speed)} MPH`;
         } else {
-            windSpeed.textContent = `Wind Speed: ${weatherJSON.wind.speed} KPH`;
+            windSpeed.textContent = `Wind Speed: ${Math.round(weatherJSON.wind.speed)} KPH`;
         }
     }
 }
