@@ -25,26 +25,22 @@ fahrenheitP.addEventListener("click", () => {
     if (fahrenheitP.className === "active") {
         fahrenheitP.setAttribute("class", "inactive");
         celsiusP.setAttribute("class", "active");
-        unitType = "metric";
     } else {
         fahrenheitP.setAttribute("class", "active");
         celsiusP.setAttribute("class", "inactive");
-        unitType = "imperial";
     }
-    getWeather(cityName, unitType);
+    getWeather(cityName);
 });
 
 celsiusP.addEventListener("click", () => {
     if (celsiusP.className === "active") {
         fahrenheitP.setAttribute("class", "active");
         celsiusP.setAttribute("class", "inactive");
-        unitType = "imperial";
     } else {
         fahrenheitP.setAttribute("class", "inactive");
         celsiusP.setAttribute("class", "active");
-        unitType = "metric";
     }
-    getWeather(cityName, unitType);
+    getWeather(cityName);
 });
 
 searchButton.addEventListener("click", () => {
@@ -52,7 +48,8 @@ searchButton.addEventListener("click", () => {
     getWeather(cityName);
 });
 
-async function getWeather(cityName, unitType) {
+async function getWeather(cityName) {
+    fahrenheitP.className === "active" ? unitType = "imperial" : unitType = "metric";
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${unitType}&appid=${apiKey}`, {mode: "cors"});
     let weatherJSON = await response.json();
     return displayWeatherInfo(weatherJSON);
@@ -82,6 +79,8 @@ function emptyInfo() {
         tempLow.textContent = "";
         tempHigh.textContent = "";
         description.textContent = "";
+        humidity.textContent = "";
+        windSpeed.textContent = "";
 }
 
-getWeather(cityName, unitType);
+getWeather(cityName);
