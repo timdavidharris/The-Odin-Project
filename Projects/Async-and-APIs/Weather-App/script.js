@@ -52,10 +52,10 @@ function displayWeatherInfo(weatherJSON) {
         emptyInfo();
     } else {
         currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
-        currentTemp.textContent = `Current Temperature: ${Math.round(weatherJSON.main.temp)}°`;
-        tempLow.textContent = `Today's Low: ${Math.round(weatherJSON.main.temp_min)}°`;
-        tempHigh.textContent = `Today's High: ${Math.round(weatherJSON.main.temp_max)}°`;
-        description.textContent = `The current weather: ${weatherJSON.weather[0].description}`;
+        currentTemp.textContent = `Temperature: ${Math.round(weatherJSON.main.temp)}°`;
+        tempLow.textContent = `Low: ${Math.round(weatherJSON.main.temp_min)}°`;
+        tempHigh.textContent = `High: ${Math.round(weatherJSON.main.temp_max)}°`;
+        description.textContent = `Looks like: ${weatherJSON.weather[0].description}`;
         humidity.textContent = `Humidity: ${weatherJSON.main.humidity}%`;
         if (unitType === "imperial") {
             windSpeed.textContent = `Wind Speed: ${Math.round(weatherJSON.wind.speed)} MPH`;
