@@ -7,7 +7,6 @@ const celsiusP = document.querySelector("#celsius");
 const weatherInfo = document.querySelector("#weather-info");
 const cityInput = document.querySelector("#city-input");
 const searchButton = document.querySelector("#city-search-btn");
-
 const currentCity = document.createElement("h2");
 const currentTemp = document.createElement("h2");
 const tempLow = document.createElement("h3");
@@ -51,12 +50,13 @@ async function getWeather(cityName) {
 function displayWeatherInfo(weatherJSON) {
     if (weatherJSON.name === undefined) {
         currentCity.textContent = "Error: City Name Not Found";
+        clearOnError();
     } else {
         currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
         currentTemp.textContent = `Temperature: ${Math.round(weatherJSON.main.temp)}°`;
+        description.textContent = `Looks like: ${weatherJSON.weather[0].description}`;
         tempLow.textContent = `Low: ${Math.round(weatherJSON.main.temp_min)}°`;
         tempHigh.textContent = `High: ${Math.round(weatherJSON.main.temp_max)}°`;
-        description.textContent = `Looks like: ${weatherJSON.weather[0].description}`;
         humidity.textContent = `Humidity: ${weatherJSON.main.humidity}%`;
         if (unitType === "imperial") {
             windSpeed.textContent = `Wind Speed: ${Math.round(weatherJSON.wind.speed)} MPH`;
@@ -71,6 +71,15 @@ function displayWeatherInfo(weatherJSON) {
         weatherInfo.append(humidity);
         weatherInfo.append(windSpeed);
     }
+}
+
+function clearOnError() {
+    currentTemp.textContent = "";
+    description.textContent = "";
+    tempLow.textContent = "";
+    tempHigh.textContent = "";
+    humidity.textContent = "";
+    windSpeed.textContent = "";
 }
 
 getWeather(cityName);
