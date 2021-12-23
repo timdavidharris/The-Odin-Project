@@ -1,18 +1,20 @@
 let apiKey = "112eaceaf05e5ca75e1692cec5d4a11e";
 let cityName = "denver";
 let unitType = "imperial";
+const unitTypeParas = document.querySelectorAll(".unit-type-p");
+const fahrenheitP = document.querySelector("#fahrenheit");
+const celsiusP = document.querySelector("#celsius");
+const weatherInfo = document.querySelector("#weather-info");
 const cityInput = document.querySelector("#city-input");
 const searchButton = document.querySelector("#city-search-btn");
-const currentCity = document.querySelector("#current-city");
-const currentTemp = document.querySelector("#current-temp");
-const tempLow = document.querySelector("#temp-low");
-const tempHigh = document.querySelector("#temp-high");
-const description = document.querySelector("#description");
-const humidity = document.querySelector("#humidity");
-const windSpeed = document.querySelector("#wind-speed");
-const fahrenheitP = document.querySelector("#fahrenheit");
-const unitTypeParas = document.querySelectorAll(".unit-type-p");
-const celsiusP = document.querySelector("#celsius");
+
+const currentCity = document.createElement("h2");
+const currentTemp = document.createElement("h2");
+const tempLow = document.createElement("h3");
+const tempHigh = document.createElement("h3");
+const description = document.createElement("h3");
+const humidity = document.createElement("h3");
+const windSpeed = document.createElement("h3");
 
 (function tempConversionSetUp() {
     fahrenheitP.textContent = "fahrenheit";
@@ -49,7 +51,6 @@ async function getWeather(cityName) {
 function displayWeatherInfo(weatherJSON) {
     if (weatherJSON.name === undefined) {
         currentCity.textContent = "Error: City Name Not Found";
-        clearTextOnError();
     } else {
         currentCity.textContent = `Current City: ${weatherJSON.name}, ${weatherJSON.sys.country}`;
         currentTemp.textContent = `Temperature: ${Math.round(weatherJSON.main.temp)}°`;
@@ -62,16 +63,14 @@ function displayWeatherInfo(weatherJSON) {
         } else {
             windSpeed.textContent = `Wind Speed: ${Math.round(weatherJSON.wind.speed)} KPH`;
         }
+        weatherInfo.append(currentCity);
+        weatherInfo.append(currentTemp);
+        weatherInfo.append(description);
+        weatherInfo.append(tempLow);
+        weatherInfo.append(tempHigh);
+        weatherInfo.append(humidity);
+        weatherInfo.append(windSpeed);
     }
-}
-
-function clearTextOnError() {
-    currentTemp.textContent = "";
-    tempLow.textContent = "";
-    tempHigh.textContent = "";
-    description.textContent = "";
-    humidity.textContent = "";
-    windSpeed.textContent = "";
 }
 
 getWeather(cityName);
