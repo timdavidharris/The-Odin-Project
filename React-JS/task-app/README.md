@@ -1,4 +1,4 @@
-# Do-It-Yourself Guide
+# App Overview
 
 This app is made with two components, App and Overview. The app renders an input field and a submit button. With the submit button, you can add the content from your input to a “tasks array” that is managed in state. (Class components were used for this project). Finally, for each task in the tasks array, an HTML list element is rendered.
 
