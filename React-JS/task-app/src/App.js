@@ -1,7 +1,11 @@
 // Responsible for handling the input field with logic
 function App() {
   return (
-    <h1>Hello, world</h1>
+    <div className="input">
+      <h1>Task List</h1>
+      <input></input>
+      <button>ADD</button>
+    </div>
   );
 }
 
