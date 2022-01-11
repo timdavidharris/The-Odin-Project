@@ -1,11 +1,14 @@
 // Responsible for handling the input field with logic
 import React from 'react';
+import Overview from "./components/Overview"
+
+let inputArray = [];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      list: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleADD = this.handleADD.bind(this);
@@ -16,7 +19,8 @@ class App extends React.Component {
   }
 
   handleADD(event) {
-    console.log(this.state.value);
+    inputArray.push(this.state.value);
+    console.log(inputArray);
     event.preventDefault();
   }
 
@@ -31,6 +35,7 @@ class App extends React.Component {
           </label>
           <input type="submit" value="ADD"></input>
         </form>
+        <Overview array={inputArray}/>
       </div>
     );
   }

@@ -9,7 +9,7 @@ class Overview extends React.Component {
             <div>
                 <h3>Tasks Below</h3>
                 <ul>
-                    {this.props.state.input}
+                {inputArray}
                 </ul>
             </div>
         );
