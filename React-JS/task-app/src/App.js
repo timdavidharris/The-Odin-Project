@@ -17,8 +17,17 @@ class App extends Component{
     return(
       <div>
         <h1>
-          Hello world!
+          Task List
         </h1>
+        <form>
+          <label>
+          Add a Task: 
+          </label>
+          <input></input>
+          <button type='submit'>
+            ADD
+          </button>
+        </form>
       </div>
     )
   }
