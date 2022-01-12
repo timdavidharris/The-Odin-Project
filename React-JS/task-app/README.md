@@ -11,3 +11,7 @@ This app is made with two components, App and Overview. The app renders an input
 1) With the intended functionality explained, it’s your turn to implement this React app. You can do it. You are not required to style this assignment unless you wish to, the focus is on using event handlers and dealing with forms with state.
 
 1) Quick tip: Use the JavaScript function map to map over your tasks array. You will need to provide a unique key to each item (read the warning, you’ll know it when you see it in the console!). And there is a difference between handling input fields in plain JavaScript and in React. If you face a problem with it, attempt to figure it out on your own using tools like the documentation, StackOverflow, Google, or experimenting. But fear not, we will again provide an overview of our solution below.
+
+### See the Instructions Online
+
+Click [here](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/handle-inputs-and-render-lists)
