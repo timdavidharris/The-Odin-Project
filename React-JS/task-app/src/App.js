@@ -1,6 +1,6 @@
 // Responsible for handling the input field with logic
 import React, { Component } from 'react';
-// import Overview from "./components/Overview";
+import Overview from "./components/Overview";
 // import uniqid from 'uniqid';
 
 class App extends Component{
@@ -11,8 +11,22 @@ class App extends Component{
       task: '',
       tasks: [],
     }
-  
   }
+
+  handleChange = (e) => {
+    this.setState = {
+      task: e.target.value,
+    }
+  }
+
+  onSubmitTask = (e) => {
+    e.preventDefault();
+    this.setState = {
+      tasks: this.state.tasks.concat([this.state.task]),
+      task: '',
+    }
+  }
+
   render() {
     return(
       <div>
@@ -23,11 +37,12 @@ class App extends Component{
           <label>
           Add a Task: 
           </label>
-          <input></input>
-          <button type='submit'>
+          <input onChange={this.handleChange}></input>
+          <button type='submit' onSubmit={this.onTaskSubmit}>
             ADD
           </button>
         </form>
+        <Overview />
       </div>
     )
   }
