@@ -1,5 +1,6 @@
 // Responsible for handling the input field with logic
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 
 class App extends Component {
   constructor() {

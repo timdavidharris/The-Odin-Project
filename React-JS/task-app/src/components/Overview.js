@@ -1,3 +1,17 @@
 // Responsible for rendering tasks
-// reference this video https://www.youtube.com/watch?v=GIU8ekYndKw
-// for how to use map
+
+import React from "react";
+
+const Overview = (props) => {
+    const { tasks } = props;
+
+    return (
+        <ul>
+            {tasks.map((task) => {
+                return <li>{task.text}</li>;
+            })}
+        </ul>
+    )
+}
+
+export default Overview;
