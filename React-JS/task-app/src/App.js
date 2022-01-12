@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   render() {
-
     const { task, tasks } = this.state;
 
     return (
@@ -59,6 +58,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
