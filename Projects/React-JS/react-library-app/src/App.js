@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import BookCard from './components/book-tiles';
+import InputForm from './components/input-form';
 import uniqid from 'uniqid';
 
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
 
   render() {
     return(
-      <body>
+      <div>
         <h1>
           Library
         </h1>
@@ -24,9 +26,10 @@ class App extends Component {
           Books in Your Library
         </h2>
         <section id='book-cards'>
-
+          <BookCard />
+          <InputForm />
         </section>
-      </body>
+      </div>
     )
   }
 }
