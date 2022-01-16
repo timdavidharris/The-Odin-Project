@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BookCard from './components/book-tiles';
-import ToggleBtn from './components/form-toggle-btn';
+import ToggleBtn from './components/toggle-btn';
 
 class App extends Component {
   render() {
@@ -14,8 +14,8 @@ class App extends Component {
         </h2>
         <section id='book-cards'>
           <BookCard />
-          <ToggleBtn />
         </section>
+        <ToggleBtn />
       </div>
     )
   }
