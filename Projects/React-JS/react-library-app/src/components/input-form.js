@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 
 class Form extends Component {
+    constructor() {
+        super();
+    
+        this.state = {
+          book: { 
+            title: '',
+            author: '',
+            pageNum: '',
+            id: uniqid(),
+          },
+          library: []
+        };
+      }
+
     render() {
         return (
     <div id='input-form-div'>

@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
 import BookCard from './components/book-tiles';
 import ToggleBtn from './components/form-toggle-btn';
-import uniqid from 'uniqid';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      book: { 
-        title: '',
-        author: '',
-        pageNum: '',
-        id: uniqid(),
-      },
-      library: []
-    };
-  }
-
   render() {
     return(
       <div>
