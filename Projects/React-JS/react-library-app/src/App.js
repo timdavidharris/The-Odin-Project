@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BookCard from './components/book-tiles';
 import ToggleBtn from './components/toggle-btn';
 
 class App extends Component {
@@ -13,9 +12,8 @@ class App extends Component {
           Books in Your Library
         </h2>
         <section id='book-cards'>
-          <BookCard />
+          <ToggleBtn />
         </section>
-        <ToggleBtn />
       </div>
     )
   }

@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class BookCard extends Component {
-    render() {
-        return(
-            <div>
-                <h1>
-                    Is This Thing On?
-                </h1>
-            </div>
-        )
-    }
+const BookCard = (props) => {
+    const {libraryArray} = props; 
+    console.log(libraryArray);
+    return(
+            <h1>
+                Hello there
+            </h1>
+    )
+
 }
 
 export default BookCard;
