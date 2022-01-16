@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BookCard from './components/book-tiles';
-import InputForm from './components/input-form';
+import ToggleBtn from './components/form-toggle-btn';
 import uniqid from 'uniqid';
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
         </h2>
         <section id='book-cards'>
           <BookCard />
-          <InputForm />
+          <ToggleBtn />
         </section>
       </div>
     )
