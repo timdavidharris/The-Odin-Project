@@ -68,31 +68,31 @@ class Form extends Component {
                 <form onSubmit={this.onSubmitBook}>
                     <label>
                         Book Title
-                    </label>
                     <input 
                         onChange={this.handleTitle}
                         value={book.title}
                         type="text"
                         required
                     />
+                    </label>
                     <label>
                         Author
-                    </label>
                     <input
                         onChange={this.handleAuthor}
                         value={book.author}
                         type="text"
                         required
                     />
+                    </label>
                     <label>
                         Number of Pages
-                    </label>
                     <input
                         onChange={this.handlePages}
                         value={book.pages}
                         type="number"
                         required
                     />
+                    </label>
                     <button type='submit'>
                         ADD
                     </button>
