@@ -93,7 +93,7 @@ class Form extends Component {
                         required
                     />
                     </label>
-                    <button type='submit'>
+                    <button type='submit' value="Submit">
                         ADD
                     </button>
                 </form>
