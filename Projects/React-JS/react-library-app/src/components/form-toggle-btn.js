@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Form from './input-form';
 
 const ToggleBtn = () => {
@@ -6,7 +6,7 @@ const ToggleBtn = () => {
     return (
         <div>
             <button onClick={()=>setShow(!show)}>
-                Show/Hide Form to Add a Book
+                {show ? "Hide Add a Book Form" : "Show Add a Book Form"}
             </button>
             <div>
                 {show ? <Form /> : null}

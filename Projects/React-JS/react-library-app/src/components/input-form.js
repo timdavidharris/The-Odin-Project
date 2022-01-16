@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Form extends Component {
     render() {
         return (
-    <div>
-        <form id='input-form-div'>
+    <div id='input-form-div'>
+        <form>
             <label>
                 Book Title
             </label>
