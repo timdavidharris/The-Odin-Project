@@ -8,11 +8,13 @@ class App extends Component {
     super();
 
     this.state = {
-      task: { 
-        text: '',
+      book: { 
+        title: '',
+        author: '',
+        pageNum: '',
         id: uniqid(),
       },
-      tasks: [] 
+      library: []
     };
   }
 
