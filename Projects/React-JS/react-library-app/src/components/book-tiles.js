@@ -4,9 +4,11 @@ const BookCard = (props) => {
     const {libraryArray} = props; 
     console.log(libraryArray);
     return(
-            <h1>
-                Hello there
-            </h1>
+        <ul>
+            {libraryArray.map((book) => {
+                return <li key={book.id}>{book.pages + book.author + book.title}</li>;
+            })}
+        </ul>
     )
 
 }
