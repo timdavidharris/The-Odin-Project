@@ -15,6 +15,10 @@ class Form extends Component {
           },
           library: []
         };
+        this.handleTitle.bind(this);
+        this.handleAuthor.bind(this);
+        this.handlePages.bind(this);
+        this.onSubmitBook.bind(this);
       }
 
       handleTitle = (e) => {
@@ -42,6 +46,19 @@ class Form extends Component {
         })
     }
 
+    onSubmitBook = (e) => {
+        e.preventDefault();
+        this.setState({
+            library: this.state.library.concat(this.state.book),
+            book: {
+                title: '',
+                author: '',
+                pages: '',
+                id: uniqid(),
+            },
+        })
+    }
+
     render() {
         const { book, library} = this.state;
 
@@ -55,6 +72,8 @@ class Form extends Component {
                     <input 
                         onChange={this.handleTitle}
                         value={book.title}
+                        type="text"
+                        required
                     />
                     <label>
                         Author
@@ -62,6 +81,8 @@ class Form extends Component {
                     <input
                         onChange={this.handleAuthor}
                         value={book.author}
+                        type="text"
+                        required
                     />
                     <label>
                         Number of Pages
@@ -69,6 +90,8 @@ class Form extends Component {
                     <input
                         onChange={this.handlePages}
                         value={book.pages}
+                        type="number"
+                        required
                     />
                     <button type='submit'>
                         ADD
