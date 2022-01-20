@@ -1,66 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import BookCard from './book-tiles';
-import uniqid from 'uniqid';
 
 class Form extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          book: { 
-            title: '',
-            author: '',
-            pages: '',
-            id: uniqid(),
-          },
-          library: []
-        };
-        this.handleTitle = this.handleTitle.bind(this);
-        this.handleAuthor = this.handleAuthor.bind(this);
-        this.handlePages = this.handlePages.bind(this);
-        this.onSubmitBook = this.onSubmitBook.bind(this);
-      }
 
-      handleTitle = (e) => {
-          this.setState({
-            book: {
-                title: e.target.value,
-                id: this.state.book.id,
-            }
-          });
-      }
-
-      handleAuthor = (e) => {
-        this.setState({
-          book: {
-              author: e.target.value,
-          }
-        });
-    }
-
-    handlePages = (e) => {
-        this.setState({
-          book: {
-              pages: e.target.value,
-          }
-        });
-    }
-
-    onSubmitBook = (e) => {
-        e.preventDefault();
-        this.setState({
-            library: this.state.library.concat(this.state.book),
-            book: {
-                title: '',
-                author: '',
-                pages: '',
-                id: uniqid(),
-            },
-        })
-    }
 
     render() {
-        const { book, library} = this.state;
 
         return (
             <div id='input-form-div'>
@@ -71,8 +15,8 @@ class Form extends Component {
                     <input 
                         name="title_input"
                         type="text"
-                        value={book.title}
-                        onChange={this.handleTitle}
+                        value={}
+                        onChange={this.handleChange}
                         required
                     />
                     </label>
@@ -81,8 +25,8 @@ class Form extends Component {
                     <input
                         name="author_input"
                         type="text"
-                        value={book.author}
-                        onChange={this.handleAuthor}
+                        value={}
+                        onChange={this.handleChange}
                         required
                     />
                     </label>
@@ -91,8 +35,8 @@ class Form extends Component {
                     <input
                         name="pages_input"
                         type="number"
-                        value={book.pages}
-                        onChange={this.handlePages}
+                        value={}
+                        onChange={this.handleChange}
                         required
                     />
                     </label>
