@@ -15,18 +15,36 @@ class Form extends Component {
           },
           library: []
         };
-        this.handleInput = this.handleInput.bind(this);
+        this.handleTitle = this.handleTitle.bind(this);
+        this.handleAuthor = this.handleAuthor.bind(this);
+        this.handlePages = this.handlePages.bind(this);
         this.onSubmitBook = this.onSubmitBook.bind(this);
       }
 
-      handleInput(e) {
-          const target = e.target;
-          const name = target.name;
-          const value = target.value;
+      handleTitle = (e) => {
           this.setState({
-            [name]: value,
+            book: {
+                title: e.target.value,
+                id: this.state.book.id,
+            }
           });
       }
+
+      handleAuthor = (e) => {
+        this.setState({
+          book: {
+              author: e.target.value,
+          }
+        });
+    }
+
+    handlePages = (e) => {
+        this.setState({
+          book: {
+              pages: e.target.value,
+          }
+        });
+    }
 
     onSubmitBook = (e) => {
         e.preventDefault();
@@ -54,7 +72,7 @@ class Form extends Component {
                         name="title_input"
                         type="text"
                         value={book.title}
-                        onChange={this.handleInput}
+                        onChange={this.handleTitle}
                         required
                     />
                     </label>
@@ -64,7 +82,7 @@ class Form extends Component {
                         name="author_input"
                         type="text"
                         value={book.author}
-                        onChange={this.handleInput}
+                        onChange={this.handleAuthor}
                         required
                     />
                     </label>
@@ -74,7 +92,7 @@ class Form extends Component {
                         name="pages_input"
                         type="number"
                         value={book.pages}
-                        onChange={this.handleInput}
+                        onChange={this.handlePages}
                         required
                     />
                     </label>
