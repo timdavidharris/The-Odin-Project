@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from './input-form';
 
 const ToggleBtn = () => {
-    const [show,setShow] = useState(false)
+    const [show,setShow] = useState(true)
     return (
         <div>
             <button onClick={()=>setShow(!show)}>
