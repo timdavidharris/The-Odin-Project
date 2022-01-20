@@ -21,30 +21,32 @@ class Form extends Component {
         this.onSubmitBook.bind(this);
       }
 
-      handleTitle = (e) => {
+      handleInput(e) {
+          const target = e.target;
+          const value = target.value;
+          const name = target.name;
+
           this.setState({
-              book: {
-                  title: e.target.value,
-              }
-          })
+            [name]: value
+          });
       }
 
-      handleAuthor = (e) => {
-        this.setState({
-            book: {
-                author: e.target.value,
-            }
-        })
-    }
+    //   handleAuthor = (e) => {
+    //     this.setState({
+    //         book: {
+    //             author: e.target.value,
+    //         }
+    //     })
+    // }
 
-    handlePages = (e) => {
-        this.setState({
-            book: {
-                pages: e.target.value,
-                id: this.state.book.id,
-            }
-        })
-    }
+    // handlePages = (e) => {
+    //     this.setState({
+    //         book: {
+    //             pages: e.target.value,
+    //             id: this.state.book.id,
+    //         }
+    //     })
+    // }
 
     onSubmitBook = (e) => {
         e.preventDefault();
@@ -69,7 +71,8 @@ class Form extends Component {
                     <label>
                         Book Title
                     <input 
-                        onChange={this.handleTitle}
+                        name="title"
+                        onChange={this.handleInput}
                         value={book.title}
                         type="text"
                         required
@@ -78,7 +81,8 @@ class Form extends Component {
                     <label>
                         Author
                     <input
-                        onChange={this.handleAuthor}
+                        name="author"
+                        onChange={this.handleInput}
                         value={book.author}
                         type="text"
                         required
@@ -87,7 +91,8 @@ class Form extends Component {
                     <label>
                         Number of Pages
                     <input
-                        onChange={this.handlePages}
+                        name="pages"
+                        onChange={this.handleInput}
                         value={book.pages}
                         type="number"
                         required
