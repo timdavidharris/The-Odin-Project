@@ -2,6 +2,7 @@ import React from 'react';
 
 const BookCard = (props) => {
     const {libraryArray} = props; 
+    console.log(libraryArray);
     return(
         <ul>
             {libraryArray.map((book) => {
