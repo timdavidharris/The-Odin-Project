@@ -6,38 +6,36 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            book: {
-                title: '',
-                author: '',
-                pages: '',
-                id: uniqid(),
-            },
+            title: '',
+            author: '',
+            pages: '',
+            id: uniqid(),
+            book: [],
             library: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         const target = e.target;
         const value = target.value;
         const name = target.name;
         this.setState({
-            [name]: value
+            [name]: value,
+            id: uniqid(),
         });
     }
 
-    handleSubmit(e) {
-        this.setState({
-            library: this.state.library.concat(this.state.book),
-            book: {
-                title: '',
-                author: '',
-                pages: '',
-                id: uniqid(),
-            }
-        });
+    handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({
+            book: this.state.book.concat(this.state.title),
+            book: this.state.book.concat(this.state.author),
+            book: this.state.book.concat(this.state.pages),
+            book: this.state.book.concat(this.state.id),
+            library: this.state.library.concat(this.state.book),
+        });
     }
 
     render() {
@@ -49,7 +47,7 @@ class Form extends Component {
                     <label>
                         Book Title
                     <input 
-                        name="book.title"
+                        name="title"
                         type="text"
                         value={this.title}
                         onChange={this.handleChange}
@@ -59,7 +57,7 @@ class Form extends Component {
                     <label>
                         Author
                     <input
-                        name="book.author"
+                        name="author"
                         type="text"
                         value={this.author}
                         onChange={this.handleChange}
@@ -69,7 +67,7 @@ class Form extends Component {
                     <label>
                         Number of Pages
                     <input
-                        name="book.pages"
+                        name="pages"
                         type="number"
                         value={this.pages}
                         onChange={this.handleChange}
