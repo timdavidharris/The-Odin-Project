@@ -6,13 +6,12 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            author: '',
-            pages: '',
+            bookTitle: '',
+            bookAuthor: '',
+            bookPages: '',
             id: uniqid(),
-            book: [],
             library: []
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -21,25 +20,27 @@ class Form extends Component {
         const target = e.target;
         const value = target.value;
         const name = target.name;
+
         this.setState({
             [name]: value,
-            id: uniqid(),
+            id: this.state.id,
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state.bookAuthor, this.state.bookTitle);
         this.setState({
-            book: this.state.book.concat(this.state.title),
-            book: this.state.book.concat(this.state.author),
-            book: this.state.book.concat(this.state.pages),
-            book: this.state.book.concat(this.state.id),
-            library: this.state.library.concat(this.state.book),
+            library: this.state.library.concat(this.state.bookTitle, this.state.bookAuthor, this.state.bookPages),
+            bookTitle: '',
+            bookAuthor: '',
+            bookPages: '',
+            id: uniqid(),
         });
     }
 
     render() {
-        const {library} = this.state;
+        const { library } = this.state;
         return (
             <div id='input-form-div'>
                 <BookCard libraryArray={library}/>
@@ -47,31 +48,28 @@ class Form extends Component {
                     <label>
                         Book Title
                     <input 
-                        name="title"
+                        name="bookTitle"
                         type="text"
-                        value={this.title}
+                        value={this.state.bookTitle}
                         onChange={this.handleChange}
-                        required
                     />
                     </label>
                     <label>
                         Author
                     <input
-                        name="author"
+                        name="bookAuthor"
                         type="text"
-                        value={this.author}
+                        value={this.state.bookAuthor}
                         onChange={this.handleChange}
-                        required
                     />
                     </label>
                     <label>
                         Number of Pages
                     <input
-                        name="pages"
+                        name="bookPages"
                         type="number"
-                        value={this.pages}
+                        value={this.state.bookPages}
                         onChange={this.handleChange}
-                        required
                     />
                     </label>
                     <button type='submit' value="Submit">
