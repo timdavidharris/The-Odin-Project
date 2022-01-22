@@ -10,7 +10,8 @@ class Form extends Component {
             bookAuthor: '',
             bookPages: '',
             id: uniqid(),
-            library: []
+            book: [],
+            library: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,9 +30,8 @@ class Form extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.bookAuthor, this.state.bookTitle);
         this.setState({
-            library: this.state.library.concat(this.state.bookTitle, this.state.bookAuthor, this.state.bookPages),
+            book: this.state.book.concat(this.state.bookTitle, this.state.bookAuthor, this.state.bookPages),
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
@@ -40,10 +40,10 @@ class Form extends Component {
     }
 
     render() {
-        const { library } = this.state;
+        const { book, library } = this.state;
         return (
             <div id='input-form-div'>
-                <BookCard libraryArray={library}/>
+                <BookCard bookArray={book} libraryArray={library}/>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Book Title
