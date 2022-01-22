@@ -1,15 +1,21 @@
 import React from 'react';
 
 const BookCard = (props) => {
-    const {libraryArray} = props;
+    props.libraryArray.concat(props.bookArray);
+    console.log(props.libraryArray);
+    console.log(props.bookArray);
     return(
-        <ul>
-            {libraryArray.map((book) => {
-                return <li key={book.id}>{book}</li>;
-            })}
-        </ul>
+        <div>
+            <p>
+                Hello
+            </p>
+        </div>
+        // <ul>
+        //     {libraryArray.map((book) => {
+        //         return <li key={book.id}>{book}</li>;
+        //     })}
+        // </ul>
     )
-
 }
 
 export default BookCard;
