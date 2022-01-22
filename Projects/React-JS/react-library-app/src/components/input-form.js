@@ -38,7 +38,6 @@ class Form extends Component {
         const { book } = this.state;
         return (
             <div id='input-form-div'>
-                <BookCard bookArray={book} />
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Book Title
@@ -71,6 +70,7 @@ class Form extends Component {
                         ADD
                     </button>
                 </form>
+                <BookCard bookArray={book} />
             </div>
         )
     }
