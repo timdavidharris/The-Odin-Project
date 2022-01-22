@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import BookCard from './book-tiles';
-import uniqid from 'uniqid';
 
 class Form extends Component {
     constructor(props) {
@@ -9,9 +8,7 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            id: uniqid(),
             book: [],
-            library: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +21,6 @@ class Form extends Component {
 
         this.setState({
             [name]: value,
-            id: this.state.id,
         });
     }
 
@@ -35,15 +31,14 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            id: uniqid(),
         });
     }
 
     render() {
-        const { book, library } = this.state;
+        const { book } = this.state;
         return (
             <div id='input-form-div'>
-                <BookCard bookArray={book} libraryArray={library}/>
+                <BookCard bookArray={book} />
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Book Title
