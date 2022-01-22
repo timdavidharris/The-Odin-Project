@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ToggleBtn from './components/toggle-btn';
+import Form from './components/input-form';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           Books in Your Library
         </h2>
         <section id='book-cards'>
-          <ToggleBtn />
+          <Form />
         </section>
       </div>
     )
