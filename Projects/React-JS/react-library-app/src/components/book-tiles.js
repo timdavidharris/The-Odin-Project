@@ -1,14 +1,17 @@
 import React from 'react';
-import uniqid from 'uniqid';
+// import uniqid from 'uniqid';
 
 const BookCard = (props) => {
-    const bookArray = props.bookArray;
+    const libraryArray = props.libraryArray;
+    const bookObj = props.bookObj;
+    console.log(libraryArray);
+    console.log(bookObj);
     return(
         <div>
             <h3>
-                {bookArray.map((item) => {
-                    return <p key={uniqid()}>{item}</p>
-                })}
+                <p>
+                    Hello
+                </p>
             </h3>
         </div>
     )
