@@ -5,11 +5,11 @@ const BookCard = (props) => {
     console.log(libraryArray);
     return(
         <div>
-            <ul>
+            <section>
                 {libraryArray.map((book) => {
-                    return <li key={book.id}>{`Title: ${book.title} | Author: ${book.author} | Number of Pages: ${book.pages}`}</li>
+                    return <div key={book.id}>{`Title: ${book.title} | Author: ${book.author} | Number of Pages: ${book.pages}`}</div>
                 })}
-            </ul>
+            </section>
         </div>
     )
 }
