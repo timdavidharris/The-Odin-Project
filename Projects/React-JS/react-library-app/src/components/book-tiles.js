@@ -1,5 +1,4 @@
 import React from 'react';
-import uniqid from 'uniqid';
 
 const BookCard = (props) => {
     const libraryArray = props.libraryArray;
@@ -8,7 +7,7 @@ const BookCard = (props) => {
         <div>
             <ul>
                 {libraryArray.map((book) => {
-                    return <li key={uniqid()}>{`${book.title} ${book.author} ${book.pages}`}</li>
+                    return <li key={book.id}>{`Title: ${book.title} | Author: ${book.author} | Number of Pages: ${book.pages}`}</li>
                 })}
             </ul>
         </div>
