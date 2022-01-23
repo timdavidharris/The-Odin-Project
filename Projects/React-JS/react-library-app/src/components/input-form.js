@@ -5,10 +5,15 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            book: {
+                title: '',
+                author: '',
+                pages: '',
+            },
+            library: [],
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            book: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,21 +26,31 @@ class Form extends Component {
 
         this.setState({
             [name]: value,
+            book: {
+                title: this.state.bookTitle,
+                author: this.state.bookAuthor,
+                pages: this.state.bookPages,
+            },
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
-            book: this.state.book.concat(this.state.bookTitle, this.state.bookAuthor, this.state.bookPages),
+            library: this.state.library.concat(this.state.book),
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
+            book: {
+                title: '',
+                author: '',
+                pages: '',
+            },
         });
     }
 
     render() {
-        const { book } = this.state;
+        const { library } = this.state;
         return (
             <div id='input-form-div'>
                 <form onSubmit={this.handleSubmit}>
@@ -70,7 +85,7 @@ class Form extends Component {
                         ADD
                     </button>
                 </form>
-                <BookCard bookArray={book} />
+                <BookCard libraryArray={library} />
             </div>
         )
     }
