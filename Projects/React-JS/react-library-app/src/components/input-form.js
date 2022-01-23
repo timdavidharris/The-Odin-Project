@@ -5,15 +5,15 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            library: [],
+            bookTitle: '',
+            bookAuthor: '',
+            bookPages: '',
             book: {
                 title: '',
                 author: '',
                 pages: '',
             },
-            library: [],
-            bookTitle: '',
-            bookAuthor: '',
-            bookPages: '',
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
