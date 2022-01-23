@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BookCard from './book-tiles';
+import uniqid from 'uniqid';
 
 class Form extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Form extends Component {
                 title: '',
                 author: '',
                 pages: '',
+                id: uniqid(),
             },
         };
         this.handleChange = this.handleChange.bind(this);
@@ -30,6 +32,7 @@ class Form extends Component {
                 title: this.state.bookTitle,
                 author: this.state.bookAuthor,
                 pages: this.state.bookPages,
+                id: this.state.book.id,
             },
         });
     }
@@ -45,6 +48,7 @@ class Form extends Component {
                 title: '',
                 author: '',
                 pages: '',
+                id: uniqid(),
             },
         });
     }
