@@ -10,10 +10,12 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
+            isBookRead: true,
             book: {
                 title: '',
                 author: '',
                 pages: '',
+                bookRead: '',
                 id: uniqid(),
             },
         };
@@ -23,7 +25,7 @@ class Form extends Component {
 
     handleChange = (e) => {
         const target = e.target;
-        const value = target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
         this.setState({
@@ -32,6 +34,7 @@ class Form extends Component {
                 title: this.state.bookTitle,
                 author: this.state.bookAuthor,
                 pages: this.state.bookPages,
+                bookRead: this.state.isBookRead,
                 id: this.state.book.id,
             },
         });
@@ -44,10 +47,12 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
+            isBookRead: true,
             book: {
                 title: '',
                 author: '',
                 pages: '',
+                bookRead: '',
                 id: uniqid(),
             },
         });
@@ -65,6 +70,7 @@ class Form extends Component {
                         type="text"
                         value={this.state.bookTitle}
                         onChange={this.handleChange}
+                        required
                     />
                     </label>
                     <label>
@@ -74,6 +80,7 @@ class Form extends Component {
                         type="text"
                         value={this.state.bookAuthor}
                         onChange={this.handleChange}
+                        required
                     />
                     </label>
                     <label>
@@ -83,8 +90,19 @@ class Form extends Component {
                         type="number"
                         value={this.state.bookPages}
                         onChange={this.handleChange}
+                        required
                     />
                     </label>
+                    <label>
+                    Check if this book is "read"
+                    <input 
+                        type="checkbox"
+                        name="isBookRead"
+                        checked={this.state.isBookRead}
+                        onChange={this.handleChange}
+                    />
+                    </label>
+                    <br />
                     <button type='submit' value="Submit">
                         ADD
                     </button>
