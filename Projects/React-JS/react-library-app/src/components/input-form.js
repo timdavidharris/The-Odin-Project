@@ -10,7 +10,7 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: true,
+            isBookRead: 'true',
             book: {
                 title: '',
                 author: '',
@@ -25,7 +25,7 @@ class Form extends Component {
 
     handleChange = (e) => {
         const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.value;
         const name = target.name;
 
         this.setState({
@@ -47,7 +47,7 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: true,
+            isBookRead: 'true',
             book: {
                 title: '',
                 author: '',
@@ -94,13 +94,17 @@ class Form extends Component {
                     />
                     </label>
                     <label>
-                    Check if this book is "read"
-                    <input 
-                        type="checkbox"
-                        name="isBookRead"
-                        checked={this.state.isBookRead}
-                        onChange={this.handleChange}
-                    />
+                    This book is:
+                    <br />
+                    <select 
+                    name="isBookRead"
+                    value={this.state.isBookRead}
+                    onChange={this.handleChange}
+                    required
+                    >
+                    <option value="true">read</option>
+                    <option value="false">unread</option>
+                    </select>
                     </label>
                     <br />
                     <button type='submit' value="Submit">
