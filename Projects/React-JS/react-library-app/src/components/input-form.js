@@ -97,10 +97,10 @@ class Form extends Component {
                     This book is:
                     <br />
                     <select 
-                    name="isBookRead"
-                    value={this.state.isBookRead}
-                    onChange={this.handleChange}
-                    required
+                        name="isBookRead"
+                        value={this.state.isBookRead}
+                        onChange={this.handleChange}
+                        required
                     >
                     <option value="true">read</option>
                     <option value="false">unread</option>
