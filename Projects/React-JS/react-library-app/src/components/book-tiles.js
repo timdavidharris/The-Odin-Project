@@ -7,7 +7,7 @@ const BookCard = (props) => {
         <div>
             <section>
                 {libraryArray.map((book) => {
-                    return <div key={book.id}>{`Title: ${book.title} | Author: ${book.author} | Number of Pages: ${book.pages}`}</div>
+                    return <div key={book.id}>{`${book.title} by ${book.author} has ${book.pages} pages.`}</div>
                 })}
             </section>
         </div>
