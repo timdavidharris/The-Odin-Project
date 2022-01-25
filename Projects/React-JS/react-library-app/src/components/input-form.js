@@ -10,7 +10,7 @@ class Form extends Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: 'true',
+            isBookRead: '',
             book: {
                 title: '',
                 author: '',
@@ -24,17 +24,16 @@ class Form extends Component {
     }
 
     handleChange = (e) => {
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
+        const value = e.target.value;
+        const name = e.target.name;
 
         this.setState({
             [name]: value,
             book: {
+                bookRead: this.state.isBookRead,
                 title: this.state.bookTitle,
                 author: this.state.bookAuthor,
                 pages: this.state.bookPages,
-                bookRead: this.state.isBookRead,
                 id: this.state.book.id,
             },
         });
@@ -43,11 +42,18 @@ class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
+            // book: {
+            //     title: this.state.bookTitle,
+            //     author: this.state.bookAuthor,
+            //     pages: this.state.bookPages,
+            //     bookRead: this.state.isBookRead,
+            //     id: this.state.book.id,
+            // },
             library: this.state.library.concat(this.state.book),
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: 'true',
+            isBookRead: '',
             book: {
                 title: '',
                 author: '',
@@ -63,6 +69,21 @@ class Form extends Component {
         return (
             <div id='input-form-div'>
                 <form onSubmit={this.handleSubmit}>
+                    <label>
+                        This book is:
+                        <br />
+                        <select 
+                            name="isBookRead"
+                            value={this.state.isBookRead}
+                            onChange={this.handleChange}
+                            required
+                        >
+                        <option value="">--select one--</option>
+                        <option value={"true"}>read</option>
+                        <option value={"false"}>unread</option>
+                        </select>
+                    </label>
+                    <br />
                     <label>
                         Book Title
                     <input 
@@ -93,20 +114,6 @@ class Form extends Component {
                         required
                     />
                     </label>
-                    <label>
-                    This book is:
-                    <br />
-                    <select 
-                        name="isBookRead"
-                        value={this.state.isBookRead}
-                        onChange={this.handleChange}
-                        required
-                    >
-                    <option value="true">read</option>
-                    <option value="false">unread</option>
-                    </select>
-                    </label>
-                    <br />
                     <button type='submit' value="Submit">
                         ADD
                     </button>
