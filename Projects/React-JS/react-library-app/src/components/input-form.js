@@ -42,13 +42,6 @@ class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
-            // book: {
-            //     title: this.state.bookTitle,
-            //     author: this.state.bookAuthor,
-            //     pages: this.state.bookPages,
-            //     bookRead: this.state.isBookRead,
-            //     id: this.state.book.id,
-            // },
             library: this.state.library.concat(this.state.book),
             bookTitle: '',
             bookAuthor: '',
