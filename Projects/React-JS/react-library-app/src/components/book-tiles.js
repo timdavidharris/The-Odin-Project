@@ -3,12 +3,12 @@ import React from 'react';
 const BookCard = (props) => {
     const { libraryArray } = props;
     function changeReadStatus(e) {
-        console.log("ChangeReadStatus")
-        let key = e.target.dataset.key
+        // e.preventDefault();
+        let key = e.target.dataset.key;
+        let book = libraryArray.find(theKey);
         function theKey(book) {
             return book.id === key;
         }
-        let book = libraryArray.find(theKey);
         if (book.bookRead === "read") {
             book.bookRead = "unread";
         } else {
@@ -20,8 +20,11 @@ const BookCard = (props) => {
             <section>
                 {libraryArray.map((book) => {
                     return <div key={book.id}>
-                    {`${book.title} by ${book.author} has ${book.pages} pages and this book is ${book.bookRead}.`} 
-                    <button data-key={book.id} onClick={changeReadStatus}>Change Read Status</button>
+                    {`${book.title} by ${book.author} has ${book.pages} pages and this book is `} 
+                    <select onChange={changeReadStatus} data-key={book.id}>
+                        <option value={book.bookRead === "read" ? "read" : "unread"}>{book.bookRead === "read" ? "read" : "unread"}</option>
+                        <option value={book.bookRead === "read" ? "unread" : "read"}>{book.bookRead === "read" ? "unread" : "read"}</option>
+                    </select>
                     </div>
                 })}
             </section>
