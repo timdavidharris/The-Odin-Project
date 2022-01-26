@@ -72,8 +72,8 @@ class Form extends Component {
                             required
                         >
                         <option value="">--select one--</option>
-                        <option value={"true"}>read</option>
-                        <option value={"false"}>unread</option>
+                        <option value={"read"}>read</option>
+                        <option value={"unread"}>unread</option>
                         </select>
                     </label>
                     <br />
