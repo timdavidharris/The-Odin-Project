@@ -20,11 +20,15 @@ const BookCard = (props) => {
             <section>
                 {libraryArray.map((book) => {
                     return <div key={book.id}>
-                    {`${book.title} by ${book.author} has ${book.pages} pages and this book is `} 
+                    {`${book.title} by ${book.author} has ${book.pages} pages and this book is ${book.bookRead}`} 
+                    <br />
+                    <label>
+                    Change read status to:
                     <select onChange={changeReadStatus} data-key={book.id}>
-                        <option value={book.bookRead === "read" ? "read" : "unread"}>{book.bookRead === "read" ? "read" : "unread"}</option>
+                        <option value="">--select--</option>
                         <option value={book.bookRead === "read" ? "unread" : "read"}>{book.bookRead === "read" ? "unread" : "read"}</option>
                     </select>
+                    </label>
                     </div>
                 })}
             </section>
