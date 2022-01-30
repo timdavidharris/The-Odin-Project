@@ -30,10 +30,10 @@ class Form extends Component {
         this.setState({
             [name]: value,
             book: {
-                bookRead: this.state.isBookRead,
                 title: this.state.bookTitle,
                 author: this.state.bookAuthor,
                 pages: this.state.bookPages,
+                bookRead: this.state.isBookRead,
                 id: this.state.book.id,
             },
         });
