@@ -4,6 +4,7 @@ class BookCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            library: props.library,
             book: {
                 title: props.book.title,
                 author: props.book.author,
@@ -13,10 +14,31 @@ class BookCard extends React.Component {
             },
         }
         this.updateReadStatus = this.updateReadStatus.bind(this);
+        this.removeBook = this.removeBook.bind(this);
     }
 
     updateReadStatus() {
-        this.state.book.bookRead === "read" ? this.setState({ book: { bookRead: "unread", } }) : this.setState({ book: { bookRead: "read", }});
+        if (this.state.book.bookRead === "read") {
+            this.setState({ 
+                book: { 
+                    title: this.state.book.title,
+                    author: this.state.book.author,
+                    pages: this.state.book.pages,
+                    bookRead: "unread", 
+                    id: this.state.book.id,
+                } 
+            })
+        } else {
+            this.setState({ 
+                book: { 
+                    title: this.state.book.title,
+                    author: this.state.book.author,
+                    pages: this.state.book.pages,
+                    bookRead: "read", 
+                    id: this.state.book.id,
+                } 
+            })
+        }
     }
 
     render() {
