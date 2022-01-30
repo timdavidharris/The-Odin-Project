@@ -16,19 +16,7 @@ class BookCard extends React.Component {
     }
 
     updateReadStatus() {
-        if (this.state.book.bookRead === "read") {
-            this.setState({
-                book: {
-                    bookRead: "unread",
-                }
-            })
-        } else {
-            this.setState({
-                book: {
-                    bookRead: "read",
-                }
-            })
-        }
+        this.state.book.bookRead === "read" ? this.setState({ book: { bookRead: "unread", } }) : this.setState({ book: { bookRead: "read", }});
     }
 
     render() {
