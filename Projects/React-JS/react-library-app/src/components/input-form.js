@@ -107,9 +107,7 @@ class Form extends Component {
                         required
                     />
                     </label>
-                    <button type='submit' value="Submit">
-                        ADD
-                    </button>
+                    <input type="submit" value="ADD"/>
                 </form>
                 {library.map((book) => {
                     return <BookCard key={book.id} book={book} />;
