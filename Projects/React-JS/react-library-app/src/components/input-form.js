@@ -111,7 +111,7 @@ class Form extends Component {
                 </form>
                 <div>
                 {library.map((book) => {
-                    return <BookCard key={book.id} book={book} library={library}/>;
+                    return <BookCard key={book.id} book={book} />;
                 })}
                 </div>
             </div>
