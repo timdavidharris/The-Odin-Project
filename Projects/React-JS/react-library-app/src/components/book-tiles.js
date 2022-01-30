@@ -1,39 +1,46 @@
 import React from 'react';
 
-const BookCard = (props) => {
-    const { libraryArray } = props;
-    function changeReadStatus(e) {
-        // e.preventDefault();
-        let key = e.target.dataset.key;
-        let book = libraryArray.find(theKey);
-        function theKey(book) {
-            return book.id === key;
+class BookCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            book: {
+                title: props.book.title,
+                author: props.book.author,
+                pages: props.book.pages,
+                bookRead: props.book.bookRead,
+                id: props.book.id,
+            },
         }
-        if (book.bookRead === "read") {
-            book.bookRead = "unread";
+        this.updateReadStatus = this.updateReadStatus.bind(this);
+    }
+
+    updateReadStatus() {
+        if (this.state.book.bookRead === "read") {
+            this.setState({
+                book: {
+                    bookRead: "unread",
+                }
+            })
         } else {
-            book.bookRead = "read"
+            this.setState({
+                book: {
+                    bookRead: "read",
+                }
+            })
         }
     }
-    return(
-        <div>
-            <section>
-                {libraryArray.map((book) => {
-                    return <div key={book.id}>
-                    {`${book.title} by ${book.author} has ${book.pages} pages and this book is ${book.bookRead}`} 
-                    <br />
-                    <label>
-                    Change read status to:
-                    <select onChange={changeReadStatus} data-key={book.id}>
-                        <option value="">--select--</option>
-                        <option value={book.bookRead === "read" ? "unread" : "read"}>{book.bookRead === "read" ? "unread" : "read"}</option>
-                    </select>
-                    </label>
-                    </div>
-                })}
-            </section>
-        </div>
-    )
+
+    render() {
+        return (
+            <div>
+                {`${this.state.book.title} by ${this.state.book.author} has ${this.state.book.pages} pages and is ${this.state.book.bookRead}`}
+                <button onClick={this.updateReadStatus}>
+                    Change Read Status
+                </button>
+            </div>
+        )
+    }
 }
 
 export default BookCard;
