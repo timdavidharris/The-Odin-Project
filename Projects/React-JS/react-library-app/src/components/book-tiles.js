@@ -13,7 +13,6 @@ class BookCard extends React.Component {
             },
         }
         this.updateReadStatus = this.updateReadStatus.bind(this);
-        this.removeBook = this.removeBook.bind(this);
     }
 
     updateReadStatus() {
@@ -42,7 +41,7 @@ class BookCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id='book-child-div'>
                 {`${this.state.book.title} by ${this.state.book.author} has ${this.state.book.pages} pages and is ${this.state.book.bookRead}`}
                 <button onClick={this.updateReadStatus}>
                     Change Read Status
