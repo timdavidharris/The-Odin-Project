@@ -1,5 +1,5 @@
 import React from 'react';
-import BookCard from './book-tiles';
+import BookCard from './book-card';
 import uniqid from 'uniqid';
 
 class Form extends React.Component {
