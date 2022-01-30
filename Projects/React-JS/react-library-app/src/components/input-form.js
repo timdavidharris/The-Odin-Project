@@ -39,6 +39,10 @@ class Form extends React.Component {
         });
     }
 
+    testFn = (e) => {
+        console.log(e.target);
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
@@ -111,7 +115,7 @@ class Form extends React.Component {
                 </form>
                 <div id='book-parent-div'>
                 {library.map((book) => {
-                    return <BookCard key={book.id} book={book} />;
+                    return <BookCard key={book.id} book={book} testFn={this.testFn}/>;
                 })}
                 </div>
             </div>

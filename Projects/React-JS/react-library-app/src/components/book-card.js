@@ -11,8 +11,14 @@ class BookCard extends React.Component {
                 bookRead: props.book.bookRead,
                 id: props.book.id,
             },
+            testFn: props.testFn,
         }
         this.updateReadStatus = this.updateReadStatus.bind(this);
+        this.onClickToTestFn = this.onClickToTestFn.bind(this);
+    }
+
+    onClickToTestFn = (e) => {
+        return this.state.testFn(e);
     }
 
     updateReadStatus() {
@@ -45,6 +51,9 @@ class BookCard extends React.Component {
                 {`${this.state.book.title} by ${this.state.book.author} has ${this.state.book.pages} pages and is ${this.state.book.bookRead}`}
                 <button onClick={this.updateReadStatus}>
                     Change Read Status
+                </button>
+                <button data-key={this.state.book.id} onClick={this.onClickToTestFn}>
+                    Remove Book
                 </button>
             </div>
         )
