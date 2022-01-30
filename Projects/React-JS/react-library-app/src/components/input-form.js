@@ -109,9 +109,11 @@ class Form extends Component {
                     </label>
                     <input type="submit" value="ADD"/>
                 </form>
+                <div>
                 {library.map((book) => {
                     return <BookCard key={book.id} book={book} />;
                 })}
+                </div>
             </div>
         )
     }
