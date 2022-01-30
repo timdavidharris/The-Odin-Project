@@ -4,7 +4,6 @@ class BookCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            library: props.library,
             book: {
                 title: props.book.title,
                 author: props.book.author,
