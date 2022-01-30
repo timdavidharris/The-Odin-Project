@@ -21,6 +21,7 @@ class Form extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeBook = this.removeBook.bind(this);
     }
 
     handleChange = (e) => {
@@ -39,8 +40,11 @@ class Form extends React.Component {
         });
     }
 
-    testFn = (e) => {
-        console.log(e.target);
+    removeBook = (e) => {
+        let bookByID = e.target.dataset.key
+        this.setState({
+            library: this.state.library.filter(book => book.id !== bookByID),
+        })
     }
 
     handleSubmit = (e) => {
@@ -115,7 +119,7 @@ class Form extends React.Component {
                 </form>
                 <div id='book-parent-div'>
                 {library.map((book) => {
-                    return <BookCard key={book.id} book={book} testFn={this.testFn}/>;
+                    return <BookCard key={book.id} book={book} removeBook={this.removeBook}/>;
                 })}
                 </div>
             </div>

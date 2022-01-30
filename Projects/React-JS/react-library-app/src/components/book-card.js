@@ -11,14 +11,14 @@ class BookCard extends React.Component {
                 bookRead: props.book.bookRead,
                 id: props.book.id,
             },
-            testFn: props.testFn,
+            removeBook: props.removeBook,
         }
         this.updateReadStatus = this.updateReadStatus.bind(this);
-        this.onClickToTestFn = this.onClickToTestFn.bind(this);
+        this.deleteBook = this.deleteBook.bind(this);
     }
 
-    onClickToTestFn = (e) => {
-        return this.state.testFn(e);
+    deleteBook = (e) => {
+        return this.state.removeBook(e);
     }
 
     updateReadStatus() {
@@ -52,7 +52,7 @@ class BookCard extends React.Component {
                 <button onClick={this.updateReadStatus}>
                     Change Read Status
                 </button>
-                <button data-key={this.state.book.id} onClick={this.onClickToTestFn}>
+                <button data-key={this.state.book.id} onClick={this.deleteBook}>
                     Remove Book
                 </button>
             </div>
