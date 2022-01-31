@@ -7,6 +7,7 @@ class Form extends React.Component {
         super(props);
         this.state = {
             library: [],
+            displayForm: false,
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
@@ -22,6 +23,7 @@ class Form extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.removeBook = this.removeBook.bind(this);
+        this.toggleFormDisplay = this.toggleFormDisplay.bind(this);
     }
 
     handleChange = (e) => {
@@ -45,6 +47,14 @@ class Form extends React.Component {
         this.setState({
             library: this.state.library.filter(book => book.id !== bookByID),
         })
+    }
+
+    toggleFormDisplay = () => {
+        if (this.state.displayForm === true) {
+            this.setState({displayForm: false});
+        } else {
+            this.setState({displayForm: true});
+        }
     }
 
     handleSubmit = (e) => {
@@ -74,9 +84,10 @@ class Form extends React.Component {
                         return <BookCard key={book.id} book={book} removeBook={this.removeBook}/>;
                     })}
                 </div>
-                <button id='toggle-btn' >
+                <button id='toggle-btn' onClick={this.toggleFormDisplay}>
                     Toggle Add A Book Form
                 </button>
+                {this.state.displayForm === false ? null : 
                 <form id='add-a-book-form' onSubmit={this.handleSubmit}>
                     <label>
                         This book is:
@@ -125,6 +136,7 @@ class Form extends React.Component {
                     </label>
                     <input type="submit" value="ADD"/>
                 </form>
+                }
             </div>
         )
     }
