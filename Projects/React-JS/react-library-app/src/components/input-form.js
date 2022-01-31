@@ -6,7 +6,7 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            library: [],
+            library: [this.setExampleBook()],
             displayForm: false,
             bookTitle: '',
             bookAuthor: '',
@@ -24,6 +24,17 @@ class Form extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.removeBook = this.removeBook.bind(this);
         this.toggleFormDisplay = this.toggleFormDisplay.bind(this);
+    }
+
+    setExampleBook = () => {
+            let book = {
+                title: 'Example Book',
+                author: 'Example Author',
+                pages: '301',
+                bookRead: 'read',
+                id: uniqid(),
+            }
+            return book;
     }
 
     handleChange = (e) => {
