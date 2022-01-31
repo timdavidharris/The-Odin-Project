@@ -21,7 +21,7 @@ class BookCard extends React.Component {
         return this.state.removeBook(e);
     }
 
-    updateReadStatus() {
+    updateReadStatus = () => {
         if (this.state.book.bookRead === "read") {
             this.setState({ 
                 book: { 
