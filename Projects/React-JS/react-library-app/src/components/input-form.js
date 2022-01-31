@@ -6,7 +6,7 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            library: [this.setExampleBook()],
+            library: [this.setExampleBook(), this.setExampleBook()],
             displayForm: false,
             bookTitle: '',
             bookAuthor: '',
