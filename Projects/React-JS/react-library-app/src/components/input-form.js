@@ -68,8 +68,16 @@ class Form extends React.Component {
     render() {
         const { library } = this.state;
         return (
-            <div id='input-form-div'>
-                <form onSubmit={this.handleSubmit}>
+            <div id='form-and-card-div'>
+                <div id='book-parent-div'>
+                    {library.map((book) => {
+                        return <BookCard key={book.id} book={book} removeBook={this.removeBook}/>;
+                    })}
+                </div>
+                <button id='toggle-btn' >
+                    Toggle Add A Book Form
+                </button>
+                <form id='add-a-book-form' onSubmit={this.handleSubmit}>
                     <label>
                         This book is:
                         <br />
@@ -117,11 +125,6 @@ class Form extends React.Component {
                     </label>
                     <input type="submit" value="ADD"/>
                 </form>
-                <div id='book-parent-div'>
-                {library.map((book) => {
-                    return <BookCard key={book.id} book={book} removeBook={this.removeBook}/>;
-                })}
-                </div>
             </div>
         )
     }
