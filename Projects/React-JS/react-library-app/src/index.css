@@ -8,6 +8,12 @@ form {
   margin: 0 auto;
 }
 
+#toggle-btn {
+  text-align: center;
+  max-width: 12em;
+  margin: 0 auto;
+}
+
 #book-parent-div {
   display: flex;
   flex-direction: row;
@@ -27,7 +33,7 @@ form {
   border-radius: 10px;
 }
 
-#input-form-div {
+#form-and-card-div {
   display: flex;
   flex-direction: column;
 }
