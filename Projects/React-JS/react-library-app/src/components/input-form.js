@@ -145,7 +145,9 @@ class Form extends React.Component {
                         required
                     />
                     </label>
-                    <input type="submit" value="ADD"/>
+                    <button type='submit'>
+                        ADD
+                    </button>
                 </form>
                 }
             </div>
