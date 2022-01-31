@@ -8,6 +8,11 @@ form {
   margin: 0 auto;
 }
 
+button {
+  margin-top: 1em;
+  border-radius: 5px;
+}
+
 #toggle-btn {
   text-align: center;
   max-width: 14em;
