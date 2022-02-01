@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Form from './components/input-form';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return(
       <div>
