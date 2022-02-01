@@ -87,11 +87,10 @@ class Form extends React.Component {
     }
 
     render() {
-        const { library } = this.state;
         return (
             <div id='form-and-card-div'>
                 <div id='book-parent-div'>
-                    {library.map((book) => {
+                    {this.state.library.map((book) => {
                         return <BookCard key={book.id} book={book} removeBook={this.removeBook}/>;
                     })}
                 </div>
