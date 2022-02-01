@@ -13,6 +13,10 @@ button {
   border-radius: 5px;
 }
 
+h1 {
+  padding-top: 1.5em;
+}
+
 #toggle-btn {
   text-align: center;
   max-width: 14em;
