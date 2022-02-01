@@ -11,7 +11,7 @@ class Form extends React.Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: '',
+            isBookRead: 'read',
             book: {
                 title: '',
                 author: '',
@@ -75,7 +75,7 @@ class Form extends React.Component {
             bookTitle: '',
             bookAuthor: '',
             bookPages: '',
-            isBookRead: '',
+            isBookRead: 'read',
             book: {
                 title: '',
                 author: '',
