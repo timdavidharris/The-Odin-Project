@@ -1,4 +1,5 @@
 import './App.css';
+import Effect from './components/use-effect'
 import React, { useState } from "react";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
       <button onClick={incrementCountUp}>Count Up</button>
       <button onClick={incrementCountDown}>Count Down</button>
       <button onClick={resetCount}>Reset Count</button>
+      <Effect />
     </div>
   );
 };
